@@ -1,7 +1,7 @@
 import React from "react";
 import { Spotlight } from "./ui/Spotlight";
 import { TextGenerateEffect } from "./ui/TextGenerateEffect";
-import MagicButton from "./ui/MagicButton";
+import MagicButton from "./MagicButton";
 import { FaLocationArrow } from "react-icons/fa6";
 
 const Hero = () => {
@@ -32,7 +32,8 @@ const Hero = () => {
             words="Transforming Concepts into Seamless User experiences"
           />
           <p className="text-center md:tracking-wider mb-4 text-sm md:text-lg lg:text-2xl">
-            Hi, I'm Nick. I'm a web developer with a passion for creating.
+            Hi, I&apos;m Nick. I&apos;m a web developer with a passion for
+            creating.
           </p>
           <a href="#about">
             <MagicButton
