@@ -49,7 +49,7 @@ const RecentProjects = () => {
                     href={link}
                     className="flex lg:text-xl md:text-xs text-sm text-purple"
                   >
-                    Check Live Site
+                    Check It Out
                   </a>
                   <FaLocationArrow className="ms-3" color="#CBACF9" />
                 </div>
