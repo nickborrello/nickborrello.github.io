@@ -24,7 +24,7 @@ const Footer = () => {
           I'm a recent graduate eager to bring fresh ideas and a strong work
           ethic to your team.
         </p>
-        <a href="mailto:contact@jsmastery.pro">
+        <a href="mailto:nvborrello@gmail.com">
           <MagicButton
             title="Contact Me"
             icon={<FaLocationArrow />}
