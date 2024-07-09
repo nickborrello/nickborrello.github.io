@@ -87,11 +87,11 @@ export const projects = [
   },
   {
     id: 3,
-    title: "Morning Dashboard Application",
+    title: "PDF Search Tool",
     des: "A REAL Software-as-a-Service app with AI features and a payments and credits system using the latest tech stack.",
     img: "/p3.svg",
     iconLists: ["/re.svg", "/tail.svg", "/ts.svg", "/three.svg", "/c.svg"],
-    link: "https://github.com/adrianhajdin/ai_saas_app",
+    link: "https://github.com/nickborrello/NEVI-Program-State-Plan-Search-Tool",
   },
 ];
 
