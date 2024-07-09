@@ -21,8 +21,8 @@ const Footer = () => {
           project?
         </h1>
         <p className="text-white-200 md:mt-10 my-5 text-center">
-          I'm a recent graduate eager to bring fresh ideas and a strong work
-          ethic to your team.
+          I&apos;m a recent graduate eager to bring fresh ideas and a strong
+          work ethic to your team.
         </p>
         <a href="mailto:nvborrello@gmail.com">
           <MagicButton
