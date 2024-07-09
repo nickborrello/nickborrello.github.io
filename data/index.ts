@@ -116,9 +116,11 @@ export const socialMedia = [
   {
     id: 1,
     img: "/git.svg",
+    link: "https://github.com/nickborrello",
   },
   {
     id: 2,
     img: "/link.svg",
+    link: "https://www.linkedin.com/in/nicholasborrello/",
   },
 ];
