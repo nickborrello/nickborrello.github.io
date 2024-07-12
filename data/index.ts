@@ -123,4 +123,9 @@ export const socialMedia = [
     img: "/link.svg",
     link: "https://www.linkedin.com/in/nicholasborrello/",
   },
+  {
+    id: 3,
+    img: "/Salesforce.com_logo.svg",
+    link: "https://www.salesforce.com/trailblazer/nborrello"
+  }
 ];
