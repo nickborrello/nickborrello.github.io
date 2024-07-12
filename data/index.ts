@@ -125,7 +125,7 @@ export const socialMedia = [
   },
   {
     id: 3,
-    img: "/Salesforce.com_logo.svg",
+    img: "/salesforce.svg",
     link: "https://www.salesforce.com/trailblazer/nborrello"
   }
 ];
