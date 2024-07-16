@@ -44,7 +44,7 @@ const RecentProjects = () => {
                     </div>
                   ))}
                 </div>
-                <div className="flex justify-center items-center">
+                {/* <div className="flex justify-center items-center">
                   <a
                     href={link}
                     className="flex lg:text-xl md:text-xs text-sm text-purple"
@@ -52,7 +52,7 @@ const RecentProjects = () => {
                     Check It Out
                   </a>
                   <FaLocationArrow className="ms-3" color="#CBACF9" />
-                </div>
+                </div> */}
               </div>
             </PinContainer>
           </div>
