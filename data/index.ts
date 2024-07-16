@@ -88,7 +88,7 @@ export const projects = [
   {
     id: 3,
     title: "PDF Search Tool",
-    des: "A REAL Software-as-a-Service app with AI features and a payments and credits system using the latest tech stack.",
+    des: "Designed and implemented a keyword search application in Python to improve data retrieval efficiency.",
     img: "/p3.svg",
     iconLists: ["/re.svg", "/tail.svg", "/ts.svg", "/three.svg", "/c.svg"],
     link: "https://github.com/nickborrello/NEVI-Program-State-Plan-Search-Tool",
@@ -126,6 +126,6 @@ export const socialMedia = [
   {
     id: 3,
     img: "/salesforce.svg",
-    link: "https://www.salesforce.com/trailblazer/nborrello"
-  }
+    link: "https://www.salesforce.com/trailblazer/nborrello",
+  },
 ];
