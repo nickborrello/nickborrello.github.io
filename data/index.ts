@@ -89,7 +89,7 @@ export const projects = [
     id: 3,
     title: "PDF Search Tool",
     des: "Designed and implemented a keyword search application in Python to improve data retrieval efficiency.",
-    img: "/p3.svg",
+    img: "/search_tool.png",
     iconLists: ["/py.svg"],
     link: "https://github.com/nickborrello/NEVI-Program-State-Plan-Search-Tool",
   },
