@@ -6,7 +6,7 @@ import { FaLocationArrow } from "react-icons/fa6";
 
 const Hero = () => {
   return (
-    <div className="pb-20 pt-36">
+    <div className="pb-20 pt-36" id="home">
       <div>
         <Spotlight
           className="-top-40 -left-10 md:-left-32 md:-top-20 h-screen"
@@ -22,23 +22,30 @@ const Hero = () => {
         {/* Radial gradient for the container to give a faded look */}
         <div className="absolute pointer-events-none inset-0 flex items-center justify-center dark:bg-black-100 bg-white [mask-image:radial-gradient(ellipse_at_center,transparent_20%,black)]"></div>
       </div>
-      <div className="flex justify-center relative my-20 z-10">
-        <div className="max-w-[89vw] md:max-w-2xl lg:max-w-[60vw] flex flex-col items-center justify-center">
+      <div className="flex justify-center relative my-20 z-10 gap-8">
+        <div className="max-w-[75vw] md:max-w-xl lg:max-w-[34vw] flex flex-col items-left justify-center">
           <TextGenerateEffect
-            className="text-center text-[40px] md:text-5xl lg:text-6xl"
-            words="Transforming Concepts into Seamless User experiences"
+            className="text-left text-[40px] md:text-5xl lg:text-6xl"
+            words="Hi, I'm Nick."
           />
-          <p className="text-center md:tracking-wider mb-4 text-sm md:text-lg lg:text-2xl">
-            Hi, I&apos;m Nick. I&apos;m a web developer with a passion for
-            creating.
+          <p className="text-left md:tracking-wider mb-4 text-sm md:text-lg lg:text-2xl">
+            I am an experienced web developer skilled in developing and
+            maintaining scalable and efficient software solutions.
           </p>
           <a href="#about">
             <MagicButton
-              title="Show my work."
+              title="More about me."
               icon={<FaLocationArrow />}
               position="right"
             ></MagicButton>
           </a>
+        </div>
+        <div className="flex items-center justify-center">
+          <img
+            src="https://avatars.githubusercontent.com/u/92342882?v=4"
+            alt="Avatar"
+            className="w-500 h-500 rounded-full"
+          />
         </div>
       </div>
     </div>
