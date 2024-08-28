@@ -93,7 +93,6 @@ export const projects = [
     des: "Designed and implemented a keyword search application in Python to improve data retrieval efficiency.",
     img: "/search_tool.png",
     iconLists: ["/py.svg", "Qt.svg"],
-    link: "https://github.com/nickborrello/NEVI-Program-State-Plan-Search-Tool",
   },
 ];
 
