@@ -86,7 +86,6 @@ export const projects = [
     des: "Implemented Auth0 roles to enhance application security, ensuring secure access control at the API level.",
     img: "/staffing_tool.png",
     iconLists: ["/tail.svg", "/ts.svg", "/re.svg", "/fm.svg"],
-    link: "https://github.com/nickborrello/",
   },
   {
     id: 3,

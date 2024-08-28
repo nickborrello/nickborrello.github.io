@@ -1,4 +1,3 @@
-// RecentProjects component
 import React from "react";
 import { projects } from "@/data";
 import { PinContainer } from "./ui/3d-pin";
@@ -44,15 +43,17 @@ const RecentProjects = () => {
                     </div>
                   ))}
                 </div>
-                {/* <div className="flex justify-center items-center">
-                  <a
-                    href={link}
-                    className="flex lg:text-xl md:text-xs text-sm text-purple"
-                  >
-                    Check It Out
-                  </a>
-                  <FaLocationArrow className="ms-3" color="#CBACF9" />
-                </div> */}
+                {link && (
+                  <div className="flex justify-center items-center">
+                    <a
+                      href={link}
+                      className="flex lg:text-xl md:text-xs text-sm text-purple"
+                    >
+                      Check It Out
+                    </a>
+                    <FaLocationArrow className="ms-3" color="#CBACF9" />
+                  </div>
+                )}
               </div>
             </PinContainer>
           </div>
