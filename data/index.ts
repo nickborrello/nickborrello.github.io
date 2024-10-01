@@ -51,7 +51,7 @@ export const gridItems = [
 
   {
     id: 5,
-    title: "Currently building an AI Game Recommender",
+    title: "Currently building an Auction House Application",
     description: "The Inside Scoop",
     className: "md:col-span-3 md:row-span-2",
     imgClassName: "absolute right-0 bottom-0 md:w-96 w-60",
@@ -86,7 +86,7 @@ export const projects = [
     des: "Implemented Auth0 roles to enhance application security, ensuring secure access control at the API level.",
     img: "/staffing_tool.png",
     iconLists: ["/tail.svg", "/ts.svg", "/re.svg", "/fm.svg"],
-    link: "https://github.com/nickborrello/",
+    link: "",
   },
   {
     id: 3,
@@ -95,6 +95,14 @@ export const projects = [
     img: "/search_tool.png",
     iconLists: ["/py.svg", "Qt.svg"],
     link: "https://github.com/nickborrello/NEVI-Program-State-Plan-Search-Tool",
+  },
+  {
+    id: 4,
+    title: "Syllablast Game",
+    des: "Next.js solitaire puzzle where players swap syllables on a 4x4 grid to reconstruct four original words.",
+    img: "/syllablast.png",
+    iconLists: ["/tail.svg", "ts.svg", "/re.svg", "/fm.svg"],
+    link: "https://nickborrello.github.io/syllablast/",
   },
 ];
 
