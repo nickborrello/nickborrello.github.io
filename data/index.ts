@@ -51,7 +51,7 @@ export const gridItems = [
 
   {
     id: 5,
-    title: "Currently building an Auction House Application",
+    title: "Currently building an Auction House application",
     description: "The Inside Scoop",
     className: "md:col-span-3 md:row-span-2",
     imgClassName: "absolute right-0 bottom-0 md:w-96 w-60",
@@ -94,7 +94,6 @@ export const projects = [
     des: "Designed and implemented a keyword search application in Python to improve data retrieval efficiency.",
     img: "/search_tool.png",
     iconLists: ["/py.svg", "Qt.svg"],
-    link: "https://github.com/nickborrello/NEVI-Program-State-Plan-Search-Tool",
   },
   {
     id: 4,
