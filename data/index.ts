@@ -20,7 +20,7 @@ export const gridItems = [
   },
   {
     id: 2,
-    title: "I'm very flexible with relocation and remote work opportunities.",
+    title: "Open to relocation and remote work opportunities worldwide.",
     description: "",
     className: "lg:col-span-2 md:col-span-3 md:row-span-2",
     imgClassName: "",
@@ -30,8 +30,8 @@ export const gridItems = [
   },
   {
     id: 3,
-    title: "My tech stack",
-    description: "I constantly try to improve",
+    title: "My Tech Stack",
+    description: "Always learning, always evolving",
     className: "lg:col-span-2 md:col-span-3 md:row-span-2",
     imgClassName: "",
     titleClassName: "justify-center",
@@ -40,7 +40,7 @@ export const gridItems = [
   },
   {
     id: 4,
-    title: "Tech enthusiast with a passion for development.",
+    title: "Tech enthusiast driven by problem-solving and creativity.",
     description: "",
     className: "lg:col-span-2 md:col-span-3 md:row-span-1",
     imgClassName: "",
@@ -48,10 +48,9 @@ export const gridItems = [
     img: "/grid.svg",
     spareImg: "/b4.svg",
   },
-
   {
     id: 5,
-    title: "Currently building an Auction House application.",
+    title: "Currently developing an Auction House web app.",
     description: "The Inside Scoop",
     className: "md:col-span-3 md:row-span-2",
     imgClassName: "absolute right-0 bottom-0 md:w-96 w-60",
@@ -61,7 +60,7 @@ export const gridItems = [
   },
   {
     id: 6,
-    title: "Looking to hire me?",
+    title: "Interested in working together?",
     description: "",
     className: "lg:col-span-2 md:col-span-3 md:row-span-1",
     imgClassName: "",
@@ -75,7 +74,7 @@ export const projects = [
   {
     id: 1,
     title: "Hospital Kiosk Software Application",
-    des: "Collaborated with hospital representatives in developing a feature-rich software application using JavaFX.",
+    des: "Led frontend team for a JavaFX application, coordinating with hospital staff to meet stakeholder needs.",
     img: "/kiosk.png",
     iconLists: ["java.svg", "/fm.svg"],
     link: "https://github.com/CS-3733-D23-Team-E?view_as=public",
@@ -83,23 +82,23 @@ export const projects = [
   {
     id: 2,
     title: "Staffing Tool Application Security",
-    des: "Implemented Auth0 roles to enhance application security, ensuring secure access control at the API level.",
+    des: "Enhanced API security by configuring Auth0 roles and permissions within a full-stack web app.",
     img: "/staffing_tool.png",
     iconLists: ["/tail.svg", "/ts.svg", "/re.svg", "/fm.svg"],
     link: "",
   },
   {
     id: 3,
-    title: "PDF Search Tool",
-    des: "Designed and implemented a keyword search application in Python to improve data retrieval efficiency.",
+    title: "PDF Keyword Search Tool",
+    des: "Built a Python+Qt desktop tool to extract key insights from large document sets instantly.",
     img: "/search_tool.png",
     iconLists: ["/py.svg", "Qt.svg"],
     link: "",
   },
   {
     id: 4,
-    title: "Syllablast Game",
-    des: "Next.js solitaire puzzle where players swap syllables on a 4x4 grid to reconstruct four original words.",
+    title: "Syllablast Puzzle Game",
+    des: "Next.js puzzle game where players reconstruct words by swapping syllables on a 4×4 grid.",
     img: "/syllablast.png",
     iconLists: ["/tail.svg", "ts.svg", "/re.svg", "/fm.svg"],
     link: "https://nickborrello.github.io/syllablast/",
@@ -109,16 +108,16 @@ export const projects = [
 export const workExperience = [
   {
     id: 1,
-    title: "Corporate Process Engineering Intern",
-    desc: "Developed and maintained a deployment pipeline using Azure DevOps, automating the deployment of drivers to Test Systems.",
+    title: "Process Engineering Intern (Allegro Microsystems)",
+    desc: "Created Azure DevOps pipelines to automate test driver deployments and streamline CI/CD workflows.",
     className: "md:col-span-2",
     thumbnail: "/exp1.svg",
   },
   {
     id: 2,
-    title: "Student Software Engineer",
-    desc: "Designed and implemented a keyword search application in Python to improve data retrieval efficiency.",
-    className: "md:col-span-2", // change to md:col-span-2
+    title: "Software Engineer – Baystate Pet & Garden",
+    desc: "Built a Python desktop app to automate product registration and integrate with web inventory systems.",
+    className: "md:col-span-2",
     thumbnail: "/exp2.svg",
   },
 ];
@@ -138,5 +137,10 @@ export const socialMedia = [
     id: 3,
     img: "/salesforce.svg",
     link: "https://www.salesforce.com/trailblazer/nborrello",
+  },
+  {
+    id: 4,
+    img: "/mail.svg",
+    link: "mailto:nicholasborrello6@gmail.com",
   },
 ];
