@@ -137,10 +137,5 @@ export const socialMedia = [
     id: 3,
     img: "/salesforce.svg",
     link: "https://www.salesforce.com/trailblazer/nborrello",
-  },
-  {
-    id: 4,
-    img: "/mail.svg",
-    link: "mailto:nicholasborrello6@gmail.com",
-  },
+  }
 ];
