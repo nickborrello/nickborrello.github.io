@@ -14,58 +14,45 @@ describe('App', () => {
     expect(appElement).toBeTruthy();
   });
 
-  it('renders QuestLog component in main layout', async () => {
+  it('renders HomePage component by default', async () => {
+    render(<App />);
+    
+    // Wait for data to load - now checking for HomePage content
+    await waitFor(() => {
+      const welcomeText = screen.getByText('Welcome to My Realm');
+      expect(welcomeText).toBeTruthy();
+    });
+  });
+
+  it('renders HomePage component without stats', async () => {
     render(<App />);
     
     // Wait for data to load
     await waitFor(() => {
-      const questLogHeaders = screen.queryAllByText(/quest log/i);
-      expect(questLogHeaders.length).toBeGreaterThan(0);
+      // Check for HomePage content
+      const welcomeText = screen.getByText('Welcome to My Realm');
+      expect(welcomeText).toBeTruthy();
+      
+      // Ensure STATS panel is not present
+      expect(screen.queryByText('STATS')).not.toBeInTheDocument();
     });
   });
 
-  it('renders both StatsPanel and QuestLog components', async () => {
+  it('renders full app structure with header and home page', async () => {
     render(<App />);
     
     // Wait for data to load
     await waitFor(() => {
-      // Check for StatsPanel presence (STATS header)
-      const statsHeader = screen.getByText('STATS');
-      expect(statsHeader).toBeTruthy();
+      // Character header should be present - check that we have at least one heading with Nick Borrello
+      const characterNames = screen.getAllByRole('heading', { name: /nick borrello/i });
+      expect(characterNames.length).toBeGreaterThan(0);
       
-      // Check for QuestLog presence
-      const questLogHeaders = screen.queryAllByText(/quest log/i);
-      expect(questLogHeaders.length).toBeGreaterThan(0);
-    });
-  });
-
-  it('renders full app structure with header, stats, and quest log', async () => {
-    render(<App />);
-    
-    // Wait for data to load
-    await waitFor(() => {
-      // Character header should be present - use getByRole to target the h1
-      const characterName = screen.getByRole('heading', { name: /nick borrello/i });
-      expect(characterName).toBeTruthy();
+      // HomePage content should be present
+      const welcomeText = screen.getByText('Welcome to My Realm');
+      expect(welcomeText).toBeTruthy();
       
-      // Stats panel should be present
-      const statsHeader = screen.getByText('STATS');
-      expect(statsHeader).toBeTruthy();
-      
-      // Quest log should be present
-      const questLogHeaders = screen.queryAllByText(/quest log/i);
-      expect(questLogHeaders.length).toBeGreaterThan(0);
-    });
-  });
-
-  it('displays quests from data in QuestLog', async () => {
-    render(<App />);
-    
-    // Wait for data to load and check for a quest title from data.json
-    await waitFor(() => {
-      // Looking for the first quest from data.json
-      const questTitle = screen.queryByText(/rpg portfolio overhaul/i);
-      expect(questTitle).toBeTruthy();
+      // Ensure STATS panel is not present
+      expect(screen.queryByText('STATS')).not.toBeInTheDocument();
     });
   });
 
@@ -76,10 +63,12 @@ describe('App', () => {
       const appRoot = container.querySelector('[data-testid="app-root"]');
       expect(appRoot).toBeTruthy();
       
-      // Should have character header, stats, and quest log
-      expect(screen.getByText('STATS')).toBeTruthy();
-      const questLog = container.querySelector('[data-testid="quest-log"]');
-      expect(questLog).toBeTruthy();
+      // Should have home page content without stats
+      const welcomeText = screen.getByText('Welcome to My Realm');
+      expect(welcomeText).toBeTruthy();
+      
+      // Ensure STATS panel is not present
+      expect(screen.queryByText('STATS')).not.toBeInTheDocument();
     });
   });
 });

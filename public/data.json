@@ -134,16 +134,13 @@
       "rarity": "epic"
     }
   ],
-  "quests": [
+  "projects": [
     {
       "title": "The RPG Portfolio Overhaul",
       "description": "Transform a standard portfolio into an immersive RPG experience. This epic quest involves migrating to modern tooling (Vite, React 18, Tailwind CSS v4) and designing a unique character sheet interface that showcases skills as inventory items and projects as completed quests.",
       "status": "in-progress",
-      "rewards": [
-        "+500 Experience Points",
-        "Achievement: Master of Modern Web Stack",
-        "Unique Item: Vite-Powered Development Speed Boost"
-      ],
+      "currentlyWorking": true,
+      "lastCommit": "2025-11-07T10:30:00Z",
       "technologies": [
         "React 18",
         "TypeScript",
@@ -168,11 +165,6 @@
       "title": "E-Commerce Dungeon Builder",
       "description": "Constructed a full-featured e-commerce platform with product management, shopping cart functionality, and secure checkout. Battled through complex state management and payment integration challenges to deliver a seamless shopping experience.",
       "status": "completed",
-      "rewards": [
-        "+400 Experience Points",
-        "Gold: $2,500 freelance payment",
-        "Achievement: Commerce Champion"
-      ],
       "technologies": [
         "React",
         "Redux",
@@ -199,11 +191,6 @@
       "title": "Real-Time Chat Fortress",
       "description": "Forged a real-time messaging application with WebSocket connections, allowing multiple users to communicate instantly. Defended against common security vulnerabilities and optimized for low-latency message delivery.",
       "status": "completed",
-      "rewards": [
-        "+350 Experience Points",
-        "Achievement: Master of Real-Time Communication",
-        "Skill Unlock: WebSocket Mastery"
-      ],
       "technologies": [
         "React",
         "Socket.io",
@@ -228,11 +215,6 @@
       "title": "Task Management Citadel",
       "description": "Built a comprehensive task and project management system with drag-and-drop functionality, team collaboration features, and progress tracking. Conquered the challenges of complex UI interactions and state synchronization.",
       "status": "completed",
-      "rewards": [
-        "+300 Experience Points",
-        "Achievement: Organizational Overlord",
-        "Rare Item: Drag-and-Drop Mastery Badge"
-      ],
       "technologies": [
         "React",
         "TypeScript",

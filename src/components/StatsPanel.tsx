@@ -14,7 +14,7 @@ export default function StatsPanel({ stats }: StatsPanelProps) {
   const { data } = usePortfolioData();
   
   // Calculate proficiency from jewels in quests
-  const proficiencyMap = useSkillCalculation(data?.quests || []);
+  const proficiencyMap = useSkillCalculation(data?.projects || []);
   
   // Convert proficiency map to sorted array (highest level first, then alphabetically)
   const proficiencies = Array.from(proficiencyMap.values()).sort((a, b) => {

@@ -1,12 +1,13 @@
 import { motion } from 'framer-motion';
-import type { Quest } from '../types';
+import type { Project } from '../types';
 import JewelSlots from './JewelSlots';
 
 interface QuestCardProps {
-  quest: Quest;
+  quest: Project;
+  isCurrentlyWorking?: boolean;
 }
 
-export default function QuestCard({ quest }: QuestCardProps) {
+export default function QuestCard({ quest, isCurrentlyWorking = false }: QuestCardProps) {
   const statusText = quest.status === 'completed' ? 'Completed' : 
                      quest.status === 'in-progress' ? 'In Progress' : 
                      'Available';
@@ -17,7 +18,9 @@ export default function QuestCard({ quest }: QuestCardProps) {
 
   return (
     <motion.article
-      className="relative bg-gradient-to-br from-[#1a1a1a] to-[#0d0d0d] border-2 border-[#8b7355] rounded-lg p-6 shadow-2xl hover:scale-[1.02] transition-transform duration-200"
+      className={`relative bg-gradient-to-br from-[#1a1a1a] to-[#0d0d0d] border-2 rounded-lg p-6 shadow-2xl hover:scale-[1.02] transition-transform duration-200 ${
+        isCurrentlyWorking ? 'border-[#d4af37] ring-2 ring-[#d4af37]/20' : 'border-[#8b7355]'
+      }`}
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.4 }}
@@ -25,8 +28,21 @@ export default function QuestCard({ quest }: QuestCardProps) {
         boxShadow: '0 0 20px rgba(212, 175, 55, 0.3)',
       }}
     >
-      {/* Status Badge */}
-      <div className="absolute top-4 right-4">
+      {/* Status Badges */}
+      <div className="absolute top-4 right-4 flex flex-col gap-2">
+        {/* Currently Working On Badge */}
+        {isCurrentlyWorking && (
+          <motion.span
+            className="px-3 py-1 bg-[#d4af37] text-black text-xs font-bold rounded-full border-2 border-[#d4af37] shadow-lg"
+            initial={{ scale: 0 }}
+            animate={{ scale: 1 }}
+            transition={{ delay: 0.2, type: "spring", stiffness: 200 }}
+          >
+            ⚡ Currently Working
+          </motion.span>
+        )}
+        
+        {/* Status Badge */}
         <span className={`px-3 py-1 rounded-full text-xs font-bold border ${statusColorClass}`}>
           {statusText}
         </span>
@@ -41,21 +57,6 @@ export default function QuestCard({ quest }: QuestCardProps) {
       <p className="text-gray-300 text-sm mb-4 leading-relaxed">
         {quest.description}
       </p>
-
-      {/* Rewards Section */}
-      {quest.rewards && quest.rewards.length > 0 && (
-        <div className="mb-4">
-          <h4 className="text-xs font-semibold text-[#d4af37] mb-2">REWARDS:</h4>
-          <ul className="space-y-1">
-            {quest.rewards.map((reward, index) => (
-              <li key={index} className="text-xs text-gray-400 flex items-start">
-                <span className="text-[#d4af37] mr-2">•</span>
-                {reward}
-              </li>
-            ))}
-          </ul>
-        </div>
-      )}
 
       {/* Links Section */}
       <div className="flex gap-3 mb-4">

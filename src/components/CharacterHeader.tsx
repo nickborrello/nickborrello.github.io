@@ -8,7 +8,7 @@ interface CharacterHeaderProps {
 export default function CharacterHeader({ character }: CharacterHeaderProps) {
   return (
     <motion.div
-      className="relative bg-gradient-to-br from-[#1a1a1a] to-[#0d0d0d] border-2 border-[#d4af37] rounded-lg p-6 shadow-2xl mb-6"
+      className="relative bg-black/60 backdrop-blur-sm border-2 border-[#d4af37] rounded-lg p-6 shadow-2xl mb-6"
       initial={{ opacity: 0, y: -20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.5 }}

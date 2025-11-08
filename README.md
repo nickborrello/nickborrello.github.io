@@ -1,36 +1,53 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Nick Borrello - Portfolio
 
-## Getting Started
+A single-page RPG-themed portfolio application with persistent background video.
 
-First, run the development server:
+## Features
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+- **Single Page Application**: No routing, state-based navigation
+- **Persistent Background Video**: Full-screen video that plays continuously
+- **RPG Theme**: Fantasy-themed UI with character stats and project showcases
+- **Responsive Design**: Works on desktop and mobile devices
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Setup
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+1. Install dependencies:
+   ```bash
+   npm install
+   ```
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+2. **Add Background Video** (Optional):
+   - Place your background video file at `/public/background-video.mp4`
+   - Recommended format: MP4, H.264 codec
+   - Video will loop automatically and be muted
+   - If no video is provided, a gradient background will be used as fallback
 
-## Learn More
+3. Start development server:
+   ```bash
+   npm run dev
+   ```
 
-To learn more about Next.js, take a look at the following resources:
+4. Build for production:
+   ```bash
+   npm run build
+   ```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Navigation
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+- **Initial Load**: Navigation buttons appear in bottom-left with opacity
+- **Click Navigation**: Opens selected section in full window with back button at bottom
+- **Back Button**: Returns to initial navigation screen
 
-## Deploy on Vercel
+## Project Structure
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+- `src/App.tsx` - Main application with state management
+- `src/components/` - React components for different sections
+- `public/` - Static assets (add background-video.mp4 here)
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+## Technologies Used
+
+- React 18
+- TypeScript
+- Tailwind CSS
+- Framer Motion
+- Vite

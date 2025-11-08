@@ -8,7 +8,6 @@ describe('QuestCard', () => {
     title: 'Test Quest',
     description: 'A test quest description for unit testing',
     status: 'completed',
-    rewards: ['100 Gold', 'Achievement: Test Master'],
     technologies: ['React', 'TypeScript'],
     links: {
       live: 'https://example.com',
@@ -25,7 +24,6 @@ describe('QuestCard', () => {
     title: 'Active Quest',
     description: 'An in-progress quest',
     status: 'in-progress',
-    rewards: ['200 Gold'],
     technologies: ['JavaScript'],
     links: {
       live: 'https://example.com',
@@ -41,7 +39,6 @@ describe('QuestCard', () => {
     title: 'Simple Quest',
     description: 'A quest without jewel slots',
     status: 'completed',
-    rewards: ['50 Gold'],
     technologies: ['HTML', 'CSS'],
     links: {
       live: 'https://example.com',
@@ -98,11 +95,6 @@ describe('QuestCard', () => {
     
     // Check that in-progress status has gold/yellow styling
     expect(statusElement.className).toContain('yellow');
-  });
-
-  it('renders quest rewards when present', () => {
-    render(<QuestCard quest={mockCompletedQuest} />);
-    expect(screen.getByText(/100 Gold/)).toBeTruthy();
   });
 
   it('displays project links', () => {

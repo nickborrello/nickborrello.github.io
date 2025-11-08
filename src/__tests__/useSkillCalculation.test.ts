@@ -1,20 +1,20 @@
 import { describe, it, expect } from 'vitest';
 import { renderHook } from '@testing-library/react';
 import { useSkillCalculation } from '../hooks/useSkillCalculation';
-import type { Quest } from '../types';
+import type { Project } from '../types';
 
 describe('useSkillCalculation Hook', () => {
-  it('should return empty map when no quests are provided', () => {
+  it('should return empty map when no projects are provided', () => {
     const { result } = renderHook(() => useSkillCalculation([]));
     
     expect(result.current.size).toBe(0);
   });
 
   it('should calculate proficiency from a single jewel', () => {
-    const quests: Quest[] = [
+    const projects: Project[] = [
       {
-        title: 'Test Quest',
-        description: 'A test quest',
+        title: 'Test Project',
+        description: 'A test project',
         status: 'completed',
         rewards: ['Test reward'],
         technologies: ['React'],
@@ -26,7 +26,7 @@ describe('useSkillCalculation Hook', () => {
       }
     ];
 
-    const { result } = renderHook(() => useSkillCalculation(quests));
+    const { result } = renderHook(() => useSkillCalculation(projects));
     
     expect(result.current.size).toBe(1);
     expect(result.current.get('React')).toEqual({
@@ -37,10 +37,10 @@ describe('useSkillCalculation Hook', () => {
   });
 
   it('should calculate proficiency from multiple jewels across projects', () => {
-    const quests: Quest[] = [
+    const projects: Project[] = [
       {
-        title: 'Quest 1',
-        description: 'First quest',
+        title: 'Project 1',
+        description: 'First project',
         status: 'completed',
         rewards: [],
         technologies: ['React'],
@@ -52,8 +52,8 @@ describe('useSkillCalculation Hook', () => {
         ]
       },
       {
-        title: 'Quest 2',
-        description: 'Second quest',
+        title: 'Project 2',
+        description: 'Second project',
         status: 'completed',
         rewards: [],
         technologies: ['React'],
@@ -65,7 +65,7 @@ describe('useSkillCalculation Hook', () => {
       }
     ];
 
-    const { result } = renderHook(() => useSkillCalculation(quests));
+    const { result } = renderHook(() => useSkillCalculation(projects));
     
     expect(result.current.size).toBe(1);
     expect(result.current.get('React')).toEqual({
@@ -76,10 +76,10 @@ describe('useSkillCalculation Hook', () => {
   });
 
   it('should cap proficiency at max level', () => {
-    const quests: Quest[] = [
+    const projects: Project[] = [
       {
-        title: 'Quest with many React jewels',
-        description: 'A quest',
+        title: 'Project with many React jewels',
+        description: 'A project',
         status: 'completed',
         rewards: [],
         technologies: ['React'],
@@ -96,7 +96,7 @@ describe('useSkillCalculation Hook', () => {
       }
     ];
 
-    const { result } = renderHook(() => useSkillCalculation(quests));
+    const { result } = renderHook(() => useSkillCalculation(projects));
     
     expect(result.current.get('React')).toEqual({
       techName: 'React',
@@ -106,10 +106,10 @@ describe('useSkillCalculation Hook', () => {
   });
 
   it('should calculate proficiency for multiple tech types simultaneously', () => {
-    const quests: Quest[] = [
+    const projects: Project[] = [
       {
-        title: 'Multi-tech Quest',
-        description: 'A quest with multiple technologies',
+        title: 'Multi-tech Project',
+        description: 'A project with multiple technologies',
         status: 'completed',
         rewards: [],
         technologies: ['React', 'TypeScript', 'Node.js'],
@@ -124,7 +124,7 @@ describe('useSkillCalculation Hook', () => {
       }
     ];
 
-    const { result } = renderHook(() => useSkillCalculation(quests));
+    const { result } = renderHook(() => useSkillCalculation(projects));
     
     expect(result.current.size).toBe(3);
     expect(result.current.get('React')).toEqual({
@@ -145,10 +145,10 @@ describe('useSkillCalculation Hook', () => {
   });
 
   it('should ignore null jewels in slots', () => {
-    const quests: Quest[] = [
+    const projects: Project[] = [
       {
-        title: 'Quest with empty slots',
-        description: 'A quest',
+        title: 'Project with empty slots',
+        description: 'A project',
         status: 'completed',
         rewards: [],
         technologies: ['React'],
@@ -162,7 +162,7 @@ describe('useSkillCalculation Hook', () => {
       }
     ];
 
-    const { result } = renderHook(() => useSkillCalculation(quests));
+    const { result } = renderHook(() => useSkillCalculation(projects));
     
     expect(result.current.size).toBe(1);
     expect(result.current.get('React')).toEqual({
@@ -172,11 +172,11 @@ describe('useSkillCalculation Hook', () => {
     });
   });
 
-  it('should handle quests without jewelSlots property', () => {
-    const quests: Quest[] = [
+  it('should handle projects without jewelSlots property', () => {
+    const projects: Project[] = [
       {
-        title: 'Quest without jewels',
-        description: 'A quest',
+        title: 'Project without jewels',
+        description: 'A project',
         status: 'completed',
         rewards: [],
         technologies: ['React'],
@@ -186,16 +186,16 @@ describe('useSkillCalculation Hook', () => {
       }
     ];
 
-    const { result } = renderHook(() => useSkillCalculation(quests));
+    const { result } = renderHook(() => useSkillCalculation(projects));
     
     expect(result.current.size).toBe(0);
   });
 
-  it('should recalculate when quests change', () => {
-    const initialQuests: Quest[] = [
+  it('should recalculate when projects change', () => {
+    const initialProjects: Project[] = [
       {
-        title: 'Quest 1',
-        description: 'First quest',
+        title: 'Project 1',
+        description: 'First project',
         status: 'completed',
         rewards: [],
         technologies: ['React'],
@@ -208,18 +208,18 @@ describe('useSkillCalculation Hook', () => {
     ];
 
     const { result, rerender } = renderHook(
-      ({ quests }) => useSkillCalculation(quests),
-      { initialProps: { quests: initialQuests } }
+      ({ projects }) => useSkillCalculation(projects),
+      { initialProps: { projects: initialProjects } }
     );
     
     expect(result.current.get('React')?.currentLevel).toBe(1);
 
-    // Add more quests
-    const updatedQuests: Quest[] = [
-      ...initialQuests,
+    // Add more projects
+    const updatedProjects: Project[] = [
+      ...initialProjects,
       {
-        title: 'Quest 2',
-        description: 'Second quest',
+        title: 'Project 2',
+        description: 'Second project',
         status: 'completed',
         rewards: [],
         technologies: ['React'],
@@ -232,7 +232,7 @@ describe('useSkillCalculation Hook', () => {
       }
     ];
 
-    rerender({ quests: updatedQuests });
+    rerender({ projects: updatedProjects });
     
     expect(result.current.get('React')?.currentLevel).toBe(3);
   });

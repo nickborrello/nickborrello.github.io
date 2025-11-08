@@ -1,10 +1,13 @@
+import { useState } from 'react';
 import { usePortfolioData } from './hooks/usePortfolioData';
-import CharacterHeader from './components/CharacterHeader';
-import StatsPanel from './components/StatsPanel';
-import QuestLog from './components/QuestLog';
+import HomePage from './components/HomePage';
+import ProjectsPage from './components/ProjectsPage';
+
+type Page = 'home' | 'projects' | 'skills' | 'contact';
 
 function App() {
   const { data, loading, error } = usePortfolioData();
+  const [currentPage, setCurrentPage] = useState<Page>('home');
 
   if (loading) {
     return (
@@ -36,24 +39,110 @@ function App() {
     );
   }
 
-  return (
-    <div data-testid="app-root" className="min-h-screen bg-dark text-white">
-      <div className="container mx-auto px-4 py-8 max-w-7xl">
-        {/* Character Header */}
-        <CharacterHeader character={data.character} />
-
-        {/* Main Layout: Stats Sidebar + Quest Log Content */}
-        <div className="grid grid-cols-1 lg:grid-cols-[300px_1fr] gap-6">
-          {/* Stats Panel - Sidebar */}
-          <div className="order-2 lg:order-1">
-            <StatsPanel stats={data.stats} />
+  const renderCurrentPage = () => {
+    switch (currentPage) {
+      case 'home':
+        return (
+          <HomePage
+            character={data.character}
+            projects={data.projects}
+          />
+        );
+      case 'projects':
+        return <ProjectsPage projects={data.projects} />;
+      case 'skills':
+        return (
+          <div className="min-h-screen bg-dark text-white flex items-center justify-center">
+            <div className="text-center">
+              <h1 className="text-4xl font-bold text-[#d4af37] mb-4">🛡️ Skills Coming Soon</h1>
+              <p className="text-gray-400">This section is under construction!</p>
+            </div>
           </div>
+        );
+      case 'contact':
+        return (
+          <div className="min-h-screen bg-dark text-white flex items-center justify-center">
+            <div className="text-center">
+              <h1 className="text-4xl font-bold text-[#d4af37] mb-4">📜 Contact Coming Soon</h1>
+              <p className="text-gray-400">This section is under construction!</p>
+            </div>
+          </div>
+        );
+      default:
+        return (
+          <HomePage
+            character={data.character}
+            projects={data.projects}
+          />
+        );
+    }
+  };
 
-          {/* Main Content Area - Quest Log */}
-          <div className="order-1 lg:order-2">
-            <QuestLog quests={data.quests} />
+  return (
+    <div data-testid="app-root" className="relative min-h-screen">
+      {/* Persistent Background Video */}
+      {/* TODO: Add your background video file to /public/background-video.mp4 */}
+      <video
+        autoPlay
+        muted
+        loop
+        playsInline
+        className="fixed inset-0 w-full h-full object-cover z-0"
+        onError={(e) => {
+          // Hide video if file doesn't exist, fallback to gradient background
+          e.currentTarget.style.display = 'none';
+        }}
+      >
+        <source src="/background-video.mp4" type="video/mp4" />
+      </video>
+
+      {/* Overlay to ensure content is readable */}
+      <div className="fixed inset-0 bg-black/40 z-10"></div>
+
+      {/* Navigation Options - Bottom Left */}
+      {currentPage === 'home' && (
+        <div className="fixed bottom-6 left-6 z-50 flex gap-3">
+          <button
+            onClick={() => setCurrentPage('projects')}
+            className="bg-black/60 hover:bg-black/80 text-[#d4af37] px-4 py-2 rounded-lg border border-[#d4af37]/50 transition-all duration-200 hover:scale-105"
+          >
+            ⚔️ Projects
+          </button>
+          <button
+            onClick={() => setCurrentPage('skills')}
+            className="bg-black/60 hover:bg-black/80 text-[#d4af37] px-4 py-2 rounded-lg border border-[#d4af37]/50 transition-all duration-200 hover:scale-105"
+          >
+            🛡️ Skills
+          </button>
+          <button
+            onClick={() => setCurrentPage('contact')}
+            className="bg-black/60 hover:bg-black/80 text-[#d4af37] px-4 py-2 rounded-lg border border-[#d4af37]/50 transition-all duration-200 hover:scale-105"
+          >
+            📜 Contact
+          </button>
+        </div>
+      )}
+
+      {/* Back Button - Bottom Center */}
+      {currentPage !== 'home' && (
+        <div className="fixed bottom-0 left-0 right-0 bg-gradient-to-t from-black/90 to-transparent backdrop-blur-sm shadow-lg z-50">
+          <div className="flex items-center justify-start py-3 px-4">
+            <button
+              onClick={() => setCurrentPage('home')}
+              className="bg-[#d4af37]/80 hover:bg-[#d4af37] text-black px-6 py-3 rounded-lg border border-[#d4af37]/50 transition-all duration-200 hover:scale-105 active:scale-95 flex items-center gap-2 font-semibold"
+            >
+              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+              </svg>
+              Back
+            </button>
           </div>
         </div>
+      )}
+
+      {/* Page Content */}
+      <div className={`relative z-20 ${currentPage !== 'home' ? 'pb-20' : ''}`}>
+        {renderCurrentPage()}
       </div>
     </div>
   );

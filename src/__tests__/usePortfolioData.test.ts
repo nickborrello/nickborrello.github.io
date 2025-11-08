@@ -41,7 +41,7 @@ describe('usePortfolioData Hook', () => {
     expect(data).toHaveProperty('character');
     expect(data).toHaveProperty('stats');
     expect(data).toHaveProperty('skills');
-    expect(data).toHaveProperty('quests');
+    expect(data).toHaveProperty('projects');
 
     // Verify character structure
     expect(data?.character).toHaveProperty('name');
@@ -53,7 +53,7 @@ describe('usePortfolioData Hook', () => {
     // Verify arrays
     expect(Array.isArray(data?.stats)).toBe(true);
     expect(Array.isArray(data?.skills)).toBe(true);
-    expect(Array.isArray(data?.quests)).toBe(true);
+    expect(Array.isArray(data?.projects)).toBe(true);
   });
 
   it('should return stats with correct properties', async () => {
@@ -105,7 +105,7 @@ describe('usePortfolioData Hook', () => {
     });
   });
 
-  it('should return quests with correct properties and valid status', async () => {
+  it('should return projects with correct properties and valid status', async () => {
     const { result } = renderHook(() => usePortfolioData());
 
     await waitFor(() => {
@@ -113,25 +113,23 @@ describe('usePortfolioData Hook', () => {
     });
 
     const { data } = result.current;
-    const quests = data?.quests || [];
+    const projects = data?.projects || [];
 
-    expect(quests.length).toBeGreaterThan(0);
+    expect(projects.length).toBeGreaterThan(0);
 
     const validStatuses = ['completed', 'in-progress', 'available'];
     
-    quests.forEach((quest) => {
-      expect(quest).toHaveProperty('title');
-      expect(quest).toHaveProperty('description');
-      expect(quest).toHaveProperty('status');
-      expect(quest).toHaveProperty('rewards');
-      expect(quest).toHaveProperty('technologies');
-      expect(quest).toHaveProperty('links');
-      expect(quest).toHaveProperty('image');
-      expect(validStatuses).toContain(quest.status);
-      expect(Array.isArray(quest.rewards)).toBe(true);
-      expect(Array.isArray(quest.technologies)).toBe(true);
-      expect(quest.links).toHaveProperty('live');
-      expect(quest.links).toHaveProperty('github');
+    projects.forEach((project) => {
+      expect(project).toHaveProperty('title');
+      expect(project).toHaveProperty('description');
+      expect(project).toHaveProperty('status');
+      expect(project).toHaveProperty('technologies');
+      expect(project).toHaveProperty('links');
+      expect(project).toHaveProperty('image');
+      expect(validStatuses).toContain(project.status);
+      expect(Array.isArray(project.technologies)).toBe(true);
+      expect(project.links).toHaveProperty('live');
+      expect(project.links).toHaveProperty('github');
     });
   });
 

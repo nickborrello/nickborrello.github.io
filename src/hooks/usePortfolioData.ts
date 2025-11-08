@@ -32,9 +32,13 @@ export function usePortfolioData(): UsePortfolioDataResult {
         const jsonData: PortfolioData = await response.json();
         
         // Validate data structure
-        if (!jsonData.character || !jsonData.stats || !jsonData.skills || !jsonData.quests) {
+        if (!jsonData.character || !jsonData.stats || !jsonData.skills || !jsonData.projects) {
           throw new Error('Invalid data structure: missing required fields');
         }
+
+        // Optional: Update "currently working" status based on recent GitHub activity
+        // This would require GitHub API calls and would be more complex
+        // For now, we rely on the manual currentlyWorking flag in data.json
 
         setData(jsonData);
       } catch (err) {

@@ -89,18 +89,17 @@ export interface SkillProficiency {
 }
 
 /**
- * Quest status values
+ * Project status values
  */
-export type QuestStatus = 'completed' | 'in-progress' | 'available';
+export type ProjectStatus = 'completed' | 'in-progress' | 'available';
 
 /**
- * Quest represents a project as an RPG quest
+ * Project represents a project as an RPG quest
  */
-export interface Quest {
+export interface Project {
   title: string;
   description: string;
-  status: QuestStatus;
-  rewards: string[];
+  status: ProjectStatus;
   technologies: string[];
   links: {
     live: string;
@@ -108,6 +107,8 @@ export interface Quest {
   };
   image: string;
   jewelSlots?: JewelSlot[];
+  currentlyWorking?: boolean;
+  lastCommit?: string; // ISO date string
 }
 
 /**
@@ -117,5 +118,5 @@ export interface PortfolioData {
   character: Character;
   stats: Stat[];
   skills: Skill[];
-  quests: Quest[];
+  projects: Project[];
 }

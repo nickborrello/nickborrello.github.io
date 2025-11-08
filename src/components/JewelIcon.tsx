@@ -3,6 +3,7 @@ import type { TechJewel } from '../types';
 interface JewelIconProps {
   jewel: TechJewel | null;
   slotNumber: number;
+  size?: 'sm' | 'md' | 'lg';
 }
 
 /**
@@ -42,12 +43,21 @@ function getTechColor(tech: TechJewel): string {
   return colorMap[tech];
 }
 
-export default function JewelIcon({ jewel, slotNumber }: JewelIconProps) {
+export default function JewelIcon({ jewel, slotNumber, size = 'md' }: JewelIconProps) {
+  // Size classes
+  const sizeClasses = {
+    sm: 'w-2 h-2',
+    md: 'w-2.5 h-2.5',
+    lg: 'w-4 h-4'
+  };
+
+  const currentSize = sizeClasses[size];
+
   // Empty slot
   if (jewel === null) {
     return (
       <div
-        className="w-2.5 h-2.5 border border-gray-500 bg-gray-900 rounded-sm jewel-slot-empty"
+        className={`${currentSize} border border-gray-500 bg-gray-900 rounded-sm jewel-slot-empty`}
         data-slot={slotNumber}
         data-slot-empty="true"
         title="Empty Slot"
@@ -60,7 +70,7 @@ export default function JewelIcon({ jewel, slotNumber }: JewelIconProps) {
 
   return (
     <div
-      className={`w-2.5 h-2.5 ${colorClass} rounded-sm jewel-gem border border-white/20 shadow-sm hover:scale-110 transition-transform duration-200 cursor-pointer`}
+      className={`${currentSize} ${colorClass} rounded-sm jewel-gem border border-white/20 shadow-sm hover:scale-110 transition-transform duration-200 cursor-pointer`}
       data-tech={jewel}
       data-slot={slotNumber}
       title={jewel}
