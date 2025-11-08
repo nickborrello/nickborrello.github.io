@@ -1,14 +1,11 @@
-import React from "react";
-import { PinContainer } from "./ui/3d-pin";
 import { FaLocationArrow } from "react-icons/fa";
 import type { Project } from "../types";
 
 interface RecentProjectsProps {
   projects: Project[];
-  prefersReducedMotion: boolean;
 }
 
-const RecentProjects = ({ projects, prefersReducedMotion }: RecentProjectsProps) => {
+const RecentProjects = ({ projects }: RecentProjectsProps) => {
   return (
     <div className="py-20 mt-10" id="projects">
       <h1 className="heading">
@@ -21,7 +18,7 @@ const RecentProjects = ({ projects, prefersReducedMotion }: RecentProjectsProps)
             key={index}
             className="sm:h-[41rem] sm:w-[570px] h-[32rem] lg:min-h-[32.5rem] flex items-center justify-center w-[80vw]"
           >
-            <PinContainer title={project.links.live} href={project.links.live}>
+            <div>
               <div className="relative flex items-center justify-center sm:w-[570px] sm:h-[40vh] w-[80vw] overflow-hidden h[30vh] lg:h-[30vh] mb-10">
                 <div className="relative w-full h-full overflow-hidden lg:rounded-3xl bg-[#13162D]">
                   <img src="/bg.png" alt="bg-img" />
@@ -64,7 +61,7 @@ const RecentProjects = ({ projects, prefersReducedMotion }: RecentProjectsProps)
                   </div>
                 )}
               </div>
-            </PinContainer>
+            </div>
           </div>
         ))}
       </div>

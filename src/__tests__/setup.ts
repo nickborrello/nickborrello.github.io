@@ -10,11 +10,6 @@ vi.mock('react-helmet-async', () => ({
   HelmetProvider: ({ children, context }: any) => children,
 }));
 
-// Mock react-lottie
-vi.mock('react-lottie', () => ({
-  default: ({ options, ...props }: any) => null,
-}));
-
 // Mock GridGlobe
 vi.mock('../components/ui/GridGlobe', () => ({
   GlobeDemo: () => null,
