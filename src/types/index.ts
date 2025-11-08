@@ -38,6 +38,57 @@ export interface Skill {
 }
 
 /**
+ * TechJewel represents a technology skill that can be slotted into quests
+ * (Monster Hunter-style jewel system)
+ */
+export type TechJewel = 
+  | 'React'
+  | 'TypeScript'
+  | 'JavaScript'
+  | 'Node.js'
+  | 'Python'
+  | 'CSS'
+  | 'HTML'
+  | 'Tailwind CSS'
+  | 'Vite'
+  | 'Vue'
+  | 'Angular'
+  | 'Express'
+  | 'MongoDB'
+  | 'PostgreSQL'
+  | 'GraphQL'
+  | 'REST API'
+  | 'Docker'
+  | 'Git'
+  | 'Jest'
+  | 'Vitest'
+  | 'Redux'
+  | 'Socket.io'
+  | 'JWT'
+  | 'Stripe API'
+  | 'Firebase'
+  | 'Material-UI'
+  | 'React DnD';
+
+/**
+ * JewelSlot represents a slot in a quest that can hold a TechJewel
+ */
+export interface JewelSlot {
+  jewel: TechJewel | null;
+  slotNumber: number;
+}
+
+/**
+ * SkillProficiency represents the calculated proficiency level for a technology
+ * based on how many jewels of that type are equipped across all quests
+ */
+export interface SkillProficiency {
+  techName: TechJewel;
+  currentLevel: number;
+  maxLevel: number;
+}
+
+/**
  * Quest status values
  */
 export type QuestStatus = 'completed' | 'in-progress' | 'available';
@@ -56,6 +107,7 @@ export interface Quest {
     github: string;
   };
   image: string;
+  jewelSlots?: JewelSlot[];
 }
 
 /**

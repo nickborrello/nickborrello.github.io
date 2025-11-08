@@ -155,7 +155,14 @@
         "live": "https://nickborrello.github.io",
         "github": "https://github.com/nickborrello/nickborrello.github.io"
       },
-      "image": "/projects/rpg-portfolio.png"
+      "image": "/projects/rpg-portfolio.png",
+      "jewelSlots": [
+        { "jewel": "React", "slotNumber": 1 },
+        { "jewel": "TypeScript", "slotNumber": 2 },
+        { "jewel": "Vite", "slotNumber": 3 },
+        { "jewel": "Tailwind CSS", "slotNumber": 4 },
+        { "jewel": "Vitest", "slotNumber": 5 }
+      ]
     },
     {
       "title": "E-Commerce Dungeon Builder",
@@ -178,7 +185,15 @@
         "live": "https://example-ecommerce.com",
         "github": "https://github.com/example/ecommerce"
       },
-      "image": "/projects/ecommerce.png"
+      "image": "/projects/ecommerce.png",
+      "jewelSlots": [
+        { "jewel": "React", "slotNumber": 1 },
+        { "jewel": "Redux", "slotNumber": 2 },
+        { "jewel": "Node.js", "slotNumber": 3 },
+        { "jewel": "Express", "slotNumber": 4 },
+        { "jewel": "Stripe API", "slotNumber": 5 },
+        { "jewel": "MongoDB", "slotNumber": 6 }
+      ]
     },
     {
       "title": "Real-Time Chat Fortress",
@@ -201,7 +216,13 @@
         "live": "https://example-chat.com",
         "github": "https://github.com/example/chat-app"
       },
-      "image": "/projects/chat-app.png"
+      "image": "/projects/chat-app.png",
+      "jewelSlots": [
+        { "jewel": "React", "slotNumber": 1 },
+        { "jewel": "Socket.io", "slotNumber": 2 },
+        { "jewel": "Node.js", "slotNumber": 3 },
+        { "jewel": "JWT", "slotNumber": 4 }
+      ]
     },
     {
       "title": "Task Management Citadel",
