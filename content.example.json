@@ -1,0 +1,32 @@
+{
+  "_comment": "This is the content source for your portfolio. Edit the 'projects' array to update the projects section of your website. After editing, run 'npm run update-content' to apply the changes. Do not edit 'public/data.json' directly.",
+  "projects": [
+    {
+      "_comment": "Each object in this array represents a project. Copy and paste this structure to add new projects.",
+      "title": "The RPG Portfolio Overhaul",
+      "description": "Transform a standard portfolio into an immersive RPG experience. This epic quest involves migrating to modern tooling (Vite, React 18, Tailwind CSS v4) and designing a unique character sheet interface that showcases skills as inventory items and projects as completed quests.",
+      "status": "in-progress",
+      "currentlyWorking": true,
+      "lastCommit": "2025-11-07T10:30:00Z",
+      "technologies": [
+        "React 18",
+        "TypeScript",
+        "Vite",
+        "Tailwind CSS v4",
+        "Vitest"
+      ],
+      "links": {
+        "live": "https://nickborrello.github.io",
+        "github": "https://github.com/nickborrello/nickborrello.github.io"
+      },
+      "image": "/projects/rpg-portfolio.png",
+      "jewelSlots": [
+        { "jewel": "React", "slotNumber": 1 },
+        { "jewel": "TypeScript", "slotNumber": 2 },
+        { "jewel": "Vite", "slotNumber": 3 },
+        { "jewel": "Tailwind CSS", "slotNumber": 4 },
+        { "jewel": "Vitest", "slotNumber": 5 }
+      ]
+    }
+  ]
+}

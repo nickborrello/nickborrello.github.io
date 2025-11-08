@@ -107,11 +107,11 @@ describe('ProjectsPage', () => {
 
   it('renders correct number of project buttons', () => {
     render(<ProjectsPage projects={mockProjects} />);
-    
-    // Count the number of project buttons in the left sidebar
-    const projectButtons = screen.getAllByRole('button');
+
+    // Count the number of project list items in the left sidebar
+    const projectButtons = screen.getAllByRole('listitem');
     expect(projectButtons).toHaveLength(3);
-    
+
     // Check that each project title appears (both in sidebar and details)
     const projectTitles = ['First Quest', 'Second Quest', 'Third Quest'];
     projectTitles.forEach(title => {

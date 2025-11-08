@@ -1,4 +1,5 @@
 import { motion } from 'framer-motion';
+import { Helmet } from 'react-helmet-async';
 import CharacterHeader from './CharacterHeader';
 import CurrentlyWorking from './CurrentlyWorking';
 import type { Character, Project } from '../types';
@@ -6,24 +7,72 @@ import type { Character, Project } from '../types';
 interface HomePageProps {
   character: Character;
   projects: Project[];
+  prefersReducedMotion: boolean;
 }
 
-export default function HomePage({ character, projects }: HomePageProps) {
+export default function HomePage({ character, projects, prefersReducedMotion }: HomePageProps) {
+  const structuredData = {
+    '@context': 'https://schema.org',
+    '@graph': [
+      {
+        '@type': 'Person',
+        name: 'Nick Borrello',
+        url: 'https://nickborrello.github.io/',
+        sameAs: [
+          'https://github.com/nickborrello',
+          'https://www.linkedin.com/in/nick-borrello/',
+        ],
+        jobTitle: 'Frontend Mage & Full-Stack Developer',
+        worksFor: {
+          '@type': 'Organization',
+          name: 'Self-Employed',
+        },
+      },
+      {
+        '@type': 'WebSite',
+        url: 'https://nickborrello.github.io/',
+        name: 'Nick Borrello\'s Portfolio',
+        author: {
+          '@type': 'Person',
+          name: 'Nick Borrello',
+        },
+        description:
+          'The portfolio of Nick Borrello, a frontend developer specializing in React, TypeScript, and creating immersive web experiences.',
+      },
+    ],
+  };
+
   return (
     <div className="min-h-screen text-white">
+      <Helmet>
+        <title>Nick Borrello - Frontend Mage & Full-Stack Developer</title>
+        <meta
+          name="description"
+          content="The portfolio of Nick Borrello, a frontend developer specializing in React, TypeScript, and creating immersive web experiences."
+        />
+        <meta property="og:title" content="Nick Borrello - Frontend Mage & Full-Stack Developer" />
+        <meta
+          property="og:description"
+          content="Explore the portfolio of a creative developer crafting immersive digital realms."
+        />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://nickborrello.github.io/" />
+        <meta property="og:image" content="https://nickborrello.github.io/public/bg.png" />
+        <script type="application/ld+json">{JSON.stringify(structuredData)}</script>
+      </Helmet>
       <div className="container mx-auto px-4 py-8 max-w-7xl">
         {/* Character Header */}
         <CharacterHeader character={character} />
 
         {/* Currently Working Section */}
-        <CurrentlyWorking projects={projects} />
+        <CurrentlyWorking projects={projects} prefersReducedMotion={prefersReducedMotion} />
 
         {/* Main Content Area - Welcome/Overview */}
         <motion.div
           className="bg-black/60 backdrop-blur-sm border-2 border-[#8b7355] rounded-lg p-8 max-w-4xl mx-auto"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
+          transition={{ duration: prefersReducedMotion ? 0 : 0.6 }}
         >
           <h2 className="text-3xl font-bold text-[#d4af37] mb-6">Welcome to My Realm</h2>
 

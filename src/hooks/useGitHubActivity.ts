@@ -56,7 +56,8 @@ export function useGitHubActivity(
 
             // Skip obviously placeholder/example repositories
             if (owner === 'example' || repo.includes('example') || 
-                owner.includes('placeholder') || repo.includes('placeholder')) {
+                owner.includes('placeholder') || repo.includes('placeholder') ||
+                owner === 'test' || repo.includes('test')) {
               // Fall back to manual currentlyWorking flag for placeholder repos
               if (project.currentlyWorking) {
                 activeProjectTitles.push(project.title);

@@ -80,3 +80,13 @@ body {
     #2a2a2a 4px
   );
 }
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: .5;
+  }
+}
+

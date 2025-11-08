@@ -11,10 +11,11 @@ describe('JewelSlots', () => {
       { jewel: 'Node.js', slotNumber: 3 },
     ];
 
-    const { container } = render(<JewelSlots jewelSlots={jewelSlots} />);
+    render(<JewelSlots jewelSlots={jewelSlots} />);
 
-    const slots = container.querySelectorAll('[data-slot]');
-    expect(slots).toHaveLength(3);
+    expect(screen.getByTitle('React (Slot 1)')).toBeInTheDocument();
+    expect(screen.getByTitle('TypeScript (Slot 2)')).toBeInTheDocument();
+    expect(screen.getByTitle('Node.js (Slot 3)')).toBeInTheDocument();
   });
 
   it('shows filled slots for jewels', () => {
@@ -25,8 +26,8 @@ describe('JewelSlots', () => {
 
     render(<JewelSlots jewelSlots={jewelSlots} />);
 
-    expect(screen.getByTitle('React')).toBeInTheDocument();
-    expect(screen.getByTitle('TypeScript')).toBeInTheDocument();
+    expect(screen.getByTitle('React (Slot 1)')).toBeInTheDocument();
+    expect(screen.getByTitle('TypeScript (Slot 2)')).toBeInTheDocument();
   });
 
   it('shows empty slots for null jewels', () => {
@@ -38,33 +39,36 @@ describe('JewelSlots', () => {
 
     const { container } = render(<JewelSlots jewelSlots={jewelSlots} />);
 
-    const emptySlots = container.querySelectorAll('[data-slot-empty="true"]');
-    expect(emptySlots).toHaveLength(1);
+    // Check for filled jewels
+    expect(screen.getByTitle('React (Slot 1)')).toBeInTheDocument();
+    expect(screen.getByTitle('TypeScript (Slot 3)')).toBeInTheDocument();
 
-    const filledSlots = container.querySelectorAll('[data-tech]');
-    expect(filledSlots).toHaveLength(2);
+    // Check for empty slot
+    const emptySlot = container.querySelector('[title="Empty slot 2"]');
+    expect(emptySlot).toBeInTheDocument();
   });
 
   it('handles empty jewelSlots array', () => {
     const { container } = render(<JewelSlots jewelSlots={[]} />);
 
-    const slots = container.querySelectorAll('[data-slot]');
-    expect(slots).toHaveLength(0);
-
     // Should render container but no slots
     const slotsContainer = container.querySelector('[data-jewel-slots]');
     expect(slotsContainer).toBeInTheDocument();
+
+    // No jewel icons should be rendered
+    const jewelIcons = container.querySelectorAll('.rounded-full');
+    expect(jewelIcons).toHaveLength(0);
   });
 
   it('handles undefined jewelSlots', () => {
     const { container } = render(<JewelSlots jewelSlots={undefined} />);
 
-    // Should render nothing or empty state
     const slotsContainer = container.querySelector('[data-jewel-slots]');
     expect(slotsContainer).toBeInTheDocument();
 
-    const slots = container.querySelectorAll('[data-slot]');
-    expect(slots).toHaveLength(0);
+    // No jewel icons should be rendered
+    const jewelIcons = container.querySelectorAll('.rounded-full');
+    expect(jewelIcons).toHaveLength(0);
   });
 
   it('handles missing jewelSlots prop', () => {
@@ -72,6 +76,10 @@ describe('JewelSlots', () => {
 
     const slotsContainer = container.querySelector('[data-jewel-slots]');
     expect(slotsContainer).toBeInTheDocument();
+
+    // No jewel icons should be rendered
+    const jewelIcons = container.querySelectorAll('.rounded-full');
+    expect(jewelIcons).toHaveLength(0);
   });
 
   it('renders slots in correct order', () => {
@@ -81,12 +89,12 @@ describe('JewelSlots', () => {
       { jewel: 'Node.js', slotNumber: 3 },
     ];
 
-    const { container } = render(<JewelSlots jewelSlots={jewelSlots} />);
+    render(<JewelSlots jewelSlots={jewelSlots} />);
 
-    const slots = container.querySelectorAll('[data-slot]');
-    expect(slots[0]).toHaveAttribute('data-slot', '1');
-    expect(slots[1]).toHaveAttribute('data-slot', '2');
-    expect(slots[2]).toHaveAttribute('data-slot', '3');
+    // Check that all jewels are present with correct slot numbers
+    expect(screen.getByTitle('React (Slot 1)')).toBeInTheDocument();
+    expect(screen.getByTitle('TypeScript (Slot 2)')).toBeInTheDocument();
+    expect(screen.getByTitle('Node.js (Slot 3)')).toBeInTheDocument();
   });
 
   it('applies flexbox layout classes', () => {
@@ -98,6 +106,8 @@ describe('JewelSlots', () => {
 
     const slotsContainer = container.querySelector('[data-jewel-slots]');
     expect(slotsContainer).toHaveClass('flex');
+    expect(slotsContainer).toHaveClass('gap-1');
+    expect(slotsContainer).toHaveClass('items-center');
   });
 
   it('handles mixed filled and empty slots', () => {
@@ -111,10 +121,37 @@ describe('JewelSlots', () => {
 
     const { container } = render(<JewelSlots jewelSlots={jewelSlots} />);
 
-    const emptySlots = container.querySelectorAll('[data-slot-empty="true"]');
-    expect(emptySlots).toHaveLength(3);
+    // Check filled slots
+    expect(screen.getByTitle('React (Slot 3)')).toBeInTheDocument();
+    expect(screen.getByTitle('TypeScript (Slot 5)')).toBeInTheDocument();
 
-    const filledSlots = container.querySelectorAll('[data-tech]');
-    expect(filledSlots).toHaveLength(2);
+    // Check empty slots
+    expect(container.querySelector('[title="Empty slot 1"]')).toBeInTheDocument();
+    expect(container.querySelector('[title="Empty slot 2"]')).toBeInTheDocument();
+    expect(container.querySelector('[title="Empty slot 4"]')).toBeInTheDocument();
+  });
+
+  it('passes size prop to JewelIcon components', () => {
+    const jewelSlots: JewelSlot[] = [
+      { jewel: 'React', slotNumber: 1 },
+    ];
+
+    const { container } = render(<JewelSlots jewelSlots={jewelSlots} size="sm" />);
+
+    // Check that small size class is applied
+    const jewelElement = container.querySelector('.w-4.h-4');
+    expect(jewelElement).toBeInTheDocument();
+  });
+
+  it('defaults to md size when no size prop provided', () => {
+    const jewelSlots: JewelSlot[] = [
+      { jewel: 'React', slotNumber: 1 },
+    ];
+
+    const { container } = render(<JewelSlots jewelSlots={jewelSlots} />);
+
+    // Check that medium size class is applied by default
+    const jewelElement = container.querySelector('.w-6.h-6');
+    expect(jewelElement).toBeInTheDocument();
   });
 });

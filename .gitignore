@@ -36,4 +36,6 @@ yarn-error.log*
 .vite
 
 /plans
-
+/.gemini
+/.apm
+/logs

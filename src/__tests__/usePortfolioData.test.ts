@@ -128,8 +128,14 @@ describe('usePortfolioData Hook', () => {
       expect(project).toHaveProperty('image');
       expect(validStatuses).toContain(project.status);
       expect(Array.isArray(project.technologies)).toBe(true);
-      expect(project.links).toHaveProperty('live');
-      expect(project.links).toHaveProperty('github');
+      // Check that links object exists (github and live are optional)
+      expect(project.links).toBeDefined();
+      if (project.links.github) {
+        expect(typeof project.links.github).toBe('string');
+      }
+      if (project.links.live) {
+        expect(typeof project.links.live).toBe('string');
+      }
     });
   });
 

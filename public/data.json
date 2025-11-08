@@ -126,16 +126,33 @@
       "rarity": "rare"
     },
     {
-      "name": "Responsive Design",
-      "category": "Accessories",
-      "level": 90,
-      "description": "Craft experiences that adapt to any viewport size",
-      "icon": "responsive",
+      "name": "Next.js",
+      "category": "Weapons",
+      "level": 82,
+      "description": "Full-stack React framework for production-ready applications",
+      "icon": "nextjs",
       "rarity": "epic"
+    },
+    {
+      "name": "Python",
+      "category": "Weapons",
+      "level": 78,
+      "description": "Versatile scripting language for automation and data processing",
+      "icon": "python",
+      "rarity": "rare"
+    },
+    {
+      "name": "Java",
+      "category": "Weapons",
+      "level": 75,
+      "description": "Object-oriented programming language for enterprise applications",
+      "icon": "java",
+      "rarity": "rare"
     }
   ],
   "projects": [
     {
+      "_comment": "Each object in this array represents a project. Copy and paste this structure to add new projects.",
       "title": "The RPG Portfolio Overhaul",
       "description": "Transform a standard portfolio into an immersive RPG experience. This epic quest involves migrating to modern tooling (Vite, React 18, Tailwind CSS v4) and designing a unique character sheet interface that showcases skills as inventory items and projects as completed quests.",
       "status": "in-progress",
@@ -154,79 +171,84 @@
       },
       "image": "/projects/rpg-portfolio.png",
       "jewelSlots": [
-        { "jewel": "React", "slotNumber": 1 },
-        { "jewel": "TypeScript", "slotNumber": 2 },
-        { "jewel": "Vite", "slotNumber": 3 },
-        { "jewel": "Tailwind CSS", "slotNumber": 4 },
-        { "jewel": "Vitest", "slotNumber": 5 }
+        {
+          "jewel": "React",
+          "slotNumber": 1
+        },
+        {
+          "jewel": "TypeScript",
+          "slotNumber": 2
+        },
+        {
+          "jewel": "Vite",
+          "slotNumber": 3
+        },
+        {
+          "jewel": "Tailwind CSS",
+          "slotNumber": 4
+        },
+        {
+          "jewel": "Vitest",
+          "slotNumber": 5
+        }
       ]
     },
     {
-      "title": "E-Commerce Dungeon Builder",
-      "description": "Constructed a full-featured e-commerce platform with product management, shopping cart functionality, and secure checkout. Battled through complex state management and payment integration challenges to deliver a seamless shopping experience.",
+      "title": "Hospital Kiosk Software Application",
+      "description": "Led frontend team for a JavaFX application, coordinating with hospital staff to meet stakeholder needs.",
       "status": "completed",
+      "currentlyWorking": false,
       "technologies": [
-        "React",
-        "Redux",
-        "Node.js",
-        "Express",
-        "Stripe API",
-        "MongoDB"
+        "Java",
+        "JavaFX"
       ],
       "links": {
-        "live": "https://example-ecommerce.com",
-        "github": "https://github.com/example/ecommerce"
+        "github": "https://github.com/CS-3733-D23-Team-E"
       },
-      "image": "/projects/ecommerce.png",
-      "jewelSlots": [
-        { "jewel": "React", "slotNumber": 1 },
-        { "jewel": "Redux", "slotNumber": 2 },
-        { "jewel": "Node.js", "slotNumber": 3 },
-        { "jewel": "Express", "slotNumber": 4 },
-        { "jewel": "Stripe API", "slotNumber": 5 },
-        { "jewel": "MongoDB", "slotNumber": 6 }
-      ]
+      "image": "/kiosk.png"
     },
     {
-      "title": "Real-Time Chat Fortress",
-      "description": "Forged a real-time messaging application with WebSocket connections, allowing multiple users to communicate instantly. Defended against common security vulnerabilities and optimized for low-latency message delivery.",
+      "title": "Staffing Tool Application Security",
+      "description": "Enhanced API security by configuring Auth0 roles and permissions within a full-stack web app.",
       "status": "completed",
+      "currentlyWorking": false,
       "technologies": [
-        "React",
-        "Socket.io",
-        "Node.js",
-        "Express",
-        "MongoDB",
-        "JWT Authentication"
-      ],
-      "links": {
-        "live": "https://example-chat.com",
-        "github": "https://github.com/example/chat-app"
-      },
-      "image": "/projects/chat-app.png",
-      "jewelSlots": [
-        { "jewel": "React", "slotNumber": 1 },
-        { "jewel": "Socket.io", "slotNumber": 2 },
-        { "jewel": "Node.js", "slotNumber": 3 },
-        { "jewel": "JWT", "slotNumber": 4 }
-      ]
-    },
-    {
-      "title": "Task Management Citadel",
-      "description": "Built a comprehensive task and project management system with drag-and-drop functionality, team collaboration features, and progress tracking. Conquered the challenges of complex UI interactions and state synchronization.",
-      "status": "completed",
-      "technologies": [
-        "React",
+        "Tailwind CSS",
         "TypeScript",
-        "React DnD",
-        "Firebase",
-        "Material-UI"
+        "React",
+        "Auth0"
+      ],
+      "links": {},
+      "image": "/staffing_tool.png"
+    },
+    {
+      "title": "PDF Keyword Search Tool",
+      "description": "Built a Python+Qt desktop tool to extract key insights from large document sets instantly.",
+      "status": "completed",
+      "currentlyWorking": false,
+      "technologies": [
+        "Python",
+        "Qt"
+      ],
+      "links": {},
+      "image": "/search_tool.png"
+    },
+    {
+      "title": "Syllablast Puzzle Game",
+      "description": "Next.js puzzle game where players reconstruct words by swapping syllables on a 4×4 grid.",
+      "status": "completed",
+      "currentlyWorking": false,
+      "technologies": [
+        "Next.js",
+        "Tailwind CSS",
+        "TypeScript",
+        "React"
       ],
       "links": {
-        "live": "https://example-tasks.com",
-        "github": "https://github.com/example/task-manager"
+        "live": "https://nickborrello.github.io/syllablast/",
+        "github": "https://github.com/nickborrello/syllablast"
       },
-      "image": "/projects/task-manager.png"
+      "image": "/syllablast.png"
     }
   ]
 }

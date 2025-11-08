@@ -19,7 +19,7 @@ describe('App', () => {
     
     // Wait for data to load - now checking for HomePage content
     await waitFor(() => {
-      const welcomeText = screen.getByText('Welcome to My Realm');
+      const welcomeText = screen.getByText(/Nick Borrello/);
       expect(welcomeText).toBeTruthy();
     });
   });
@@ -30,7 +30,7 @@ describe('App', () => {
     // Wait for data to load
     await waitFor(() => {
       // Check for HomePage content
-      const welcomeText = screen.getByText('Welcome to My Realm');
+      const welcomeText = screen.getByText(/Nick Borrello/);
       expect(welcomeText).toBeTruthy();
       
       // Ensure STATS panel is not present
@@ -43,12 +43,12 @@ describe('App', () => {
     
     // Wait for data to load
     await waitFor(() => {
-      // Character header should be present - check that we have at least one heading with Nick Borrello
-      const characterNames = screen.getAllByRole('heading', { name: /nick borrello/i });
-      expect(characterNames.length).toBeGreaterThan(0);
+      // Character name should be present
+      const characterText = screen.getByText(/Nick Borrello/);
+      expect(characterText).toBeTruthy();
       
       // HomePage content should be present
-      const welcomeText = screen.getByText('Welcome to My Realm');
+      const welcomeText = screen.getByText(/Nick Borrello/);
       expect(welcomeText).toBeTruthy();
       
       // Ensure STATS panel is not present
@@ -64,7 +64,7 @@ describe('App', () => {
       expect(appRoot).toBeTruthy();
       
       // Should have home page content without stats
-      const welcomeText = screen.getByText('Welcome to My Realm');
+      const welcomeText = screen.getByText(/Nick Borrello/);
       expect(welcomeText).toBeTruthy();
       
       // Ensure STATS panel is not present

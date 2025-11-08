@@ -1,5 +1,7 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import { Analytics } from '@vercel/analytics/react';
 import { usePortfolioData } from './hooks/usePortfolioData';
+import { usePrefersReducedMotion } from './hooks/usePrefersReducedMotion';
 import HomePage from './components/HomePage';
 import ProjectsPage from './components/ProjectsPage';
 
@@ -8,6 +10,13 @@ type Page = 'home' | 'projects' | 'skills' | 'contact';
 function App() {
   const { data, loading, error } = usePortfolioData();
   const [currentPage, setCurrentPage] = useState<Page>('home');
+  const prefersReducedMotion = usePrefersReducedMotion();
+  const [videoLoaded, setVideoLoaded] = useState(false);
+
+  useEffect(() => {
+    // Start loading video after initial render
+    setVideoLoaded(true);
+  }, []);
 
   if (loading) {
     return (
@@ -46,10 +55,11 @@ function App() {
           <HomePage
             character={data.character}
             projects={data.projects}
+            prefersReducedMotion={prefersReducedMotion}
           />
         );
       case 'projects':
-        return <ProjectsPage projects={data.projects} />;
+        return <ProjectsPage projects={data.projects} prefersReducedMotion={prefersReducedMotion} />;
       case 'skills':
         return (
           <div className="min-h-screen bg-dark text-white flex items-center justify-center">
@@ -73,6 +83,7 @@ function App() {
           <HomePage
             character={data.character}
             projects={data.projects}
+            prefersReducedMotion={prefersReducedMotion}
           />
         );
     }
@@ -80,47 +91,53 @@ function App() {
 
   return (
     <div data-testid="app-root" className="relative min-h-screen">
+      <a href="#main-content" className="sr-only focus:not-sr-only">
+        Skip to main content
+      </a>
+      <Analytics />
       {/* Persistent Background Video */}
-      {/* TODO: Add your background video file to /public/background-video.mp4 */}
-      <video
-        autoPlay
-        muted
-        loop
-        playsInline
-        className="fixed inset-0 w-full h-full object-cover z-0"
-        onError={(e) => {
-          // Hide video if file doesn't exist, fallback to gradient background
-          e.currentTarget.style.display = 'none';
-        }}
-      >
-        <source src="/background-video.mp4" type="video/mp4" />
-      </video>
+      {!prefersReducedMotion && (
+        <video
+          autoPlay
+          muted
+          loop
+          playsInline
+          aria-hidden="true"
+          className="fixed inset-0 w-full h-full object-cover z-0"
+          onError={(e) => {
+            // Hide video if file doesn't exist, fallback to gradient background
+            e.currentTarget.style.display = 'none';
+          }}
+        >
+          {videoLoaded && <source src="/background-video.mp4" type="video/mp4" />}
+        </video>
+      )}
 
       {/* Overlay to ensure content is readable */}
       <div className="fixed inset-0 bg-black/40 z-10"></div>
 
       {/* Navigation Options - Bottom Left */}
       {currentPage === 'home' && (
-        <div className="fixed bottom-6 left-6 z-50 flex gap-3">
+        <nav role="navigation" aria-label="Main navigation" className="fixed bottom-6 left-6 z-50 flex gap-3">
           <button
             onClick={() => setCurrentPage('projects')}
             className="bg-black/60 hover:bg-black/80 text-[#d4af37] px-4 py-2 rounded-lg border border-[#d4af37]/50 transition-all duration-200 hover:scale-105"
           >
-            ⚔️ Projects
+            <span aria-hidden="true">⚔️</span> Projects
           </button>
           <button
             onClick={() => setCurrentPage('skills')}
             className="bg-black/60 hover:bg-black/80 text-[#d4af37] px-4 py-2 rounded-lg border border-[#d4af37]/50 transition-all duration-200 hover:scale-105"
           >
-            🛡️ Skills
+            <span aria-hidden="true">🛡️</span> Skills
           </button>
           <button
             onClick={() => setCurrentPage('contact')}
             className="bg-black/60 hover:bg-black/80 text-[#d4af37] px-4 py-2 rounded-lg border border-[#d4af37]/50 transition-all duration-200 hover:scale-105"
           >
-            📜 Contact
+            <span aria-hidden="true">📜</span> Contact
           </button>
-        </div>
+        </nav>
       )}
 
       {/* Back Button - Bottom Center */}
@@ -131,7 +148,7 @@ function App() {
               onClick={() => setCurrentPage('home')}
               className="bg-[#d4af37]/80 hover:bg-[#d4af37] text-black px-6 py-3 rounded-lg border border-[#d4af37]/50 transition-all duration-200 hover:scale-105 active:scale-95 flex items-center gap-2 font-semibold"
             >
-              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
               </svg>
               Back
@@ -141,9 +158,9 @@ function App() {
       )}
 
       {/* Page Content */}
-      <div className={`relative z-20 ${currentPage !== 'home' ? 'pb-20' : ''}`}>
+      <main id="main-content" className={`relative z-20 ${currentPage !== 'home' ? 'pb-20' : ''}`}>
         {renderCurrentPage()}
-      </div>
+      </main>
     </div>
   );
 }

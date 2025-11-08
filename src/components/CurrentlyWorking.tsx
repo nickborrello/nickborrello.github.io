@@ -1,12 +1,14 @@
 import { motion } from 'framer-motion';
 import { useGitHubActivity } from '../hooks/useGitHubActivity';
 import type { Project } from '../types';
+import SkeletonLoader from './SkeletonLoader';
 
 interface CurrentlyWorkingProps {
   projects: Project[];
+  prefersReducedMotion: boolean;
 }
 
-export default function CurrentlyWorking({ projects }: CurrentlyWorkingProps) {
+export default function CurrentlyWorking({ projects, prefersReducedMotion }: CurrentlyWorkingProps) {
   // Use GitHub API to check for recent activity (last 30 days)
   const { activeProjects, loading, error } = useGitHubActivity(projects, 30);
 
@@ -22,18 +24,17 @@ export default function CurrentlyWorking({ projects }: CurrentlyWorkingProps) {
         className="mb-8"
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.6 }}
+        transition={{ duration: prefersReducedMotion ? 0 : 0.6 }}
       >
         <div className="bg-black/60 backdrop-blur-sm border border-[#d4af37]/30 rounded-lg p-6">
           <div className="flex items-center gap-3 mb-4">
-            <motion.div
-              className="w-3 h-3 bg-[#d4af37] rounded-full animate-pulse"
-              animate={{ scale: [1, 1.2, 1] }}
-              transition={{ duration: 2, repeat: Infinity }}
-            />
-            <h2 className="text-2xl font-bold text-[#d4af37]">⚡ Checking GitHub Activity...</h2>
+            <SkeletonLoader className="w-8 h-8 rounded-full" />
+            <SkeletonLoader className="w-64 h-8" />
           </div>
-          <p className="text-gray-400 text-sm">Scanning recent commits across your projects...</p>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <SkeletonLoader className="h-32" />
+            <SkeletonLoader className="h-32" />
+          </div>
         </div>
       </motion.section>
     );
@@ -63,7 +64,7 @@ export default function CurrentlyWorking({ projects }: CurrentlyWorkingProps) {
       className="mb-8"
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.6 }}
+      transition={{ duration: prefersReducedMotion ? 0 : 0.6 }}
     >
       <div className="bg-gradient-to-r from-[#d4af37]/10 to-[#8b7355]/10 border border-[#d4af37]/30 rounded-lg p-6">
         <div className="flex items-center gap-3 mb-4">
@@ -85,7 +86,7 @@ export default function CurrentlyWorking({ projects }: CurrentlyWorkingProps) {
               className="bg-black/40 backdrop-blur-sm border border-[#d4af37]/50 rounded-lg p-4"
               initial={{ opacity: 0, x: -20 }}
               animate={{ opacity: 1, x: 0 }}
-              transition={{ delay: index * 0.1 }}
+              transition={{ delay: prefersReducedMotion ? 0 : index * 0.1 }}
             >
               <h3 className="text-lg font-semibold text-[#d4af37] mb-2">
                 {project.title}

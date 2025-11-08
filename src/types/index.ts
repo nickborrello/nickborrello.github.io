@@ -120,3 +120,12 @@ export interface PortfolioData {
   skills: Skill[];
   projects: Project[];
 }
+
+/**
+ * Props for the HomePage component
+ */
+export interface HomePageProps {
+  character: Character;
+  projects: Project[];
+  prefersReducedMotion: boolean;
+}
