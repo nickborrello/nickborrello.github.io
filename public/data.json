@@ -1,0 +1,229 @@
+{
+  "character": {
+    "name": "Nick Borrello",
+    "class": "Frontend Mage",
+    "level": 24,
+    "bio": "A skilled developer who specializes in crafting powerful web experiences. Armed with React spells and TypeScript enchantments, this Frontend Mage transforms design concepts into reality through clean, maintainable code.",
+    "avatar": "/avatar.png"
+  },
+  "stats": [
+    {
+      "name": "Intelligence",
+      "value": 85,
+      "maxValue": 100,
+      "description": "Backend development prowess and system architecture knowledge",
+      "icon": "brain"
+    },
+    {
+      "name": "Dexterity",
+      "value": 92,
+      "maxValue": 100,
+      "description": "Frontend development skills and UI/UX implementation finesse",
+      "icon": "wand"
+    },
+    {
+      "name": "Charisma",
+      "value": 78,
+      "maxValue": 100,
+      "description": "Communication, teamwork, and leadership abilities",
+      "icon": "chat"
+    },
+    {
+      "name": "Wisdom",
+      "value": 80,
+      "maxValue": 100,
+      "description": "Years of experience and problem-solving expertise",
+      "icon": "book"
+    }
+  ],
+  "skills": [
+    {
+      "name": "React",
+      "category": "Weapons",
+      "level": 90,
+      "description": "Master of the React framework, wielding hooks and components with precision",
+      "icon": "react",
+      "rarity": "epic"
+    },
+    {
+      "name": "TypeScript",
+      "category": "Weapons",
+      "level": 88,
+      "description": "Type-safe magic that prevents bugs before they manifest",
+      "icon": "typescript",
+      "rarity": "epic"
+    },
+    {
+      "name": "JavaScript",
+      "category": "Weapons",
+      "level": 95,
+      "description": "The ancient language that powers the web realm",
+      "icon": "javascript",
+      "rarity": "legendary"
+    },
+    {
+      "name": "Tailwind CSS",
+      "category": "Armor",
+      "level": 85,
+      "description": "Utility-first styling protection for rapid UI development",
+      "icon": "tailwind",
+      "rarity": "rare"
+    },
+    {
+      "name": "CSS",
+      "category": "Armor",
+      "level": 90,
+      "description": "Classic styling defense with flexbox and grid mastery",
+      "icon": "css",
+      "rarity": "epic"
+    },
+    {
+      "name": "Node.js",
+      "category": "Armor",
+      "level": 82,
+      "description": "Server-side JavaScript runtime for backend quests",
+      "icon": "nodejs",
+      "rarity": "epic"
+    },
+    {
+      "name": "Git",
+      "category": "Potions",
+      "level": 87,
+      "description": "Version control elixir for managing code across timelines",
+      "icon": "git",
+      "rarity": "rare"
+    },
+    {
+      "name": "Vite",
+      "category": "Potions",
+      "level": 80,
+      "description": "Lightning-fast build tool that accelerates development speed",
+      "icon": "vite",
+      "rarity": "rare"
+    },
+    {
+      "name": "REST APIs",
+      "category": "Potions",
+      "level": 85,
+      "description": "Consume and create powerful data connection potions",
+      "icon": "api",
+      "rarity": "rare"
+    },
+    {
+      "name": "Problem Solving",
+      "category": "Accessories",
+      "level": 88,
+      "description": "Analytical thinking and debugging prowess",
+      "icon": "puzzle",
+      "rarity": "epic"
+    },
+    {
+      "name": "Team Collaboration",
+      "category": "Accessories",
+      "level": 83,
+      "description": "Work effectively with fellow adventurers on shared quests",
+      "icon": "team",
+      "rarity": "rare"
+    },
+    {
+      "name": "Responsive Design",
+      "category": "Accessories",
+      "level": 90,
+      "description": "Craft experiences that adapt to any viewport size",
+      "icon": "responsive",
+      "rarity": "epic"
+    }
+  ],
+  "quests": [
+    {
+      "title": "The RPG Portfolio Overhaul",
+      "description": "Transform a standard portfolio into an immersive RPG experience. This epic quest involves migrating to modern tooling (Vite, React 18, Tailwind CSS v4) and designing a unique character sheet interface that showcases skills as inventory items and projects as completed quests.",
+      "status": "in-progress",
+      "rewards": [
+        "+500 Experience Points",
+        "Achievement: Master of Modern Web Stack",
+        "Unique Item: Vite-Powered Development Speed Boost"
+      ],
+      "technologies": [
+        "React 18",
+        "TypeScript",
+        "Vite",
+        "Tailwind CSS v4",
+        "Vitest"
+      ],
+      "links": {
+        "live": "https://nickborrello.github.io",
+        "github": "https://github.com/nickborrello/nickborrello.github.io"
+      },
+      "image": "/projects/rpg-portfolio.png"
+    },
+    {
+      "title": "E-Commerce Dungeon Builder",
+      "description": "Constructed a full-featured e-commerce platform with product management, shopping cart functionality, and secure checkout. Battled through complex state management and payment integration challenges to deliver a seamless shopping experience.",
+      "status": "completed",
+      "rewards": [
+        "+400 Experience Points",
+        "Gold: $2,500 freelance payment",
+        "Achievement: Commerce Champion"
+      ],
+      "technologies": [
+        "React",
+        "Redux",
+        "Node.js",
+        "Express",
+        "Stripe API",
+        "MongoDB"
+      ],
+      "links": {
+        "live": "https://example-ecommerce.com",
+        "github": "https://github.com/example/ecommerce"
+      },
+      "image": "/projects/ecommerce.png"
+    },
+    {
+      "title": "Real-Time Chat Fortress",
+      "description": "Forged a real-time messaging application with WebSocket connections, allowing multiple users to communicate instantly. Defended against common security vulnerabilities and optimized for low-latency message delivery.",
+      "status": "completed",
+      "rewards": [
+        "+350 Experience Points",
+        "Achievement: Master of Real-Time Communication",
+        "Skill Unlock: WebSocket Mastery"
+      ],
+      "technologies": [
+        "React",
+        "Socket.io",
+        "Node.js",
+        "Express",
+        "MongoDB",
+        "JWT Authentication"
+      ],
+      "links": {
+        "live": "https://example-chat.com",
+        "github": "https://github.com/example/chat-app"
+      },
+      "image": "/projects/chat-app.png"
+    },
+    {
+      "title": "Task Management Citadel",
+      "description": "Built a comprehensive task and project management system with drag-and-drop functionality, team collaboration features, and progress tracking. Conquered the challenges of complex UI interactions and state synchronization.",
+      "status": "completed",
+      "rewards": [
+        "+300 Experience Points",
+        "Achievement: Organizational Overlord",
+        "Rare Item: Drag-and-Drop Mastery Badge"
+      ],
+      "technologies": [
+        "React",
+        "TypeScript",
+        "React DnD",
+        "Firebase",
+        "Material-UI"
+      ],
+      "links": {
+        "live": "https://example-tasks.com",
+        "github": "https://github.com/example/task-manager"
+      },
+      "image": "/projects/task-manager.png"
+    }
+  ]
+}
