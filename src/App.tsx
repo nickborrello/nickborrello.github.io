@@ -5,7 +5,7 @@ import { usePrefersReducedMotion } from './hooks/usePrefersReducedMotion';
 import HomePage from './components/HomePage';
 import ProjectsPage from './components/ProjectsPage';
 
-type Page = 'home' | 'projects' | 'skills' | 'contact';
+type Page = 'home' | 'projects';
 
 function App() {
   const { data, loading, error } = usePortfolioData();
@@ -60,24 +60,6 @@ function App() {
         );
       case 'projects':
         return <ProjectsPage projects={data.projects} prefersReducedMotion={prefersReducedMotion} />;
-      case 'skills':
-        return (
-          <div className="min-h-screen bg-dark text-white flex items-center justify-center">
-            <div className="text-center">
-              <h1 className="text-4xl font-bold text-[#d4af37] mb-4">🛡️ Skills Coming Soon</h1>
-              <p className="text-gray-400">This section is under construction!</p>
-            </div>
-          </div>
-        );
-      case 'contact':
-        return (
-          <div className="min-h-screen bg-dark text-white flex items-center justify-center">
-            <div className="text-center">
-              <h1 className="text-4xl font-bold text-[#d4af37] mb-4">📜 Contact Coming Soon</h1>
-              <p className="text-gray-400">This section is under construction!</p>
-            </div>
-          </div>
-        );
       default:
         return (
           <HomePage
@@ -124,18 +106,6 @@ function App() {
             className="bg-black/60 hover:bg-black/80 text-[#d4af37] px-4 py-2 rounded-lg border border-[#d4af37]/50 transition-all duration-200 hover:scale-105"
           >
             <span aria-hidden="true">⚔️</span> Projects
-          </button>
-          <button
-            onClick={() => setCurrentPage('skills')}
-            className="bg-black/60 hover:bg-black/80 text-[#d4af37] px-4 py-2 rounded-lg border border-[#d4af37]/50 transition-all duration-200 hover:scale-105"
-          >
-            <span aria-hidden="true">🛡️</span> Skills
-          </button>
-          <button
-            onClick={() => setCurrentPage('contact')}
-            className="bg-black/60 hover:bg-black/80 text-[#d4af37] px-4 py-2 rounded-lg border border-[#d4af37]/50 transition-all duration-200 hover:scale-105"
-          >
-            <span aria-hidden="true">📜</span> Contact
           </button>
         </nav>
       )}

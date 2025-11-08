@@ -32,7 +32,7 @@ export function usePortfolioData(): UsePortfolioDataResult {
         const jsonData: PortfolioData = await response.json();
         
         // Validate data structure
-        if (!jsonData.character || !jsonData.stats || !jsonData.skills || !jsonData.projects) {
+        if (!jsonData.character || !jsonData.projects) {
           throw new Error('Invalid data structure: missing required fields');
         }
 
