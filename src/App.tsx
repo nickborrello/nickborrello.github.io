@@ -1,6 +1,7 @@
 import { usePortfolioData } from './hooks/usePortfolioData';
 import CharacterHeader from './components/CharacterHeader';
 import StatsPanel from './components/StatsPanel';
+import QuestLog from './components/QuestLog';
 
 function App() {
   const { data, loading, error } = usePortfolioData();
@@ -41,29 +42,16 @@ function App() {
         {/* Character Header */}
         <CharacterHeader character={data.character} />
 
-        {/* Main Layout: Stats Sidebar + Content Area */}
+        {/* Main Layout: Stats Sidebar + Quest Log Content */}
         <div className="grid grid-cols-1 lg:grid-cols-[300px_1fr] gap-6">
           {/* Stats Panel - Sidebar */}
           <div className="order-2 lg:order-1">
             <StatsPanel stats={data.stats} />
           </div>
 
-          {/* Main Content Area - Placeholder for Phase 4 & 5 */}
+          {/* Main Content Area - Quest Log */}
           <div className="order-1 lg:order-2">
-            <div className="bg-gradient-to-br from-[#1a1a1a] to-[#0d0d0d] border-2 border-[#d4af37] rounded-lg p-8 shadow-2xl">
-              <h2 className="text-3xl font-bold text-[#d4af37] mb-4">⚔️ Coming Soon</h2>
-              <p className="text-gray-300 mb-4">
-                The adventure continues in Phase 4 with the Skills Inventory Grid and Phase 5 with the Quest Log!
-              </p>
-              <div className="space-y-2 text-gray-400">
-                <p>✅ Phase 1: Project Setup - Complete</p>
-                <p>✅ Phase 2: Data Architecture - Complete</p>
-                <p>✅ Phase 3: Character Header & Stats Panel - Complete</p>
-                <p>⏳ Phase 4: Inventory Grid (Skills) - Coming Next</p>
-                <p>⏳ Phase 5: Quest Log (Projects) - Coming Soon</p>
-                <p>⏳ Phase 6: Polish & Deployment - Final Step</p>
-              </div>
-            </div>
+            <QuestLog quests={data.quests} />
           </div>
         </div>
       </div>
