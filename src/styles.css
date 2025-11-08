@@ -59,3 +59,24 @@ body {
 #root {
   width: 100%;
 }
+
+/* Jewel System Styles */
+.jewel-gem {
+  image-rendering: pixelated;
+  box-shadow: 0 0 4px rgba(255, 255, 255, 0.3);
+}
+
+.jewel-gem:hover {
+  box-shadow: 0 0 8px rgba(255, 255, 255, 0.5);
+}
+
+.jewel-slot-empty {
+  opacity: 0.4;
+  background: repeating-linear-gradient(
+    45deg,
+    #1a1a1a,
+    #1a1a1a 2px,
+    #2a2a2a 2px,
+    #2a2a2a 4px
+  );
+}
