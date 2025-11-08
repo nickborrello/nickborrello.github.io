@@ -1,5 +1,5 @@
 import { describe, it, expect, beforeEach, vi } from 'vitest';
-import { renderHook, waitFor } from '@testing-library/react';
+import { renderHook, waitFor, act } from '@testing-library/react';
 import { usePortfolioData } from '../hooks/usePortfolioData';
 
 describe('usePortfolioData Hook', () => {

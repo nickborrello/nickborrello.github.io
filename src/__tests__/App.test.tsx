@@ -1,21 +1,27 @@
 import { describe, it, expect } from 'vitest';
-import { render, screen, waitFor } from '@testing-library/react';
+import { render, screen, waitFor, act } from '@testing-library/react';
 import App from '../App';
 
 describe('App', () => {
   it('renders without crashing', () => {
-    render(<App />);
+    act(() => {
+      render(<App />);
+    });
     expect(document.body).toBeTruthy();
   });
 
   it('renders RPG-themed content', () => {
-    render(<App />);
+    act(() => {
+      render(<App />);
+    });
     const appElement = screen.getByTestId('app-root');
     expect(appElement).toBeTruthy();
   });
 
   it('renders HomePage component by default', async () => {
-    render(<App />);
+    act(() => {
+      render(<App />);
+    });
     
     // Wait for data to load - now checking for HomePage content
     await waitFor(() => {
@@ -25,7 +31,9 @@ describe('App', () => {
   });
 
   it('renders HomePage component without stats', async () => {
-    render(<App />);
+    act(() => {
+      render(<App />);
+    });
     
     // Wait for data to load
     await waitFor(() => {
@@ -39,7 +47,9 @@ describe('App', () => {
   });
 
   it('renders full app structure with header and home page', async () => {
-    render(<App />);
+    act(() => {
+      render(<App />);
+    });
     
     // Wait for data to load
     await waitFor(() => {

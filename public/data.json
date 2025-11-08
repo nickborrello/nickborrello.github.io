@@ -152,7 +152,6 @@
   ],
   "projects": [
     {
-      "_comment": "Each object in this array represents a project. Copy and paste this structure to add new projects.",
       "title": "The RPG Portfolio Overhaul",
       "description": "Transform a standard portfolio into an immersive RPG experience. This epic quest involves migrating to modern tooling (Vite, React 18, Tailwind CSS v4) and designing a unique character sheet interface that showcases skills as inventory items and projects as completed quests.",
       "status": "in-progress",
