@@ -17,7 +17,7 @@ vi.mock('../components/CurrentlyWorking', () => ({
 const mockCharacter: Character = {
   name: 'Test Character',
   class: 'Developer',
-  level: 10,
+  experience: 10,
   bio: 'Test bio',
   avatar: 'test-avatar.png',
 };
@@ -47,7 +47,7 @@ describe('HomePage', () => {
 
     expect(screen.getByTestId('character-header')).toHaveTextContent('Test Character');
     expect(screen.getByTestId('currently-working')).toHaveTextContent('2 projects - normal');
-    expect(screen.getByText('Welcome to My Realm')).toBeInTheDocument();
+    expect(screen.getByText('Welcome to My Portfolio')).toBeInTheDocument();
   });
 
   it('passes prefersReducedMotion correctly', () => {

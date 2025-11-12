@@ -9,7 +9,7 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        // RPG Theme Colors
+        // Theme Colors
         dark: {
           DEFAULT: "#1a1a1a",
           100: "#0d0d0d",

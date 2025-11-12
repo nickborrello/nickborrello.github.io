@@ -10,7 +10,7 @@ describe('App', () => {
     expect(document.body).toBeTruthy();
   });
 
-  it('renders RPG-themed content', () => {
+  it('renders portfolio content', () => {
     act(() => {
       render(<App />);
     });

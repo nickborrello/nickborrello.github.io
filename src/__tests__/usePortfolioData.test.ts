@@ -46,7 +46,7 @@ describe('usePortfolioData Hook', () => {
     // Verify character structure
     expect(data?.character).toHaveProperty('name');
     expect(data?.character).toHaveProperty('class');
-    expect(data?.character).toHaveProperty('level');
+    expect(data?.character).toHaveProperty('experience');
     expect(data?.character).toHaveProperty('bio');
     expect(data?.character).toHaveProperty('avatar');
 
@@ -79,7 +79,7 @@ describe('usePortfolioData Hook', () => {
     });
   });
 
-  it('should return skills with correct properties and valid rarity', async () => {
+  it('should return skills with correct properties', async () => {
     const { result } = renderHook(() => usePortfolioData());
 
     await waitFor(() => {
@@ -90,8 +90,6 @@ describe('usePortfolioData Hook', () => {
     const skills = data?.skills || [];
 
     expect(skills.length).toBeGreaterThan(0);
-
-    const validRarities = ['common', 'rare', 'epic', 'legendary'];
     
     skills.forEach((skill) => {
       expect(skill).toHaveProperty('name');
@@ -99,8 +97,6 @@ describe('usePortfolioData Hook', () => {
       expect(skill).toHaveProperty('level');
       expect(skill).toHaveProperty('description');
       expect(skill).toHaveProperty('icon');
-      expect(skill).toHaveProperty('rarity');
-      expect(validRarities).toContain(skill.rarity);
       expect(typeof skill.level).toBe('number');
     });
   });

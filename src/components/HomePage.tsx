@@ -2,6 +2,7 @@ import { motion } from 'framer-motion';
 import { Helmet } from 'react-helmet-async';
 import CharacterHeader from './CharacterHeader';
 import CurrentlyWorking from './CurrentlyWorking';
+import ParticlesBackground from './ParticlesBackground';
 import type { Character, Project } from '../types';
 
 interface HomePageProps {
@@ -22,7 +23,7 @@ export default function HomePage({ character, projects, prefersReducedMotion }: 
           'https://github.com/nickborrello',
           'https://www.linkedin.com/in/nick-borrello/',
         ],
-        jobTitle: 'Frontend Mage & Full-Stack Developer',
+        jobTitle: 'Frontend Developer & Full-Stack Engineer',
         worksFor: {
           '@type': 'Organization',
           name: 'Self-Employed',
@@ -37,23 +38,24 @@ export default function HomePage({ character, projects, prefersReducedMotion }: 
           name: 'Nick Borrello',
         },
         description:
-          'The portfolio of Nick Borrello, a frontend developer specializing in React, TypeScript, and creating immersive web experiences.',
+          'The portfolio of Nick Borrello, a frontend developer specializing in React, TypeScript, and modern web development.',
       },
     ],
   };
 
   return (
-    <div className="min-h-screen text-white">
+    <div className="min-h-screen text-white relative">
+      <ParticlesBackground />
       <Helmet>
-        <title>Nick Borrello - Frontend Mage & Full-Stack Developer</title>
+        <title>Nick Borrello - Frontend Developer & Full-Stack Engineer</title>
         <meta
           name="description"
-          content="The portfolio of Nick Borrello, a frontend developer specializing in React, TypeScript, and creating immersive web experiences."
+          content="The portfolio of Nick Borrello, a frontend developer specializing in React, TypeScript, and modern web development."
         />
-        <meta property="og:title" content="Nick Borrello - Frontend Mage & Full-Stack Developer" />
+        <meta property="og:title" content="Nick Borrello - Frontend Developer & Full-Stack Engineer" />
         <meta
           property="og:description"
-          content="Explore the portfolio of a creative developer crafting immersive digital realms."
+          content="Explore the portfolio of Nick Borrello, a skilled developer building modern web applications."
         />
         <meta property="og:type" content="website" />
         <meta property="og:url" content="https://nickborrello.github.io/" />
@@ -74,21 +76,21 @@ export default function HomePage({ character, projects, prefersReducedMotion }: 
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: prefersReducedMotion ? 0 : 0.6 }}
         >
-          <h2 className="text-3xl font-bold text-[#d4af37] mb-6">Welcome to My Realm</h2>
+          <h2 className="text-3xl font-bold text-[#d4af37] mb-6">Welcome to My Portfolio</h2>
 
           <div className="space-y-6 text-gray-300">
             <p className="text-lg leading-relaxed">
-              Welcome, adventurer! You've entered the digital realm of a Frontend Mage who transforms
-              complex ideas into elegant, interactive experiences. Here you'll find my completed projects,
-              ongoing work, and the magical artifacts I've crafted along the way.
+              Welcome to my portfolio. I'm a frontend developer specializing in React, TypeScript,
+              and modern web development. Here you'll find my completed projects, current work,
+              and the solutions I've built along the way.
             </p>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <div className="bg-[#d4af37]/10 border border-[#d4af37]/30 rounded-lg p-4">
                 <h3 className="text-xl font-semibold text-[#d4af37] mb-3">🎯 Current Focus</h3>
                 <p className="text-sm">
-                  Building immersive web experiences with modern technologies like React, TypeScript,
-                  and cutting-edge CSS frameworks.
+                  Building modern web applications with cutting-edge technologies like React, TypeScript,
+                  and efficient development tools.
                 </p>
               </div>
 
@@ -103,7 +105,7 @@ export default function HomePage({ character, projects, prefersReducedMotion }: 
 
             <div className="text-center pt-4">
               <p className="text-[#d4af37] font-semibold">
-                Use the navigation in the bottom left to explore different sections of my portfolio realm!
+                Use the navigation in the bottom left to explore different sections of my portfolio!
               </p>
             </div>
           </div>

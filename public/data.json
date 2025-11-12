@@ -1,159 +1,145 @@
 {
   "character": {
     "name": "Nick Borrello",
-    "class": "Frontend Mage",
-    "level": 24,
-    "bio": "A skilled developer who specializes in crafting powerful web experiences. Armed with React spells and TypeScript enchantments, this Frontend Mage transforms design concepts into reality through clean, maintainable code.",
+    "class": "Frontend Developer",
+    "experience": 24,
+    "bio": "A skilled developer who specializes in crafting powerful web applications. Proficient with React and TypeScript, I transform design concepts into reality through clean, maintainable code.",
     "avatar": "/avatar.png"
   },
   "stats": [
     {
-      "name": "Intelligence",
-      "value": 85,
-      "maxValue": 100,
-      "description": "Backend development prowess and system architecture knowledge",
-      "icon": "brain"
-    },
-    {
-      "name": "Dexterity",
+      "name": "Frontend Development",
       "value": 92,
       "maxValue": 100,
-      "description": "Frontend development skills and UI/UX implementation finesse",
-      "icon": "wand"
+      "description": "React, TypeScript, and modern web development expertise",
+      "icon": "code"
     },
     {
-      "name": "Charisma",
-      "value": 78,
+      "name": "Backend Development",
+      "value": 85,
       "maxValue": 100,
-      "description": "Communication, teamwork, and leadership abilities",
-      "icon": "chat"
+      "description": "Server-side development and API integration",
+      "icon": "server"
     },
     {
-      "name": "Wisdom",
-      "value": 80,
+      "name": "UI/UX Design",
+      "value": 88,
       "maxValue": 100,
-      "description": "Years of experience and problem-solving expertise",
-      "icon": "book"
+      "description": "User interface and experience design skills",
+      "icon": "palette"
+    },
+    {
+      "name": "Problem Solving",
+      "value": 90,
+      "maxValue": 100,
+      "description": "Analytical thinking and technical problem resolution",
+      "icon": "lightbulb"
     }
   ],
   "skills": [
     {
       "name": "React",
-      "category": "Weapons",
+      "category": "Frontend",
       "level": 90,
-      "description": "Master of the React framework, wielding hooks and components with precision",
-      "icon": "react",
-      "rarity": "epic"
+      "description": "Component-based UI development with hooks and state management",
+      "icon": "react"
     },
     {
       "name": "TypeScript",
-      "category": "Weapons",
+      "category": "Frontend",
       "level": 88,
-      "description": "Type-safe magic that prevents bugs before they manifest",
-      "icon": "typescript",
-      "rarity": "epic"
+      "description": "Type-safe JavaScript for robust application development",
+      "icon": "typescript"
     },
     {
       "name": "JavaScript",
-      "category": "Weapons",
+      "category": "Frontend",
       "level": 95,
-      "description": "The ancient language that powers the web realm",
-      "icon": "javascript",
-      "rarity": "legendary"
+      "description": "Core language for web development and interactivity",
+      "icon": "javascript"
     },
     {
       "name": "Tailwind CSS",
-      "category": "Armor",
+      "category": "Frontend",
       "level": 85,
-      "description": "Utility-first styling protection for rapid UI development",
-      "icon": "tailwind",
-      "rarity": "rare"
+      "description": "Utility-first CSS framework for rapid styling",
+      "icon": "tailwind"
     },
     {
       "name": "CSS",
-      "category": "Armor",
+      "category": "Frontend",
       "level": 90,
-      "description": "Classic styling defense with flexbox and grid mastery",
-      "icon": "css",
-      "rarity": "epic"
+      "description": "Styling and layout with modern CSS techniques",
+      "icon": "css"
     },
     {
       "name": "Node.js",
-      "category": "Armor",
+      "category": "Backend",
       "level": 82,
-      "description": "Server-side JavaScript runtime for backend quests",
-      "icon": "nodejs",
-      "rarity": "epic"
+      "description": "Server-side JavaScript runtime for backend development",
+      "icon": "nodejs"
     },
     {
       "name": "Git",
-      "category": "Potions",
+      "category": "Tools",
       "level": 87,
-      "description": "Version control elixir for managing code across timelines",
-      "icon": "git",
-      "rarity": "rare"
+      "description": "Version control and collaborative development",
+      "icon": "git"
     },
     {
       "name": "Vite",
-      "category": "Potions",
+      "category": "Tools",
       "level": 80,
-      "description": "Lightning-fast build tool that accelerates development speed",
-      "icon": "vite",
-      "rarity": "rare"
+      "description": "Fast build tool and development server",
+      "icon": "vite"
     },
     {
       "name": "REST APIs",
-      "category": "Potions",
+      "category": "Backend",
       "level": 85,
-      "description": "Consume and create powerful data connection potions",
-      "icon": "api",
-      "rarity": "rare"
+      "description": "API design and integration for data exchange",
+      "icon": "api"
     },
     {
       "name": "Problem Solving",
-      "category": "Accessories",
+      "category": "Soft Skills",
       "level": 88,
-      "description": "Analytical thinking and debugging prowess",
-      "icon": "puzzle",
-      "rarity": "epic"
+      "description": "Analytical thinking and technical troubleshooting",
+      "icon": "puzzle"
     },
     {
       "name": "Team Collaboration",
-      "category": "Accessories",
+      "category": "Soft Skills",
       "level": 83,
-      "description": "Work effectively with fellow adventurers on shared quests",
-      "icon": "team",
-      "rarity": "rare"
+      "description": "Effective communication and teamwork",
+      "icon": "team"
     },
     {
       "name": "Next.js",
-      "category": "Weapons",
+      "category": "Frontend",
       "level": 82,
-      "description": "Full-stack React framework for production-ready applications",
-      "icon": "nextjs",
-      "rarity": "epic"
+      "description": "React framework for production-ready applications",
+      "icon": "nextjs"
     },
     {
       "name": "Python",
-      "category": "Weapons",
+      "category": "Backend",
       "level": 78,
-      "description": "Versatile scripting language for automation and data processing",
-      "icon": "python",
-      "rarity": "rare"
+      "description": "Scripting and automation for various applications",
+      "icon": "python"
     },
     {
       "name": "Java",
-      "category": "Weapons",
+      "category": "Backend",
       "level": 75,
-      "description": "Object-oriented programming language for enterprise applications",
-      "icon": "java",
-      "rarity": "rare"
+      "description": "Object-oriented programming for enterprise solutions",
+      "icon": "java"
     }
   ],
   "projects": [
     {
-      "title": "The RPG Portfolio Overhaul",
-      "description": "Transform a standard portfolio into an immersive RPG experience. This epic quest involves migrating to modern tooling (Vite, React 18, Tailwind CSS v4) and designing a unique character sheet interface that showcases skills as inventory items and projects as completed quests.",
+      "title": "Portfolio Website Overhaul",
+      "description": "Modernized portfolio website using latest tooling (Vite, React 18, Tailwind CSS v4) and created a unique character sheet interface that showcases skills and projects in an engaging way.",
       "status": "in-progress",
       "currentlyWorking": true,
       "lastCommit": "2025-11-07T10:30:00Z",
@@ -168,29 +154,7 @@
         "live": "https://nickborrello.github.io",
         "github": "https://github.com/nickborrello/nickborrello.github.io"
       },
-      "image": "/projects/rpg-portfolio.png",
-      "jewelSlots": [
-        {
-          "jewel": "React",
-          "slotNumber": 1
-        },
-        {
-          "jewel": "TypeScript",
-          "slotNumber": 2
-        },
-        {
-          "jewel": "Vite",
-          "slotNumber": 3
-        },
-        {
-          "jewel": "Tailwind CSS",
-          "slotNumber": 4
-        },
-        {
-          "jewel": "Vitest",
-          "slotNumber": 5
-        }
-      ]
+      "image": "/projects/rpg-portfolio.png"
     },
     {
       "title": "Hospital Kiosk Software Application",
