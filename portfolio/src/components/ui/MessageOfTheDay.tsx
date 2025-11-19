@@ -4,10 +4,17 @@ import { useEffect, useState } from 'react';
 import { getLatestActivity } from '../../services/github';
 import styles from './MessageOfTheDay.module.css';
 
+interface GitHubEvent {
+  type: string;
+  repo?: {
+    name: string;
+  };
+}
+
 export default function MessageOfTheDay() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
-  const [activity, setActivity] = useState<any>(null);
+  const [activity, setActivity] = useState<GitHubEvent | null>(null);
 
   useEffect(() => {
     const fetchActivity = async () => {
@@ -20,7 +27,7 @@ export default function MessageOfTheDay() {
         } else {
           setError('No activity found');
         }
-      } catch (err) {
+      } catch {
         setError('Failed to fetch dispatch.');
       } finally {
         setLoading(false);

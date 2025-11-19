@@ -20,3 +20,17 @@
     *   [Task 2.3 – Develop Zoom-in Animation Logic](./Phase_02_Core_Visual_Interactive_Elements/Task_2_3_Develop_Zoom_in_Animation_Logic.md)
     *   [Task 2.4 – Build Main Menu Component](./Phase_02_Core_Visual_Interactive_Elements/Task_2_4_Build_Main_Menu_Component.md)
     *   [Task 2.5 – Create "Book" Overlay Component](./Phase_02_Core_Visual_Interactive_Elements/Task_2_5_Create_Book_Overlay_Component.md)
+
+---
+## Phase 03 – Content & API Integration Summary
+*   **Outcome:** Phase 3 brought the portfolio to life with content. A robust service for the GitHub API was created. This service was used to build a dynamic "Message of the Day" component showing the user's latest activity, and to pull the user's avatar for a "Character" section. A "Projects" section was also created, styled as a quest log and populated with mock data. Finally, the main menu was wired up to the book overlay system, making the different content sections viewable.
+*   **Involved Agents:**
+    *   `Agent_Backend`
+    *   `Agent_Frontend_Content`
+    *   `Agent_Frontend_UI`
+*   **Memory Logs:**
+    *   [Task 3.1 – Develop GitHub API Service](./Phase_03_Content_API_Integration/Task_3_1_Develop_GitHub_API_Service.md)
+    *   [Task 3.2 – Implement "Message of the Day" Component](./Phase_03_Content_API_Integration/Task_3_2_Implement_Message_of_the_Day_Component.md)
+    *   [Task 3.3 – Create and Populate "Character" Section Component](./Phase_03_Content_API_Integration/Task_3_3_Create_and_Populate_Character_Section_Component.md)
+    *   [Task 3.4 – Create and Populate "Projects as Quests" Section Component](./Phase_03_Content_API_Integration/Task_3_4_Create_and_Populate_Projects_as_Quests_Section_Component.md)
+    *   [Task 3.5 – Wire up Menu to Book Overlay](./Phase_03_Content_API_Integration/Task_3_5_Wire_up_Menu_to_Book_Overlay.md)

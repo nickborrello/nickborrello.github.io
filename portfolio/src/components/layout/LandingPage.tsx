@@ -7,7 +7,7 @@ interface LandingPageProps {
 export default function LandingPage({ onClick }: LandingPageProps) {
   return (
     <div>
-      <h1>The Adventurer's Log</h1>
+      <h1>The Adventurer&apos;s Log</h1>
       <button onClick={onClick}>Continue</button>
     </div>
   );
