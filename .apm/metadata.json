@@ -2,8 +2,9 @@
   "cliVersion": "0.5.1",
   "templateVersion": "v0.5.1+templates.3",
   "assistants": [
-    "Gemini CLI"
+    "Gemini CLI",
+    "GitHub Copilot"
   ],
   "installedAt": "2025-11-19T21:18:02.218Z",
-  "lastUpdated": "2025-11-19T21:18:02.218Z"
+  "lastUpdated": "2025-11-19T21:48:57.885Z"
 }

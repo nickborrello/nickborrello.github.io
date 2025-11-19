@@ -1,0 +1,41 @@
+@import "../styles/theme.css";
+@import "tailwindcss";
+
+:root {
+  --background: #ffffff;
+  --foreground: #171717;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0a0a0a;
+    --foreground: #ededed;
+  }
+}
+
+body {
+  background: var(--background-dark);
+  color: var(--text-primary);
+  font-family: var(--font-primary);
+}
+
+.bg-distant-campfire {
+  background-image: url('/assets/campfire-distant.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.bg-zoomed-campfire {
+  background-image: url('/assets/campfire-close.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
