@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from 'react';
 import { getLatestActivity } from '../../services/github';
+import LoadingSpinner from './LoadingSpinner';
 import styles from './MessageOfTheDay.module.css';
 
 interface GitHubEvent {
@@ -37,7 +38,7 @@ export default function MessageOfTheDay() {
   }, []);
 
   if (loading) {
-    return <div className={styles.container}>Fetching latest dispatch...</div>;
+    return <div className={styles.container}><LoadingSpinner /></div>;
   }
 
   if (error) {
@@ -46,7 +47,7 @@ export default function MessageOfTheDay() {
 
   if (activity) {
     let message = '';
-    if (activity.type === 'PushEvent') {
+    if (activity.type === 'PushEvent' && activity.repo) {
       message = `Latest dispatch: Pushed to ${activity.repo.name}`;
     } else {
       message = `Latest dispatch: ${activity.type}`;

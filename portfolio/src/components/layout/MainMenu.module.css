@@ -30,5 +30,5 @@
 .button:hover,
 .button:focus {
   color: var(--accent-color);
-  text-shadow: 0 0 5px var(--accent-color);
+  text-shadow: 0 0 8px var(--accent-color);
 }

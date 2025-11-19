@@ -1,11 +1,11 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import styles from './MainMenu.module.css';
-import { BookContext } from '../../context/BookContext';
+import { useBook } from '../../context/BookContext';
 import CharacterSection from '../sections/CharacterSection';
 import ProjectsSection from '../sections/ProjectsSection';
 
 export default function MainMenu() {
-  const { openBook } = useContext(BookContext);
+  const { openBook } = useBook();
 
   return (
     <nav className={styles.nav}>
