@@ -1,0 +1,10 @@
+.container {
+  position: fixed;
+  top: 1rem;
+  right: 1rem;
+  border: 2px solid var(--accent-color);
+  padding: 0.5rem;
+  background: var(--background-dark);
+  color: var(--text-primary);
+  font-family: var(--font-primary);
+}
