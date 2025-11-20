@@ -1,3 +1,6 @@
 .apm/
 .gemini/
 .github/prompts/
+.next/
+next-env.d.ts
+node_modules
