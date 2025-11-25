@@ -23,7 +23,7 @@ const ProjectGallery: React.FC<ProjectGalleryProps> = ({ images, altText = "Proj
   const hasMultiple = images.length > 1;
 
   return (
-    <div className="relative w-full aspect-[4/3] mb-4 group select-none bg-[#1a1814]">
+    <div className="relative w-full h-full mb-4 group select-none bg-[#1a1814]">
       {/* Frame / Container */}
       <div className="absolute inset-0 bg-[#cbbfa6] border-4 border-[#8c8574] shadow-[inset_0_0_20px_rgba(0,0,0,0.5)] overflow-hidden">
         
