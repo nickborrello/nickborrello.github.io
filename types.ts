@@ -21,6 +21,8 @@ export interface Project {
   questTypeLabel?: string; // "Hunting Quest", "Slaying Quest" etc.
   role?: string; // Replaces "Conditions"
   challenges?: string[]; // Replaces "Failure Conditions"
+  githubUrl?: string;
+  liveUrl?: string;
 }
 
 export interface Skill {

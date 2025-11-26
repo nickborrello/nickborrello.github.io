@@ -1,10 +1,11 @@
 
 import React from 'react';
-import { 
-  Sword, Shield, Shirt, Hand, BoxSelect, Footprints, Gem, 
-  Wrench, Star, Circle, Quote 
+import {
+  Sword, Shield, Shirt, Hand, BoxSelect, Footprints, Gem,
+  Wrench, Star, Circle, Quote
 } from 'lucide-react';
 import { HunterData } from '../types';
+import MessageOfTheDay from './MessageOfTheDay';
 
 interface GuildCardProps {
   onBack: () => void;
@@ -163,26 +164,29 @@ const GuildCard: React.FC<GuildCardProps> = ({ onBack, hunterData }) => {
       {/* Bottom Bar Controls (Simulated) */}
       <div className="fixed bottom-0 left-0 w-full p-4 z-50 pointer-events-none flex justify-between items-end">
           <div className="flex gap-4 pointer-events-auto">
-             <button 
-                onClick={onBack}
-                className="flex items-center gap-2 bg-slate-900/80 hover:bg-slate-800 text-slate-200 px-4 py-1 border border-slate-600 rounded-sm backdrop-blur transition-all active:scale-95"
-             >
-                <div className="w-6 h-6 rounded-full border border-slate-400 flex items-center justify-center text-xs font-bold bg-slate-800">Esc</div>
-                <span className="font-bold text-shadow-sm">Back</span>
-             </button>
-             
-             <div className="hidden md:flex items-center gap-2 bg-slate-900/80 text-slate-400 px-4 py-1 border border-slate-600 rounded-sm backdrop-blur">
-                <div className="w-6 h-6 rounded-full border border-slate-400 flex items-center justify-center text-xs font-bold bg-slate-800">R</div>
-                <span className="font-bold">Show/Hide Hunter</span>
-             </div>
-          </div>
+              <button 
+                 onClick={onBack}
+                 className="flex items-center gap-2 bg-slate-900/80 hover:bg-slate-800 text-slate-200 px-4 py-1 border border-slate-600 rounded-sm backdrop-blur transition-all active:scale-95"
+              >
+                 <div className="w-6 h-6 rounded-full border border-slate-400 flex items-center justify-center text-xs font-bold bg-slate-800">Esc</div>
+                 <span className="font-bold text-shadow-sm">Back</span>
+              </button>
+              
+              <div className="hidden md:flex items-center gap-2 bg-slate-900/80 text-slate-400 px-4 py-1 border border-slate-600 rounded-sm backdrop-blur">
+                 <div className="w-6 h-6 rounded-full border border-slate-400 flex items-center justify-center text-xs font-bold bg-slate-800">R</div>
+                 <span className="font-bold">Show/Hide Hunter</span>
+              </div>
+           </div>
 
-          <div className="hidden md:flex gap-2 text-slate-400 text-sm font-bold text-shadow-sm pr-8 pb-2">
-             <span> [Q] Previous Page </span>
-             <span> 1/1 </span>
-             <span> [E] Next Page </span>
-          </div>
-      </div>
+           <div className="hidden md:flex gap-2 text-slate-400 text-sm font-bold text-shadow-sm pr-8 pb-2">
+              <span> [Q] Previous Page </span>
+              <span> 1/1 </span>
+              <span> [E] Next Page </span>
+           </div>
+       </div>
+
+       {/* Message of the Day - Bottom Right Corner */}
+       <MessageOfTheDay />
     </div>
   );
 };
