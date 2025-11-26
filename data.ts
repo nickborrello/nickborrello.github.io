@@ -145,7 +145,9 @@ export const portfolioData: PortfolioData = {
       "images": [
         "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=600&auto=format&fit=crop",
         "https://images.unsplash.com/photo-1492684223066-81342ee5ff30?q=80&w=600&auto=format&fit=crop"
-      ]
+      ],
+      "githubUrl": "https://github.com/nickborrello/nickborrello.github.io",
+      "liveUrl": "https://nickborrello.github.io"
     },
     {
       "id": "edu-1",
