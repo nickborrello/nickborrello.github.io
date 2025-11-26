@@ -61,6 +61,16 @@ const QuestBoard: React.FC<QuestBoardProps> = ({ onBack, quests }) => {
   const [selectedCategory, setSelectedCategory] = useState<QuestType | null>(null);
   const [hoveredQuest, setHoveredQuest] = useState<Project | null>(null);
 
+  const getMainLanguageIcon = (tags: string[]) => {
+    let color = "#3e3a32";
+    if (tags.includes("TypeScript")) color = "#3178c6";
+    else if (tags.some(tag => tag.includes("JavaScript") || tag.includes("React") || tag.includes("Next.js"))) color = "#f7df1e";
+    else if (tags.includes("Java")) color = "#ed8b00";
+    else if (tags.includes("C++")) color = "#00599c";
+    else if (tags.includes("Python")) color = "#3776ab";
+    return <Code size={40} style={{ color }} className="opacity-80" />;
+  };
+
   const handleCategorySelect = (type: QuestType) => {
     setSelectedCategory(type);
     setViewState('LIST');
@@ -99,16 +109,16 @@ const QuestBoard: React.FC<QuestBoardProps> = ({ onBack, quests }) => {
 
       {/* --- VIEW 1: CATEGORY SELECTION --- */}
       {viewState === 'CATEGORIES' && (
-        <div className="w-full h-full flex flex-col items-center justify-center p-8 animate-fade-in">
+        <div className="w-full h-full flex flex-col items-center justify-center animate-fade-in">
           <div className="w-full max-w-4xl relative">
              <div className="absolute inset-y-[-50px] inset-x-[-100px] bg-[url('https://www.transparenttextures.com/patterns/aged-paper.png')] opacity-10 pointer-events-none mask-image-faded-edges"></div>
-             <h2 className="text-center font-cinzel text-3xl md:text-4xl text-yellow-500 mb-2 drop-shadow-lg tracking-widest">
+             <h2 className="text-center font-cinzel text-3xl md:text-4xl text-yellow-500 mb-2 drop-shadow-lg tracking-widest" style={{ WebkitTextStroke: '1px black' }}>
                Master Rank
              </h2>
              <div className="w-full h-[2px] bg-gradient-to-r from-transparent via-yellow-700 to-transparent mb-12 opacity-70"></div>
              <div className="space-y-6 relative z-10">
-                <CategoryButton title="Assigned" theme="green" onClick={() => handleCategorySelect('ASSIGNED')} icon={<Briefcase size={20} className="text-green-200"/>} />
-                <CategoryButton title="Optional" theme="standard" onClick={() => handleCategorySelect('OPTIONAL')} icon={<Code size={20} className="text-stone-300"/>} />
+                <CategoryButton title="Experience" theme="green" onClick={() => handleCategorySelect('ASSIGNED')} icon={<Briefcase size={20} className="text-green-200"/>} />
+                <CategoryButton title="Projects" theme="standard" onClick={() => handleCategorySelect('OPTIONAL')} icon={<Code size={20} className="text-stone-300"/>} />
                 <CategoryButton title="Special Assignments" theme="red" onClick={() => handleCategorySelect('SPECIAL')} icon={<GraduationCap size={20} className="text-red-200"/>} />
                 <div className="max-w-2xl mx-auto mt-8 border-t border-slate-700/50 pt-4">
                    <div className="bg-gradient-to-r from-slate-900/90 via-slate-800/90 to-slate-900/90 border-y border-slate-600 h-16 flex items-center justify-center text-slate-400 font-cinzel tracking-wider opacity-60">
@@ -150,19 +160,23 @@ const QuestBoard: React.FC<QuestBoardProps> = ({ onBack, quests }) => {
           }
           leftContent={
             <div className="flex flex-col min-h-full">
-                {/* Header */}
-                <div className="relative z-10 px-6 py-4 border-b-2 border-[#8c8574]/30 flex items-center justify-between">
-                    <div className="flex items-center gap-2">
-                       <div className="bg-orange-700 rounded-full w-6 h-6 flex items-center justify-center shadow-sm">
-                          <Star size={14} fill="white" className="text-white"/>
-                       </div>
-                       <span className="text-orange-800 font-cinzel font-bold text-xl tracking-wide">Master Rank</span>
-                    </div>
-                   <span className="text-[#5c5546] font-cinzel font-bold text-sm">Page 1 / 1</span>
-                </div>
-
                  {/* Quest List */}
-                 <div className="relative z-10 pt-2 pb-6 bg-[#D2B48C] flex-[0_0_60%]">
+                 <div className="relative z-10 bg-[#D2B48C] flex-[0_0_60%]">
+                   <div className="absolute top-[-2rem] left-0 z-20 transform -rotate-[5deg]">
+                     <div className="flex items-center gap-1 px-2 py-1 rounded" style={{ backgroundColor: '#875A0B' }}>
+                       <div className="bg-orange-700 rounded-full w-5 h-5 flex items-center justify-center shadow-sm">
+                          <Star size={12} fill="white" className="text-white"/>
+                       </div>
+                       <span className="text-yellow-500 font-cinzel font-bold text-lg tracking-wide px-2 py-0.5 rounded" style={{ WebkitTextStroke: '1px black' }}>Master Rank</span>
+                     </div>
+                   </div>
+                   {/* Column Headers */}
+                   <div className="flex justify-between pl-6 py-2 border-b-2 border-[#8c8574]/30 bg-black/30">
+                     <span className="text-yellow-500 font-cinzel font-bold text-sm uppercase tracking-wider pl-6" style={{ WebkitTextStroke: '1px black' }}>
+                       {selectedCategory === 'ASSIGNED' ? 'Experience' : selectedCategory === 'OPTIONAL' ? 'Project' : 'Special'}
+                     </span>
+                     <span className="text-yellow-500 font-cinzel font-bold text-sm uppercase tracking-wider pr-6" style={{ WebkitTextStroke: '1px black' }}>Level</span>
+                   </div>
                    {filteredQuests.map((quest) => {
                       const isHovered = hoveredQuest?.id === quest.id;
                       return (
@@ -170,7 +184,7 @@ const QuestBoard: React.FC<QuestBoardProps> = ({ onBack, quests }) => {
                            key={quest.id}
                            onMouseEnter={() => setHoveredQuest(quest)}
                            className={`
-                             relative px-6 py-3 cursor-pointer transition-all duration-200 border-b border-[#8c8574]/10
+                             relative pl-6 cursor-pointer transition-all duration-200 border-b border-dashed border-black/30
                              ${isHovered ? 'bg-[#4ade80]/20 mix-blend-multiply' : 'hover:bg-[#8c8574]/10'}
                            `}
                          >
@@ -178,19 +192,16 @@ const QuestBoard: React.FC<QuestBoardProps> = ({ onBack, quests }) => {
                                 <div className="flex items-center gap-3">
                                   {/* Selection Diamond */}
                                   <div className={`w-3 h-3 transform rotate-45 transition-colors ${isHovered ? 'bg-green-700' : 'bg-[#8c8574]'}`}></div>
-                                  <span className={`font-cinzel font-bold text-lg ${isHovered ? 'text-green-900' : 'text-[#3e3a32]'}`}>
+                                  <span className="font-cinzel font-bold text-lg text-white" style={{ WebkitTextStroke: '1px black' }}>
                                     {quest.title}
                                   </span>
+                                  {quest.completed && (
+                                    <span className="text-red-800 font-bold text-[10px] uppercase border border-red-800/40 px-1 bg-red-100/50">
+                                       Completed
+                                    </span>
+                                  )}
                                </div>
-                               {quest.completed && (
-                                 <span className="text-red-800 font-bold text-[10px] uppercase border border-red-800/40 px-1 bg-red-100/50">
-                                    Completed
-                                 </span>
-                               )}
-                            </div>
-                            <div className="flex justify-between items-center pl-6">
-                               <span className="text-[#5c5546] font-serif italic text-sm">{quest.client}</span>
-                               <div className="flex gap-[1px]">
+                               <div className="flex gap-[1px] pr-6 justify-center">
                                  {[...Array(quest.difficulty)].map((_, i) => (
                                     <Star key={i} size={10} fill="#b45309" className="text-yellow-700" />
                                  ))}
@@ -202,9 +213,12 @@ const QuestBoard: React.FC<QuestBoardProps> = ({ onBack, quests }) => {
                 </div>
 
                  {/* Bottom Summary (Stamped Look) */}
-                 <div className="relative z-10 flex-1 m-4 mt-auto border-t-2 border-[#8c8574]/30 pt-2 flex gap-4">
+                 <div className="relative z-10 flex-1 border-t-2 border-[#8c8574]/30 flex flex-col items-center gap-4">
+                   <div className="text-center font-cinzel font-bold text-xl text-white drop-shadow-sm" style={{ WebkitTextStroke: '1px black' }}>
+                     {hoveredQuest?.title}
+                   </div>
                    <div className="w-24 h-24 bg-[#d6d3c9] border border-[#8c8574] shadow-inner flex items-center justify-center shrink-0 rotate-1">
-                      {hoveredQuest?.type === 'ASSIGNED' ? <Briefcase size={40} className="text-[#3e3a32] opacity-80"/> : <Code size={40} className="text-[#3e3a32] opacity-80"/>}
+                      {getMainLanguageIcon(hoveredQuest?.tags || [])}
                    </div>
                    <div className="flex-1 flex flex-col justify-center">
                        <h4 className="relative px-2 py-1 rounded mb-1">
@@ -215,7 +229,7 @@ const QuestBoard: React.FC<QuestBoardProps> = ({ onBack, quests }) => {
                          {hoveredQuest?.targetMonsters?.[0] || "Unknown"}
                       </div>
                       <div className="flex gap-6 text-[#5c5546] font-serif text-sm font-bold">
-                         <span className="flex items-center gap-1"><span className="text-yellow-700">z</span> 28800</span>
+                         <span className="flex items-center gap-1"><span className="text-yellow-700" style={{ WebkitTextStroke: '1px black' }}>z</span> 28800</span>
                          <span className="flex items-center gap-1"><Clock size={12}/> {hoveredQuest?.duration}</span>
                       </div>
                    </div>
@@ -223,27 +237,20 @@ const QuestBoard: React.FC<QuestBoardProps> = ({ onBack, quests }) => {
             </div>
           }
           rightContent={
-             <div className="flex flex-col min-h-full pr-8 relative mx-4 pt-4">
+             <div className="flex flex-col min-h-full relative">
                {hoveredQuest ? (
                  <>
                     {/* Header and Image Container - 50% */}
                     <div className="h-[50%] flex flex-col">
                         {/* TITLE HEADER (Top Center) */}
-                        <div className="relative z-10 w-full text-center mb-2 flex-shrink-0">
+                        <div className="relative z-10 w-full text-center flex-shrink-0">
                            <h3 className="font-cinzel font-bold text-xl md:text-2xl text-[#b45309] drop-shadow-sm tracking-wide">
                               {hoveredQuest.location || hoveredQuest.title}
                            </h3>
                         </div>
 
-                        {/* TARGET IMAGE */}
-                        <div className="relative z-10 w-full flex justify-center mb-2 flex-shrink-0">
-                           <div className="w-24 h-24 bg-[#d6d3c9] border border-[#8c8574] shadow-inner flex items-center justify-center shrink-0 rotate-1">
-                              {hoveredQuest?.type === 'ASSIGNED' ? <Briefcase size={40} className="text-[#3e3a32] opacity-80"/> : <Code size={40} className="text-[#3e3a32] opacity-80"/>}
-                           </div>
-                        </div>
-
                        {/* GALLERY / IMAGE PREVIEW AREA */}
-                       <div className="relative w-full h-full mb-4 group select-none bg-[#1a1814]">
+                       <div className="relative w-full h-full group select-none bg-[#1a1814]">
                            <ProjectGallery 
                              key={hoveredQuest.id} // Force reset on quest change
                              images={hoveredQuest.images && hoveredQuest.images.length > 0 
@@ -262,7 +269,7 @@ const QuestBoard: React.FC<QuestBoardProps> = ({ onBack, quests }) => {
                           <div className="flex gap-8 h-full">
                              {/* Role */}
                              <div className="flex-1">
-                                <h4 className="relative px-2 py-1 rounded font-bold text-xs uppercase tracking-wider border-b border-[#8c8574]/50 mb-1 pb-1">
+                                <h4 className="relative px-2 py-1 rounded font-bold text-xs uppercase tracking-wider border-b border-[#8c8574]/50 pb-1">
                                   <div className="absolute inset-0 bg-gradient-to-r from-transparent via-black/70 to-transparent rounded"></div>
                                   <span className="relative z-10 text-[#fbbf24] drop-shadow-[0_1px_2px_rgba(0,0,0,0.8)]">Role & Scope</span>
                                 </h4>
@@ -271,7 +278,7 @@ const QuestBoard: React.FC<QuestBoardProps> = ({ onBack, quests }) => {
                              
                              {/* Tech Stack */}
                              <div className="flex-1">
-                                <h4 className="relative px-2 py-1 rounded font-bold text-xs uppercase tracking-wider border-b border-[#8c8574]/50 mb-1 pb-1">
+                                <h4 className="relative px-2 py-1 rounded font-bold text-xs uppercase tracking-wider border-b border-[#8c8574]/50 pb-1">
                                   <div className="absolute inset-0 bg-gradient-to-r from-transparent via-black/70 to-transparent rounded"></div>
                                   <span className="relative z-10 text-[#fbbf24] drop-shadow-[0_1px_2px_rgba(0,0,0,0.8)]">Tech Stack</span>
                                 </h4>
@@ -287,7 +294,7 @@ const QuestBoard: React.FC<QuestBoardProps> = ({ onBack, quests }) => {
 
                           {/* Challenges */}
                           <div className="h-full">
-                              <h4 className="relative px-2 py-1 rounded font-bold text-xs uppercase tracking-wider border-b border-[#8c8574]/50 mb-1 pb-1">
+                              <h4 className="relative px-2 py-1 rounded font-bold text-xs uppercase tracking-wider border-b border-[#8c8574]/50 pb-1">
                                 <div className="absolute inset-0 bg-gradient-to-r from-transparent via-black/70 to-transparent rounded"></div>
                                 <span className="relative z-10 text-[#fbbf24] drop-shadow-[0_1px_2px_rgba(0,0,0,0.8)]">Key Challenges</span>
                               </h4>
@@ -311,7 +318,7 @@ const QuestBoard: React.FC<QuestBoardProps> = ({ onBack, quests }) => {
                               <StyledHeader label="Client" value={hoveredQuest.client} />
 
                               {/* Dashed Lines Background for Text */}
-                              <div className="relative mt-2 pt-4 pl-6">
+                              <div className="relative mt-2 pt-4">
                                  {/* Lines matching leading-7 (28px) */}
                                  <div className="absolute inset-0 w-full h-full pointer-events-none opacity-20" 
                                       style={{ backgroundImage: 'repeating-linear-gradient(transparent 0px, transparent 27px, #2a2824 28px)' }}>
