@@ -8,7 +8,7 @@ import { NavigationItem, PortfolioData } from './types';
 import { portfolioData } from './data';
 
 // Ambient forest background image (darkened)
-const BG_IMAGE_URL = 'https://images.unsplash.com/photo-1511497584788-876760111969?q=80&w=2664&auto=format&fit=crop';
+const BG_IMAGE_URL = '/background.png';
 
 type ViewMode = 'MENU' | 'CONTENT';
 

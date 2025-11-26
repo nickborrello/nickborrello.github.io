@@ -4,6 +4,7 @@ import { Star, Scroll, ChevronRight, Briefcase, Code, GraduationCap, Shield, Clo
 import { Project, QuestType } from '../types';
 import ProjectGallery from './ProjectGallery';
 import BookLayout from './BookLayout';
+import StyledHeader from './StyledHeader';
 
 interface QuestBoardProps {
   onBack: () => void;
@@ -151,17 +152,17 @@ const QuestBoard: React.FC<QuestBoardProps> = ({ onBack, quests }) => {
             <div className="flex flex-col min-h-full">
                 {/* Header */}
                 <div className="relative z-10 px-6 py-4 border-b-2 border-[#8c8574]/30 flex items-center justify-between">
-                   <div className="flex items-center gap-2">
-                      <div className="bg-orange-700 rounded-full w-6 h-6 flex items-center justify-center shadow-sm">
-                         <Star size={14} fill="white" className="text-white"/>
-                      </div>
-                      <span className="text-orange-800 font-cinzel font-bold text-xl tracking-wide">Master Rank</span>
-                   </div>
+                    <div className="flex items-center gap-2">
+                       <div className="bg-orange-700 rounded-full w-6 h-6 flex items-center justify-center shadow-sm">
+                          <Star size={14} fill="white" className="text-white"/>
+                       </div>
+                       <span className="text-orange-800 font-cinzel font-bold text-xl tracking-wide">Master Rank</span>
+                    </div>
                    <span className="text-[#5c5546] font-cinzel font-bold text-sm">Page 1 / 1</span>
                 </div>
 
-                {/* Quest List */}
-                <div className="flex-1 relative z-10 pt-2 pb-6">
+                 {/* Quest List */}
+                 <div className="relative z-10 pt-2 pb-6 bg-[#D2B48C] flex-[0_0_60%]">
                    {filteredQuests.map((quest) => {
                       const isHovered = hoveredQuest?.id === quest.id;
                       return (
@@ -200,13 +201,16 @@ const QuestBoard: React.FC<QuestBoardProps> = ({ onBack, quests }) => {
                    })}
                 </div>
 
-                {/* Bottom Summary (Stamped Look) */}
-                <div className="relative z-10 h-32 m-4 mt-auto border-t-2 border-[#8c8574]/30 pt-2 flex gap-4">
+                 {/* Bottom Summary (Stamped Look) */}
+                 <div className="relative z-10 flex-1 m-4 mt-auto border-t-2 border-[#8c8574]/30 pt-2 flex gap-4">
                    <div className="w-24 h-24 bg-[#d6d3c9] border border-[#8c8574] shadow-inner flex items-center justify-center shrink-0 rotate-1">
                       {hoveredQuest?.type === 'ASSIGNED' ? <Briefcase size={40} className="text-[#3e3a32] opacity-80"/> : <Code size={40} className="text-[#3e3a32] opacity-80"/>}
                    </div>
                    <div className="flex-1 flex flex-col justify-center">
-                      <h4 className="font-cinzel font-bold text-[#b45309] text-sm uppercase tracking-wider mb-1">Target</h4>
+                       <h4 className="relative px-2 py-1 rounded mb-1">
+                         <div className="absolute inset-0 bg-gradient-to-r from-transparent via-black/70 to-transparent rounded"></div>
+                         <span className="relative z-10 text-[#fbbf24] font-cinzel font-bold text-sm uppercase tracking-wider drop-shadow-[0_1px_2px_rgba(0,0,0,0.8)]">Target</span>
+                       </h4>
                       <div className="font-serif text-2xl font-bold text-[#2a2824] leading-none mb-2">
                          {hoveredQuest?.targetMonsters?.[0] || "Unknown"}
                       </div>
@@ -219,17 +223,24 @@ const QuestBoard: React.FC<QuestBoardProps> = ({ onBack, quests }) => {
             </div>
           }
           rightContent={
-            <div className="flex flex-col min-h-full py-8 pr-8 relative mx-4">
+             <div className="flex flex-col min-h-full pr-8 relative mx-4 pt-4">
                {hoveredQuest ? (
                  <>
                     {/* Header and Image Container - 50% */}
                     <div className="h-[50%] flex flex-col">
-                       {/* TITLE HEADER (Top Center) */}
-                       <div className="relative z-10 w-full text-center mb-2 flex-shrink-0">
-                          <h3 className="font-cinzel font-bold text-xl md:text-2xl text-[#b45309] drop-shadow-sm tracking-wide">
-                             {hoveredQuest.location || hoveredQuest.title}
-                          </h3>
-                       </div>
+                        {/* TITLE HEADER (Top Center) */}
+                        <div className="relative z-10 w-full text-center mb-2 flex-shrink-0">
+                           <h3 className="font-cinzel font-bold text-xl md:text-2xl text-[#b45309] drop-shadow-sm tracking-wide">
+                              {hoveredQuest.location || hoveredQuest.title}
+                           </h3>
+                        </div>
+
+                        {/* TARGET IMAGE */}
+                        <div className="relative z-10 w-full flex justify-center mb-2 flex-shrink-0">
+                           <div className="w-24 h-24 bg-[#d6d3c9] border border-[#8c8574] shadow-inner flex items-center justify-center shrink-0 rotate-1">
+                              {hoveredQuest?.type === 'ASSIGNED' ? <Briefcase size={40} className="text-[#3e3a32] opacity-80"/> : <Code size={40} className="text-[#3e3a32] opacity-80"/>}
+                           </div>
+                        </div>
 
                        {/* GALLERY / IMAGE PREVIEW AREA */}
                        <div className="relative w-full h-full mb-4 group select-none bg-[#1a1814]">
@@ -251,13 +262,19 @@ const QuestBoard: React.FC<QuestBoardProps> = ({ onBack, quests }) => {
                           <div className="flex gap-8 h-full">
                              {/* Role */}
                              <div className="flex-1">
-                                <h4 className="font-bold text-[#8c8574] text-xs uppercase tracking-wider border-b border-[#8c8574]/50 mb-1 pb-1">Role & Scope</h4>
+                                <h4 className="relative px-2 py-1 rounded font-bold text-xs uppercase tracking-wider border-b border-[#8c8574]/50 mb-1 pb-1">
+                                  <div className="absolute inset-0 bg-gradient-to-r from-transparent via-black/70 to-transparent rounded"></div>
+                                  <span className="relative z-10 text-[#fbbf24] drop-shadow-[0_1px_2px_rgba(0,0,0,0.8)]">Role & Scope</span>
+                                </h4>
                                 <p className="font-serif text-sm font-bold text-[#2a2824]">{hoveredQuest.role || "Specialist"}</p>
                              </div>
                              
                              {/* Tech Stack */}
                              <div className="flex-1">
-                                <h4 className="font-bold text-[#8c8574] text-xs uppercase tracking-wider border-b border-[#8c8574]/50 mb-1 pb-1">Tech Stack</h4>
+                                <h4 className="relative px-2 py-1 rounded font-bold text-xs uppercase tracking-wider border-b border-[#8c8574]/50 mb-1 pb-1">
+                                  <div className="absolute inset-0 bg-gradient-to-r from-transparent via-black/70 to-transparent rounded"></div>
+                                  <span className="relative z-10 text-[#fbbf24] drop-shadow-[0_1px_2px_rgba(0,0,0,0.8)]">Tech Stack</span>
+                                </h4>
                                 <div className="flex flex-wrap gap-x-3 gap-y-1">
                                    {hoveredQuest.tags.map((tag, i) => (
                                       <span key={i} className="font-serif text-sm text-[#2a2824] flex items-center gap-1">
@@ -270,7 +287,10 @@ const QuestBoard: React.FC<QuestBoardProps> = ({ onBack, quests }) => {
 
                           {/* Challenges */}
                           <div className="h-full">
-                             <h4 className="font-bold text-[#8c8574] text-xs uppercase tracking-wider border-b border-[#8c8574]/50 mb-1 pb-1">Key Challenges</h4>
+                              <h4 className="relative px-2 py-1 rounded font-bold text-xs uppercase tracking-wider border-b border-[#8c8574]/50 mb-1 pb-1">
+                                <div className="absolute inset-0 bg-gradient-to-r from-transparent via-black/70 to-transparent rounded"></div>
+                                <span className="relative z-10 text-[#fbbf24] drop-shadow-[0_1px_2px_rgba(0,0,0,0.8)]">Key Challenges</span>
+                              </h4>
                              <ul className="font-serif text-sm text-[#2a2824] space-y-1 list-disc list-inside marker:text-red-800">
                                 {hoveredQuest.challenges?.map((c, i) => (
                                    <li key={i}>{c}</li>
@@ -287,31 +307,21 @@ const QuestBoard: React.FC<QuestBoardProps> = ({ onBack, quests }) => {
                           {/* Rough Left Edge Simulation */}
                           <div className="absolute left-0 top-0 bottom-0 w-1 bg-[#5c5546] opacity-30"></div>
 
-                          <div className="p-4 pl-6 relative z-10">
-                             {/* Header with gradient background pill */}
-                             <div className="relative inline-flex items-center justify-center gap-4 mb-2 px-10 py-2 self-start">
-                                {/* Gradient Background - Linear Fade on sides */}
-                                <div className="absolute inset-0 bg-gradient-to-r from-transparent via-black/70 to-transparent"></div>
-                                <span className="relative z-10 font-cinzel font-bold text-[#fbbf24] text-lg tracking-wide drop-shadow-[0_1px_2px_rgba(0,0,0,0.8)]">
-                                   Client
-                                </span>
-                                <span className="relative z-10 font-cinzel font-bold text-white text-lg tracking-wide drop-shadow-[0_1px_2px_rgba(0,0,0,0.8)]">
-                                   {hoveredQuest.client}
-                                </span>
-                             </div>
+                           <div className="relative z-10">
+                              <StyledHeader label="Client" value={hoveredQuest.client} />
 
-                             {/* Dashed Lines Background for Text */}
-                             <div className="relative mt-2">
-                                {/* Lines matching leading-7 (28px) */}
-                                <div className="absolute inset-0 w-full h-full pointer-events-none opacity-20" 
-                                     style={{ backgroundImage: 'repeating-linear-gradient(transparent 0px, transparent 27px, #2a2824 28px)' }}>
-                                </div>
-                                
-                                <p className="font-serif text-[15px] leading-7 text-[#2a2824] font-medium relative z-10">
-                                   "{hoveredQuest.description}"
-                                </p>
-                             </div>
-                          </div>
+                              {/* Dashed Lines Background for Text */}
+                              <div className="relative mt-2 pt-4 pl-6">
+                                 {/* Lines matching leading-7 (28px) */}
+                                 <div className="absolute inset-0 w-full h-full pointer-events-none opacity-20" 
+                                      style={{ backgroundImage: 'repeating-linear-gradient(transparent 0px, transparent 27px, #2a2824 28px)' }}>
+                                 </div>
+                                 
+                                 <p className="font-serif text-[15px] leading-7 text-[#2a2824] font-medium relative z-10">
+                                    "{hoveredQuest.description}"
+                                 </p>
+                              </div>
+                           </div>
 
                           {/* Guild Crest Watermark */}
                           <div className="absolute -bottom-6 -right-6 text-white opacity-40 pointer-events-none transform rotate-[-15deg] mix-blend-overlay">

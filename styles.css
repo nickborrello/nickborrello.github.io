@@ -1,0 +1,8 @@
+.button {
+  box-sizing: border-box;
+  position: relative;
+  width: 342px;
+  height: 156px;
+  border: 1px dashed #8A38F5;
+  border-radius: 5px;
+}
