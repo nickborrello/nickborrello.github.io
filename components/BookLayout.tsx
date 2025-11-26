@@ -39,13 +39,13 @@ const BookLayout: React.FC<BookLayoutProps> = ({
               animate={{ scale: 1, opacity: 1, rotateY: 0 }}
               exit={{ scale: 0.8, opacity: 0, rotateY: 90 }}
               transition={{ duration: 0.8, ease: "easeOut" }}
-              style={{ transformOrigin: "right", backgroundImage: "url('/book.png')", backgroundSize: '200% 100%', backgroundPosition: '0% 50%', backgroundRepeat: 'no-repeat', boxShadow: '0 0 50px rgba(0,0,0,0.8)', border: '8px solid #2a2824', borderRight: 'none', backgroundColor: 'rgba(234, 221, 207, 0.3)', paddingTop: '5rem' }}
+              style={{ transformOrigin: "right", backgroundImage: "url('/book.png')", backgroundSize: '200% 100%', backgroundPosition: '0% 50%', backgroundRepeat: 'no-repeat', boxShadow: '0 0 50px rgba(0,0,0,0.8)', border: '8px solid #2a2824', borderRight: 'none', backgroundColor: 'rgba(234, 221, 207, 0.3)' }}
             >
                 {/* Page Texture */}
                 <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/aged-paper.png')] opacity-60 pointer-events-none mix-blend-multiply"></div>
                 
                 {/* Content Container */}
-                <div className="relative z-10 flex-1 flex flex-col h-full pl-4 pb-4 pt-16" style={{ overflow: 'visible' }}>
+                <div className="relative z-10 flex-1 flex flex-col h-full pl-6 pb-16 pt-16" style={{ overflow: 'visible' }}>
                     {leftContent}
                 </div>
 
@@ -70,13 +70,13 @@ const BookLayout: React.FC<BookLayoutProps> = ({
               animate={{ scale: 1, opacity: 1, rotateY: 0 }}
               exit={{ scale: 0.8, opacity: 0, rotateY: -90 }}
               transition={{ duration: 0.8, ease: "easeOut" }}
-              style={{ transformOrigin: "left", backgroundImage: "url('/book.png')", backgroundSize: '200% 100%', backgroundPosition: '100% 50%', backgroundRepeat: 'no-repeat', boxShadow: '0 0 50px rgba(0,0,0,0.8)', border: '8px solid #2a2824', borderLeft: 'none', backgroundColor: 'rgba(234, 221, 207, 0.3)', paddingTop: '5rem' }}
+              style={{ transformOrigin: "left", backgroundImage: "url('/book.png')", backgroundSize: '200% 100%', backgroundPosition: '100% 50%', backgroundRepeat: 'no-repeat', boxShadow: '0 0 50px rgba(0,0,0,0.8)', border: '8px solid #2a2824', borderLeft: 'none', backgroundColor: 'rgba(234, 221, 207, 0.3)' }}
             >
                 {/* Page Texture */}
                 <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/aged-paper.png')] opacity-60 pointer-events-none mix-blend-multiply"></div>
                 
                 {/* Content Container */}
-                <div className="relative z-10 flex-1 flex flex-col h-full pr-4 pb-4 pt-16" style={{ overflow: 'visible' }}>
+                <div className="relative z-10 flex-1 flex flex-col h-full pr-6 pb-16 pt-16" style={{ overflow: 'visible' }}>
                     {rightContent}
                 </div>
 
