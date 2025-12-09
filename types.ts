@@ -20,7 +20,7 @@ export interface ProjectItem {
   title: string;
   description: string;
   tech: string[];
-  imageUrl: string;
+  imageUrl?: string;
   link?: string;
   highlight?: string;
 }

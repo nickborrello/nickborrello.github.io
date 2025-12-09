@@ -20,38 +20,36 @@ export const Sidebar: React.FC<SidebarProps> = ({ activeTab, onSelect }) => {
   return (
     <div className="w-full z-50 relative">
       {/* Main Header Strip */}
-      <nav className="h-14 w-full bg-[#dad4bb] border-y border-nier-dark/20 relative flex items-center justify-center nier-header-grid shadow-sm">
-        
+      <nav className="h-14 w-full bg-nier-beige border-y-2 border-nier-dark/20 relative flex items-center justify-center nier-header-grid shadow-sm">
+
         {/* Navigation Items */}
-        <div className="flex flex-row items-center h-8 bg-nier-dark/5 border border-nier-dark/10 backdrop-blur-[1px]">
+        <div className="flex flex-row items-center h-10 bg-nier-beige border-x border-nier-dark/10">
           {MENU_ITEMS.map((item, index) => {
             const isActive = activeTab === item.id;
-            
+
             return (
               <React.Fragment key={item.id}>
                 <button
                   onClick={() => onSelect(item.id)}
                   className={`
-                    h-full px-4 md:px-6 flex flex-row items-center justify-center gap-3 transition-all duration-200 relative group whitespace-nowrap
-                    ${isActive 
-                      ? 'bg-nier-dark text-nier-beige shadow-inner' 
-                      : 'text-nier-dark/60 hover:text-nier-dark hover:bg-nier-dark/5'}
+                    h-full px-5 md:px-8 flex flex-row items-center justify-center gap-2 transition-all duration-0 relative group whitespace-nowrap
+                    ${isActive
+                      ? 'bg-nier-dark text-nier-beige'
+                      : 'bg-nier-beige text-nier-dark hover:bg-nier-dark/10'}
                   `}
                 >
-                  <item.icon 
-                    size={16} 
-                    strokeWidth={isActive ? 2.5 : 2}
-                    className="relative z-10"
-                  />
-                  
-                  <span className={`font-tech text-lg tracking-[0.15em] uppercase leading-none mt-0.5 ${isActive ? 'font-bold' : 'font-medium'}`}>
+                  <div className={`transition-transform duration-200 ${isActive ? 'scale-110' : 'scale-100 opacity-70'}`}>
+                    <item.icon size={18} strokeWidth={isActive ? 2.5 : 1.5} />
+                  </div>
+
+                  <span className={`font-tech text-xl tracking-[0.1em] uppercase leading-none mt-0.5 ${isActive ? 'font-bold' : 'font-medium'}`}>
                     {item.label}
                   </span>
                 </button>
-                
-                {/* Vertical Separator */}
-                {index < MENU_ITEMS.length - 1 && (
-                  <div className="h-4 w-px bg-nier-dark/20 mx-0.5"></div>
+
+                {/* Vertical Separator - Only between unselected items or if desired style */}
+                {index < MENU_ITEMS.length - 1 && !isActive && (MENU_ITEMS[index + 1].id !== activeTab) && (
+                  <div className="h-4 w-px bg-nier-dark/30 mx-0"></div>
                 )}
               </React.Fragment>
             );

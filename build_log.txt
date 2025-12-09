@@ -1,0 +1,42 @@
+
+> nier@0.0.0 build
+> vite build
+
+[36mvite v6.4.1 [32mbuilding for production...[36m[39m
+
+/index.css doesn't exist at build time, it will remain unchanged to be resolved at runtime
+transforming...
+[32mΓ£ô[39m 17 modules transformed.
+Γ£ù Build failed in 151ms
+error during build:
+[vite:esbuild] Transform failed with 2 errors:
+C:/Users/Nick/Projectos/nickborrello.github.io/components/views/MessagesView.tsx:107:126: ERROR: The character ">" is not valid inside a JSX element
+C:/Users/Nick/Projectos/nickborrello.github.io/components/views/MessagesView.tsx:127:77: ERROR: The character ">" is not valid inside a JSX element
+file: C:/Users/Nick/Projectos/nickborrello.github.io/components/views/MessagesView.tsx:107:126
+
+The character ">" is not valid inside a JSX element
+105|  
+106|                          <div className="border border-nier-dark/20 bg-nier-dark/5 p-2 font-mono text-sm space-y-2">
+107|                             {loading && <div className="animate-pulse text-nier-dark/50 p-2 text-xs uppercase tracking-widest">> Accessing archives...</div>}
+   |                                                                                                                                ^
+108|                             {error && <div className="text-red-800/70 p-2 text-xs uppercase tracking-widest">! Connection Failure: Offline Mode</div>}
+109|  
+
+The character ">" is not valid inside a JSX element
+125|                                   </div>
+126|                                   <div className="flex gap-2 text-nier-dark/80 line-clamp-1 mt-1 break-all font-tech text-sm">
+127|                                      <span className="opacity-40 select-none">></span>
+   |                                                                               ^
+128|                                      {commit.message}
+129|                                   </div>
+
+    at failureErrorWithLog (C:\Users\Nick\Projectos\nickborrello.github.io\node_modules\esbuild\lib\main.js:1467:15)
+    at C:\Users\Nick\Projectos\nickborrello.github.io\node_modules\esbuild\lib\main.js:736:50
+    at responseCallbacks.<computed> (C:\Users\Nick\Projectos\nickborrello.github.io\node_modules\esbuild\lib\main.js:603:9)
+    at handleIncomingPacket (C:\Users\Nick\Projectos\nickborrello.github.io\node_modules\esbuild\lib\main.js:658:12)
+    at Socket.readFromStdout (C:\Users\Nick\Projectos\nickborrello.github.io\node_modules\esbuild\lib\main.js:581:7)
+    at Socket.emit (node:events:518:28)
+    at addChunk (node:internal/streams/readable:561:12)
+    at readableAddChunkPushByteMode (node:internal/streams/readable:512:3)
+    at Readable.push (node:internal/streams/readable:392:5)
+    at Pipe.onStreamRead (node:internal/stream_base_commons:189:23)
