@@ -8,7 +8,14 @@ import {
   Terminal,
   Layout,
   Globe,
-  Cpu
+  Cpu,
+  Database,
+  Server,
+  Palette,
+  FileCode,
+  Settings,
+  RefreshCw,
+  PenTool
 } from 'lucide-react';
 import { ProjectItem, ContactMethod, ExperienceItem, SkillItem } from './types';
 
@@ -81,6 +88,16 @@ export const SKILLS: SkillItem[] = [
   { id: "s6", name: "Git", category: "Tool", level: "S-Tier", icon: Github },
   { id: "s7", name: "Azure", category: "Tool", level: "A-Tier", icon: Cloud },
   { id: "s8", name: "Auth0", category: "Tool", level: "B-Tier", icon: Shield },
+  { id: "s9", name: "PostgreSQL", category: "Tool", level: "A-Tier", icon: Database },
+  { id: "s10", name: "Tailwind", category: "Framework", level: "A-Tier", icon: Palette },
+  { id: "s11", name: "Node.js", category: "Framework", level: "A-Tier", icon: Server },
+  { id: "s12", name: "SQL", category: "Language", level: "A-Tier", icon: Database },
+  { id: "s13", name: "C/C++", category: "Language", level: "B-Tier", icon: FileCode },
+  { id: "s14", name: "Azure DevOps", category: "Tool", level: "A-Tier", icon: RefreshCw },
+  { id: "s15", name: "MongoDB", category: "Tool", level: "B-Tier", icon: Database },
+  { id: "s16", name: "PowerShell", category: "Language", level: "B-Tier", icon: Terminal },
+  { id: "s17", name: "JavaFX", category: "Framework", level: "B-Tier", icon: Layout },
+  { id: "s18", name: "UI/UX", category: "Tool", level: "B-Tier", icon: PenTool },
 ];
 
 export const PROJECTS: ProjectItem[] = [

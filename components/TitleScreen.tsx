@@ -10,13 +10,13 @@ export const TitleScreen: React.FC<TitleScreenProps> = ({ onStart }) => {
 
   // Generate wisps with random properties
   const wisps = useMemo(() => {
-    return Array.from({ length: 50 }).map((_, i) => ({
+    return Array.from({ length: 40 }).map((_, i) => ({
       id: i,
       left: `${Math.random() * 100}%`,
-      animationDuration: `${15 + Math.random() * 20}s`, // Slower, drifting movement
-      animationDelay: `-${Math.random() * 25}s`, // Negative delay to start mid-animation
-      size: `${2 + Math.random() * 10}px`, // Varying sizes (larger)
-      opacity: 0.1 + Math.random() * 0.4, // Slightly clearer
+      animationDuration: `${10 + Math.random() * 20}s`, // Varying speeds
+      animationDelay: `-${Math.random() * 30}s`, // Random start times
+      size: `${4 + Math.random() * 60}px`, // Much larger max size (4px to 64px)
+      opacity: 0.05 + Math.random() * 0.15, // Subtle opacity
     }));
   }, []);
 
@@ -44,7 +44,7 @@ export const TitleScreen: React.FC<TitleScreenProps> = ({ onStart }) => {
       <style>{`
         @keyframes floatUp {
           0% {
-            transform: translateY(100vh) translateX(0) rotate(0deg);
+            transform: translateY(120vh) translateX(0) rotate(0deg);
             opacity: 0;
           }
           10% {
@@ -54,7 +54,7 @@ export const TitleScreen: React.FC<TitleScreenProps> = ({ onStart }) => {
              opacity: var(--target-opacity);
           }
           100% {
-            transform: translateY(-20vh) translateX(100px) rotate(180deg);
+            transform: translateY(-120vh) translateX(50px) rotate(180deg);
             opacity: 0;
           }
         }
@@ -62,8 +62,8 @@ export const TitleScreen: React.FC<TitleScreenProps> = ({ onStart }) => {
           position: absolute;
           background: white;
           border-radius: 50%;
-          bottom: -20px;
-          filter: blur(1px);
+          bottom: -100px; /* Start well below */
+          filter: blur(2px); /* Slight blur for atmosphere */
           animation-name: floatUp;
           animation-timing-function: linear;
           animation-iteration-count: infinite;
