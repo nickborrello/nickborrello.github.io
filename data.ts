@@ -98,7 +98,8 @@ export const PROJECTS: ProjectItem[] = [
     link: "https://resumancer.dev",
     repoUrl: "https://github.com/nickborrello/resumancer",
     highlight: "Active Development",
-    status: "Beta"
+    status: "Beta",
+    date: "2024-12"
   },
   {
     id: "p2",
@@ -115,7 +116,8 @@ export const PROJECTS: ProjectItem[] = [
     link: "https://nickborrello.github.io/syllablast/",
     repoUrl: "https://github.com/nickborrello/syllablast",
     highlight: "Deployed & Playable",
-    status: "Live"
+    status: "Live",
+    date: "2024-05"
   },
   {
     id: "p3",
@@ -131,7 +133,41 @@ export const PROJECTS: ProjectItem[] = [
     imageUrl: "/staffing_tool.png",
     repoUrl: "https://github.com/nickborrello/BayStateTools",
     highlight: "Production Tooling",
-    status: "In Production"
+    status: "In Production",
+    date: "2024-03"
+  },
+  {
+    id: "p5",
+    title: "NEVI Plan Search",
+    description: "Tool designed to help analysts search through state NEVI plans for structured, consistent responses to critical questions.",
+    tech: ["Python", "Data Analysis", "Search"],
+    features: [
+      "Keyword frequency analysis",
+      "Contextual snippet extraction",
+      "Batch PDF processing",
+      "Export results to CSV"
+    ],
+    imageUrl: "/search_tool.png",
+    repoUrl: "https://github.com/nickborrello/NEVI-Search-Tool",
+    highlight: "Data Tool",
+    status: "Completed",
+    date: "2023-11"
+  },
+  {
+    id: "p6",
+    title: "Webware Fullstack Suite",
+    description: "A collection of modern full-stack web applications featuring React, Vite, Node.js, Express, and MongoDB authentication.",
+    tech: ["React", "Node.js", "MongoDB", "Express"],
+    features: [
+      "JWT & Session-based Authentication",
+      "RESTful API design patterns",
+      "Persistent data storage with MongoDB",
+      "Responsive React frontends"
+    ],
+    repoUrl: "https://github.com/nickborrello/webware-react-vite-app",
+    highlight: "Fullstack Coursework",
+    status: "Completed",
+    date: "2023-10"
   },
   {
     id: "p4",
@@ -148,38 +184,23 @@ export const PROJECTS: ProjectItem[] = [
     link: "https://github.com/CS-3733-D23-Team-E?view_as=public",
     repoUrl: "https://github.com/CS-3733-D23-Team-E",
     highlight: "Frontend Lead",
-    status: "Completed"
+    status: "Completed",
+    date: "2023-04"
   },
   {
-    id: "p5",
-    title: "NEVI Plan Search",
-    description: "Tool designed to help analysts search through state NEVI plans for structured, consistent responses to critical questions.",
-    tech: ["Python", "Data Analysis", "Search"],
+    id: "p8",
+    title: "Network Protocols",
+    description: "Implementation of custom network protocols and routing logic simulations using Python.",
+    tech: ["Python", "Networking"],
     features: [
-      "Keyword frequency analysis",
-      "Contextual snippet extraction",
-      "Batch PDF processing",
-      "Export results to CSV"
+      "Custom packet structure implementation",
+      "Routing algorithm simulations",
+      "Network traffic analysis",
+      "Socket programming examples"
     ],
-    imageUrl: "/search_tool.png",
-    repoUrl: "https://github.com/nickborrello/NEVI-Search-Tool",
-    highlight: "Data Tool",
-    status: "Completed"
-  },
-  {
-    id: "p6",
-    title: "Webware Fullstack Suite",
-    description: "A collection of modern full-stack web applications featuring React, Vite, Node.js, Express, and MongoDB authentication.",
-    tech: ["React", "Node.js", "MongoDB", "Express"],
-    features: [
-      "JWT & Session-based Authentication",
-      "RESTful API design patterns",
-      "Persistent data storage with MongoDB",
-      "Responsive React frontends"
-    ],
-    repoUrl: "https://github.com/nickborrello/webware-react-vite-app",
-    highlight: "Fullstack Coursework",
-    status: "Completed"
+    repoUrl: "https://github.com/nickborrello/python-network-protocols",
+    status: "Completed",
+    date: "2023-03"
   },
   {
     id: "p7",
@@ -194,21 +215,8 @@ export const PROJECTS: ProjectItem[] = [
     ],
     repoUrl: "https://github.com/nickborrello/msp430-embedded-projects",
     highlight: "Embedded C",
-    status: "Completed"
-  },
-  {
-    id: "p8",
-    title: "Network Protocols",
-    description: "Implementation of custom network protocols and routing logic simulations using Python.",
-    tech: ["Python", "Networking"],
-    features: [
-      "Custom packet structure implementation",
-      "Routing algorithm simulations",
-      "Network traffic analysis",
-      "Socket programming examples"
-    ],
-    repoUrl: "https://github.com/nickborrello/python-network-protocols",
-    status: "Completed"
+    status: "Completed",
+    date: "2022-12"
   },
 ];
 

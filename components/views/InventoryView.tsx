@@ -82,8 +82,15 @@ export const InventoryView: React.FC = () => {
             <h2 className="text-2xl font-tech text-nier-beige font-bold uppercase tracking-[0.15em]">
               {selectedProject.title}
             </h2>
-            <div className="text-nier-beige/50 text-xs font-tech tracking-widest uppercase">
-              Level: {selectedProject.tech.length}
+            <div className="flex gap-4">
+               {selectedProject.date && (
+                  <div className="text-nier-beige/70 text-xs font-tech tracking-widest uppercase">
+                    {selectedProject.date}
+                  </div>
+               )}
+               <div className="text-nier-beige/50 text-xs font-tech tracking-widest uppercase">
+                 Level: {selectedProject.tech.length}
+               </div>
             </div>
           </div>
 
