@@ -140,9 +140,26 @@ export const InventoryView: React.FC = () => {
                     <span className="font-bold">Web Application</span>
                   </div>
                   <div className="flex justify-between items-center">
+                    <span className="uppercase tracking-wider opacity-70">Status</span>
+                    <span className="font-bold text-right max-w-[120px] truncate">{selectedProject.status || "Unknown"}</span>
+                  </div>
+                  <div className="flex justify-between items-center">
                     <span className="uppercase tracking-wider opacity-70">Highlight</span>
                     <span className="font-bold text-right max-w-[120px] truncate">{selectedProject.highlight}</span>
                   </div>
+                  
+                  {/* Features List */}
+                  {selectedProject.features && selectedProject.features.length > 0 && (
+                    <div className="mt-4 pt-2 border-t border-dotted border-nier-dark/30">
+                      <span className="uppercase tracking-wider opacity-70 block mb-2">Key Features</span>
+                      <ul className="list-disc list-inside text-xs space-y-1 opacity-90">
+                        {selectedProject.features.map((feature, i) => (
+                          <li key={i}>{feature}</li>
+                        ))}
+                      </ul>
+                    </div>
+                  )}
+
                   <div className="mt-4 pt-2 border-t border-dotted border-nier-dark/30">
                     <span className="uppercase tracking-wider opacity-70 block mb-2">Technologies</span>
                     <div className="flex flex-wrap gap-1 justify-end">
@@ -159,7 +176,7 @@ export const InventoryView: React.FC = () => {
                   No Error
                 </div>
 
-                <div className="pt-4">
+                <div className="pt-4 space-y-2">
                   {selectedProject.link && selectedProject.link !== '#' ? (
                     <a
                       href={selectedProject.link}
@@ -167,16 +184,20 @@ export const InventoryView: React.FC = () => {
                       rel="noopener noreferrer"
                       className="block w-full text-center py-2 border border-nier-dark text-nier-dark hover:bg-nier-dark hover:text-nier-beige transition-colors uppercase tracking-widest font-bold text-xs"
                     >
-                      Execute
+                      Execute / Demo
                     </a>
-                  ) : (
-                    <button
-                      disabled
-                      className="block w-full text-center py-2 border border-nier-dark/30 text-nier-dark/30 cursor-not-allowed uppercase tracking-widest font-bold text-xs bg-nier-dark/5"
+                  ) : null}
+                  
+                  {selectedProject.repoUrl ? (
+                    <a
+                      href={selectedProject.repoUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="block w-full text-center py-2 border border-nier-dark/50 text-nier-dark/70 hover:bg-nier-dark/10 transition-colors uppercase tracking-widest font-bold text-xs"
                     >
-                      Offline
-                    </button>
-                  )}
+                      Source Code
+                    </a>
+                  ) : null}
                 </div>
               </div>
             </div>

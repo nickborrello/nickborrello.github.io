@@ -52,35 +52,129 @@ export const SKILLS: SkillItem[] = [
 export const PROJECTS: ProjectItem[] = [
   {
     id: "p1",
-    title: "Syllablast Puzzle Game",
-    description: "A Next.js puzzle game where players reconstruct words by swapping syllables on a 4×4 grid. Features interactive gameplay logic and responsive design.",
-    tech: ["Next.js", "TypeScript", "Tailwind", "React"],
-    link: "https://nickborrello.github.io/syllablast/",
-    highlight: "Deployed & Playable"
+    title: "Resumancer",
+    description: "Resume Builder with Agentic AI Assistance. Features real-time content generation, formatting, and export capabilities.",
+    tech: ["TypeScript", "Next.js", "PostgreSQL", "Tailwind"],
+    features: [
+      "AI-powered content suggestions",
+      "Real-time PDF preview & generation",
+      "Version control for resumes",
+      "Customizable templates"
+    ],
+    link: "https://resumancer.dev",
+    repoUrl: "https://github.com/nickborrello/resumancer",
+    highlight: "Active Development",
+    status: "Beta"
   },
   {
     id: "p2",
-    title: "Hospital Kiosk App",
-    description: "Led the frontend team for a JavaFX application used for hospital navigation and service management. Coordinated directly with stakeholders to meet specific operational needs.",
-    tech: ["Java", "JavaFX", "UI/UX"],
-    link: "https://github.com/CS-3733-D23-Team-E?view_as=public",
-    highlight: "Frontend Lead"
+    title: "Syllablast",
+    description: "A Next.js puzzle game where players reconstruct words by swapping syllables on a 4×4 grid. Features interactive gameplay logic.",
+    tech: ["Next.js", "TypeScript", "Tailwind", "React"],
+    features: [
+      "Daily puzzle challenges",
+      "Interactive drag-and-drop mechanics",
+      "Responsive mobile-first design",
+      "Score tracking and statistics"
+    ],
+    imageUrl: "/syllablast.png",
+    link: "https://nickborrello.github.io/syllablast/",
+    repoUrl: "https://github.com/nickborrello/syllablast",
+    highlight: "Deployed & Playable",
+    status: "Live"
   },
   {
     id: "p3",
-    title: "Staffing Tool Security",
-    description: "Enhanced API security for a staffing tool application. Configured Auth0 roles and permissions within a full-stack web environment to ensure robust data protection.",
-    tech: ["Auth0", "Security", "Full Stack"],
-    link: "#",
-    highlight: "Auth0 Implementation"
+    title: "BayState Internal Tools",
+    description: "Building internal tools to automate product registration and integrate with web inventory systems. Focusing on real-time inventory management.",
+    tech: ["Python", "React", "TypeScript", "Automation"],
+    features: [
+      "Automated product registration workflow",
+      "Real-time inventory synchronization",
+      "Custom dashboard for metrics",
+      "Role-based access control"
+    ],
+    imageUrl: "/staffing_tool.png",
+    repoUrl: "https://github.com/nickborrello/BayStateTools",
+    highlight: "Production Tooling",
+    status: "In Production"
   },
   {
     id: "p4",
-    title: "PDF Keyword Search",
-    description: "Built a desktop tool using Python and Qt to extract key insights from large document sets instantly. Optimized for performance when parsing multiple large files.",
-    tech: ["Python", "Qt", "Data Parsing"],
-    link: "#",
-    highlight: "Python Desktop App"
+    title: "Hospital Kiosk App",
+    description: "Led the frontend team for a JavaFX application used for hospital navigation and service management.",
+    tech: ["Java", "JavaFX", "UI/UX"],
+    features: [
+      "A* Pathfinding for hospital navigation",
+      "Service request management system",
+      "Interactive graphical map editor",
+      "Employee database integration"
+    ],
+    imageUrl: "/kiosk.png",
+    link: "https://github.com/CS-3733-D23-Team-E?view_as=public",
+    repoUrl: "https://github.com/CS-3733-D23-Team-E",
+    highlight: "Frontend Lead",
+    status: "Completed"
+  },
+  {
+    id: "p5",
+    title: "NEVI Plan Search",
+    description: "Tool designed to help analysts search through state NEVI plans for structured, consistent responses to critical questions.",
+    tech: ["Python", "Data Analysis", "Search"],
+    features: [
+      "Keyword frequency analysis",
+      "Contextual snippet extraction",
+      "Batch PDF processing",
+      "Export results to CSV"
+    ],
+    imageUrl: "/search_tool.png",
+    repoUrl: "https://github.com/nickborrello/NEVI-Search-Tool",
+    highlight: "Data Tool",
+    status: "Completed"
+  },
+  {
+    id: "p6",
+    title: "Webware Fullstack Suite",
+    description: "A collection of modern full-stack web applications featuring React, Vite, Node.js, Express, and MongoDB authentication.",
+    tech: ["React", "Node.js", "MongoDB", "Express"],
+    features: [
+      "JWT & Session-based Authentication",
+      "RESTful API design patterns",
+      "Persistent data storage with MongoDB",
+      "Responsive React frontends"
+    ],
+    repoUrl: "https://github.com/nickborrello/webware-react-vite-app",
+    highlight: "Fullstack Coursework",
+    status: "Completed"
+  },
+  {
+    id: "p7",
+    title: "MSP430 Guitar Hero",
+    description: "Embedded interactive rhythm game developed for the MSP430F5529 LaunchPad. Uses hardware interrupts and LCD display.",
+    tech: ["C", "Embedded", "MSP430"],
+    features: [
+      "Real-time hardware interrupts",
+      "Custom LCD graphics driver",
+      "Audio output generation",
+      "Button input debouncing"
+    ],
+    repoUrl: "https://github.com/nickborrello/msp430-embedded-projects",
+    highlight: "Embedded C",
+    status: "Completed"
+  },
+  {
+    id: "p8",
+    title: "Network Protocols",
+    description: "Implementation of custom network protocols and routing logic simulations using Python.",
+    tech: ["Python", "Networking"],
+    features: [
+      "Custom packet structure implementation",
+      "Routing algorithm simulations",
+      "Network traffic analysis",
+      "Socket programming examples"
+    ],
+    repoUrl: "https://github.com/nickborrello/python-network-protocols",
+    status: "Completed"
   },
 ];
 

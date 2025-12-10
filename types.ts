@@ -20,9 +20,12 @@ export interface ProjectItem {
   title: string;
   description: string;
   tech: string[];
+  features?: string[];
   imageUrl?: string;
   link?: string;
+  repoUrl?: string;
   highlight?: string;
+  status?: string;
 }
 
 export interface ContactMethod {
