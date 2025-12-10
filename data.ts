@@ -15,7 +15,9 @@ import {
   FileCode,
   Settings,
   RefreshCw,
-  PenTool
+  PenTool,
+  Zap,
+  FileText
 } from 'lucide-react';
 import { ProjectItem, ContactMethod, ExperienceItem, SkillItem } from './types';
 
@@ -98,6 +100,16 @@ export const SKILLS: SkillItem[] = [
   { id: "s16", name: "PowerShell", category: "Language", level: "B-Tier", icon: Terminal },
   { id: "s17", name: "JavaFX", category: "Framework", level: "B-Tier", icon: Layout },
   { id: "s18", name: "UI/UX", category: "Tool", level: "B-Tier", icon: PenTool },
+  { id: "s19", name: "C#", category: "Language", level: "B-Tier", icon: Code },
+  { id: "s20", name: "Unity", category: "Framework", level: "B-Tier", icon: Layout },
+  { id: "s21", name: "PyQt6", category: "Framework", level: "B-Tier", icon: Layout },
+  { id: "s22", name: "Supabase", category: "Tool", level: "A-Tier", icon: Database },
+  { id: "s23", name: "Vite", category: "Tool", level: "A-Tier", icon: Zap },
+  { id: "s24", name: "Shadcn/UI", category: "Framework", level: "A-Tier", icon: Palette },
+  { id: "s25", name: "Zustand", category: "Framework", level: "B-Tier", icon: Database },
+  { id: "s26", name: "DigitalOcean", category: "Tool", level: "B-Tier", icon: Cloud },
+  { id: "s27", name: "PyMuPDF", category: "Tool", level: "B-Tier", icon: FileText },
+  { id: "s28", name: "AWS CDK", category: "Tool", level: "A-Tier", icon: Cloud },
 ];
 
 export const PROJECTS: ProjectItem[] = [
@@ -105,12 +117,12 @@ export const PROJECTS: ProjectItem[] = [
     id: "p1",
     title: "Resumancer",
     description: "Resume Builder with Agentic AI Assistance. Features real-time content generation, formatting, and export capabilities.",
-    tech: ["TypeScript", "Next.js", "PostgreSQL", "Tailwind"],
+    tech: ["TypeScript", "Next.js", "Supabase", "Tailwind", "Shadcn/UI", "Zustand"],
     features: [
-      "AI-powered content suggestions",
+      "AI-powered content suggestions (Vercel AI SDK)",
       "Real-time PDF preview & generation",
       "Version control for resumes",
-      "Customizable templates"
+      "Drag-and-drop layout editor"
     ],
     link: "https://resumancer.dev",
     repoUrl: "https://github.com/nickborrello/resumancer",
@@ -120,8 +132,25 @@ export const PROJECTS: ProjectItem[] = [
   },
   {
     id: "p2",
+    title: "Morning Dashboard",
+    description: "A Windows XP-inspired personal dashboard featuring Clippy, real-time weather, and schedule management.",
+    tech: ["React", "Vite", "CSS", "DigitalOcean"],
+    features: [
+      "Windows XP aesthetic with Clippy integration",
+      "Real-time WeatherAPI data fetching",
+      "Dynamic day/night background switching",
+      "Persistent user settings"
+    ],
+    link: "https://shark-app-rwrq8.ondigitalocean.app",
+    repoUrl: "https://github.com/nickborrello/final_project",
+    highlight: "React App",
+    status: "Live",
+    date: "2024-05"
+  },
+  {
+    id: "p3",
     title: "Syllablast",
-    description: "A Next.js puzzle game where players reconstruct words by swapping syllables on a 4×4 grid. Features interactive gameplay logic.",
+    description: "A Next.js puzzle game where players reconstruct words by swapping syllables on a 4×4 grid.",
     tech: ["Next.js", "TypeScript", "Tailwind", "React"],
     features: [
       "Daily puzzle challenges",
@@ -137,15 +166,15 @@ export const PROJECTS: ProjectItem[] = [
     date: "2024-05"
   },
   {
-    id: "p3",
+    id: "p4",
     title: "BayState Internal Tools",
-    description: "Building internal tools to automate product registration and integrate with web inventory systems. Focusing on real-time inventory management.",
-    tech: ["Python", "React", "TypeScript", "Automation"],
+    description: "Desktop automation suite for pet product businesses, automating data collection and inventory management.",
+    tech: ["Python", "Pandas", "Automation", "Selenium"],
     features: [
+      "Multi-site competitive pricing analysis",
       "Automated product registration workflow",
-      "Real-time inventory synchronization",
-      "Custom dashboard for metrics",
-      "Role-based access control"
+      "Data quality validation (>95% accuracy)",
+      "Excel/CSV data export"
     ],
     imageUrl: "/staffing_tool.png",
     repoUrl: "https://github.com/nickborrello/BayStateTools",
@@ -156,13 +185,13 @@ export const PROJECTS: ProjectItem[] = [
   {
     id: "p5",
     title: "NEVI Plan Search",
-    description: "Tool designed to help analysts search through state NEVI plans for structured, consistent responses to critical questions.",
-    tech: ["Python", "Data Analysis", "Search"],
+    description: "Desktop tool for analysts to search state NEVI plans using exact keyword and fuzzy string matching.",
+    tech: ["Python", "PyQt6", "PyMuPDF", "NLP"],
     features: [
-      "Keyword frequency analysis",
-      "Contextual snippet extraction",
-      "Batch PDF processing",
-      "Export results to CSV"
+      "Exact & Fuzzy keyword search",
+      "PDF text extraction & highlighting",
+      "NLP preprocessing with spaCy",
+      "Persistent user configuration"
     ],
     imageUrl: "/search_tool.png",
     repoUrl: "https://github.com/nickborrello/NEVI-Search-Tool",
@@ -173,8 +202,8 @@ export const PROJECTS: ProjectItem[] = [
   {
     id: "p6",
     title: "Webware Fullstack Suite",
-    description: "A collection of modern full-stack web applications featuring React, Vite, Node.js, Express, and MongoDB authentication.",
-    tech: ["React", "Node.js", "MongoDB", "Express"],
+    description: "A collection of modern full-stack web applications featuring React, Vite, Node.js, Express, and MongoDB.",
+    tech: ["React", "Vite", "Node.js", "MongoDB", "Express"],
     features: [
       "JWT & Session-based Authentication",
       "RESTful API design patterns",
@@ -187,10 +216,10 @@ export const PROJECTS: ProjectItem[] = [
     date: "2023-10"
   },
   {
-    id: "p4",
+    id: "p7",
     title: "Hospital Kiosk App",
-    description: "Led the frontend team for a JavaFX application used for hospital navigation and service management.",
-    tech: ["Java", "JavaFX", "UI/UX"],
+    description: "Frontend lead for a JavaFX hospital service request and navigation application.",
+    tech: ["Java", "JavaFX", "PostgreSQL", "UI/UX"],
     features: [
       "A* Pathfinding for hospital navigation",
       "Service request management system",
@@ -207,8 +236,8 @@ export const PROJECTS: ProjectItem[] = [
   {
     id: "p8",
     title: "Network Protocols",
-    description: "Implementation of custom network protocols and routing logic simulations using Python.",
-    tech: ["Python", "Networking"],
+    description: "Custom implementation of network protocols and routing logic simulations.",
+    tech: ["Python", "Networking", "Socket.io"],
     features: [
       "Custom packet structure implementation",
       "Routing algorithm simulations",
@@ -220,9 +249,9 @@ export const PROJECTS: ProjectItem[] = [
     date: "2023-03"
   },
   {
-    id: "p7",
+    id: "p9",
     title: "MSP430 Guitar Hero",
-    description: "Embedded interactive rhythm game developed for the MSP430F5529 LaunchPad. Uses hardware interrupts and LCD display.",
+    description: "Embedded rhythm game for the MSP430 LaunchPad using hardware interrupts.",
     tech: ["C", "Embedded", "MSP430"],
     features: [
       "Real-time hardware interrupts",
@@ -235,6 +264,54 @@ export const PROJECTS: ProjectItem[] = [
     status: "Completed",
     date: "2022-12"
   },
+  {
+    id: "p10",
+    title: "Space Invaders DX",
+    description: "A retro arcade shooter recreated with custom shaders and visual effects.",
+    tech: ["C#", "Unity", "HLSL"],
+    features: [
+      "Custom shader effects (HLSL)",
+      "Particle systems & visual FX",
+      "Classic arcade gameplay loop",
+      "High-score persistence"
+    ],
+    repoUrl: "https://github.com/nickborrello/SpaceInvaders",
+    highlight: "Game Dev",
+    status: "Completed",
+    date: "2022-05"
+  },
+  {
+    id: "p11",
+    title: "Axolotl Auctions",
+    description: "Cloud-native auction platform built with AWS CDK and modern web technologies for the CS509 design course.",
+    tech: ["AWS CDK", "TypeScript", "React", "Node.js"],
+    features: [
+      "Infrastructure as Code (IaC) with AWS CDK",
+      "Serverless architecture",
+      "Real-time auction updates",
+      "Secure user authentication"
+    ],
+    repoUrl: "https://github.com/robin-condition/AxolotlAuctions",
+    highlight: "Cloud Native",
+    status: "Completed",
+    date: "2024-11"
+  },
+  {
+    id: "p12",
+    title: "7Factor Staffing Tool",
+    description: "Comprehensive staffing management solution built as a Major Qualifying Project (MQP) for 7Factor Software.",
+    tech: ["React", "Node.js", "Auth0"],
+    features: [
+      "Role-Based Access Control (RBAC)",
+      "Automated infrastructure deployment",
+      "Resource allocation dashboard",
+      "Full-stack microservices architecture"
+    ],
+    repoUrl: "https://github.com/jackson-lundberg/7factorStaffingToolTeam2",
+    highlight: "MQP Capstone",
+    status: "Completed",
+    date: "2023-11"
+  }
 ];
 
 export const CONTACTS: ContactMethod[] = [

@@ -10,7 +10,7 @@ export const TitleScreen: React.FC<TitleScreenProps> = ({ onStart }) => {
 
   // Generate wisps with random properties
   const wisps = useMemo(() => {
-    return Array.from({ length: 40 }).map((_, i) => ({
+    return Array.from({ length: 10 }).map((_, i) => ({
       id: i,
       left: `${Math.random() * 100}%`,
       animationDuration: `${10 + Math.random() * 20}s`, // Varying speeds
@@ -44,7 +44,7 @@ export const TitleScreen: React.FC<TitleScreenProps> = ({ onStart }) => {
       <style>{`
         @keyframes floatUp {
           0% {
-            transform: translateY(120vh) translateX(0) rotate(0deg);
+            transform: translateY(120vh) translateX(-50vw) rotate(0deg);
             opacity: 0;
           }
           10% {
@@ -54,7 +54,7 @@ export const TitleScreen: React.FC<TitleScreenProps> = ({ onStart }) => {
              opacity: var(--target-opacity);
           }
           100% {
-            transform: translateY(-120vh) translateX(50px) rotate(180deg);
+            transform: translateY(-120vh) translateX(100vw) rotate(180deg);
             opacity: 0;
           }
         }
