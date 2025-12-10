@@ -13,6 +13,9 @@ export interface ExperienceItem {
   period?: string;
   description: string;
   skills: string[];
+  location?: string;
+  type?: string;
+  achievements?: string[];
 }
 
 export interface ProjectItem {

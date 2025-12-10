@@ -80,53 +80,81 @@ export const StatusView: React.FC = () => {
           </div>
 
           <div className="flex-1 overflow-y-auto custom-scrollbar p-6">
-            <div className="flex flex-col xl:flex-row gap-6">
+            <div className="flex flex-col xl:flex-row gap-6 min-h-full">
               {/* Main Content */}
               <div className="flex-1 space-y-6">
-                <div className="bg-nier-dark/5 border border-nier-dark/20 p-6 relative nier-header-grid min-h-[200px]">
+                <div className="bg-nier-dark/5 border border-nier-dark/20 p-6 relative nier-header-grid min-h-[160px]">
                   {/* Decorative Corners */}
                   <div className="absolute top-0 left-0 w-2 h-2 border-t border-l border-nier-dark"></div>
                   <div className="absolute top-0 right-0 w-2 h-2 border-t border-r border-nier-dark"></div>
                   <div className="absolute bottom-0 left-0 w-2 h-2 border-b border-l border-nier-dark"></div>
                   <div className="absolute bottom-0 right-0 w-2 h-2 border-b border-r border-nier-dark"></div>
 
-                  <div className="text-xs text-nier-dark/60 font-bold uppercase tracking-widest mb-2 border-b border-nier-dark/20 pb-1">Operational Objective</div>
+                  <div className="text-sm text-nier-dark/60 font-bold uppercase tracking-widest mb-3 border-b border-nier-dark/20 pb-1">Operational Objective</div>
                   <p className="font-tech text-xl text-nier-dark font-medium leading-relaxed">
                     {selectedExperience.description}
                   </p>
                 </div>
 
-                <div className="pl-4 border-l-2 border-nier-dark/20">
-                  <div className="text-sm font-tech text-nier-dark/80 font-medium italic">
-                    "Successfully executed assigned tasks. Performance nominal."
+                {/* Achievements Section */}
+                {selectedExperience.achievements && selectedExperience.achievements.length > 0 && (
+                  <div className="mt-6">
+                     <div className="flex items-center gap-4 mb-4">
+                        <div className="h-px bg-nier-dark/20 flex-1"></div>
+                        <span className="text-sm font-bold uppercase tracking-widest text-nier-dark/70">Mission Records</span>
+                        <div className="h-px bg-nier-dark/20 flex-1"></div>
+                     </div>
+                     <ul className="space-y-3">
+                        {selectedExperience.achievements.map((achievement, i) => (
+                          <li key={i} className="flex gap-3 text-nier-dark/90 items-start">
+                             <div className="mt-1.5 w-1.5 h-1.5 bg-nier-dark rotate-45 flex-shrink-0 opacity-60"></div>
+                             <span className="font-tech text-base leading-snug">{achievement}</span>
+                          </li>
+                        ))}
+                     </ul>
                   </div>
-                </div>
+                )}
               </div>
 
               {/* Sidebar Stats */}
-              <div className="w-full xl:w-72 bg-nier-beige border-t-4 border-nier-dark/10 p-4 font-tech text-nier-dark space-y-4">
-                <div className="text-lg font-bold border-b border-nier-dark/30 pb-1 mb-2">
-                  Parameters
-                </div>
-
-                <div className="space-y-2 text-sm">
-                  <div className="flex justify-between items-center">
-                    <span className="uppercase tracking-wider opacity-70">Role</span>
-                    <span className="font-bold text-right max-w-[150px] truncate">{selectedExperience.role}</span>
+              <div className="w-full xl:w-72 bg-nier-beige border-t-4 border-nier-dark/10 p-4 font-tech text-nier-dark flex flex-col justify-between">
+                <div>
+                  <div className="text-xl font-bold border-b border-nier-dark/30 pb-2 mb-4">
+                    Parameters
                   </div>
-                  <div className="mt-4 pt-2 border-t border-dotted border-nier-dark/30">
-                    <span className="uppercase tracking-wider opacity-70 block mb-2">Capabilities</span>
-                    <div className="flex flex-wrap gap-1 justify-end">
-                      {selectedExperience.skills && selectedExperience.skills.map(skill => (
-                        <span key={skill} className="px-1.5 py-0.5 border border-nier-dark/20 text-[10px] uppercase font-bold text-nier-dark/80 bg-nier-dark/5">
-                          {skill}
-                        </span>
-                      ))}
+
+                  <div className="space-y-3 text-base">
+                    <div className="flex justify-between items-center">
+                      <span className="uppercase tracking-wider opacity-70 text-sm">Role</span>
+                      <span className="font-bold text-right max-w-[150px] truncate">{selectedExperience.role}</span>
+                    </div>
+                    {selectedExperience.location && (
+                      <div className="flex justify-between items-center">
+                        <span className="uppercase tracking-wider opacity-70 text-sm">Location</span>
+                        <span className="font-bold text-right max-w-[150px] truncate">{selectedExperience.location}</span>
+                      </div>
+                    )}
+                     {selectedExperience.type && (
+                      <div className="flex justify-between items-center">
+                        <span className="uppercase tracking-wider opacity-70 text-sm">Type</span>
+                        <span className="font-bold text-right max-w-[150px] truncate">{selectedExperience.type}</span>
+                      </div>
+                    )}
+                    
+                    <div className="mt-6 pt-3 border-t border-dotted border-nier-dark/30">
+                      <span className="uppercase tracking-wider opacity-70 block mb-2 text-sm">Capabilities</span>
+                      <div className="flex flex-wrap gap-1.5 justify-end">
+                        {selectedExperience.skills && selectedExperience.skills.map(skill => (
+                          <span key={skill} className="px-2 py-1 border border-nier-dark/20 text-xs uppercase font-bold text-nier-dark/90 bg-nier-dark/5">
+                            {skill}
+                          </span>
+                        ))}
+                      </div>
                     </div>
                   </div>
                 </div>
 
-                <div className="pt-8 text-center text-xs opacity-50 tracking-[0.2em] uppercase">
+                <div className="pt-8 text-center text-sm opacity-50 tracking-[0.2em] uppercase">
                   Data Verified
                 </div>
               </div>

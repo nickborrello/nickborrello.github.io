@@ -26,15 +26,49 @@ export const WORK_EXPERIENCE: ExperienceItem[] = [
     id: "exp1",
     role: "Software Engineer",
     company: "Baystate Pet & Garden",
+    period: "2023 - Present",
     description: "Building internal tools to automate product registration and integrate with web inventory systems. Focusing on real-time inventory management and process automation.",
-    skills: ["Python", "Automation", "Internal Tools"]
+    location: "Remote / Hybrid",
+    type: "Full-time",
+    skills: ["Python", "Automation", "Internal Tools", "React", "TypeScript", "SQL"],
+    achievements: [
+      "Developed a custom inventory synchronization tool reducing manual entry time by 80%",
+      "Engineered automated product registration scripts for vendor portals",
+      "Built a modern React-based dashboard for real-time sales analytics",
+      "Maintained 99.9% uptime for critical internal business applications"
+    ]
   },
   {
     id: "exp2",
     role: "Process Engineering Intern",
     company: "Allegro Microsystems",
+    period: "2022",
     description: "Created Azure DevOps pipelines to automate test driver deployments. Streamlined CI/CD workflows to improve development efficiency.",
-    skills: ["Azure DevOps", "CI/CD", "Scripting"]
+    location: "Manchester, NH",
+    type: "Internship",
+    skills: ["Azure DevOps", "CI/CD", "PowerShell", "Scripting", "Agile"],
+    achievements: [
+      "Designed and deployed automated CI/CD pipelines for driver testing",
+      "Reduced deployment validation time by 40% through automation",
+      "Collaborated with senior engineers to optimize build configurations",
+      "Documented standard operating procedures for DevOps workflows"
+    ]
+  },
+  {
+    id: "exp3",
+    role: "Undergraduate Student",
+    company: "Worcester Polytechnic Institute",
+    period: "2019 - 2023",
+    description: "Completed rigorous coursework in Computer Science, Software Engineering, and Embedded Systems. Led multiple team projects and research initiatives.",
+    location: "Worcester, MA",
+    type: "Education",
+    skills: ["Java", "C/C++", "System Design", "Algorithms", "Leadership"],
+    achievements: [
+      "Completed Major Qualifying Project (MQP) on advanced graphics engines",
+      "Dean's List for academic excellence (Multiple Semesters)",
+      "Served as Frontend Lead for Hospital Kiosk Service Engineering project",
+      "Specialized in Software Security and Network Protocols"
+    ]
   }
 ];
 
