@@ -78,18 +78,21 @@ export const InventoryView: React.FC = () => {
         <div className="flex-1 flex flex-col bg-nier-beige-dim border border-nier-dark/10 overflow-hidden h-full">
 
           {/* Title Bar - Touches Edges */}
-          <div className="w-full bg-nier-dark py-2 px-4 shadow-sm flex justify-between items-center flex-shrink-0 z-10">
-            <h2 className="text-2xl font-tech text-nier-beige font-bold uppercase tracking-[0.15em]">
+          <div className="w-full bg-nier-dark py-3 px-5 shadow-md flex justify-between items-center flex-shrink-0 z-10 border-b-2 border-nier-beige/10">
+            <h2 className="text-3xl font-tech text-nier-beige font-bold uppercase tracking-[0.15em] drop-shadow-md">
               {selectedProject.title}
             </h2>
-            <div className="flex gap-4">
+            <div className="flex items-center gap-8">
                {selectedProject.date && (
-                  <div className="text-nier-beige/70 text-xs font-tech tracking-widest uppercase">
-                    {selectedProject.date}
+                  <div className="flex flex-col items-end leading-none">
+                    <span className="text-[10px] text-nier-beige/60 uppercase tracking-widest mb-1 font-bold">Release</span>
+                    <span className="text-xl font-tech font-bold text-nier-beige tracking-wider">{selectedProject.date}</span>
                   </div>
                )}
-               <div className="text-nier-beige/50 text-xs font-tech tracking-widest uppercase">
-                 Level: {selectedProject.tech.length}
+               <div className="w-px h-8 bg-nier-beige/20"></div>
+               <div className="flex flex-col items-end leading-none">
+                 <span className="text-[10px] text-nier-beige/60 uppercase tracking-widest mb-1 font-bold">Tech Level</span>
+                 <span className="text-xl font-tech font-bold text-nier-beige tracking-wider">{selectedProject.tech.length}</span>
                </div>
             </div>
           </div>

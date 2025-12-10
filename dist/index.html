@@ -1,105 +1,114 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>nickborrello Portfolio</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@300;400;500;600;700&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
-    <script>
-      tailwind.config = {
-        theme: {
-          extend: {
-            colors: {
-              'nier-beige': '#ded8c1',
-              'nier-beige-dim': '#cfc9b0',
-              'nier-dark': '#4b4845',
-              'nier-darker': '#3a3836',
-              'nier-panel': '#575451',
-              'nier-grid': '#a19d8a',
-            },
-            fontFamily: {
-              tech: ['Rajdhani', 'sans-serif'],
-              sans: ['Inter', 'sans-serif'],
-            },
-            backgroundImage: {
-              'scanlines': "linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%), linear-gradient(90deg, rgba(255, 0, 0, 0.06), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.06))",
-            },
-            animation: {
-              'glitch': 'glitch 1s linear infinite',
-              'scan': 'scan 8s linear infinite',
-            },
-            keyframes: {
-              glitch: {
-                '2%, 64%': { transform: 'translate(2px,0) skew(0deg)' },
-                '4%, 60%': { transform: 'translate(-2px,0) skew(0deg)' },
-                '62%': { transform: 'translate(0,0) skew(5deg)' },
-              }
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Nick's Portfolio</title>
+  <link rel="icon" href="/icon.jpg" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@300;400;500;600;700&family=Inter:wght@300;400;500&display=swap"
+    rel="stylesheet">
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            'nier-beige': '#ded8c1',
+            'nier-beige-dim': '#cfc9b0',
+            'nier-dark': '#4b4845',
+            'nier-darker': '#3a3836',
+            'nier-panel': '#575451',
+            'nier-grid': '#a19d8a',
+          },
+          fontFamily: {
+            tech: ['Rajdhani', 'sans-serif'],
+            sans: ['Inter', 'sans-serif'],
+          },
+          backgroundImage: {
+            'scanlines': "linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%), linear-gradient(90deg, rgba(255, 0, 0, 0.06), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.06))",
+          },
+          animation: {
+            'glitch': 'glitch 1s linear infinite',
+            'scan': 'scan 8s linear infinite',
+          },
+          keyframes: {
+            glitch: {
+              '2%, 64%': { transform: 'translate(2px,0) skew(0deg)' },
+              '4%, 60%': { transform: 'translate(-2px,0) skew(0deg)' },
+              '62%': { transform: 'translate(0,0) skew(5deg)' },
             }
           }
         }
       }
-    </script>
-    <style>
-      body {
-        background-color: #2b2b2b;
-        color: #dad4bb;
-        overflow: hidden;
-      }
-      /* Custom scrollbar for Nier feel */
-      ::-webkit-scrollbar {
-        width: 6px;
-      }
-      ::-webkit-scrollbar-track {
-        background: #dad4bb; 
-      }
-      ::-webkit-scrollbar-thumb {
-        background: #3a3836; 
-      }
-      ::-webkit-scrollbar-thumb:hover {
-        background: #2b2b2b; 
-      }
-      .font-tech {
-        font-family: 'Rajdhani', sans-serif;
-      }
-      
-      /* Reverted background to simple beige */
-      .nier-grid-bg {
-        background-color: #dad4bb; 
-      }
+    }
+  </script>
+  <style>
+    body {
+      background-color: #2b2b2b;
+      color: #dad4bb;
+      overflow: hidden;
+    }
 
-      /* Specific Header Grid Texture - Made much lighter to match app aesthetic */
-      .nier-header-grid {
-        background-color: #dad4bb;
-        background-image: 
-          linear-gradient(rgba(58, 56, 54, 0.03) 1px, transparent 1px),
-          linear-gradient(90deg, rgba(58, 56, 54, 0.03) 1px, transparent 1px);
-        background-size: 3px 3px;
-      }
+    /* Custom scrollbar for Nier feel */
+    ::-webkit-scrollbar {
+      width: 6px;
+    }
 
-      /* Updated Overlay: Fine Grid Mesh instead of Scanlines */
-      .scanline-overlay {
-        background-image: 
-          linear-gradient(rgba(0, 0, 0, 0.05) 1px, transparent 1px),
-          linear-gradient(90deg, rgba(0, 0, 0, 0.05) 1px, transparent 1px);
-        background-size: 3px 3px;
-        position: fixed;
-        pointer-events: none;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        z-index: 9999;
-      }
+    ::-webkit-scrollbar-track {
+      background: #dad4bb;
+    }
 
-      .clip-path-slant {
-        clip-path: polygon(15px 0, 100% 0, 100% 100%, 0% 100%);
-      }
-    </style>
+    ::-webkit-scrollbar-thumb {
+      background: #3a3836;
+    }
 
-<link rel="stylesheet" href="/index.css">
+    ::-webkit-scrollbar-thumb:hover {
+      background: #2b2b2b;
+    }
+
+    .font-tech {
+      font-family: 'Rajdhani', sans-serif;
+    }
+
+    /* Reverted background to simple beige */
+    .nier-grid-bg {
+      background-color: #dad4bb;
+    }
+
+    /* Specific Header Grid Texture - Made much lighter to match app aesthetic */
+    .nier-header-grid {
+      background-color: #dad4bb;
+      background-image:
+        linear-gradient(rgba(58, 56, 54, 0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(58, 56, 54, 0.03) 1px, transparent 1px);
+      background-size: 3px 3px;
+    }
+
+    /* Updated Overlay: Fine Grid Mesh instead of Scanlines */
+    .scanline-overlay {
+      background-image:
+        linear-gradient(rgba(0, 0, 0, 0.05) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0, 0, 0, 0.05) 1px, transparent 1px);
+      background-size: 3px 3px;
+      position: fixed;
+      pointer-events: none;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      z-index: 9999;
+    }
+
+    .clip-path-slant {
+      clip-path: polygon(15px 0, 100% 0, 100% 100%, 0% 100%);
+    }
+  </style>
+
+  <link rel="stylesheet" href="/index.css">
   <script type="importmap">
 {
   "imports": {
@@ -110,9 +119,11 @@
   }
 }
 </script>
-  <script type="module" crossorigin src="/assets/index-CGEam5BO.js"></script>
+  <script type="module" crossorigin src="/assets/index-BoD1iBBt.js"></script>
 </head>
-  <body>
-    <div id="root"></div>
+
+<body>
+  <div id="root"></div>
 </body>
+
 </html>
