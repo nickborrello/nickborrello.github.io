@@ -1,175 +1,154 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useMemo } from 'react';
 
 interface TitleScreenProps {
   onStart: () => void;
 }
 
-const BOOT_SEQUENCE = [
-  "Commencing System Check",
-  "Memory Unit: Green",
-  "Initializing Tactics Log",
-  "Loading Geographic Data",
-  "Vitals: Green",
-  "Remaining MP: 100%",
-  "Black Box Temperature: Normal",
-  "Black Box Internal Pressure: Normal",
-  "Activating IFF",
-  "Activating FCS",
-  "Initializing Network Connection",
-  "Launching DBU Setup",
-  "Activating Inertia Control System",
-  "Activating Environmental Sensors",
-  "Equipment Authentication: Complete",
-  "Equipment Status: Green",
-  "All Systems Green",
-  "Combat Preparations Complete_"
-];
-
 export const TitleScreen: React.FC<TitleScreenProps> = ({ onStart }) => {
-  const [lines, setLines] = useState<string[]>([]);
-  const [currentIndex, setCurrentIndex] = useState(0);
-  const [isComplete, setIsComplete] = useState(false);
-  const scrollRef = useRef<HTMLDivElement>(null);
+  const [hasPressedKey, setHasPressedKey] = useState(false);
+  const [isExiting, setIsExiting] = useState(false);
+  const [canInteract, setCanInteract] = useState(false);
 
-  // Auto-advance the sequence
+  // Prevent immediate interaction (e.g. from the click that loaded this component)
   useEffect(() => {
-    if (currentIndex >= BOOT_SEQUENCE.length) {
-      setIsComplete(true);
-      // Auto-enter after a short delay or wait for interaction
-      // The original game waits, but for a web portfolio, auto-entry is usually smoother.
-      // However, to mimic the "Click to Start" feel but better, let's auto-enter or show a prompt.
-      // Let's do a short 500ms pause then onStart.
-      const timer = setTimeout(() => {
-        onStart();
-      }, 800);
-      return () => clearTimeout(timer);
-    }
-
-    const timer = setTimeout(() => {
-      setLines(prev => [...prev, BOOT_SEQUENCE[currentIndex]]);
-      setCurrentIndex(prev => prev + 1);
-    }, 50 + Math.random() * 80); // Random typing speed variance
-
+    const timer = setTimeout(() => setCanInteract(true), 500);
     return () => clearTimeout(timer);
-  }, [currentIndex, onStart]);
+  }, []);
 
-  // Auto-scroll
-  useEffect(() => {
-    if (scrollRef.current) {
-      scrollRef.current.scrollTop = scrollRef.current.scrollHeight;
+  // Generate wisps with random properties
+  const wisps = useMemo(() => {
+    return Array.from({ length: 15 }).map((_, i) => ({
+      id: i,
+      initialX: `${Math.random() * 100}vw`, // Random horizontal position (0 to 100vw)
+      initialY: `${Math.random() * 100}vh`, // Random vertical position (0 to 100vh)
+      animationDuration: `${10 + Math.random() * 20}s`, // Varying speeds
+      animationDelay: `-${Math.random() * 30}s`, // Random start times
+      size: `${4 + Math.random() * 8}px`, // Much larger max size (4px to 64px)
+      opacity: 0.1 + Math.random() * 0.3, // Subtle opacity
+    }));
+  }, []);
+
+  const handleInteraction = () => {
+    if (!canInteract) return; // Only allow interaction after cooldown
+
+    if (!hasPressedKey) {
+      setHasPressedKey(true);
+      setIsExiting(true);
+      setTimeout(onStart, 1000); // Wait for glitch exit animation
     }
-  }, [lines]);
+  };
+
+  useEffect(() => {
+    window.addEventListener('keydown', handleInteraction);
+    window.addEventListener('click', handleInteraction);
+
+    return () => {
+      window.removeEventListener('keydown', handleInteraction);
+      window.removeEventListener('click', handleInteraction);
+    };
+  }, [hasPressedKey, onStart]);
 
   return (
-    <div className="fixed inset-0 z-50 bg-black text-[#ded8c1] font-tech overflow-hidden cursor-none">
+    <div className={`fixed inset-0 z-50 bg-[#2b2b2b] overflow-hidden flex flex-col items-center justify-center transition-all duration-1000 ${isExiting ? 'opacity-0 scale-105' : 'opacity-100'}`}>
+
       <style>{`
-        @keyframes spin-slow {
-          from { transform: rotate(0deg); }
-          to { transform: rotate(360deg); }
+        @keyframes floatFade {
+          0% {
+            opacity: 0;
+            transform: translate(var(--initial-x), var(--initial-y)) rotate(0deg);
+          }
+          10% {
+            opacity: var(--target-opacity);
+          }
+          50% {
+            opacity: var(--target-opacity);
+            transform: translate(var(--initial-x), calc(var(--initial-y) - 20px)) rotate(5deg);
+          }
+          90% {
+            opacity: var(--target-opacity);
+          }
+          100% {
+            opacity: 0;
+            transform: translate(var(--initial-x), calc(var(--initial-y) - 40px)) rotate(10deg);
+          }
         }
-        @keyframes spin-reverse {
-          from { transform: rotate(360deg); }
-          to { transform: rotate(0deg); }
-        }
-        .loading-ring {
-          border: 2px solid transparent;
-          border-top: 2px solid #ded8c1;
+        .wisp {
+          position: absolute;
+          background: white;
           border-radius: 50%;
+          filter: blur(2px); /* Slight blur for atmosphere */
+          animation-name: floatFade;
+          animation-timing-function: ease-in-out;
+          animation-iteration-count: infinite;
         }
       `}</style>
 
-      {/* Grid Background (Subtle) */}
-      <div
-        className="absolute inset-0 opacity-10 pointer-events-none"
-        style={{
-          backgroundImage: `linear-gradient(#ded8c1 1px, transparent 1px), linear-gradient(90deg, #ded8c1 1px, transparent 1px)`,
-          backgroundSize: `20px 20px`
-        }}
-      />
+      {/* Background Grid */}
+      <div className="absolute inset-0 nier-grid-bg opacity-20 pointer-events-none"></div>
+      <div className="scanline-overlay"></div>
 
-      {/* Scanline Overlay */}
-      <div className="absolute inset-0 pointer-events-none"
-        style={{
-          background: 'linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%), linear-gradient(90deg, rgba(255, 0, 0, 0.06), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.06))',
-          backgroundSize: '100% 2px, 3px 100%'
-        }}
-      />
-
-      {/* Main Container */}
-      <div className="relative z-10 p-8 md:p-16 w-full h-full flex flex-col items-start justify-start">
-
-        {/* Header */}
-        <div className="flex items-center gap-4 mb-8">
-          <h1 className="text-3xl md:text-4xl tracking-widest font-bold">
-            LOADING <span className="text-lg md:text-xl font-normal opacity-80">- BOOTING SYSTEM..</span>
-          </h1>
-        </div>
-
-        {/* Loading Spinner (Top Right) */}
-        <div className="absolute top-8 right-8 md:top-16 md:right-16 w-16 h-16 opacity-80">
-          <div className="absolute inset-0 w-full h-full loading-ring animate-[spin-slow_2s_linear_infinite]" />
-          <div className="absolute inset-2 w-[calc(100%-16px)] h-[calc(100%-16px)] loading-ring animate-[spin-reverse_3s_linear_infinite] border-top-[#ded8c1]" />
-        </div>
-
-        {/* Sequence List */}
-        <div
-          ref={scrollRef}
-          className="flex flex-col gap-2 text-lg md:text-xl tracking-wider opacity-90 max-h-[70vh] overflow-y-auto no-scrollbar"
-        >
-          {lines.map((line, i) => (
-            <div key={i} className="animate-pulse">
-              {line}
-            </div>
-          ))}
-        </div>
-
-      </div>
-
-      {/* Footer / Branding (Subtle, No YoRHa) */}
-      <div className="absolute bottom-8 right-12 text-[#ded8c1]/20 text-sm tracking-[0.2em] font-bold">
-        SYSTEM: nBORRELLO // PORTFOLIO_V2.0
-      </div>
-
-      {/* Floating Wisps / Dust Particles */}
-      <div className="absolute inset-0 pointer-events-none overflow-hidden z-0">
-        {Array.from({ length: 20 }).map((_, i) => (
+      {/* Floating Wisps Layer */}
+      <div className="absolute inset-0 pointer-events-none overflow-hidden">
+        {wisps.map((wisp) => (
           <div
-            key={i}
-            className="absolute bg-[#ded8c1] rounded-full opacity-0 animate-[float_10s_ease-in-out_infinite]"
+            key={wisp.id}
+            className="wisp"
             style={{
-              width: Math.random() * 4 + 2 + 'px',
-              height: Math.random() * 4 + 2 + 'px',
-              left: Math.random() * 100 + '%',
-              top: Math.random() * 100 + '%',
-              animationDelay: Math.random() * 5 + 's',
-              animationDuration: Math.random() * 10 + 10 + 's',
-            }}
+              width: wisp.size,
+              height: wisp.size,
+              animationDuration: wisp.animationDuration,
+              animationDelay: wisp.animationDelay,
+              '--target-opacity': wisp.opacity,
+              '--initial-x': wisp.initialX,
+              '--initial-y': wisp.initialY,
+            } as React.CSSProperties}
           />
         ))}
       </div>
 
-      <style>{`
-        @keyframes spin-slow {
-          from { transform: rotate(0deg); }
-          to { transform: rotate(360deg); }
-        }
-        @keyframes spin-reverse {
-          from { transform: rotate(360deg); }
-          to { transform: rotate(0deg); }
-        }
-        @keyframes float {
-           0% { transform: translateY(0) translateX(0); opacity: 0; }
-           20% { opacity: 0.2; }
-           50% { opacity: 0.5; transform: translateY(-20px) translateX(10px); }
-           80% { opacity: 0.2; }
-           100% { transform: translateY(-40px) translateX(20px); opacity: 0; }
-        }
-        .loading-ring {
-          border: 2px solid transparent;
-          border-top: 2px solid #ded8c1;
-          border-radius: 50%;
-        }
-      `}</style>
+      {/* Main Content */}
+      <div className="relative z-10 text-center space-y-12">
+
+        {/* Title Group */}
+        <div className="relative">
+          <h1 className="font-tech text-6xl md:text-8xl text-nier-beige tracking-[0.2em] font-bold relative z-10 animate-pulse">
+            NicK:BoRRello
+          </h1>
+          {/* Glitch Shadow */}
+          <h1 className="font-tech text-6xl md:text-8xl text-red-500/50 tracking-[0.2em] font-bold absolute top-0 left-0 animate-glitch opacity-50 z-0">
+            NicK:BoRRello
+          </h1>
+
+          <div className="text-xl md:text-2xl text-nier-beige-dim font-tech tracking-[0.5em] mt-2 uppercase">
+            Portfolio Ver. 2.0
+          </div>
+        </div>
+
+        {/* Start Prompt */}
+        <div className="mt-24">
+          {!isExiting ? (
+            <div className="animate-pulse">
+              <span className="bg-nier-beige text-nier-darker px-4 py-1 text-lg font-tech tracking-widest font-bold cursor-pointer">
+                CLICK TO ENTER
+              </span>
+            </div>
+          ) : (
+            <div className="space-y-1">
+              <div className="text-nier-beige font-tech tracking-widest text-sm">INITIALIZING...</div>
+              <div className="w-48 h-1 bg-nier-dark mx-auto overflow-hidden">
+                <div className="h-full bg-nier-beige animate-[scan_1s_ease-in-out_infinite]"></div>
+              </div>
+            </div>
+          )}
+        </div>
+      </div>
+
+      {/* Footer Legal */}
+      <div className="absolute bottom-8 text-center w-full">
+        <p className="text-nier-beige-dim/40 text-[10px] font-tech tracking-widest uppercase">
+          © 2024 Nick Borrello
+        </p>
+      </div>
 
     </div>
   );

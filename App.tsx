@@ -7,6 +7,7 @@ import { MessagesView } from './components/views/MessagesView';
 import { EquipmentView } from './components/views/EquipmentView';
 import { Footer } from './components/Footer';
 import { TitleScreen } from './components/TitleScreen';
+import { BootScreen } from './components/BootScreen';
 
 function App() {
   const [mounted, setMounted] = useState(false);
@@ -75,8 +76,11 @@ function App() {
   if (!mounted) return <div className="bg-nier-darker h-screen w-screen" />;
 
   if (gameState === 'TITLE') {
-    // TitleScreen now handles the full boot sequence visuals
-    return <TitleScreen onStart={() => setGameState('APP')} />;
+    return <TitleScreen onStart={() => setGameState('BOOT')} />;
+  }
+
+  if (gameState === 'BOOT') {
+    return <BootScreen onComplete={() => setGameState('APP')} />;
   }
 
   return (
