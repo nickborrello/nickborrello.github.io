@@ -23,7 +23,7 @@ export const StatusView: React.FC = () => {
           </h1>
         </div>
         <span className="text-xl md:text-2xl font-tech text-nier-dark/70 tracking-widest uppercase -ml-2">
-          - Career Log
+          - Professional History
         </span>
       </div>
 
@@ -90,7 +90,7 @@ export const StatusView: React.FC = () => {
                   <div className="absolute bottom-0 left-0 w-2 h-2 border-b border-l border-nier-dark"></div>
                   <div className="absolute bottom-0 right-0 w-2 h-2 border-b border-r border-nier-dark"></div>
 
-                  <div className="text-sm text-nier-dark/60 font-bold uppercase tracking-widest mb-3 border-b border-nier-dark/20 pb-1">Operational Objective</div>
+                  <div className="text-sm text-nier-dark/60 font-bold uppercase tracking-widest mb-3 border-b border-nier-dark/20 pb-1">Role Summary</div>
                   <p className="font-tech text-xl text-nier-dark font-medium leading-relaxed">
                     {selectedExperience.description}
                   </p>
@@ -101,7 +101,7 @@ export const StatusView: React.FC = () => {
                   <div className="mt-6">
                      <div className="flex items-center gap-4 mb-4">
                         <div className="h-px bg-nier-dark/20 flex-1"></div>
-                        <span className="text-sm font-bold uppercase tracking-widest text-nier-dark/70">Mission Records</span>
+                        <span className="text-sm font-bold uppercase tracking-widest text-nier-dark/70">Key Achievements</span>
                         <div className="h-px bg-nier-dark/20 flex-1"></div>
                      </div>
                      <ul className="space-y-3">
@@ -120,7 +120,7 @@ export const StatusView: React.FC = () => {
               <div className="w-full xl:w-72 bg-nier-beige border-t-4 border-nier-dark/10 p-4 font-tech text-nier-dark flex flex-col justify-between">
                 <div>
                   <div className="text-xl font-bold border-b border-nier-dark/30 pb-2 mb-4">
-                    Parameters
+                    Role Details
                   </div>
 
                   <div className="space-y-3 text-base">
@@ -142,7 +142,7 @@ export const StatusView: React.FC = () => {
                     )}
                     
                     <div className="mt-6 pt-3 border-t border-dotted border-nier-dark/30">
-                      <span className="uppercase tracking-wider opacity-70 block mb-2 text-sm">Capabilities</span>
+                      <span className="uppercase tracking-wider opacity-70 block mb-2 text-sm">Skills Used</span>
                       <div className="flex flex-wrap gap-1.5 justify-end">
                         {selectedExperience.skills && selectedExperience.skills.map(skill => (
                           <span key={skill} className="px-2 py-1 border border-nier-dark/20 text-xs uppercase font-bold text-nier-dark/90 bg-nier-dark/5">
@@ -152,10 +152,6 @@ export const StatusView: React.FC = () => {
                       </div>
                     </div>
                   </div>
-                </div>
-
-                <div className="pt-8 text-center text-sm opacity-50 tracking-[0.2em] uppercase">
-                  Data Verified
                 </div>
               </div>
             </div>

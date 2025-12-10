@@ -33,7 +33,7 @@ export const EquipmentView: React.FC = () => {
                </h1>
             </div>
             <span className="text-xl md:text-2xl font-tech text-nier-dark/70 tracking-widest uppercase -ml-2">
-               - Proficiency
+               - Technical Skills
             </span>
          </div>
 
@@ -54,14 +54,14 @@ export const EquipmentView: React.FC = () => {
                                  {category}S
                               </span>
                               <span className="text-[10px] font-tech opacity-70 tracking-widest">
-                                 LEVEL
+                                 PROFICIENCY
                               </span>
                            </div>
 
                            {/* Skills in Category */}
                            <div className="space-y-1 px-1">
                               {categorySkills.map((skill) => {
-                                 const cost = skill.level === 'S-Tier' ? '[21]' : skill.level === 'A-Tier' ? '[14]' : '[7]';
+                                 const proficiency = skill.level === 'S-Tier' ? 'Expert' : skill.level === 'A-Tier' ? 'Advanced' : 'Intermediate';
                                  const isSelected = selectedSkillId === skill.id;
 
                                  return (
@@ -82,8 +82,8 @@ export const EquipmentView: React.FC = () => {
                                        <div className="flex-1 font-tech text-lg font-bold tracking-wide uppercase text-black">
                                           {skill.name}
                                        </div>
-                                       <div className="font-tech text-sm tracking-widest opacity-70 font-bold text-black">
-                                          {cost}
+                                       <div className="font-tech text-xs tracking-widest opacity-70 font-bold text-black uppercase">
+                                          {proficiency}
                                        </div>
                                     </div>
                                  );
@@ -95,13 +95,13 @@ export const EquipmentView: React.FC = () => {
 
                   {/* Filler/Empty Slots */}
                   <div className="opacity-40 mt-4 pt-4 border-t border-nier-dark/10 px-1">
-                     <div className="text-[10px] font-tech uppercase tracking-widest mb-1 pl-2">Available Slots</div>
+                     <div className="text-[10px] font-tech uppercase tracking-widest mb-1 pl-2">Future Growth</div>
                      {Array.from({ length: 3 }).map((_, i) => (
                         <div key={`filler-${i}`} className="flex items-center gap-2 p-1">
                            <div className="w-4"></div>
                            <div className="w-6 h-6 border border-nier-dark/30 border-dashed"></div>
                            <div className="flex-1 font-tech text-lg tracking-wide uppercase text-black font-medium">
-                              EMPTY
+                              Planned
                            </div>
                            <div className="font-tech text-sm tracking-widest font-bold">
                               [--]
@@ -173,7 +173,7 @@ export const EquipmentView: React.FC = () => {
             {/* RIGHT COLUMN: Details Panel */}
             <div className="flex-1 bg-nier-beige-dim border border-nier-dark/10 p-6 relative flex flex-col overflow-y-auto custom-scrollbar">
                <div className="absolute top-0 left-0 w-full bg-nier-dark text-nier-beige px-3 py-1 text-sm md:text-base font-tech font-bold uppercase tracking-widest">
-                  SKILL DETAILS
+                  TECHNOLOGY DETAILS
                </div>
 
                {activeSkill ? (
@@ -182,8 +182,8 @@ export const EquipmentView: React.FC = () => {
                         <h2 className="text-4xl font-tech uppercase font-bold text-black tracking-wide">
                            {activeSkill.name}
                         </h2>
-                        <div className="text-lg font-tech text-black/60 font-bold tracking-widest">
-                           LVL: {activeSkill.level}
+                        <div className="text-xs font-tech text-black/60 font-bold tracking-widest uppercase">
+                           {activeSkill.level === 'S-Tier' ? 'Expert' : activeSkill.level === 'A-Tier' ? 'Advanced' : 'Intermediate'}
                         </div>
                      </div>
 

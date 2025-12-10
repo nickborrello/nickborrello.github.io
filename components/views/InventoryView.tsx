@@ -34,7 +34,7 @@ export const InventoryView: React.FC = () => {
           </h1>
         </div>
         <span className="text-xl md:text-2xl font-tech text-nier-dark/70 tracking-widest uppercase -ml-2">
-          - Archives
+          - Portfolio
         </span>
       </div>
 
@@ -105,10 +105,7 @@ export const InventoryView: React.FC = () => {
                     ) : (
                       <div className="w-full h-full flex flex-col items-center justify-center border-2 border-dashed border-nier-dark/20 bg-nier-beige/50">
                         <div className="text-nier-dark/40 font-tech font-bold text-lg uppercase tracking-widest mb-2">
-                          Visual Data Missing
-                        </div>
-                        <div className="text-nier-dark/20 text-xs font-tech tracking-[0.2em] uppercase">
-                          [Archive Corrupted]
+                          No Preview Available
                         </div>
                       </div>
                     )}
@@ -175,10 +172,6 @@ export const InventoryView: React.FC = () => {
                 </div>
 
                 <div>
-                  <div className="pt-8 text-center text-sm opacity-50 tracking-[0.2em] uppercase mb-4">
-                    No Error
-                  </div>
-
                   <div className="space-y-3">
                     {selectedProject.link && selectedProject.link !== '#' ? (
                       <a
@@ -187,7 +180,7 @@ export const InventoryView: React.FC = () => {
                         rel="noopener noreferrer"
                         className="block w-full text-center py-3 border border-nier-dark text-nier-dark hover:bg-nier-dark hover:text-nier-beige transition-colors uppercase tracking-widest font-bold text-sm"
                       >
-                        Execute / Demo
+                        View Live Demo
                       </a>
                     ) : null}
                     
