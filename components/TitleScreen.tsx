@@ -40,16 +40,19 @@ export const TitleScreen: React.FC<TitleScreenProps> = ({ onStart }) => {
 
   useEffect(() => {
     window.addEventListener('keydown', handleInteraction);
-    window.addEventListener('click', handleInteraction);
+    // window.addEventListener('click', handleInteraction); // Not needed if we use onClick on the div, but good for safety
 
     return () => {
       window.removeEventListener('keydown', handleInteraction);
-      window.removeEventListener('click', handleInteraction);
+      // window.removeEventListener('click', handleInteraction);
     };
-  }, [hasPressedKey, onStart]);
+  }, [hasPressedKey, onStart, canInteract]);
 
   return (
-    <div className={`fixed inset-0 z-50 bg-[#2b2b2b] overflow-hidden flex flex-col items-center justify-center transition-all duration-1000 ${isExiting ? 'opacity-0 scale-105' : 'opacity-100'}`}>
+    <div
+      className={`fixed inset-0 z-50 bg-[#2b2b2b] overflow-hidden flex flex-col items-center justify-center transition-all duration-1000 ${isExiting ? 'opacity-0 scale-105' : 'opacity-100'}`}
+      onClick={handleInteraction}
+    >
 
       <style>{`
         @keyframes floatFade {
@@ -62,14 +65,14 @@ export const TitleScreen: React.FC<TitleScreenProps> = ({ onStart }) => {
           }
           50% {
             opacity: var(--target-opacity);
-            transform: translate(var(--initial-x), calc(var(--initial-y) - 20px)) rotate(5deg);
+            transform: translate(var(--initial-x), calc(var(--initial-y) - 120px)) rotate(5deg);
           }
           90% {
             opacity: var(--target-opacity);
           }
           100% {
             opacity: 0;
-            transform: translate(var(--initial-x), calc(var(--initial-y) - 40px)) rotate(10deg);
+            transform: translate(var(--initial-x), calc(var(--initial-y) - 240px)) rotate(10deg);
           }
         }
         .wisp {
@@ -107,7 +110,7 @@ export const TitleScreen: React.FC<TitleScreenProps> = ({ onStart }) => {
       </div>
 
       {/* Main Content */}
-      <div className="relative z-10 text-center space-y-12">
+      <div className="relative z-10 text-center space-y-12 select-none">
 
         {/* Title Group */}
         <div className="relative">
@@ -125,7 +128,7 @@ export const TitleScreen: React.FC<TitleScreenProps> = ({ onStart }) => {
         </div>
 
         {/* Start Prompt */}
-        <div className="mt-24">
+        <div className="mt-24 cursor-pointer hover:scale-105 transition-transform" onClick={handleInteraction}>
           {!isExiting ? (
             <div className="animate-pulse">
               <span className="bg-nier-beige text-nier-darker px-4 py-1 text-lg font-tech tracking-widest font-bold cursor-pointer">
