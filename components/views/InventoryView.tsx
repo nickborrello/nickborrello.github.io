@@ -88,7 +88,7 @@ export const InventoryView: React.FC = () => {
           </div>
 
           <div className="flex-1 overflow-y-auto custom-scrollbar p-6">
-            <div className="flex flex-col xl:flex-row gap-6">
+            <div className="flex flex-col xl:flex-row gap-6 min-h-full">
               {/* Image & Description Block */}
               <div className="flex-1 space-y-6">
 
@@ -129,75 +129,79 @@ export const InventoryView: React.FC = () => {
               </div>
 
               {/* Status / Stats Block */}
-              <div className="w-full xl:w-72 bg-nier-beige border-t-4 border-nier-dark/10 p-4 font-tech text-nier-dark space-y-4">
-                <div className="text-lg font-bold border-b border-nier-dark/30 pb-1 mb-2">
-                  Status
-                </div>
+              <div className="w-full xl:w-72 bg-nier-beige border-t-4 border-nier-dark/10 p-4 font-tech text-nier-dark flex flex-col justify-between">
+                <div>
+                  <div className="text-xl font-bold border-b border-nier-dark/30 pb-2 mb-4">
+                    Status
+                  </div>
 
-                <div className="space-y-2 text-sm">
-                  <div className="flex justify-between items-center">
-                    <span className="uppercase tracking-wider opacity-70">Category</span>
-                    <span className="font-bold">Web Application</span>
-                  </div>
-                  <div className="flex justify-between items-center">
-                    <span className="uppercase tracking-wider opacity-70">Status</span>
-                    <span className="font-bold text-right max-w-[120px] truncate">{selectedProject.status || "Unknown"}</span>
-                  </div>
-                  <div className="flex justify-between items-center">
-                    <span className="uppercase tracking-wider opacity-70">Highlight</span>
-                    <span className="font-bold text-right max-w-[120px] truncate">{selectedProject.highlight}</span>
-                  </div>
-                  
-                  {/* Features List */}
-                  {selectedProject.features && selectedProject.features.length > 0 && (
-                    <div className="mt-4 pt-2 border-t border-dotted border-nier-dark/30">
-                      <span className="uppercase tracking-wider opacity-70 block mb-2">Key Features</span>
-                      <ul className="list-disc list-inside text-xs space-y-1 opacity-90">
-                        {selectedProject.features.map((feature, i) => (
-                          <li key={i}>{feature}</li>
+                  <div className="space-y-3 text-base">
+                    <div className="flex justify-between items-center">
+                      <span className="uppercase tracking-wider opacity-70 text-sm">Category</span>
+                      <span className="font-bold">Web Application</span>
+                    </div>
+                    <div className="flex justify-between items-center">
+                      <span className="uppercase tracking-wider opacity-70 text-sm">Status</span>
+                      <span className="font-bold text-right max-w-[140px] truncate">{selectedProject.status || "Unknown"}</span>
+                    </div>
+                    <div className="flex justify-between items-center">
+                      <span className="uppercase tracking-wider opacity-70 text-sm">Highlight</span>
+                      <span className="font-bold text-right max-w-[140px] truncate">{selectedProject.highlight}</span>
+                    </div>
+                    
+                    {/* Features List */}
+                    {selectedProject.features && selectedProject.features.length > 0 && (
+                      <div className="mt-6 pt-3 border-t border-dotted border-nier-dark/30">
+                        <span className="uppercase tracking-wider opacity-70 block mb-2 text-sm">Key Features</span>
+                        <ul className="list-disc list-inside text-sm space-y-1.5 opacity-90 pl-1">
+                          {selectedProject.features.map((feature, i) => (
+                            <li key={i}>{feature}</li>
+                          ))}
+                        </ul>
+                      </div>
+                    )}
+
+                    <div className="mt-6 pt-3 border-t border-dotted border-nier-dark/30">
+                      <span className="uppercase tracking-wider opacity-70 block mb-2 text-sm">Technologies</span>
+                      <div className="flex flex-wrap gap-1.5 justify-end">
+                        {selectedProject.tech.map(t => (
+                          <span key={t} className="px-2 py-1 border border-nier-dark/20 text-xs uppercase font-bold text-nier-dark/90 bg-nier-dark/5">
+                            {t}
+                          </span>
                         ))}
-                      </ul>
-                    </div>
-                  )}
-
-                  <div className="mt-4 pt-2 border-t border-dotted border-nier-dark/30">
-                    <span className="uppercase tracking-wider opacity-70 block mb-2">Technologies</span>
-                    <div className="flex flex-wrap gap-1 justify-end">
-                      {selectedProject.tech.map(t => (
-                        <span key={t} className="px-1.5 py-0.5 border border-nier-dark/20 text-[10px] uppercase font-bold text-nier-dark/80 bg-nier-dark/5">
-                          {t}
-                        </span>
-                      ))}
+                      </div>
                     </div>
                   </div>
                 </div>
 
-                <div className="pt-8 text-center text-xs opacity-50 tracking-[0.2em] uppercase">
-                  No Error
-                </div>
+                <div>
+                  <div className="pt-8 text-center text-sm opacity-50 tracking-[0.2em] uppercase mb-4">
+                    No Error
+                  </div>
 
-                <div className="pt-4 space-y-2">
-                  {selectedProject.link && selectedProject.link !== '#' ? (
-                    <a
-                      href={selectedProject.link}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="block w-full text-center py-2 border border-nier-dark text-nier-dark hover:bg-nier-dark hover:text-nier-beige transition-colors uppercase tracking-widest font-bold text-xs"
-                    >
-                      Execute / Demo
-                    </a>
-                  ) : null}
-                  
-                  {selectedProject.repoUrl ? (
-                    <a
-                      href={selectedProject.repoUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="block w-full text-center py-2 border border-nier-dark/50 text-nier-dark/70 hover:bg-nier-dark/10 transition-colors uppercase tracking-widest font-bold text-xs"
-                    >
-                      Source Code
-                    </a>
-                  ) : null}
+                  <div className="space-y-3">
+                    {selectedProject.link && selectedProject.link !== '#' ? (
+                      <a
+                        href={selectedProject.link}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="block w-full text-center py-3 border border-nier-dark text-nier-dark hover:bg-nier-dark hover:text-nier-beige transition-colors uppercase tracking-widest font-bold text-sm"
+                      >
+                        Execute / Demo
+                      </a>
+                    ) : null}
+                    
+                    {selectedProject.repoUrl ? (
+                      <a
+                        href={selectedProject.repoUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="block w-full text-center py-3 border border-nier-dark/50 text-nier-dark/70 hover:bg-nier-dark/10 transition-colors uppercase tracking-widest font-bold text-sm"
+                      >
+                        Source Code
+                      </a>
+                    ) : null}
+                  </div>
                 </div>
               </div>
             </div>
