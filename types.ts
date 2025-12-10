@@ -29,7 +29,8 @@ export interface ProjectItem {
   repoUrl?: string;
   highlight?: string;
   status?: string;
-  date?: string; // Format: YYYY-MM
+  startDate?: string; // Format: MM-YYYY
+  endDate?: string; // Format: MM-YYYY or "Present"
 }
 
 export interface ContactMethod {

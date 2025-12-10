@@ -35,9 +35,9 @@ export const WORK_EXPERIENCE: ExperienceItem[] = [
     id: "exp1",
     role: "Software Engineer",
     company: "Baystate Pet & Garden",
-    period: "2023 - Present",
+    period: "07-2024 - Present",
     description: "Building internal tools to automate product registration and integrate with web inventory systems. Focusing on real-time inventory management and process automation.",
-    location: "Remote / Hybrid",
+    location: "Taunton, MA",
     type: "Full-time",
     skills: ["Python", "Automation", "Internal Tools", "React", "TypeScript", "SQL"],
     achievements: [
@@ -51,7 +51,7 @@ export const WORK_EXPERIENCE: ExperienceItem[] = [
     id: "exp2",
     role: "Process Engineering Intern",
     company: "Allegro Microsystems",
-    period: "2022",
+    period: "06-2023 - 08-2023",
     description: "Created Azure DevOps pipelines to automate test driver deployments. Streamlined CI/CD workflows to improve development efficiency.",
     location: "Manchester, NH",
     type: "Internship",
@@ -65,18 +65,17 @@ export const WORK_EXPERIENCE: ExperienceItem[] = [
   },
   {
     id: "exp3",
-    role: "Undergraduate Student",
+    role: "Master of Science in Computer Science",
     company: "Worcester Polytechnic Institute",
-    period: "2019 - 2023",
+    period: "08-2020 - 08-2025",
     description: "Completed rigorous coursework in Computer Science, Software Engineering, and Embedded Systems. Led multiple team projects and research initiatives.",
     location: "Worcester, MA",
     type: "Education",
     skills: ["Java", "C/C++", "System Design", "Algorithms", "Leadership"],
     achievements: [
-      "Completed Major Qualifying Project (MQP) on advanced graphics engines",
+      "Completed mutiple team-based software engineering projects for real-world clients",
       "Dean's List for academic excellence (Multiple Semesters)",
-      "Served as Frontend Lead for Hospital Kiosk Service Engineering project",
-      "Specialized in Software Security and Network Protocols"
+      "Specialized in Software and AI Applications",
     ]
   }
 ];
@@ -128,7 +127,8 @@ export const PROJECTS: ProjectItem[] = [
     repoUrl: "https://github.com/nickborrello/resumancer",
     highlight: "Active Development",
     status: "Beta",
-    date: "2024-12"
+    startDate: "09-2025",
+    endDate: "Present"
   },
   {
     id: "p2",
@@ -145,7 +145,8 @@ export const PROJECTS: ProjectItem[] = [
     repoUrl: "https://github.com/nickborrello/final_project",
     highlight: "React App",
     status: "Live",
-    date: "2024-05"
+    startDate: "05-2024",
+    endDate: "05-2024"
   },
   {
     id: "p3",
@@ -163,24 +164,8 @@ export const PROJECTS: ProjectItem[] = [
     repoUrl: "https://github.com/nickborrello/syllablast",
     highlight: "Deployed & Playable",
     status: "Live",
-    date: "2024-05"
-  },
-  {
-    id: "p4",
-    title: "BayState Internal Tools",
-    description: "Desktop automation suite for pet product businesses, automating data collection and inventory management.",
-    tech: ["Python", "Pandas", "Automation", "Selenium"],
-    features: [
-      "Multi-site competitive pricing analysis",
-      "Automated product registration workflow",
-      "Data quality validation (>95% accuracy)",
-      "Excel/CSV data export"
-    ],
-    imageUrl: "/staffing_tool.png",
-    repoUrl: "https://github.com/nickborrello/BayStateTools",
-    highlight: "Production Tooling",
-    status: "In Production",
-    date: "2024-03"
+    startDate: "10-2024",
+    endDate: "10-2024"
   },
   {
     id: "p5",
@@ -197,7 +182,8 @@ export const PROJECTS: ProjectItem[] = [
     repoUrl: "https://github.com/nickborrello/NEVI-Search-Tool",
     highlight: "Data Tool",
     status: "Completed",
-    date: "2023-11"
+    startDate: "11-2023",
+    endDate: "11-2023"
   },
   {
     id: "p6",
@@ -213,7 +199,8 @@ export const PROJECTS: ProjectItem[] = [
     repoUrl: "https://github.com/nickborrello/webware-react-vite-app",
     highlight: "Fullstack Coursework",
     status: "Completed",
-    date: "2023-10"
+    startDate: "10-2023",
+    endDate: "10-2023"
   },
   {
     id: "p7",
@@ -231,7 +218,8 @@ export const PROJECTS: ProjectItem[] = [
     repoUrl: "https://github.com/CS-3733-D23-Team-E",
     highlight: "Frontend Lead",
     status: "Completed",
-    date: "2023-04"
+    startDate: "04-2023",
+    endDate: "04-2023"
   },
   {
     id: "p8",
@@ -246,7 +234,8 @@ export const PROJECTS: ProjectItem[] = [
     ],
     repoUrl: "https://github.com/nickborrello/python-network-protocols",
     status: "Completed",
-    date: "2023-03"
+    startDate: "03-2023",
+    endDate: "03-2023"
   },
   {
     id: "p9",
@@ -262,7 +251,8 @@ export const PROJECTS: ProjectItem[] = [
     repoUrl: "https://github.com/nickborrello/msp430-embedded-projects",
     highlight: "Embedded C",
     status: "Completed",
-    date: "2022-12"
+    startDate: "12-2022",
+    endDate: "12-2022"
   },
   {
     id: "p10",
@@ -278,7 +268,8 @@ export const PROJECTS: ProjectItem[] = [
     repoUrl: "https://github.com/nickborrello/SpaceInvaders",
     highlight: "Game Dev",
     status: "Completed",
-    date: "2022-05"
+    startDate: "05-2022",
+    endDate: "05-2022"
   },
   {
     id: "p11",
@@ -294,7 +285,8 @@ export const PROJECTS: ProjectItem[] = [
     repoUrl: "https://github.com/robin-condition/AxolotlAuctions",
     highlight: "Cloud Native",
     status: "Completed",
-    date: "2024-11"
+    startDate: "11-2024",
+    endDate: "11-2024"
   },
   {
     id: "p12",
@@ -310,13 +302,14 @@ export const PROJECTS: ProjectItem[] = [
     repoUrl: "https://github.com/jackson-lundberg/7factorStaffingToolTeam2",
     highlight: "MQP Capstone",
     status: "Completed",
-    date: "2023-11"
+    startDate: "08-2023",
+    endDate: "05-2024"
   }
 ];
 
 export const CONTACTS: ContactMethod[] = [
+  { platform: "Email", handle: "Direct Connect", link: "mailto:nvborrello@gmail.com", icon: Mail, status: "Direct" },
   { platform: "GitHub", handle: "@nickborrello", link: "https://github.com/nickborrello", icon: Github, status: "Active" },
   { platform: "LinkedIn", handle: "nicholasborrello", link: "https://www.linkedin.com/in/nicholasborrello/", icon: Linkedin, status: "Professional" },
   { platform: "Trailhead", handle: "nborrello", link: "https://www.salesforce.com/trailblazer/nborrello", icon: Cloud, status: "Learning" },
-  { platform: "Email", handle: "Direct Connect", link: "mailto:nvborrello@gmail.com", icon: Mail, status: "Direct" },
 ];

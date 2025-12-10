@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { SKILLS, PROJECTS } from '../../data';
 import { SkillItem } from '../../types';
-import { ExternalLink } from 'lucide-react';
+import { ExternalLink, Github } from 'lucide-react';
 
 export const EquipmentView: React.FC = () => {
    const [selectedSkillId, setSelectedSkillId] = useState<string | null>(SKILLS[0]?.id || null);
@@ -14,7 +14,17 @@ export const EquipmentView: React.FC = () => {
 
    // Helper to find projects using the skill
    const getAssociatedProjects = (skillName: string) => {
-      return PROJECTS.filter(p => p.tech.includes(skillName));
+      const filtered = PROJECTS.filter(p => p.tech.includes(skillName));
+      return filtered.sort((a, b) => {
+         const getDateValue = (date: string) => {
+            if (date === "Present") return 999999;
+            const [month, year] = date.split('-').map(Number);
+            return year * 100 + month;
+         };
+         const aEnd = getDateValue(a.endDate || a.startDate || '');
+         const bEnd = getDateValue(b.endDate || b.startDate || '');
+         return bEnd - aEnd;
+      });
    };
 
    const activeSkill = SKILLS.find(s => s.id === selectedSkillId);
@@ -116,7 +126,7 @@ export const EquipmentView: React.FC = () => {
             <div className="hidden lg:flex lg:w-[25%] flex-col items-center justify-center bg-nier-grid-bg relative">
 
                {/* The Stack Stick */}
-               <div className="w-32 h-full border-2 border-nier-dark bg-nier-beige flex flex-col-reverse p-1 gap-[1px] shadow-lg relative">
+               <div className="w-32 h-full border-2 border-nier-dark bg-nier-beige flex flex-col-reverse shadow-lg relative">
                   {/* Core (Bottom) */}
                   <div className="h-12 w-full bg-nier-dark/10 border border-nier-dark flex items-center justify-center relative flex-shrink-0 z-10">
                      <span className="text-[10px] font-tech uppercase tracking-tighter text-black font-bold rotate-90 opacity-60">CORE</span>
@@ -137,9 +147,9 @@ export const EquipmentView: React.FC = () => {
 
                               // Base styles
                               let bgClass = '';
-                              if (skill.category === 'Language') bgClass = 'bg-nier-panel/60 text-nier-beige';
-                              if (skill.category === 'Framework') bgClass = 'bg-nier-panel/40 text-black';
-                              if (skill.category === 'Tool') bgClass = 'bg-nier-panel/20 text-black';
+                              if (skill.category === 'Language') bgClass = 'bg-[#dfc87f] text-[#3a3836]';
+                              if (skill.category === 'Framework') bgClass = 'bg-[#c4b090] text-[#3a3836]';
+                              if (skill.category === 'Tool') bgClass = 'bg-[#d6998d] text-[#3a3836]';
 
                               return (
                                  <div
@@ -149,7 +159,7 @@ export const EquipmentView: React.FC = () => {
                                     className={`
                                     w-full border border-nier-dark/40 relative flex items-center justify-center transition-all duration-200 cursor-pointer min-h-[20px]
                                     ${isSelected ? 'bg-nier-dark text-nier-beige scale-105 z-20 shadow-xl border-nier-beige' : bgClass}
-                                    ${isDimmed ? 'opacity-30 grayscale' : 'opacity-100'}
+                                    ${isDimmed ? 'opacity-[0.85] saturate-[.75]' : 'opacity-100'}
                                     hover:brightness-110
                                   `}
                                  >
@@ -158,12 +168,7 @@ export const EquipmentView: React.FC = () => {
                               );
                            })}
 
-                           {/* Divider */}
-                           {index < stackCategories.length - 1 && (
-                              <div className="w-full h-3 my-0.5 flex items-center justify-center relative flex-shrink-0">
-                                 <div className="absolute w-full border-t border-nier-dark border-dashed opacity-30"></div>
-                              </div>
-                           )}
+
                         </React.Fragment>
                      );
                   })}
@@ -206,19 +211,40 @@ export const EquipmentView: React.FC = () => {
 
                         <div className="space-y-3">
                            {getAssociatedProjects(activeSkill.name).length > 0 ? (
-                              getAssociatedProjects(activeSkill.name).map(p => (
-                                 <a
-                                    key={p.id}
-                                    href={p.link}
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                    className="flex items-center gap-3 text-black group bg-nier-beige border border-transparent hover:border-nier-dark/20 p-2 transition-all cursor-pointer hover:bg-white/50"
-                                 >
-                                    <span className="text-xs text-nier-dark group-hover:translate-x-1 transition-transform">▶</span>
-                                    <span className="font-tech text-xl font-bold uppercase underline decoration-transparent group-hover:decoration-nier-dark/30 underline-offset-4">{p.title}</span>
-                                    <ExternalLink size={14} className="ml-auto opacity-30 group-hover:opacity-100" />
-                                 </a>
-                              ))
+                              getAssociatedProjects(activeSkill.name).map(p => {
+                                 const url = p.link || p.repoUrl;
+                                 const isRepoOnly = !p.link && !!p.repoUrl;
+
+                                 if (!url) {
+                                    return (
+                                       <div
+                                          key={p.id}
+                                          className="flex items-center gap-3 text-black/50 bg-nier-beige/30 border border-transparent p-2 cursor-default"
+                                       >
+                                          <span className="text-xs text-nier-dark/30">●</span>
+                                          <span className="font-tech text-xl font-bold uppercase">{p.title}</span>
+                                       </div>
+                                    );
+                                 }
+
+                                 return (
+                                    <a
+                                       key={p.id}
+                                       href={url}
+                                       target="_blank"
+                                       rel="noopener noreferrer"
+                                       className="flex items-center gap-3 text-black group bg-nier-beige border border-transparent hover:border-nier-dark/20 p-2 transition-all cursor-pointer hover:bg-white/50"
+                                    >
+                                       <span className="text-xs text-nier-dark group-hover:translate-x-1 transition-transform">▶</span>
+                                       <span className="font-tech text-xl font-bold uppercase underline decoration-transparent group-hover:decoration-nier-dark/30 underline-offset-4">{p.title}</span>
+                                       {isRepoOnly ? (
+                                          <Github size={14} className="ml-auto opacity-30 group-hover:opacity-100" />
+                                       ) : (
+                                          <ExternalLink size={14} className="ml-auto opacity-30 group-hover:opacity-100" />
+                                       )}
+                                    </a>
+                                 );
+                              })
                            ) : (
                               <div className="p-4 border border-nier-dark/10 border-dashed text-black/50 font-tech italic text-sm text-center">
                                  No featured projects linked to this skill.

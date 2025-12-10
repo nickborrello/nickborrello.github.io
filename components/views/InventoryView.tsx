@@ -6,13 +6,24 @@ import { Box } from 'lucide-react';
 export const InventoryView: React.FC = () => {
   const [selectedProject, setSelectedProject] = useState<ProjectItem | null>(null);
 
+  const sortedProjects = [...PROJECTS].sort((a, b) => {
+    const getDateValue = (date: string) => {
+      if (date === "Present") return 999999; // high value for ongoing projects
+      const [month, year] = date.split('-').map(Number);
+      return year * 100 + month;
+    };
+    const aEnd = getDateValue(a.endDate || a.startDate || '');
+    const bEnd = getDateValue(b.endDate || b.startDate || '');
+    return bEnd - aEnd;
+  });
+
   useEffect(() => {
-    if (PROJECTS && PROJECTS.length > 0) {
-      setSelectedProject(PROJECTS[0]);
+    if (sortedProjects && sortedProjects.length > 0) {
+      setSelectedProject(sortedProjects[0]);
     }
   }, []);
 
-  if (!PROJECTS || PROJECTS.length === 0) {
+  if (!sortedProjects || sortedProjects.length === 0) {
     return <div className="p-8 font-tech text-black">No projects loaded.</div>;
   }
 
@@ -50,7 +61,7 @@ export const InventoryView: React.FC = () => {
           </div>
 
           <div className="flex flex-col gap-0 pr-1 overflow-y-auto custom-scrollbar flex-1 relative">
-            {PROJECTS.map((project) => {
+            {sortedProjects.map((project) => {
               const isSelected = selectedProject.id === project.id;
               return (
                 <div key={project.id} className="relative group">
@@ -83,17 +94,23 @@ export const InventoryView: React.FC = () => {
               {selectedProject.title}
             </h2>
             <div className="flex items-center gap-8">
-               {selectedProject.date && (
-                  <div className="flex flex-col items-end leading-none">
-                    <span className="text-[10px] text-nier-beige/60 uppercase tracking-widest mb-1 font-bold">Release</span>
-                    <span className="text-xl font-tech font-bold text-nier-beige tracking-wider">{selectedProject.date}</span>
-                  </div>
-               )}
-               <div className="w-px h-8 bg-nier-beige/20"></div>
-               <div className="flex flex-col items-end leading-none">
-                 <span className="text-[10px] text-nier-beige/60 uppercase tracking-widest mb-1 font-bold">Tech Level</span>
-                 <span className="text-xl font-tech font-bold text-nier-beige tracking-wider">{selectedProject.tech.length}</span>
-               </div>
+              {selectedProject.startDate && (
+                <div className="flex flex-col items-end leading-none">
+                  <span className="text-[10px] text-nier-beige/60 uppercase tracking-widest mb-1 font-bold">Release</span>
+                  <span className="text-xl font-tech font-bold text-nier-beige tracking-wider">
+                    {selectedProject.endDate === "Present"
+                      ? `${selectedProject.startDate} - Present`
+                      : selectedProject.startDate === selectedProject.endDate
+                        ? selectedProject.startDate
+                        : `${selectedProject.startDate} - ${selectedProject.endDate}`}
+                  </span>
+                </div>
+              )}
+              <div className="w-px h-8 bg-nier-beige/20"></div>
+              <div className="flex flex-col items-end leading-none">
+                <span className="text-[10px] text-nier-beige/60 uppercase tracking-widest mb-1 font-bold">Tech Level</span>
+                <span className="text-xl font-tech font-bold text-nier-beige tracking-wider">{selectedProject.tech.length}</span>
+              </div>
             </div>
           </div>
 
@@ -155,7 +172,7 @@ export const InventoryView: React.FC = () => {
                       <span className="uppercase tracking-wider opacity-70 text-sm">Highlight</span>
                       <span className="font-bold text-right max-w-[140px] truncate">{selectedProject.highlight}</span>
                     </div>
-                    
+
                     {/* Features List */}
                     {selectedProject.features && selectedProject.features.length > 0 && (
                       <div className="mt-6 pt-3 border-t border-dotted border-nier-dark/30">
@@ -170,7 +187,7 @@ export const InventoryView: React.FC = () => {
 
                     <div className="mt-6 pt-3 border-t border-dotted border-nier-dark/30">
                       <span className="uppercase tracking-wider opacity-70 block mb-2 text-sm">Technologies</span>
-                      <div className="flex flex-wrap gap-1.5 justify-end">
+                      <div className="flex flex-wrap gap-1.5 justify-start">
                         {selectedProject.tech.map(t => (
                           <span key={t} className="px-2 py-1 border border-nier-dark/20 text-xs uppercase font-bold text-nier-dark/90 bg-nier-dark/5">
                             {t}
@@ -193,7 +210,7 @@ export const InventoryView: React.FC = () => {
                         View Live Demo
                       </a>
                     ) : null}
-                    
+
                     {selectedProject.repoUrl ? (
                       <a
                         href={selectedProject.repoUrl}

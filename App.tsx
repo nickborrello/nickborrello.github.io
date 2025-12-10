@@ -40,15 +40,10 @@ function App() {
     return () => window.removeEventListener('keydown', handleKeyDown);
   }, [activeTab, gameState]);
 
-  // Boot Sequence Effect
-  useEffect(() => {
-    if (gameState === 'BOOT') {
-      const timer = setTimeout(() => {
-        setGameState('APP');
-      }, 2500);
-      return () => clearTimeout(timer);
-    }
-  }, [gameState]);
+  // Boot Sequence Effect - Removed as TitleScreen now handles the boot sequence
+  // useEffect(() => {
+  //   if (gameState === 'BOOT') { ... }
+  // }, [gameState]);
 
   const renderContent = () => {
     switch (activeTab) {
@@ -80,36 +75,8 @@ function App() {
   if (!mounted) return <div className="bg-nier-darker h-screen w-screen" />;
 
   if (gameState === 'TITLE') {
-    return <TitleScreen onStart={() => setGameState('BOOT')} />;
-  }
-
-  if (gameState === 'BOOT') {
-    return (
-      <div className="h-screen w-screen bg-nier-darker flex flex-col items-center justify-center font-tech text-nier-beige">
-        <div className="w-64 space-y-2">
-          <div className="flex justify-between text-xs tracking-widest uppercase animate-pulse">
-            <span>System Check</span>
-            <span>OK</span>
-          </div>
-          <div className="flex justify-between text-xs tracking-widest uppercase animate-pulse delay-75">
-            <span>Portfolio Data</span>
-            <span>OK</span>
-          </div>
-          <div className="flex justify-between text-xs tracking-widest uppercase animate-pulse delay-100">
-            <span>Interface Modules</span>
-            <span>OK</span>
-          </div>
-          <div className="flex justify-between text-xs tracking-widest uppercase animate-pulse delay-150">
-            <span>Content Loading</span>
-            <span>WAIT...</span>
-          </div>
-
-          <div className="h-1 w-full bg-nier-dark mt-4 relative overflow-hidden">
-            <div className="absolute inset-y-0 left-0 bg-nier-beige w-full animate-[scan_2s_ease-in-out]"></div>
-          </div>
-        </div>
-      </div>
-    )
+    // TitleScreen now handles the full boot sequence visuals
+    return <TitleScreen onStart={() => setGameState('APP')} />;
   }
 
   return (
