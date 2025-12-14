@@ -6,12 +6,11 @@ import { InventoryView } from './components/views/InventoryView';
 import { MessagesView } from './components/views/MessagesView';
 import { EquipmentView } from './components/views/EquipmentView';
 import { Footer } from './components/Footer';
-import { TitleScreen } from './components/TitleScreen';
 import { BootScreen } from './components/BootScreen';
 
 function App() {
   const [mounted, setMounted] = useState(false);
-  const [gameState, setGameState] = useState<'TITLE' | 'BOOT' | 'APP'>('TITLE');
+  const [gameState, setGameState] = useState<'BOOT' | 'APP'>('BOOT');
   // Default to About (Intro)
   const [activeTab, setActiveTab] = useState<MenuTab>(MenuTab.About);
 
@@ -61,10 +60,10 @@ function App() {
               <p className="text-sm opacity-60">INSPIRED BY: Nier: Automata © SQUARE ENIX</p>
               <div className="w-16 h-px bg-nier-dark mx-auto my-4"></div>
               <button
-                onClick={() => setGameState('TITLE')}
+                onClick={() => setGameState('BOOT')}
                 className="px-6 py-2 border border-nier-dark hover:bg-nier-dark hover:text-nier-beige transition-colors uppercase tracking-widest text-sm"
               >
-                Return to Title
+                Restart
               </button>
             </div>
           </div>
@@ -74,10 +73,6 @@ function App() {
   };
 
   if (!mounted) return <div className="bg-nier-darker h-screen w-screen" />;
-
-  if (gameState === 'TITLE') {
-    return <TitleScreen onStart={() => setGameState('BOOT')} />;
-  }
 
   if (gameState === 'BOOT') {
     return <BootScreen onComplete={() => setGameState('APP')} />;
