@@ -123,6 +123,7 @@ export const PROJECTS: ProjectItem[] = [
       "Version control for resumes",
       "Drag-and-drop layout editor"
     ],
+    imageUrl: "/resumancer.png",
     link: "https://resumancer.dev",
     repoUrl: "https://github.com/nickborrello/resumancer",
     highlight: "Active Development",
@@ -141,6 +142,7 @@ export const PROJECTS: ProjectItem[] = [
       "Dynamic day/night background switching",
       "Persistent user settings"
     ],
+    imageUrl: "/morning_dashboard.png",
     link: "https://shark-app-rwrq8.ondigitalocean.app",
     repoUrl: "https://github.com/nickborrello/final_project",
     highlight: "React App",
@@ -196,6 +198,7 @@ export const PROJECTS: ProjectItem[] = [
       "Persistent data storage with MongoDB",
       "Responsive React frontends"
     ],
+    imageUrl: "/webware.png",
     repoUrl: "https://github.com/nickborrello/webware-react-vite-app",
     highlight: "Fullstack Coursework",
     status: "Completed",
@@ -265,6 +268,7 @@ export const PROJECTS: ProjectItem[] = [
       "Classic arcade gameplay loop",
       "High-score persistence"
     ],
+    imageUrl: "/space_invaders.png",
     repoUrl: "https://github.com/nickborrello/SpaceInvaders",
     highlight: "Game Dev",
     status: "Completed",
@@ -299,6 +303,7 @@ export const PROJECTS: ProjectItem[] = [
       "Resource allocation dashboard",
       "Full-stack microservices architecture"
     ],
+    imageUrl: "/staffing_tool.png",
     repoUrl: "https://github.com/jackson-lundberg/7factorStaffingToolTeam2",
     highlight: "MQP Capstone",
     status: "Completed",
