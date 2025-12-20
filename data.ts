@@ -180,7 +180,6 @@ export const PROJECTS: ProjectItem[] = [
       "NLP preprocessing with spaCy",
       "Persistent user configuration"
     ],
-    imageUrl: "/search_tool.png",
     repoUrl: "https://github.com/nickborrello/NEVI-Search-Tool",
     highlight: "Data Tool",
     status: "Completed",
@@ -303,7 +302,6 @@ export const PROJECTS: ProjectItem[] = [
       "Resource allocation dashboard",
       "Full-stack microservices architecture"
     ],
-    imageUrl: "/staffing_tool.png",
     repoUrl: "https://github.com/jackson-lundberg/7factorStaffingToolTeam2",
     highlight: "MQP Capstone",
     status: "Completed",
