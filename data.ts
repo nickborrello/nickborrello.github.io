@@ -108,23 +108,23 @@ export const SKILLS: SkillItem[] = [
 ];
 
 export const PROJECTS: ProjectItem[] = [
-  {
-    id: "p1",
-    title: "Resumancer",
-    description: "Resume Builder with Agentic AI Assistance. Features real-time content generation, formatting, and export capabilities.",
-    tech: ["TypeScript", "Next.js", "Supabase", "Tailwind", "Shadcn/UI", "Zustand"],
-    features: [
-      "AI-powered content suggestions (Vercel AI SDK)",
-      "Real-time PDF preview & generation",
-      "Version control for resumes",
-      "Drag-and-drop layout editor"
-    ],
-    repoUrl: "https://github.com/nickborrello/resumancer",
-    highlight: "Active Development",
-    status: "Beta",
-    startDate: "09-2025",
-    endDate: "Present"
-  },
+   {
+     id: "p1",
+     title: "Resumancer",
+     description: "Resume Builder with Agentic AI Assistance. Features real-time content generation, formatting, and export capabilities.",
+     tech: ["TypeScript", "Next.js", "Supabase", "Tailwind", "Shadcn/UI", "Zustand"],
+     features: [
+       "AI-powered content suggestions (Vercel AI SDK)",
+       "Real-time PDF preview & generation",
+       "Version control for resumes",
+       "Drag-and-drop layout editor"
+     ],
+     link: "https://resumancer.dev",
+     highlight: "Beta Deployment",
+     status: "Beta",
+     startDate: "09-2025",
+     endDate: "Present"
+   },
   {
     id: "p2",
     title: "Morning Dashboard",
