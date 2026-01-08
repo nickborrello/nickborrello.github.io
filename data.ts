@@ -87,7 +87,6 @@ export const SKILLS: SkillItem[] = [
   { id: "s4", name: "Next.js", category: "Framework", level: "A-Tier", icon: Globe },
   { id: "s5", name: "Java", category: "Language", level: "B-Tier", icon: Cpu },
   { id: "s6", name: "Git", category: "Tool", level: "S-Tier", icon: Github },
-  { id: "s7", name: "Azure", category: "Tool", level: "A-Tier", icon: Cloud },
   { id: "s8", name: "Auth0", category: "Tool", level: "B-Tier", icon: Shield },
   { id: "s9", name: "PostgreSQL", category: "Tool", level: "A-Tier", icon: Database },
   { id: "s10", name: "Tailwind", category: "Framework", level: "A-Tier", icon: Palette },
@@ -98,7 +97,6 @@ export const SKILLS: SkillItem[] = [
   { id: "s15", name: "MongoDB", category: "Tool", level: "B-Tier", icon: Database },
   { id: "s16", name: "PowerShell", category: "Language", level: "B-Tier", icon: Terminal },
   { id: "s17", name: "JavaFX", category: "Framework", level: "B-Tier", icon: Layout },
-  { id: "s18", name: "UI/UX", category: "Tool", level: "B-Tier", icon: PenTool },
   { id: "s19", name: "C#", category: "Language", level: "B-Tier", icon: Code },
   { id: "s20", name: "Unity", category: "Framework", level: "B-Tier", icon: Layout },
   { id: "s21", name: "PyQt6", category: "Framework", level: "B-Tier", icon: Layout },
@@ -106,8 +104,6 @@ export const SKILLS: SkillItem[] = [
   { id: "s23", name: "Vite", category: "Tool", level: "A-Tier", icon: Zap },
   { id: "s24", name: "Shadcn/UI", category: "Framework", level: "A-Tier", icon: Palette },
   { id: "s25", name: "Zustand", category: "Framework", level: "B-Tier", icon: Database },
-  { id: "s26", name: "DigitalOcean", category: "Tool", level: "B-Tier", icon: Cloud },
-  { id: "s27", name: "PyMuPDF", category: "Tool", level: "B-Tier", icon: FileText },
   { id: "s28", name: "AWS CDK", category: "Tool", level: "A-Tier", icon: Cloud },
 ];
 
