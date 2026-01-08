@@ -122,11 +122,11 @@ export const EquipmentView: React.FC = () => {
                </div>
             </div>
 
-            {/* MIDDLE COLUMN: Visual Stack (Hidden on mobile) */}
-            <div className="hidden lg:flex lg:w-[25%] flex-col items-center justify-center bg-nier-grid-bg relative">
-
-               {/* The Stack Stick */}
-               <div className="w-32 h-full border-2 border-nier-dark bg-nier-beige flex flex-col-reverse shadow-lg relative">
+             {/* MIDDLE COLUMN: Visual Stack (Hidden on mobile) */}
+             <div className="hidden lg:flex lg:w-[25%] flex-col items-center justify-center bg-nier-grid-bg relative overflow-hidden">
+ 
+                {/* The Stack Stick */}
+                <div className="w-32 h-[90%] border-2 border-nier-dark bg-nier-beige flex flex-col-reverse shadow-lg relative my-auto">
                   {/* Core (Bottom) */}
                   <div className="h-12 w-full bg-nier-dark/10 border border-nier-dark flex items-center justify-center relative flex-shrink-0 z-10">
                      <span className="text-[10px] font-tech uppercase tracking-tighter text-black font-bold rotate-90 opacity-60">CORE</span>

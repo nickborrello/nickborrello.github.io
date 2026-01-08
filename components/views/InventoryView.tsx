@@ -116,35 +116,7 @@ export const InventoryView: React.FC = () => {
 
           <div className="flex-1 overflow-y-auto custom-scrollbar p-6">
             <div className="flex flex-col xl:flex-row gap-6 min-h-full">
-              {/* Image & Description Block */}
               <div className="flex-1 space-y-6">
-
-                {/* Image Container with Grid Background */}
-                {/* Image Container with Grid Background */}
-                <div className="w-full aspect-video bg-nier-dark/5 border border-nier-dark/20 p-4 relative nier-header-grid">
-                  <div className="w-full h-full border border-nier-dark/10 p-1 bg-nier-beige">
-                    {selectedProject.imageUrl ? (
-                      <img
-                        src={selectedProject.imageUrl}
-                        className="w-full h-full object-cover grayscale contrast-125 hover:grayscale-0 transition-all duration-500"
-                        alt={selectedProject.title}
-                      />
-                    ) : (
-                      <div className="w-full h-full flex flex-col items-center justify-center border-2 border-dashed border-nier-dark/20 bg-nier-beige/50">
-                        <div className="text-nier-dark/40 font-tech font-bold text-lg uppercase tracking-widest mb-2">
-                          No Preview Available
-                        </div>
-                      </div>
-                    )}
-                  </div>
-                  {/* Corner accents */}
-                  <div className="absolute top-0 left-0 w-2 h-2 border-t border-l border-nier-dark"></div>
-                  <div className="absolute top-0 right-0 w-2 h-2 border-t border-r border-nier-dark"></div>
-                  <div className="absolute bottom-0 left-0 w-2 h-2 border-b border-l border-nier-dark"></div>
-                  <div className="absolute bottom-0 right-0 w-2 h-2 border-b border-r border-nier-dark"></div>
-                </div>
-
-                {/* Description Text */}
                 <div className="border-t border-nier-dark/20 pt-4">
                   <p className="font-tech text-xl text-nier-dark/90 font-medium leading-relaxed pl-2 border-l-2 border-nier-dark/30">
                     {selectedProject.description}

@@ -123,8 +123,6 @@ export const PROJECTS: ProjectItem[] = [
       "Version control for resumes",
       "Drag-and-drop layout editor"
     ],
-    imageUrl: "/resumancer.png",
-    link: "https://resumancer.dev",
     repoUrl: "https://github.com/nickborrello/resumancer",
     highlight: "Active Development",
     status: "Beta",
@@ -142,8 +140,6 @@ export const PROJECTS: ProjectItem[] = [
       "Dynamic day/night background switching",
       "Persistent user settings"
     ],
-    imageUrl: "/morning_dashboard.png",
-    link: "https://shark-app-rwrq8.ondigitalocean.app",
     repoUrl: "https://github.com/nickborrello/final_project",
     highlight: "React App",
     status: "Live",
@@ -161,8 +157,6 @@ export const PROJECTS: ProjectItem[] = [
       "Responsive mobile-first design",
       "Score tracking and statistics"
     ],
-    imageUrl: "/syllablast.png",
-    link: "https://nickborrello.github.io/syllablast/",
     repoUrl: "https://github.com/nickborrello/syllablast",
     highlight: "Deployed & Playable",
     status: "Live",
@@ -197,7 +191,6 @@ export const PROJECTS: ProjectItem[] = [
       "Persistent data storage with MongoDB",
       "Responsive React frontends"
     ],
-    imageUrl: "/webware.png",
     repoUrl: "https://github.com/nickborrello/webware-react-vite-app",
     highlight: "Fullstack Coursework",
     status: "Completed",
@@ -215,8 +208,6 @@ export const PROJECTS: ProjectItem[] = [
       "Interactive graphical map editor",
       "Employee database integration"
     ],
-    imageUrl: "/kiosk.png",
-    link: "https://github.com/CS-3733-D23-Team-E?view_as=public",
     repoUrl: "https://github.com/CS-3733-D23-Team-E",
     highlight: "Frontend Lead",
     status: "Completed",
@@ -267,7 +258,6 @@ export const PROJECTS: ProjectItem[] = [
       "Classic arcade gameplay loop",
       "High-score persistence"
     ],
-    imageUrl: "/space_invaders.png",
     repoUrl: "https://github.com/nickborrello/SpaceInvaders",
     highlight: "Game Dev",
     status: "Completed",
