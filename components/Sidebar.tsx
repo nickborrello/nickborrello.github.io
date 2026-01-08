@@ -19,7 +19,7 @@ export const Sidebar: React.FC<SidebarProps> = ({ activeTab, onSelect }) => {
   return (
     <div className="w-full z-50 relative">
       {/* Main Header Strip */}
-      <nav className="h-14 w-full bg-nier-beige border-y-2 border-nier-dark/20 relative flex items-center justify-between nier-header-grid shadow-sm">
+      <nav className="h-14 w-full bg-nier-beige border-y-2 border-nier-dark/20 relative flex items-center justify-center nier-header-grid shadow-sm">
 
         {/* Navigation Items */}
         <div className="flex flex-row items-center h-10 bg-nier-beige border-x border-nier-dark/10">
@@ -55,7 +55,8 @@ export const Sidebar: React.FC<SidebarProps> = ({ activeTab, onSelect }) => {
           })}
         </div>
 
-        <div className="pr-4 flex items-center">
+        {/* Credits Icon - Absolutely positioned on right */}
+        <div className="absolute right-4 flex items-center">
           <button
             onClick={() => onSelect(MenuTab.Credits)}
             className={`
