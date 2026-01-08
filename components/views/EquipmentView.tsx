@@ -123,57 +123,57 @@ export const EquipmentView: React.FC = () => {
             </div>
 
              {/* MIDDLE COLUMN: Visual Stack (Hidden on mobile) */}
-             <div className="hidden lg:flex lg:w-[25%] flex-col items-center justify-center bg-nier-grid-bg relative overflow-hidden">
+             <div className="hidden lg:flex lg:w-[25%] flex-col items-center justify-center bg-nier-grid-bg relative overflow-hidden h-full">
  
                 {/* The Stack Stick */}
-                <div className="w-32 h-[90%] border-2 border-nier-dark bg-nier-beige flex flex-col-reverse shadow-lg relative my-auto">
-                  {/* Core (Bottom) */}
-                  <div className="h-12 w-full bg-nier-dark/10 border border-nier-dark flex items-center justify-center relative flex-shrink-0 z-10">
-                     <span className="text-[10px] font-tech uppercase tracking-tighter text-black font-bold rotate-90 opacity-60">CORE</span>
-                  </div>
-
-                  {/* Categorized Blocks */}
-                  {stackCategories.map((cat, index) => {
-                     const skillsInCat = SKILLS.filter(s => s.category === cat);
-                     if (skillsInCat.length === 0) return null;
-
-                     return (
-                        <React.Fragment key={cat}>
-                           {skillsInCat.map((skill) => {
-                              // Use flex weight based on tier instead of fixed height
-                              const weight = skill.level === 'S-Tier' ? 3 : skill.level === 'A-Tier' ? 2 : 1;
-                              const isSelected = selectedSkillId === skill.id;
-                              const isDimmed = selectedSkillId !== null && !isSelected;
-
-                              // Base styles
-                              let bgClass = '';
-                              if (skill.category === 'Language') bgClass = 'bg-[#dfc87f] text-[#3a3836]';
-                              if (skill.category === 'Framework') bgClass = 'bg-[#c4b090] text-[#3a3836]';
-                              if (skill.category === 'Tool') bgClass = 'bg-[#d6998d] text-[#3a3836]';
-
-                              return (
-                                 <div
-                                    key={`stack-${skill.id}`}
-                                    onClick={() => setSelectedSkillId(skill.id)}
-                                    style={{ flexGrow: weight }}
-                                    className={`
-                                    w-full border border-nier-dark/40 relative flex items-center justify-center transition-all duration-200 cursor-pointer min-h-[20px]
-                                    ${isSelected ? 'bg-nier-dark text-nier-beige scale-105 z-20 shadow-xl border-nier-beige' : bgClass}
-                                    ${isDimmed ? 'opacity-[0.85] saturate-[.75]' : 'opacity-100'}
-                                    hover:brightness-110
-                                  `}
-                                 >
-                                    <skill.icon size={16} strokeWidth={1.5} className="opacity-90" />
-                                 </div>
-                              );
-                           })}
-
-
-                        </React.Fragment>
-                     );
-                  })}
-               </div>
-            </div>
+                <div className="w-32 h-[95%] border-2 border-nier-dark bg-nier-beige flex flex-col-reverse shadow-lg relative my-auto overflow-hidden">
+                   {/* Core (Bottom) */}
+                   <div className="h-10 w-full bg-nier-dark/10 border border-nier-dark flex items-center justify-center relative flex-shrink-0 z-10">
+                      <span className="text-[10px] font-tech uppercase tracking-tighter text-black font-bold rotate-90 opacity-60">CORE</span>
+                   </div>
+ 
+                   {/* Categorized Blocks */}
+                   <div className="flex-1 flex flex-col-reverse min-h-0 overflow-hidden">
+                      {stackCategories.map((cat, index) => {
+                         const skillsInCat = SKILLS.filter(s => s.category === cat);
+                         if (skillsInCat.length === 0) return null;
+ 
+                         return (
+                            <React.Fragment key={cat}>
+                               {skillsInCat.map((skill) => {
+                                  // Use flex weight based on tier instead of fixed height
+                                  const weight = skill.level === 'S-Tier' ? 3 : skill.level === 'A-Tier' ? 2 : 1;
+                                  const isSelected = selectedSkillId === skill.id;
+                                  const isDimmed = selectedSkillId !== null && !isSelected;
+ 
+                                  // Base styles
+                                  let bgClass = '';
+                                  if (skill.category === 'Language') bgClass = 'bg-[#dfc87f] text-[#3a3836]';
+                                  if (skill.category === 'Framework') bgClass = 'bg-[#c4b090] text-[#3a3836]';
+                                  if (skill.category === 'Tool') bgClass = 'bg-[#d6998d] text-[#3a3836]';
+ 
+                                  return (
+                                     <div
+                                        key={`stack-${skill.id}`}
+                                        onClick={() => setSelectedSkillId(skill.id)}
+                                        style={{ flexGrow: weight }}
+                                        className={`
+                                        w-full border border-nier-dark/40 relative flex items-center justify-center transition-all duration-200 cursor-pointer min-h-[12px]
+                                        ${isSelected ? 'bg-nier-dark text-nier-beige scale-105 z-20 shadow-xl border-nier-beige' : bgClass}
+                                        ${isDimmed ? 'opacity-[0.85] saturate-[.75]' : 'opacity-100'}
+                                        hover:brightness-110
+                                      `}
+                                     >
+                                        <skill.icon size={14} strokeWidth={1.5} className="opacity-90" />
+                                     </div>
+                                  );
+                               })}
+                            </React.Fragment>
+                         );
+                      })}
+                   </div>
+                </div>
+             </div>
 
             {/* RIGHT COLUMN: Details Panel */}
             <div className="flex-1 bg-nier-beige-dim border border-nier-dark/10 p-6 relative flex flex-col overflow-y-auto custom-scrollbar">
