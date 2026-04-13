@@ -13,7 +13,12 @@ import {
   Palette,
   FileText,
   RefreshCw,
-  Zap
+  Zap,
+  Shield,
+  FileCode,
+  Settings,
+  PenTool,
+  Search
 } from 'lucide-react';
 import { ProjectItem, ContactMethod, ExperienceItem, SkillItem, UserInfo } from './types';
 
@@ -42,7 +47,9 @@ export const WORK_EXPERIENCE: ExperienceItem[] = [
     description: "Architecting a multi-stage AI data consolidation pipeline to automate product registration and inventory synchronization. Optimized for production cost and accuracy through a hybrid provider strategy.",
     location: "Taunton, MA",
     type: "Full-time",
-    skills: ["Python", "TypeScript", "OpenAI API", "Gemini API", "LLM Orchestration", "Next.js", "Docker", "Playwright"],
+    skills: ["Python", "TypeScript", "LLM Orchestration", "Next.js", "Docker", "Playwright", "Supabase", "PostgreSQL", "React"],
+    proofUrl: "https://www.baystatepetandgarden.com",
+    proofLabel: "View Company Storefront",
     achievements: [
       "Engineered a hybrid AI consolidation pipeline routing tasks between Gemini Flash and OpenAI GPT-4o-mini, achieving 100% extraction accuracy while reducing costs by 70%.",
       "Architected a distributed web scraping system using Playwright and Docker, orchestrated via GitHub Actions for asynchronous vendor data synchronization.",
@@ -54,13 +61,13 @@ export const WORK_EXPERIENCE: ExperienceItem[] = [
     id: "exp0",
     role: "NLP Data Engineer (Intern)",
     company: "Atlas Public Policy",
-    period: "08-2022 - 12-2022",
+    period: "11-2023 - 11-2023",
     description: "Built a specialized NLP document search workflow for stakeholders reviewing federal infrastructure plans. Transformed unstructured data into queryable analyst tools.",
     location: "Washington, D.C.",
     type: "Internship",
-    skills: ["Python", "spaCy", "NLP", "PDF Extraction", "PyQt6", "PyMuPDF"],
+    skills: ["Python", "spaCy", "NLP", "PyQt6"],
     proofUrl: "https://github.com/nickborrello/NEVI-Search-Tool",
-    proofLabel: "View NEVI search tool proof",
+    proofLabel: "View NEVI Search Proof",
     achievements: [
       "Developed a specialized NLP search engine to analyze thousands of pages of state NEVI plans, utilizing spaCy for semantic preprocessing.",
       "Built a custom extraction tool that transformed messy PDF text into structured data, enabling evidence-gathering in seconds rather than hours.",
@@ -75,7 +82,9 @@ export const WORK_EXPERIENCE: ExperienceItem[] = [
     description: "Automated test driver deployments and optimized CI/CD workflows using Azure DevOps to improve software development efficiency.",
     location: "Manchester, NH",
     type: "Internship",
-    skills: ["Azure", "CI/CD", "PowerShell", "Scripting", "Agile", "DevOps"],
+    skills: ["Azure DevOps", "CI/CD", "PowerShell"],
+    proofUrl: "https://www.allegromicro.com",
+    proofLabel: "View Company Site",
     achievements: [
       "Designed and deployed automated CI/CD pipelines for driver testing, reducing deployment validation time by 40%.",
       "Implemented Infrastructure-as-Code patterns to standardize test environments across the engineering team."
@@ -89,7 +98,7 @@ export const WORK_EXPERIENCE: ExperienceItem[] = [
     description: "Rigorous graduate study focused on Software Engineering and AI Applications. Specialized in building scalable, real-world software systems.",
     location: "Worcester, MA",
     type: "Education",
-    skills: ["TypeScript", "Python", "System Design", "Algorithms", "Leadership"],
+    skills: ["Java", "C/C++", "System Design", "Algorithms"],
     achievements: [
       "Specialized in Software and AI Applications with coursework in Deep Learning and Distributed Systems.",
       "Led multiple team-based software engineering projects for corporate clients.",
@@ -99,19 +108,20 @@ export const WORK_EXPERIENCE: ExperienceItem[] = [
 ];
 
 export const SKILLS: SkillItem[] = [
-  { id: "s26", name: "Vercel AI SDK", category: "AI/ML", level: "A-Tier", icon: Cpu },
-  { id: "s29", name: "LLM Orchestration", category: "AI/ML", level: "A-Tier", icon: Zap },
+  { id: "s26", name: "Vercel AI SDK", category: "AI/ML", level: "S-Tier", icon: Cpu },
+  { id: "s29", name: "LLM Orchestration", category: "AI/ML", level: "S-Tier", icon: Zap },
   { id: "s30", name: "Vector Databases", category: "AI/ML", level: "A-Tier", icon: Database },
+  { id: "s31", name: "LangChain", category: "AI/ML", level: "A-Tier", icon: RefreshCw },
   { id: "s27", name: "spaCy", category: "AI/ML", level: "A-Tier", icon: FileText },
-  { id: "s18", name: "NLP", category: "AI/ML", level: "A-Tier", icon: Cpu },
+  { id: "s18", name: "NLP", category: "AI/ML", level: "A-Tier", icon: Search },
   { id: "s1", name: "TypeScript", category: "Language", level: "S-Tier", icon: Code },
-  { id: "s2", name: "Python", category: "Language", level: "A-Tier", icon: Terminal },
+  { id: "s2", name: "Python", category: "Language", level: "S-Tier", icon: Terminal },
   { id: "s3", name: "React", category: "Framework", level: "S-Tier", icon: Layout },
-  { id: "s4", name: "Next.js", category: "Framework", level: "A-Tier", icon: Globe },
+  { id: "s4", name: "Next.js", category: "Framework", level: "S-Tier", icon: Globe },
+  { id: "s22", name: "Supabase", category: "Tool", level: "S-Tier", icon: Database },
   { id: "s9", name: "PostgreSQL", category: "Tool", level: "A-Tier", icon: Database },
-  { id: "s22", name: "Supabase", category: "Tool", level: "A-Tier", icon: Database },
-  { id: "s10", name: "Tailwind", category: "Framework", level: "A-Tier", icon: Palette },
-  { id: "s11", name: "Node.js", category: "Framework", level: "A-Tier", icon: Server },
+  { id: "s32", name: "Docker", category: "Tool", level: "A-Tier", icon: Server },
+  { id: "s33", name: "Playwright", category: "Tool", level: "A-Tier", icon: Zap },
   { id: "s28", name: "AWS CDK", category: "Tool", level: "A-Tier", icon: Cloud },
   { id: "s14", name: "Azure DevOps", category: "Tool", level: "A-Tier", icon: RefreshCw },
 ];
@@ -121,11 +131,11 @@ export const PROJECTS: ProjectItem[] = [
     id: "p1",
     title: "Resumancer",
     description: "AI-native SaaS platform designed as a master career database. Features a Resume Copilot with agentic content rewriting and real-time visual diffs.",
-    tech: ["Next.js", "Vercel AI SDK", "Supabase (pgvector)", "Tailwind", "Zustand"],
+    tech: ["Next.js", "Vercel AI SDK", "Supabase", "TypeScript", "React", "Vector Databases"],
     features: [
       "Resume Copilot: Context-aware AI assistant for agentic content optimization using Vercel AI SDK.",
       "AI Review Overlay: Visual diffing and staging workflow for LLM-generated changes.",
-      "Semantic Search: Vector-based career history curation with Supabase pgvector.",
+      "Semantic Search: Vector-based career history curation using Vector Databases (pgvector).",
       "Real-time PDF engine with dynamic layout version control."
     ],
     link: "https://resumancer.dev",
@@ -139,7 +149,7 @@ export const PROJECTS: ProjectItem[] = [
     id: "p13",
     title: "ShopSite-MCP",
     description: "Model Context Protocol (MCP) server providing an LLM-accessible interface to legacy ShopSite database schemas.",
-    tech: ["TypeScript", "MCP SDK", "SQL", "Node.js"],
+    tech: ["TypeScript", "Node.js", "PostgreSQL", "LLM Orchestration"],
     features: [
       "Natural language querying of legacy e-commerce databases via MCP.",
       "Secure database tool exposure for autonomous AI agents.",
@@ -156,11 +166,11 @@ export const PROJECTS: ProjectItem[] = [
     id: "p14",
     title: "AI PDF Search",
     description: "Interactive RAG application for real-time document analysis, using semantic search to extract structured answers from complex PDFs.",
-    tech: ["JavaScript", "OpenAI API", "LangChain", "Vector Search"],
+    tech: ["Python", "LangChain", "Vector Databases", "NLP"],
     features: [
       "Retrieval-Augmented Generation (RAG) for localized document querying.",
       "Real-time semantic search and context extraction from multi-page PDFs.",
-      "Prompt-driven information gathering with high precision."
+      "Prompt-driven information gathering using LangChain and Vector Databases."
     ],
     repoUrl: "https://github.com/nickborrello/ai-pdf-search",
     highlight: "RAG Application",
@@ -172,7 +182,7 @@ export const PROJECTS: ProjectItem[] = [
     id: "p11",
     title: "Axolotl Auctions",
     description: "Cloud-native auction platform built with Infrastructure-as-Code (IaC) principles for high-availability serverless workloads.",
-    tech: ["AWS CDK", "TypeScript", "React", "Lambda"],
+    tech: ["AWS CDK", "TypeScript", "React", "Node.js"],
     features: [
       "Infrastructure as Code (IaC) with AWS CDK for automated cloud deployments.",
       "Serverless architecture scaling with real-time auction triggers.",
@@ -188,7 +198,7 @@ export const PROJECTS: ProjectItem[] = [
     id: "p7",
     title: "Hospital Kiosk App",
     description: "Frontend lead for a complex hospital navigation system featuring custom pathfinding and graph algorithms.",
-    tech: ["Java", "JavaFX", "PostgreSQL", "Graph Theory"],
+    tech: ["Java", "PostgreSQL", "Algorithms"],
     features: [
       "A* Pathfinding implementation for multi-floor hospital navigation.",
       "Graph-based service request management system.",
@@ -204,7 +214,7 @@ export const PROJECTS: ProjectItem[] = [
     id: "p12",
     title: "7Factor Staffing Tool",
     description: "Enterprise staffing solution built for 7Factor Software, focusing on Role-Based Access Control and automated resource allocation.",
-    tech: ["React", "Node.js", "Auth0", "CI/CD"],
+    tech: ["React", "Node.js", "TypeScript", "Azure DevOps"],
     features: [
       "Role-Based Access Control (RBAC) with Auth0 integration.",
       "Automated cloud infrastructure deployment and monitoring.",
