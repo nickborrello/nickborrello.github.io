@@ -6,6 +6,8 @@ import { GitHubCalendar } from '../GitHubCalendar';
 export const MessagesView: React.FC = () => {
    const { commits, loading, error } = useGitHubCommits('nickborrello');
    const [copied, setCopied] = React.useState<string | null>(null);
+   const missionObjective = USER_INFO.missionObjective?.trim();
+   const systemSpecs = USER_INFO.systemSpecs?.filter(Boolean) ?? [];
 
    const handleCopy = (e: React.MouseEvent, contact: typeof CONTACTS[0]) => {
       if (contact.link.startsWith('mailto:')) {
@@ -103,15 +105,64 @@ export const MessagesView: React.FC = () => {
                         </span>
                      </div>
 
-                     <p className="font-tech text-xl text-black font-medium leading-relaxed text-justify border-t border-nier-dark/20 pt-6">
-                        {USER_INFO.bio}
-                     </p>
+                     <div className="border-t border-nier-dark/20 pt-6 space-y-6">
+                        <div className="border border-nier-dark/15 bg-nier-beige/60 p-4 md:p-5">
+                           <div className="flex items-center gap-2 mb-3 opacity-75">
+                              <div className="w-2 h-2 bg-nier-dark rotate-45"></div>
+                              <div className="text-xs text-black font-bold uppercase tracking-widest">Identity Signal</div>
+                           </div>
+                           <p className="font-tech text-lg md:text-xl text-black font-medium leading-relaxed">
+                              {USER_INFO.bio}
+                           </p>
+                        </div>
 
-                     <div className="mt-8 p-4 bg-nier-beige border border-nier-dark/10">
-                        <div className="text-xs text-black font-bold uppercase tracking-widest mb-1 opacity-70">Focus</div>
-                        <p className="font-tech text-lg text-black font-medium">
-                           {USER_INFO.tagline}
-                        </p>
+                        <div className={`grid gap-4 ${missionObjective ? 'xl:grid-cols-[1.2fr_0.8fr]' : ''}`}>
+                           {missionObjective && (
+                              <div className="border border-nier-dark/15 bg-nier-beige p-4 md:p-5">
+                                 <div className="flex items-center gap-2 mb-3 opacity-75">
+                                    <div className="w-2 h-2 bg-nier-dark rotate-45"></div>
+                                    <div className="text-xs text-black font-bold uppercase tracking-widest">Mission Objective</div>
+                                 </div>
+                                 <p className="font-tech text-lg text-black font-medium leading-relaxed">
+                                    {missionObjective}
+                                 </p>
+                              </div>
+                           )}
+
+                           <div className="border border-nier-dark/15 bg-nier-dark/5 p-4 md:p-5">
+                              <div className="flex items-center gap-2 mb-3 opacity-75">
+                                 <div className="w-2 h-2 bg-nier-dark rotate-45"></div>
+                                 <div className="text-xs text-black font-bold uppercase tracking-widest">Current Focus</div>
+                              </div>
+                              <p className="font-tech text-base md:text-lg text-black font-medium leading-relaxed">
+                                 {USER_INFO.tagline}
+                              </p>
+                           </div>
+                        </div>
+
+                        {systemSpecs.length > 0 && (
+                           <div className="border border-nier-dark/15 bg-nier-beige p-4 md:p-5">
+                              <div className="flex items-center gap-2 mb-4 opacity-75">
+                                 <div className="w-2 h-2 bg-nier-dark rotate-45"></div>
+                                 <div className="text-xs text-black font-bold uppercase tracking-widest">System Specs</div>
+                              </div>
+                              <div className="grid gap-3 md:grid-cols-2">
+                                 {systemSpecs.map((spec, index) => (
+                                    <div
+                                       key={spec}
+                                       className="flex gap-3 border border-nier-dark/10 bg-nier-beige-dim/60 px-3 py-3"
+                                    >
+                                       <span className="min-w-8 font-mono text-xs text-black/55 pt-0.5">
+                                          0{index + 1}
+                                       </span>
+                                       <p className="font-tech text-sm md:text-base text-black font-medium leading-relaxed">
+                                          {spec}
+                                       </p>
+                                    </div>
+                                 ))}
+                              </div>
+                           </div>
+                        )}
                      </div>
 
                      {/* GitHub Activity Log */}

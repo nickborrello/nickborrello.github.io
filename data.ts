@@ -19,18 +19,43 @@ import {
   Zap,
   FileText
 } from 'lucide-react';
-import { ProjectItem, ContactMethod, ExperienceItem, SkillItem } from './types';
+import { ProjectItem, ContactMethod, ExperienceItem, SkillItem, UserInfo } from './types';
 
-export const USER_INFO = {
+export const USER_INFO: UserInfo = {
   name: "Nicholas Borrello",
-  title: "Software Engineer",
+  title: "AI Engineer",
   yearsExp: "2+",
   location: "Open to Relocation",
-  tagline: "Passionate about building innovative solutions.",
-  bio: "Software Engineer with over 2 years of experience building innovative solutions. Specialized in full-stack development with a focus on automation, internal tools, and responsive user interfaces. Proven track record of improving operational efficiency through custom software."
+  tagline: "Building AI-powered products, NLP search workflows, and automation tools grounded in real operational use cases.",
+  bio: "Engineer focused on applied AI systems that turn messy workflows into usable products. Built agent-assisted resume generation with Resumancer, NLP-powered document search with spaCy in NEVI Plan Search, and automation and analytics tooling for Baystate Pet & Garden, backed by WPI graduate study in Software and AI Applications.",
+  systemSpecs: [
+    "Resumancer: agent-assisted resume generation with real-time content workflows",
+    "NEVI Plan Search: PDF extraction, fuzzy matching, and spaCy preprocessing",
+    "Baystate: automation scripts, inventory sync, and analytics dashboard delivery",
+    "WPI M.S. focus: Software and AI Applications"
+  ],
+  missionObjective: "Targeting AI Engineer roles where I can build practical AI features, intelligent search and extraction workflows, and automation systems that deliver measurable business value."
 };
 
 export const WORK_EXPERIENCE: ExperienceItem[] = [
+  {
+    id: "exp0",
+    role: "Data Engineering Intern",
+    company: "Atlas Public Policy",
+    period: "11-2023 - 11-2023",
+    description: "Worked from Atlas Public Policy's Washington, D.C. office to build a Python-based document search workflow for stakeholders reviewing state NEVI plans, combining PDF extraction, fuzzy search, and NLP preprocessing into a usable analyst tool.",
+    location: "Washington, D.C.",
+    type: "Internship",
+    skills: ["Python", "spaCy", "NLP", "PDF Extraction", "PyQt6", "PyMuPDF"],
+    proofUrl: "https://github.com/nickborrello/NEVI-Search-Tool",
+    proofLabel: "View NEVI search tool proof",
+    achievements: [
+      "Built a data extraction and search tool for NEVI plan analysis using Python, PyMuPDF, and PyQt6",
+      "Supported Washington, D.C.-based stakeholder workflows with exact keyword search and fuzzy string matching across state plan documents",
+      "Implemented PDF text extraction and highlighting to speed document review and evidence gathering",
+      "Applied spaCy preprocessing to improve NLP-powered search quality across messy plan text"
+    ]
+  },
   {
     id: "exp1",
     role: "Software Engineer",
@@ -81,6 +106,9 @@ export const WORK_EXPERIENCE: ExperienceItem[] = [
 ];
 
 export const SKILLS: SkillItem[] = [
+  { id: "s26", name: "Vercel AI SDK", category: "AI/ML", level: "A-Tier", icon: Cpu },
+  { id: "s27", name: "spaCy", category: "AI/ML", level: "A-Tier", icon: FileText },
+  { id: "s18", name: "NLP", category: "AI/ML", level: "A-Tier", icon: Cpu },
   { id: "s1", name: "TypeScript", category: "Language", level: "S-Tier", icon: Code },
   { id: "s2", name: "Python", category: "Language", level: "A-Tier", icon: Terminal },
   { id: "s3", name: "React", category: "Framework", level: "S-Tier", icon: Layout },
@@ -119,11 +147,12 @@ export const PROJECTS: ProjectItem[] = [
        "Version control for resumes",
        "Drag-and-drop layout editor"
      ],
-     link: "https://resumancer.dev",
-     highlight: "Beta Deployment",
-     status: "Beta",
-     startDate: "09-2025",
-     endDate: "Present"
+   link: "https://resumancer.dev",
+   highlight: "Beta Deployment",
+   status: "Beta",
+   startDate: "09-2025",
+    endDate: "Present",
+    featured: true
    },
   {
     id: "p2",
@@ -158,23 +187,6 @@ export const PROJECTS: ProjectItem[] = [
     status: "Live",
     startDate: "10-2024",
     endDate: "10-2024"
-  },
-  {
-    id: "p5",
-    title: "NEVI Plan Search",
-    description: "Desktop tool for analysts to search state NEVI plans using exact keyword and fuzzy string matching.",
-    tech: ["Python", "PyQt6", "PyMuPDF", "NLP"],
-    features: [
-      "Exact & Fuzzy keyword search",
-      "PDF text extraction & highlighting",
-      "NLP preprocessing with spaCy",
-      "Persistent user configuration"
-    ],
-    repoUrl: "https://github.com/nickborrello/NEVI-Search-Tool",
-    highlight: "Data Tool",
-    status: "Completed",
-    startDate: "11-2023",
-    endDate: "11-2023"
   },
   {
     id: "p6",

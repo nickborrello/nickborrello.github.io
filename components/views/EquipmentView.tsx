@@ -1,33 +1,95 @@
 import React, { useState } from 'react';
-import { SKILLS, PROJECTS } from '../../data';
+import { SKILLS, PROJECTS, WORK_EXPERIENCE } from '../../data';
 import { SkillItem } from '../../types';
 import { ExternalLink, Github } from 'lucide-react';
 
+type ProofBackedUsage = {
+   id: string;
+   title: string;
+   subtitle: string;
+   url: string;
+   isRepoOnly: boolean;
+   kind: 'Project' | 'Experience';
+   ctaLabel?: string;
+   sortDate: number;
+};
+
 export const EquipmentView: React.FC = () => {
    const [selectedSkillId, setSelectedSkillId] = useState<string | null>(SKILLS[0]?.id || null);
+   const categoryLabels: Record<SkillItem['category'], string> = {
+      'AI/ML': 'AI/ML',
+      Language: 'Languages',
+      Framework: 'Frameworks',
+      Tool: 'Tools',
+   };
 
    // Define categories for grouping the list
-   const listCategories: Array<SkillItem['category']> = ['Language', 'Framework', 'Tool'];
+   const listCategories: Array<SkillItem['category']> = ['AI/ML', 'Language', 'Framework', 'Tool'];
 
    // Define order for the stack visualizer (Bottom to Top)
-   const stackCategories: Array<SkillItem['category']> = ['Language', 'Framework', 'Tool'];
+   const stackCategories: Array<SkillItem['category']> = ['AI/ML', 'Language', 'Framework', 'Tool'];
 
-   // Helper to find projects using the skill
-   const getAssociatedProjects = (skillName: string) => {
-      const filtered = PROJECTS.filter(p => p.tech.includes(skillName));
-      return filtered.sort((a, b) => {
-         const getDateValue = (date: string) => {
-            if (date === "Present") return 999999;
-            const [month, year] = date.split('-').map(Number);
-            return year * 100 + month;
+   const parseSortableDate = (rawDate?: string) => {
+      if (!rawDate) return 0;
+      if (rawDate === 'Present') return 999999;
+
+      const [month, year] = rawDate.split('-').map(Number);
+      if (!month || !year) return 0;
+
+      return year * 100 + month;
+   };
+
+   const matchesSkillReference = (skillName: string, values: Array<string | undefined>) => {
+      const normalizedSkillName = skillName.toLowerCase();
+      return values.some((value) => value?.toLowerCase().includes(normalizedSkillName));
+   };
+
+   const getAssociatedUsage = (skill: SkillItem): ProofBackedUsage[] => {
+      const projectUsage = PROJECTS.filter((project) => {
+         const techMatch = project.tech.some((tech) => tech.toLowerCase() === skill.name.toLowerCase());
+         const featureMatch = matchesSkillReference(skill.name, project.features ?? []);
+         return techMatch || featureMatch;
+      }).map((project) => ({
+         id: `project-${project.id}`,
+         title: project.title,
+         subtitle: project.highlight || 'Project Proof',
+         url: project.link || project.repoUrl || '',
+         isRepoOnly: !project.link && !!project.repoUrl,
+         kind: 'Project' as const,
+         sortDate: parseSortableDate(project.endDate || project.startDate)
+      })).filter((item) => item.url);
+
+      const experienceUsage = WORK_EXPERIENCE.filter((experience) => {
+         if (!experience.proofUrl) return false;
+
+         const structuredSkillMatch = experience.skills.some((experienceSkill) => experienceSkill.toLowerCase() === skill.name.toLowerCase());
+         const narrativeMatch = matchesSkillReference(skill.name, [
+            experience.description,
+            experience.proofLabel,
+            ...(experience.achievements ?? [])
+         ]);
+
+         return structuredSkillMatch || narrativeMatch;
+      }).map((experience) => {
+         const [, endDate] = experience.period?.split(' - ') ?? [];
+
+         return {
+            id: `experience-${experience.id}`,
+            title: experience.company,
+            subtitle: experience.role,
+            url: experience.proofUrl || '',
+            isRepoOnly: false,
+            kind: 'Experience' as const,
+            ctaLabel: experience.proofLabel,
+            sortDate: parseSortableDate(endDate || experience.period)
          };
-         const aEnd = getDateValue(a.endDate || a.startDate || '');
-         const bEnd = getDateValue(b.endDate || b.startDate || '');
-         return bEnd - aEnd;
       });
+
+      return [...experienceUsage, ...projectUsage].sort((a, b) => b.sortDate - a.sortDate);
    };
 
    const activeSkill = SKILLS.find(s => s.id === selectedSkillId);
+   const activeSkillUsage = activeSkill ? getAssociatedUsage(activeSkill) : [];
 
    return (
       <div className="flex flex-col h-full w-full animate-fadeIn">
@@ -61,7 +123,7 @@ export const EquipmentView: React.FC = () => {
                            {/* Category Header - Sticky & Flush */}
                            <div className="sticky top-0 z-10 flex items-center justify-between bg-nier-dark text-nier-beige px-3 py-1 mb-2 shadow-sm">
                               <span className="text-sm md:text-base font-tech font-bold uppercase tracking-widest">
-                                 {category}S
+                                 {categoryLabels[category]}
                               </span>
                               <span className="text-[10px] font-tech opacity-70 tracking-widest">
                                  PROFICIENCY
@@ -151,6 +213,7 @@ export const EquipmentView: React.FC = () => {
                                   if (skill.category === 'Language') bgClass = 'bg-[#dfc87f] text-[#3a3836]';
                                   if (skill.category === 'Framework') bgClass = 'bg-[#c4b090] text-[#3a3836]';
                                   if (skill.category === 'Tool') bgClass = 'bg-[#d6998d] text-[#3a3836]';
+                                  if (skill.category === 'AI/ML') bgClass = 'bg-[#a8b8a0] text-[#2f3a2f]';
  
                                   return (
                                      <div
@@ -203,41 +266,34 @@ export const EquipmentView: React.FC = () => {
 
                      <div className="mt-8">
                         <div className="flex items-center gap-2 border-b border-nier-dark/20 pb-2 mb-4">
-                           <div className="w-1.5 h-1.5 bg-nier-dark rotate-45"></div>
-                           <div className="text-sm font-tech font-bold uppercase tracking-widest text-black">
-                              Projects Used In
+                              <div className="w-1.5 h-1.5 bg-nier-dark rotate-45"></div>
+                              <div className="text-sm font-tech font-bold uppercase tracking-widest text-black">
+                              Proof-Backed Usage
+                              </div>
                            </div>
-                        </div>
 
                         <div className="space-y-3">
-                           {getAssociatedProjects(activeSkill.name).length > 0 ? (
-                              getAssociatedProjects(activeSkill.name).map(p => {
-                                 const url = p.link || p.repoUrl;
-                                 const isRepoOnly = !p.link && !!p.repoUrl;
-
-                                 if (!url) {
-                                    return (
-                                       <div
-                                          key={p.id}
-                                          className="flex items-center gap-3 text-black/50 bg-nier-beige/30 border border-transparent p-2 cursor-default"
-                                       >
-                                          <span className="text-xs text-nier-dark/30">●</span>
-                                          <span className="font-tech text-xl font-bold uppercase">{p.title}</span>
-                                       </div>
-                                    );
-                                 }
-
+                           {activeSkillUsage.length > 0 ? (
+                              activeSkillUsage.map((item) => {
                                  return (
                                     <a
-                                       key={p.id}
-                                       href={url}
+                                       key={item.id}
+                                       href={item.url}
                                        target="_blank"
                                        rel="noopener noreferrer"
                                        className="flex items-center gap-3 text-black group bg-nier-beige border border-transparent hover:border-nier-dark/20 p-2 transition-all cursor-pointer hover:bg-white/50"
                                     >
                                        <span className="text-xs text-nier-dark group-hover:translate-x-1 transition-transform">▶</span>
-                                       <span className="font-tech text-xl font-bold uppercase underline decoration-transparent group-hover:decoration-nier-dark/30 underline-offset-4">{p.title}</span>
-                                       {isRepoOnly ? (
+                                       <div className="min-w-0 flex-1">
+                                          <div className="flex flex-wrap items-center gap-2">
+                                             <span className="font-tech text-xl font-bold uppercase underline decoration-transparent group-hover:decoration-nier-dark/30 underline-offset-4">{item.title}</span>
+                                             <span className="text-[10px] uppercase tracking-[0.2em] text-nier-dark/50">{item.kind}</span>
+                                          </div>
+                                          <div className="font-tech text-xs uppercase tracking-widest text-black/60 mt-1">
+                                             {item.subtitle}{item.ctaLabel ? ` // ${item.ctaLabel}` : ''}
+                                          </div>
+                                       </div>
+                                       {item.isRepoOnly ? (
                                           <Github size={14} className="ml-auto opacity-30 group-hover:opacity-100" />
                                        ) : (
                                           <ExternalLink size={14} className="ml-auto opacity-30 group-hover:opacity-100" />
@@ -247,7 +303,7 @@ export const EquipmentView: React.FC = () => {
                               })
                            ) : (
                               <div className="p-4 border border-nier-dark/10 border-dashed text-black/50 font-tech italic text-sm text-center">
-                                 No featured projects linked to this skill.
+                                 No proof-backed projects or experience linked to this skill.
                               </div>
                            )}
                         </div>

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useMemo } from 'react';
 import { PROJECTS } from '../../data';
 import { ProjectItem } from '../../types';
 import { Box } from 'lucide-react';
@@ -6,22 +6,27 @@ import { Box } from 'lucide-react';
 export const InventoryView: React.FC = () => {
   const [selectedProject, setSelectedProject] = useState<ProjectItem | null>(null);
 
-  const sortedProjects = [...PROJECTS].sort((a, b) => {
+  const sortedProjects = useMemo(() => [...PROJECTS].sort((a, b) => {
     const getDateValue = (date: string) => {
       if (date === "Present") return 999999; // high value for ongoing projects
       const [month, year] = date.split('-').map(Number);
       return year * 100 + month;
     };
+
+    if (a.featured !== b.featured) {
+      return Number(b.featured) - Number(a.featured);
+    }
+
     const aEnd = getDateValue(a.endDate || a.startDate || '');
     const bEnd = getDateValue(b.endDate || b.startDate || '');
     return bEnd - aEnd;
-  });
+  }), []);
 
   useEffect(() => {
     if (sortedProjects && sortedProjects.length > 0) {
       setSelectedProject(sortedProjects[0]);
     }
-  }, []);
+  }, [sortedProjects]);
 
   if (!sortedProjects || sortedProjects.length === 0) {
     return <div className="p-8 font-tech text-black">No projects loaded.</div>;
@@ -75,8 +80,15 @@ export const InventoryView: React.FC = () => {
                       `}
                   >
                     <Box size={16} strokeWidth={2} className='text-nier-dark opacity-70' />
-                    <div className="flex-1 font-tech text-lg uppercase tracking-wide font-bold truncate">
-                      {project.title}
+                    <div className="flex-1 min-w-0">
+                      <div className="font-tech text-lg uppercase tracking-wide font-bold truncate">
+                        {project.title}
+                      </div>
+                      {project.featured ? (
+                        <div className="mt-1 text-[10px] font-tech uppercase tracking-[0.2em] text-nier-dark/60">
+                          Featured Proof
+                        </div>
+                      ) : null}
                     </div>
                   </button>
                 </div>
@@ -135,6 +147,12 @@ export const InventoryView: React.FC = () => {
                     <div className="flex justify-between items-center">
                       <span className="uppercase tracking-wider opacity-70 text-sm">Category</span>
                       <span className="font-bold">Web Application</span>
+                    </div>
+                    <div className="flex justify-between items-center">
+                      <span className="uppercase tracking-wider opacity-70 text-sm">Priority</span>
+                      <span className="font-bold text-right max-w-[140px] truncate">
+                        {selectedProject.featured ? 'Featured Proof' : 'Archive'}
+                      </span>
                     </div>
                     <div className="flex justify-between items-center">
                       <span className="uppercase tracking-wider opacity-70 text-sm">Status</span>

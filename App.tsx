@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { MenuTab } from './types';
+import { DEFAULT_MENU_TAB, NAVIGATION_ORDER } from './navigation';
 import { Sidebar } from './components/Sidebar';
 import { StatusView } from './components/views/StatusView';
 import { InventoryView } from './components/views/InventoryView';
@@ -11,8 +12,8 @@ import { BootScreen } from './components/BootScreen';
 function App() {
   const [mounted, setMounted] = useState(false);
   const [gameState, setGameState] = useState<'BOOT' | 'APP'>('BOOT');
-  // Default to About (Intro)
-  const [activeTab, setActiveTab] = useState<MenuTab>(MenuTab.About);
+  // Default to Experience
+  const [activeTab, setActiveTab] = useState<MenuTab>(DEFAULT_MENU_TAB);
 
   useEffect(() => {
     setMounted(true);
@@ -23,8 +24,7 @@ function App() {
     if (gameState !== 'APP') return;
 
     const handleKeyDown = (e: KeyboardEvent) => {
-      // Get tabs in the same order as Sidebar
-      const tabs = [MenuTab.About, MenuTab.Profile, MenuTab.Projects, MenuTab.Skills, MenuTab.Credits];
+      const tabs = NAVIGATION_ORDER;
       const currentIndex = tabs.indexOf(activeTab);
 
       if (e.key === 'ArrowRight' || e.key === 'd') {
@@ -75,7 +75,10 @@ function App() {
   if (!mounted) return <div className="bg-nier-darker h-screen w-screen" />;
 
   if (gameState === 'BOOT') {
-    return <BootScreen onComplete={() => setGameState('APP')} />;
+    return <BootScreen onComplete={() => {
+      setActiveTab(DEFAULT_MENU_TAB);
+      setGameState('APP');
+    }} />;
   }
 
   return (

@@ -16,6 +16,8 @@ export interface ExperienceItem {
   location?: string;
   type?: string;
   achievements?: string[];
+  proofUrl?: string;
+  proofLabel?: string;
 }
 
 export interface ProjectItem {
@@ -31,6 +33,7 @@ export interface ProjectItem {
   status?: string;
   startDate?: string; // Format: MM-YYYY
   endDate?: string; // Format: MM-YYYY or "Present"
+  featured?: boolean;
 }
 
 export interface ContactMethod {
@@ -44,9 +47,20 @@ export interface ContactMethod {
 export interface SkillItem {
   id: string;
   name: string;
-  category: 'Language' | 'Framework' | 'Tool';
+  category: 'AI/ML' | 'Language' | 'Framework' | 'Tool';
   level: string;
   icon: LucideIcon;
+}
+
+export interface UserInfo {
+  name: string;
+  title: string;
+  yearsExp: string;
+  location: string;
+  tagline: string;
+  bio: string;
+  systemSpecs?: string[];
+  missionObjective?: string;
 }
 
 export enum MenuTab {

@@ -9,6 +9,22 @@ export const StatusView: React.FC = () => {
     return <div className="p-8 font-tech text-black">No experience data available.</div>;
   }
 
+  const proofCtaLabel = selectedExperience.proofLabel || 'View Proof';
+  const metadataItems = [
+    selectedExperience.period
+      ? {
+          label: 'Tenure',
+          value: selectedExperience.period,
+        }
+      : null,
+    selectedExperience.type
+      ? {
+          label: 'Type',
+          value: selectedExperience.type,
+        }
+      : null,
+  ].filter((item): item is { label: string; value: string } => Boolean(item));
+
   return (
     <div className="flex flex-col h-full w-full animate-fadeIn">
 
@@ -55,8 +71,8 @@ export const StatusView: React.FC = () => {
                   >
                     <Briefcase size={16} strokeWidth={2} className='text-nier-dark opacity-70' />
 
-                    <div className="flex-1">
-                      <div className="font-tech text-lg uppercase tracking-wider font-bold truncate text-nier-dark">
+                    <div className="flex-1 min-w-0">
+                      <div className="font-tech text-base md:text-lg uppercase tracking-wider font-bold text-nier-dark break-words leading-snug">
                         {exp.role}
                       </div>
                     </div>
@@ -71,49 +87,53 @@ export const StatusView: React.FC = () => {
         <div className="flex-1 flex flex-col bg-nier-beige-dim border border-nier-dark/10 overflow-hidden h-full">
           {/* Title Bar - Touches Edges */}
           {/* Title Bar - Touches Edges */}
-          <div className="w-full bg-nier-dark py-3 px-5 shadow-md flex justify-between items-center flex-shrink-0 z-10 border-b-2 border-nier-beige/10">
-            <h3 className="text-3xl font-tech text-nier-beige font-bold uppercase tracking-[0.15em] drop-shadow-md">
-              {selectedExperience.company}
-            </h3>
-            <div className="flex items-center gap-8">
-              <div className="flex flex-col items-end leading-none">
-                <span className="text-[10px] text-nier-beige/60 uppercase tracking-widest mb-1 font-bold">Tenure</span>
-                <span className="text-xl font-tech font-bold text-nier-beige tracking-wider">
-                  {selectedExperience.period}
-                </span>
-              </div>
-              <div className="w-px h-8 bg-nier-beige/20"></div>
-              <div className="flex flex-col items-end leading-none">
-                <span className="text-[10px] text-nier-beige/60 uppercase tracking-widest mb-1 font-bold">Type</span>
-                <span className="text-xl font-tech font-bold text-nier-beige tracking-wider">{selectedExperience.type}</span>
-              </div>
+          <div className="w-full bg-nier-dark py-3 px-5 shadow-md flex flex-col gap-4 xl:flex-row xl:justify-between xl:items-start flex-shrink-0 z-10 border-b-2 border-nier-beige/10">
+            <div className="min-w-0">
+              <h3 className="text-2xl md:text-3xl font-tech text-nier-beige font-bold uppercase tracking-[0.12em] drop-shadow-md break-words leading-tight">
+                {selectedExperience.company}
+              </h3>
             </div>
+            {metadataItems.length > 0 && (
+              <div className="flex flex-wrap items-start gap-x-8 gap-y-3 xl:justify-end min-w-0">
+                {metadataItems.map((item, index) => (
+                  <React.Fragment key={item.label}>
+                    {index > 0 && <div className="hidden sm:block w-px h-8 bg-nier-beige/20"></div>}
+                    <div className="flex flex-col items-start sm:items-end leading-none min-w-0">
+                      <span className="text-[10px] text-nier-beige/60 uppercase tracking-widest mb-1 font-bold">{item.label}</span>
+                      <span className="text-lg md:text-xl font-tech font-bold text-nier-beige tracking-wider break-words leading-tight text-left sm:text-right max-w-full">
+                        {item.value}
+                      </span>
+                    </div>
+                  </React.Fragment>
+                ))}
+              </div>
+            )}
           </div>
 
           <div className="flex-1 overflow-y-auto custom-scrollbar p-6">
             <div className="flex flex-col xl:flex-row gap-6 min-h-full">
               {/* Sidebar Stats */}
-              <div className="w-full xl:w-72 bg-nier-beige border-t-4 border-nier-dark/10 p-4 font-tech text-nier-dark flex flex-col justify-between">
+              <div className="w-full xl:w-72 bg-nier-beige border-t-4 border-nier-dark/10 p-4 font-tech text-nier-dark flex flex-col justify-between gap-6 min-w-0">
                 <div>
                   <div className="text-xl font-bold border-b border-nier-dark/30 pb-2 mb-4">
                     Role Details
                   </div>
 
                   <div className="space-y-3 text-base">
-                    <div className="flex justify-between items-start">
+                    <div className="flex justify-between items-start gap-4 min-w-0">
                       <span className="uppercase tracking-wider opacity-70 text-sm flex-shrink-0 mt-0.5">Role</span>
-                      <span className="font-bold text-right ml-4 leading-tight">{selectedExperience.role}</span>
+                      <span className="font-bold text-right leading-tight min-w-0 break-words">{selectedExperience.role}</span>
                     </div>
                     {selectedExperience.location && (
-                      <div className="flex justify-between items-start">
+                      <div className="flex justify-between items-start gap-4 min-w-0">
                         <span className="uppercase tracking-wider opacity-70 text-sm flex-shrink-0 mt-0.5">Location</span>
-                        <span className="font-bold text-right ml-4 leading-tight">{selectedExperience.location}</span>
+                        <span className="font-bold text-right leading-tight min-w-0 break-words">{selectedExperience.location}</span>
                       </div>
                     )}
                     {selectedExperience.type && (
-                      <div className="flex justify-between items-start">
+                      <div className="flex justify-between items-start gap-4 min-w-0">
                         <span className="uppercase tracking-wider opacity-70 text-sm flex-shrink-0 mt-0.5">Type</span>
-                        <span className="font-bold text-right ml-4 leading-tight">{selectedExperience.type}</span>
+                        <span className="font-bold text-right leading-tight min-w-0 break-words">{selectedExperience.type}</span>
                       </div>
                     )}
 
@@ -129,10 +149,23 @@ export const StatusView: React.FC = () => {
                     </div>
                   </div>
                 </div>
+
+                {selectedExperience.proofUrl ? (
+                  <div>
+                    <a
+                      href={selectedExperience.proofUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="block w-full text-center py-3 border border-nier-dark text-nier-dark hover:bg-nier-dark hover:text-nier-beige transition-colors uppercase tracking-widest font-bold text-sm"
+                    >
+                      {proofCtaLabel}
+                    </a>
+                  </div>
+                ) : null}
               </div>
 
               {/* Main Content */}
-              <div className="flex-1 space-y-6">
+              <div className="flex-1 space-y-6 min-w-0">
                 <div className="bg-nier-dark/5 border border-nier-dark/20 p-6 relative nier-header-grid min-h-[160px]">
                   {/* Decorative Corners */}
                   <div className="absolute top-0 left-0 w-2 h-2 border-t border-l border-nier-dark"></div>
@@ -141,7 +174,7 @@ export const StatusView: React.FC = () => {
                   <div className="absolute bottom-0 right-0 w-2 h-2 border-b border-r border-nier-dark"></div>
 
                   <div className="text-sm text-nier-dark/60 font-bold uppercase tracking-widest mb-3 border-b border-nier-dark/20 pb-1">Role Summary</div>
-                  <p className="font-tech text-xl text-nier-dark font-medium leading-relaxed">
+                  <p className="font-tech text-xl text-nier-dark font-medium leading-relaxed break-words">
                     {selectedExperience.description}
                   </p>
                 </div>
@@ -158,7 +191,7 @@ export const StatusView: React.FC = () => {
                       {selectedExperience.achievements.map((achievement, i) => (
                         <li key={i} className="flex gap-3 text-nier-dark/90 items-start">
                           <div className="mt-1.5 w-1.5 h-1.5 bg-nier-dark rotate-45 flex-shrink-0 opacity-60"></div>
-                          <span className="font-tech text-base leading-snug">{achievement}</span>
+                          <span className="font-tech text-base leading-snug break-words">{achievement}</span>
                         </li>
                       ))}
                     </ul>
