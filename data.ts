@@ -54,7 +54,7 @@ export const WORK_EXPERIENCE: ExperienceItem[] = [
     id: "exp0",
     role: "NLP Data Engineer (Intern)",
     company: "Atlas Public Policy",
-    period: "11-2023 - 11-2023",
+    period: "08-2022 - 12-2022",
     description: "Built a specialized NLP document search workflow for stakeholders reviewing federal infrastructure plans. Transformed unstructured data into queryable analyst tools.",
     location: "Washington, D.C.",
     type: "Internship",
@@ -75,7 +75,7 @@ export const WORK_EXPERIENCE: ExperienceItem[] = [
     description: "Automated test driver deployments and optimized CI/CD workflows using Azure DevOps to improve software development efficiency.",
     location: "Manchester, NH",
     type: "Internship",
-    skills: ["Azure DevOps", "CI/CD", "PowerShell", "Scripting", "Agile"],
+    skills: ["Azure", "CI/CD", "PowerShell", "Scripting", "Agile", "DevOps"],
     achievements: [
       "Designed and deployed automated CI/CD pipelines for driver testing, reducing deployment validation time by 40%.",
       "Implemented Infrastructure-as-Code patterns to standardize test environments across the engineering team."
@@ -89,7 +89,7 @@ export const WORK_EXPERIENCE: ExperienceItem[] = [
     description: "Rigorous graduate study focused on Software Engineering and AI Applications. Specialized in building scalable, real-world software systems.",
     location: "Worcester, MA",
     type: "Education",
-    skills: ["Java", "C/C++", "System Design", "Algorithms", "Leadership"],
+    skills: ["TypeScript", "Python", "System Design", "Algorithms", "Leadership"],
     achievements: [
       "Specialized in Software and AI Applications with coursework in Deep Learning and Distributed Systems.",
       "Led multiple team-based software engineering projects for corporate clients.",

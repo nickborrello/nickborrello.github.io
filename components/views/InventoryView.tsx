@@ -118,106 +118,116 @@ export const InventoryView: React.FC = () => {
                   </span>
                 </div>
               )}
-              <div className="w-px h-8 bg-nier-beige/20"></div>
-              <div className="flex flex-col items-end leading-none">
-                <span className="text-[10px] text-nier-beige/60 uppercase tracking-widest mb-1 font-bold">Tech Level</span>
-                <span className="text-xl font-tech font-bold text-nier-beige tracking-wider">{selectedProject.tech.length}</span>
-              </div>
             </div>
           </div>
 
-          <div className="flex-1 overflow-y-auto custom-scrollbar p-6">
-            <div className="flex flex-col xl:flex-row gap-6 min-h-full">
-              <div className="flex-1 space-y-6">
-                <div className="border-t border-nier-dark/20 pt-4">
-                  <p className="font-tech text-xl text-nier-dark/90 font-medium leading-relaxed pl-2 border-l-2 border-nier-dark/30">
-                    {selectedProject.description}
-                  </p>
-                </div>
+          {/* Action Bar - Quick Access */}
+          <div className="bg-nier-beige border-b border-nier-dark/10 px-6 py-3 flex flex-wrap gap-4 items-center justify-between flex-shrink-0">
+            <div className="flex items-center gap-6">
+              <div className="flex flex-col">
+                <span className="text-[9px] uppercase tracking-widest text-nier-dark/50 font-bold mb-0.5">Category</span>
+                <span className="text-sm font-tech font-bold text-nier-dark uppercase tracking-wider">Web Application</span>
               </div>
+              <div className="w-px h-6 bg-nier-dark/10"></div>
+              <div className="flex flex-col">
+                <span className="text-[9px] uppercase tracking-widest text-nier-dark/50 font-bold mb-0.5">Status</span>
+                <span className="text-sm font-tech font-bold text-nier-dark uppercase tracking-wider">{selectedProject.status || "Unknown"}</span>
+              </div>
+            </div>
 
-              {/* Status / Stats Block */}
-              <div className="w-full xl:w-72 bg-nier-beige border-t-4 border-nier-dark/10 p-4 font-tech text-nier-dark flex flex-col justify-between">
-                <div>
-                  <div className="text-xl font-bold border-b border-nier-dark/30 pb-2 mb-4">
-                    Status
-                  </div>
+            <div className="flex items-center gap-3">
+              {selectedProject.link && selectedProject.link !== '#' && (
+                <a
+                  href={selectedProject.link}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="px-4 py-2 border border-nier-dark text-nier-dark hover:bg-nier-dark hover:text-nier-beige transition-all uppercase tracking-widest font-bold text-xs flex items-center gap-2"
+                >
+                  Live Demo
+                </a>
+              )}
+              {selectedProject.repoUrl && (
+                <a
+                  href={selectedProject.repoUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="px-4 py-2 border border-nier-dark/30 text-nier-dark/70 hover:bg-nier-dark/10 transition-all uppercase tracking-widest font-bold text-xs"
+                >
+                  Source Code
+                </a>
+              )}
+            </div>
+          </div>
 
-                  <div className="space-y-3 text-base">
-                    <div className="flex justify-between items-center">
-                      <span className="uppercase tracking-wider opacity-70 text-sm">Category</span>
-                      <span className="font-bold">Web Application</span>
-                    </div>
-                    <div className="flex justify-between items-center">
-                      <span className="uppercase tracking-wider opacity-70 text-sm">Priority</span>
-                      <span className="font-bold text-right max-w-[140px] truncate">
-                        {selectedProject.featured ? 'Featured Proof' : 'Archive'}
-                      </span>
-                    </div>
-                    <div className="flex justify-between items-center">
-                      <span className="uppercase tracking-wider opacity-70 text-sm">Status</span>
-                      <span className="font-bold text-right max-w-[140px] truncate">{selectedProject.status || "Unknown"}</span>
-                    </div>
-                    <div className="flex justify-between items-center">
-                      <span className="uppercase tracking-wider opacity-70 text-sm">Highlight</span>
-                      <span className="font-bold text-right max-w-[140px] truncate">{selectedProject.highlight}</span>
-                    </div>
+          <div className="flex-1 overflow-y-auto custom-scrollbar p-6 space-y-8">
+            {/* Description Section */}
+            <div className="max-w-4xl">
+              <p className="font-tech text-xl text-nier-dark/90 font-medium leading-relaxed pl-4 border-l-4 border-nier-dark/20">
+                {selectedProject.description}
+              </p>
+            </div>
 
-                    {/* Features List */}
-                    {selectedProject.features && selectedProject.features.length > 0 && (
-                      <div className="mt-6 pt-3 border-t border-dotted border-nier-dark/30">
-                        <span className="uppercase tracking-wider opacity-70 block mb-2 text-sm">Key Features</span>
-                        <ul className="list-disc list-inside text-sm space-y-1.5 opacity-90 pl-1">
-                          {selectedProject.features.map((feature, i) => (
-                            <li key={i}>{feature}</li>
-                          ))}
-                        </ul>
-                      </div>
-                    )}
+            {/* Metadata Grid */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 py-6 border-y border-nier-dark/10">
+              <div className="space-y-1">
+                <span className="block text-[10px] uppercase tracking-widest text-nier-dark/50 font-bold">Priority</span>
+                <span className="block font-tech text-base font-bold text-nier-dark uppercase">
+                  {selectedProject.featured ? 'Featured Proof' : 'Archive'}
+                </span>
+              </div>
+              <div className="space-y-1">
+                <span className="block text-[10px] uppercase tracking-widest text-nier-dark/50 font-bold">Highlight</span>
+                <span className="block font-tech text-base font-bold text-nier-dark uppercase">
+                  {selectedProject.highlight}
+                </span>
+              </div>
+              <div className="space-y-1">
+                <span className="block text-[10px] uppercase tracking-widest text-nier-dark/50 font-bold">Architecture</span>
+                <span className="block font-tech text-base font-bold text-nier-dark uppercase">Modular / Responsive</span>
+              </div>
+              <div className="space-y-1">
+                <span className="block text-[10px] uppercase tracking-widest text-nier-dark/50 font-bold">Revision</span>
+                <span className="block font-tech text-base font-bold text-nier-dark uppercase">v1.0.4-build</span>
+              </div>
+            </div>
 
-                    <div className="mt-6 pt-3 border-t border-dotted border-nier-dark/30">
-                      <span className="uppercase tracking-wider opacity-70 block mb-2 text-sm">Technologies</span>
-                      <div className="flex flex-wrap gap-1.5 justify-start">
-                        {selectedProject.tech.map(t => (
-                          <span key={t} className="px-2 py-1 border border-nier-dark/20 text-xs uppercase font-bold text-nier-dark/90 bg-nier-dark/5">
-                            {t}
-                          </span>
-                        ))}
-                      </div>
-                    </div>
-                  </div>
+            <div className="flex flex-col xl:flex-row gap-12">
+              {/* Features List */}
+              {selectedProject.features && selectedProject.features.length > 0 && (
+                <div className="flex-1">
+                  <h3 className="text-lg font-bold font-tech uppercase tracking-[0.2em] mb-4 text-nier-dark flex items-center gap-2">
+                    <span className="w-8 h-px bg-nier-dark/30"></span>
+                    Key Features
+                  </h3>
+                  <ul className="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-3 pl-2">
+                    {selectedProject.features.map((feature, i) => (
+                      <li key={i} className="font-tech text-sm text-nier-dark/80 flex items-start gap-3">
+                        <span className="mt-1.5 w-1.5 h-1.5 bg-nier-dark/40 rotate-45 flex-shrink-0"></span>
+                        {feature}
+                      </li>
+                    ))}
+                  </ul>
                 </div>
+              )}
 
-                <div>
-                  <div className="space-y-3">
-                    {selectedProject.link && selectedProject.link !== '#' ? (
-                      <a
-                        href={selectedProject.link}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="block w-full text-center py-3 border border-nier-dark text-nier-dark hover:bg-nier-dark hover:text-nier-beige transition-colors uppercase tracking-widest font-bold text-sm"
-                      >
-                        View Live Demo
-                      </a>
-                    ) : null}
-
-                    {selectedProject.repoUrl ? (
-                      <a
-                        href={selectedProject.repoUrl}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="block w-full text-center py-3 border border-nier-dark/50 text-nier-dark/70 hover:bg-nier-dark/10 transition-colors uppercase tracking-widest font-bold text-sm"
-                      >
-                        Source Code
-                      </a>
-                    ) : null}
-                  </div>
+              {/* Technologies */}
+              <div className="xl:w-80">
+                <h3 className="text-lg font-bold font-tech uppercase tracking-[0.2em] mb-4 text-nier-dark flex items-center gap-2">
+                  <span className="w-8 h-px bg-nier-dark/30"></span>
+                  Technology
+                </h3>
+                <div className="flex flex-wrap gap-2">
+                  {selectedProject.tech.map(t => (
+                    <span key={t} className="px-3 py-1.5 border border-nier-dark/20 text-[11px] uppercase font-bold text-nier-dark/90 bg-nier-dark/5 tracking-wider">
+                      {t}
+                    </span>
+                  ))}
                 </div>
               </div>
             </div>
 
-            <div className="mt-8 text-right text-xs font-tech text-nier-dark/40 tracking-widest border-t border-nier-dark/10 pt-2">
-              Project ID: {selectedProject.id} // {(new Date()).getFullYear()}
+            <div className="pt-8 text-right text-[10px] font-tech text-nier-dark/40 tracking-widest border-t border-nier-dark/10 uppercase">
+              System ID: {selectedProject.id.slice(0, 8)} // Data Integrity Verified // {(new Date()).getFullYear()}
             </div>
           </div>
         </div>
