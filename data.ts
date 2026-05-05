@@ -48,7 +48,7 @@ export const WORK_EXPERIENCE: ExperienceItem[] = [
     location: "Taunton, MA",
     type: "Full-time",
     skills: ["Python", "TypeScript", "LLM Orchestration", "Next.js", "Docker", "Playwright", "Supabase", "PostgreSQL", "React"],
-    proofUrl: "https://www.baystatepetandgarden.com",
+    proofUrl: "https://bay-state-app.vercel.app",
     proofLabel: "View Company Storefront",
     achievements: [
       "Engineered a hybrid AI consolidation pipeline routing tasks between Gemini Flash and OpenAI GPT-4o-mini, achieving 100% extraction accuracy while reducing costs by 70%.",
@@ -59,7 +59,7 @@ export const WORK_EXPERIENCE: ExperienceItem[] = [
   },
   {
     id: "exp0",
-    role: "NLP Data Engineer (Intern)",
+    role: "NLP Data Engineer Intern",
     company: "Atlas Public Policy",
     period: "11-2023 - 11-2023",
     description: "Built a specialized NLP document search workflow for stakeholders reviewing federal infrastructure plans. Transformed unstructured data into queryable analyst tools.",
