@@ -36,9 +36,9 @@ export const MessagesView: React.FC = () => {
             </span>
          </div>
 
-         <div className="flex flex-col lg:flex-row gap-8 flex-1 min-h-0 overflow-hidden">
+         <div className="flex flex-col lg:flex-row gap-6 lg:gap-8 flex-1 min-h-0 lg:h-full overflow-y-auto lg:overflow-hidden">
             {/* Left: Contact List / Connect */}
-            <div className="w-full lg:w-[25%] flex flex-col border border-nier-dark/20 bg-nier-beige-dim h-full overflow-hidden">
+            <div className="w-full lg:w-[25%] flex flex-col border border-nier-dark/20 bg-nier-beige-dim flex-shrink-0 lg:h-full overflow-hidden">
                {/* Header for list - Flush */}
                <div className="flex items-center justify-between bg-nier-dark text-nier-beige px-3 py-1 flex-shrink-0">
                   <span className="text-sm md:text-base font-tech font-bold uppercase tracking-widest">
@@ -91,7 +91,7 @@ export const MessagesView: React.FC = () => {
                   <div className="w-full text-left">
                      <div className="flex items-center gap-2 mb-4">
                         <div className="w-4 h-4 bg-nier-dark"></div>
-                        <h3 className="text-3xl font-tech text-black font-bold uppercase tracking-widest">
+                        <h3 className="text-3xl font-tech text-nier-dark font-bold uppercase tracking-widest">
                            {USER_INFO.name}
                         </h3>
                      </div>
@@ -100,7 +100,7 @@ export const MessagesView: React.FC = () => {
                         <span className="bg-nier-dark text-nier-beige px-3 py-1 text-xs font-tech font-bold uppercase tracking-widest">
                            {USER_INFO.title}
                         </span>
-                        <span className="ml-3 font-tech text-black/70 font-medium tracking-wide">
+                        <span className="ml-3 font-tech text-nier-dark/70 font-medium tracking-wide">
                            {USER_INFO.location}
                         </span>
                      </div>
@@ -109,9 +109,9 @@ export const MessagesView: React.FC = () => {
                         <div className="border border-nier-dark/15 bg-nier-beige/60 p-4 md:p-5">
                            <div className="flex items-center gap-2 mb-3 opacity-75">
                               <div className="w-2 h-2 bg-nier-dark rotate-45"></div>
-                              <div className="text-xs text-black font-bold uppercase tracking-widest">Identity Signal</div>
+                              <div className="text-xs text-nier-dark font-bold uppercase tracking-widest">Identity Signal</div>
                            </div>
-                           <p className="font-tech text-lg md:text-xl text-black font-medium leading-relaxed">
+                           <p className="font-tech text-lg md:text-xl text-nier-dark font-medium leading-relaxed">
                               {USER_INFO.bio}
                            </p>
                         </div>
@@ -121,9 +121,9 @@ export const MessagesView: React.FC = () => {
                               <div className="border border-nier-dark/15 bg-nier-beige p-4 md:p-5">
                                  <div className="flex items-center gap-2 mb-3 opacity-75">
                                     <div className="w-2 h-2 bg-nier-dark rotate-45"></div>
-                                    <div className="text-xs text-black font-bold uppercase tracking-widest">Mission Objective</div>
+                                    <div className="text-xs text-nier-dark font-bold uppercase tracking-widest">Mission Objective</div>
                                  </div>
-                                 <p className="font-tech text-lg text-black font-medium leading-relaxed">
+                                 <p className="font-tech text-lg text-nier-dark font-medium leading-relaxed">
                                     {missionObjective}
                                  </p>
                               </div>
@@ -132,9 +132,9 @@ export const MessagesView: React.FC = () => {
                            <div className="border border-nier-dark/15 bg-nier-dark/5 p-4 md:p-5">
                               <div className="flex items-center gap-2 mb-3 opacity-75">
                                  <div className="w-2 h-2 bg-nier-dark rotate-45"></div>
-                                 <div className="text-xs text-black font-bold uppercase tracking-widest">Current Focus</div>
+                                 <div className="text-xs text-nier-dark font-bold uppercase tracking-widest">Current Focus</div>
                               </div>
-                              <p className="font-tech text-base md:text-lg text-black font-medium leading-relaxed">
+                              <p className="font-tech text-base md:text-lg text-nier-dark font-medium leading-relaxed">
                                  {USER_INFO.tagline}
                               </p>
                            </div>
@@ -144,7 +144,7 @@ export const MessagesView: React.FC = () => {
                            <div className="border border-nier-dark/15 bg-nier-beige p-4 md:p-5">
                               <div className="flex items-center gap-2 mb-4 opacity-75">
                                  <div className="w-2 h-2 bg-nier-dark rotate-45"></div>
-                                 <div className="text-xs text-black font-bold uppercase tracking-widest">System Specs</div>
+                                 <div className="text-xs text-nier-dark font-bold uppercase tracking-widest">System Specs</div>
                               </div>
                               <div className="grid gap-3 md:grid-cols-2">
                                  {systemSpecs.map((spec, index) => (
@@ -152,10 +152,10 @@ export const MessagesView: React.FC = () => {
                                        key={spec}
                                        className="flex gap-3 border border-nier-dark/10 bg-nier-beige-dim/60 px-3 py-3"
                                     >
-                                       <span className="min-w-8 font-mono text-xs text-black/55 pt-0.5">
+                                       <span className="min-w-8 font-mono text-xs text-nier-dark/55 pt-0.5">
                                           0{index + 1}
                                        </span>
-                                       <p className="font-tech text-sm md:text-base text-black font-medium leading-relaxed">
+                                       <p className="font-tech text-sm md:text-base text-nier-dark font-medium leading-relaxed">
                                           {spec}
                                        </p>
                                     </div>
@@ -170,7 +170,7 @@ export const MessagesView: React.FC = () => {
                         <div className="flex items-center justify-between mb-2 opacity-70">
                            <div className="flex items-center gap-2">
                               <div className="w-2 h-2 bg-nier-dark rotate-45"></div>
-                              <div className="text-xs text-black font-bold uppercase tracking-widest">Memory Log // Recent Commits</div>
+                              <div className="text-xs text-nier-dark font-bold uppercase tracking-widest">Memory Log // Recent Commits</div>
                            </div>
                            {!loading && commits.length > 0 && (
                               <div className="hidden md:block text-[10px] text-nier-dark font-bold uppercase tracking-widest bg-nier-dark/10 px-2 py-0.5 border border-nier-dark/20">

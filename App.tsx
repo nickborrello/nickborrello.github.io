@@ -82,7 +82,7 @@ function App() {
   }
 
   return (
-    <div className="flex flex-col h-screen w-screen bg-nier-beige text-nier-dark overflow-hidden font-sans select-none relative nier-grid-bg">
+    <div className="flex flex-col h-screen h-[100dvh] w-screen bg-nier-beige text-nier-dark overflow-hidden font-sans select-none relative nier-grid-bg">
       {/* Global Grid Overlay - fine mesh */}
       <div className="scanline-overlay opacity-50"></div>
 
@@ -100,21 +100,21 @@ function App() {
         {/* Content Area */}
         <main className="flex-1 relative overflow-hidden flex flex-col">
           {/* Top decorative dots */}
-          <div className="h-2 flex items-center justify-between px-2 opacity-50 border-b border-nier-dark/10">
+          <div className="h-2 flex items-center justify-between px-2 opacity-50 border-b border-nier-dark/10 overflow-hidden">
             {Array.from({ length: 120 }).map((_, i) => (
-              <div key={i} className="w-0.5 h-0.5 bg-nier-dark rounded-full"></div>
+              <div key={i} className="w-0.5 h-0.5 bg-nier-dark rounded-full flex-shrink-0"></div>
             ))}
           </div>
 
-          {/* Inner Content Content */}
-          <div className="flex-1 overflow-y-auto custom-scrollbar px-6 py-4 md:px-12 md:py-6 relative">
+          {/* Inner Content Container */}
+          <div className="flex-1 overflow-y-auto custom-scrollbar px-3 py-3 sm:px-6 md:px-12 md:py-6 relative">
             {renderContent()}
           </div>
 
           {/* Bottom decorative dots */}
-          <div className="h-2 flex items-center justify-between px-2 opacity-50 border-t border-nier-dark/10">
+          <div className="h-2 flex items-center justify-between px-2 opacity-50 border-t border-nier-dark/10 overflow-hidden">
             {Array.from({ length: 120 }).map((_, i) => (
-              <div key={i} className="w-0.5 h-0.5 bg-nier-dark rounded-full"></div>
+              <div key={i} className="w-0.5 h-0.5 bg-nier-dark rounded-full flex-shrink-0"></div>
             ))}
           </div>
         </main>

@@ -6,7 +6,7 @@ export const StatusView: React.FC = () => {
   const [selectedExperience, setSelectedExperience] = useState(WORK_EXPERIENCE[0]);
 
   if (!selectedExperience) {
-    return <div className="p-8 font-tech text-black">No experience data available.</div>;
+    return <div className="p-8 font-tech text-nier-dark">No experience data available.</div>;
   }
 
   const proofCtaLabel = selectedExperience.proofLabel || 'View Proof';
@@ -43,10 +43,10 @@ export const StatusView: React.FC = () => {
         </span>
       </div>
 
-      <div className="flex flex-col lg:flex-row h-full gap-8 flex-1 min-h-0 overflow-hidden">
+      <div className="flex flex-col lg:flex-row gap-6 lg:gap-8 flex-1 min-h-0 lg:h-full overflow-y-auto lg:overflow-hidden">
 
         {/* Left Column: Experience List */}
-        <div className="w-full lg:w-[40%] flex flex-col border border-nier-dark/20 bg-nier-beige-dim h-full overflow-hidden">
+        <div className="w-full lg:w-[40%] flex flex-col border border-nier-dark/20 bg-nier-beige-dim max-h-64 lg:max-h-none lg:h-full flex-shrink-0 overflow-hidden">
           {/* Header for list - Flush */}
           <div className="flex items-center justify-between bg-nier-dark text-nier-beige px-3 py-1 flex-shrink-0">
             <span className="text-sm md:text-base font-tech font-bold uppercase tracking-widest">

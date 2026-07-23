@@ -14,6 +14,11 @@ dist-ssr
 .agents
 .sisyphus
 
+# Impeccable local state and session data
+.impeccable/*.local.json
+.impeccable/live/
+build_log.txt
+
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json

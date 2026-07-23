@@ -3,7 +3,7 @@
 
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
   <title>Nick's Portfolio</title>
   <link rel="icon" href="/icon.png" />
   <script src="https://cdn.tailwindcss.com"></script>
@@ -51,6 +51,10 @@
       background-color: #2b2b2b;
       color: #dad4bb;
       overflow: hidden;
+      padding-top: env(safe-area-inset-top, 0px);
+      padding-bottom: env(safe-area-inset-bottom, 0px);
+      padding-left: env(safe-area-inset-left, 0px);
+      padding-right: env(safe-area-inset-right, 0px);
     }
 
     /* Custom scrollbar for Nier feel */

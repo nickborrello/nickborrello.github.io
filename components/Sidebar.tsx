@@ -26,8 +26,9 @@ export const Sidebar: React.FC<SidebarProps> = ({ activeTab, onSelect }) => {
               <React.Fragment key={item.id}>
                 <button
                   onClick={() => onSelect(item.id)}
+                  aria-label={item.label}
                   className={`
-                    h-full px-2 sm:px-5 md:px-8 flex flex-row items-center justify-center gap-0 sm:gap-2 transition-all duration-0 relative group whitespace-nowrap
+                    h-full px-2 sm:px-5 md:px-8 flex flex-row items-center justify-center gap-0 sm:gap-2 transition-all duration-0 relative group whitespace-nowrap focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-nier-dark focus-visible:z-20
                     ${isActive
                       ? 'bg-nier-dark text-nier-beige'
                       : 'bg-nier-beige text-nier-dark hover:bg-nier-dark/10'}
@@ -57,8 +58,9 @@ export const Sidebar: React.FC<SidebarProps> = ({ activeTab, onSelect }) => {
           {creditsItem && (
             <button
               onClick={() => onSelect(creditsItem.id)}
+              aria-label={creditsItem.label}
               className={`
-                p-1.5 sm:p-2 transition-all duration-200 rounded-full
+                p-1.5 sm:p-2 transition-all duration-200 rounded-full focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-nier-dark
                 ${activeTab === creditsItem.id
                   ? 'bg-nier-dark text-nier-beige'
                   : 'text-nier-dark hover:bg-nier-dark/10 opacity-70 hover:opacity-100'}

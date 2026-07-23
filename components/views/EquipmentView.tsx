@@ -109,10 +109,10 @@ export const EquipmentView: React.FC = () => {
             </span>
          </div>
 
-         <div className="flex flex-col lg:flex-row gap-6 flex-1 min-h-0 h-full overflow-hidden">
+         <div className="flex flex-col lg:flex-row gap-6 flex-1 min-h-0 lg:h-full overflow-y-auto lg:overflow-hidden">
 
             {/* LEFT COLUMN: Skill List */}
-            <div className="w-full lg:w-[35%] flex flex-col border border-nier-dark/20 bg-nier-beige-dim h-full overflow-hidden">
+            <div className="w-full lg:w-[35%] flex flex-col border border-nier-dark/20 bg-nier-beige-dim max-h-72 lg:max-h-none lg:h-full flex-shrink-0 overflow-hidden">
                <div className="flex-1 overflow-y-auto custom-scrollbar space-y-0 relative">
                   {listCategories.map((category) => {
                      const categorySkills = SKILLS.filter(s => s.category === category);
@@ -151,10 +151,10 @@ export const EquipmentView: React.FC = () => {
                                        <div className={`w-6 h-6 border flex items-center justify-center transition-colors ${isSelected ? 'bg-nier-dark border-nier-dark text-nier-beige' : 'border-nier-dark/30 bg-white/50 text-nier-dark'}`}>
                                           <skill.icon size={14} />
                                        </div>
-                                       <div className="flex-1 font-tech text-lg font-bold tracking-wide uppercase text-black">
+                                       <div className="flex-1 font-tech text-lg font-bold tracking-wide uppercase text-nier-dark">
                                           {skill.name}
                                        </div>
-                                       <div className="font-tech text-xs tracking-widest opacity-70 font-bold text-black uppercase">
+                                       <div className="font-tech text-xs tracking-widest opacity-70 font-bold text-nier-dark uppercase">
                                           {proficiency}
                                        </div>
                                     </div>
@@ -172,7 +172,7 @@ export const EquipmentView: React.FC = () => {
                         <div key={`filler-${i}`} className="flex items-center gap-2 p-1">
                            <div className="w-4"></div>
                            <div className="w-6 h-6 border border-nier-dark/30 border-dashed"></div>
-                           <div className="flex-1 font-tech text-lg tracking-wide uppercase text-black font-medium">
+                           <div className="flex-1 font-tech text-lg tracking-wide uppercase text-nier-dark font-medium">
                               Planned
                            </div>
                            <div className="font-tech text-sm tracking-widest font-bold">
@@ -191,7 +191,7 @@ export const EquipmentView: React.FC = () => {
                 <div className="w-32 h-[95%] border-2 border-nier-dark bg-nier-beige flex flex-col-reverse shadow-lg relative my-auto overflow-hidden">
                    {/* Core (Bottom) */}
                    <div className="h-10 w-full bg-nier-dark/10 border border-nier-dark flex items-center justify-center relative flex-shrink-0 z-10">
-                      <span className="text-[10px] font-tech uppercase tracking-tighter text-black font-bold rotate-90 opacity-60">CORE</span>
+                      <span className="text-[10px] font-tech uppercase tracking-tighter text-nier-dark font-bold rotate-90 opacity-60">CORE</span>
                    </div>
  
                    {/* Categorized Blocks */}
@@ -247,27 +247,27 @@ export const EquipmentView: React.FC = () => {
                {activeSkill ? (
                   <div className="mt-8 animate-fadeIn">
                      <div className="flex items-end justify-between border-b-2 border-nier-dark pb-2 mb-6">
-                        <h2 className="text-4xl font-tech uppercase font-bold text-black tracking-wide">
+                        <h2 className="text-4xl font-tech uppercase font-bold text-nier-dark tracking-wide">
                            {activeSkill.name}
                         </h2>
-                        <div className="text-xs font-tech text-black/60 font-bold tracking-widest uppercase">
+                        <div className="text-xs font-tech text-nier-dark/60 font-bold tracking-widest uppercase">
                            {activeSkill.level === 'S-Tier' ? 'Expert' : activeSkill.level === 'A-Tier' ? 'Advanced' : 'Intermediate'}
                         </div>
                      </div>
 
                      <div className="mb-4">
-                        <div className="text-xs font-tech font-bold uppercase tracking-widest text-black opacity-70 mb-2">
+                        <div className="text-xs font-tech font-bold uppercase tracking-widest text-nier-dark opacity-70 mb-2">
                            Category
                         </div>
-                        <span className="bg-nier-dark/10 border border-nier-dark/20 px-3 py-1 font-tech font-bold text-black uppercase tracking-wider text-sm">
+                        <span className="bg-nier-dark/10 border border-nier-dark/20 px-3 py-1 font-tech font-bold text-nier-dark uppercase tracking-wider text-sm">
                            {activeSkill.category}
                         </span>
                      </div>
 
                      <div className="mt-8">
-                        <div className="flex items-center gap-2 border-b border-nier-dark/20 pb-2 mb-4">
+                         <div className="flex items-center gap-2 border-b border-nier-dark/20 pb-2 mb-4">
                               <div className="w-1.5 h-1.5 bg-nier-dark rotate-45"></div>
-                              <div className="text-sm font-tech font-bold uppercase tracking-widest text-black">
+                              <div className="text-sm font-tech font-bold uppercase tracking-widest text-nier-dark">
                               Proof-Backed Usage
                               </div>
                            </div>
@@ -281,7 +281,7 @@ export const EquipmentView: React.FC = () => {
                                        href={item.url}
                                        target="_blank"
                                        rel="noopener noreferrer"
-                                       className="flex items-center gap-3 text-black group bg-nier-beige border border-transparent hover:border-nier-dark/20 p-2 transition-all cursor-pointer hover:bg-white/50"
+                                       className="flex items-center gap-3 text-nier-dark group bg-nier-beige border border-transparent hover:border-nier-dark/20 p-2 transition-all cursor-pointer hover:bg-white/50"
                                     >
                                        <span className="text-xs text-nier-dark group-hover:translate-x-1 transition-transform">▶</span>
                                        <div className="min-w-0 flex-1">
@@ -289,7 +289,7 @@ export const EquipmentView: React.FC = () => {
                                              <span className="font-tech text-xl font-bold uppercase underline decoration-transparent group-hover:decoration-nier-dark/30 underline-offset-4">{item.title}</span>
                                              <span className="text-[10px] uppercase tracking-[0.2em] text-nier-dark/50">{item.kind}</span>
                                           </div>
-                                          <div className="font-tech text-xs uppercase tracking-widest text-black/60 mt-1">
+                                          <div className="font-tech text-xs uppercase tracking-widest text-nier-dark/60 mt-1">
                                              {item.subtitle}{item.ctaLabel ? ` // ${item.ctaLabel}` : ''}
                                           </div>
                                        </div>
@@ -302,18 +302,18 @@ export const EquipmentView: React.FC = () => {
                                  );
                               })
                            ) : (
-                              <div className="p-4 border border-nier-dark/10 border-dashed text-black/50 font-tech italic text-sm text-center">
-                                 No proof-backed projects or experience linked to this skill.
-                              </div>
-                           )}
-                        </div>
-                     </div>
-                  </div>
-               ) : (
-                  <div className="flex-1 flex flex-col items-center justify-center text-black/30 space-y-4">
-                     <div className="w-16 h-16 border-2 border-dashed border-black/20 flex items-center justify-center">
-                        <span className="text-2xl">?</span>
-                     </div>
+                               <div className="p-4 border border-nier-dark/10 border-dashed text-nier-dark/50 font-tech italic text-sm text-center">
+                                  No proof-backed projects or experience linked to this skill.
+                               </div>
+                            )}
+                         </div>
+                      </div>
+                   </div>
+                ) : (
+                   <div className="flex-1 flex flex-col items-center justify-center text-nier-dark/30 space-y-4">
+                      <div className="w-16 h-16 border-2 border-dashed border-nier-dark/20 flex items-center justify-center">
+                         <span className="text-2xl">?</span>
+                      </div>
                      <div className="font-tech uppercase tracking-widest text-sm font-bold">
                         Select a technology to view usage data
                      </div>
