@@ -73,7 +73,7 @@ export interface UserInfo {
   bio: string;
 }
 
-export interface HeroMetric {
+export interface HeroProof {
   value: string;
   label: string;
   detail: string;

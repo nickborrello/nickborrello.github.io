@@ -1,4 +1,4 @@
-import { CapabilityGroup, ContactLink, EducationItem, ExperienceItem, HeroMetric, ProjectItem, ProofEvidence, UserInfo } from './types';
+import { CapabilityGroup, ContactLink, EducationItem, ExperienceItem, HeroProof, ProjectItem, ProofEvidence, UserInfo } from './types';
 
 export const USER_INFO: UserInfo = {
   name: "Nicholas Borrello",
@@ -11,21 +11,21 @@ export const USER_INFO: UserInfo = {
   bio: "I'm an AI engineer who bridges raw LLM capability and production-grade software. At Baystate Pet & Garden I designed a hybrid Gemini + OpenAI consolidation pipeline that automated product registration end-to-end; at Resumancer I'm building an agentic resume engine where every AI edit traces back to verified evidence. My work centers on one question: how do you make LLMs reliably do real work — at scale, under cost constraints, with results you can prove?",
 };
 
-export const HERO_METRICS: HeroMetric[] = [
+export const HERO_PROOFS: HeroProof[] = [
   {
-    value: "70%",
-    label: "lower LLM processing cost",
-    detail: "Hybrid Gemini Flash + GPT-4o-mini routing on the Baystate consolidation pipeline",
+    value: "Hybrid routing",
+    label: "Gemini Flash ⇄ GPT-4o-mini",
+    detail: "Cost-gated task routing with validation gates on the Baystate consolidation pipeline.",
   },
   {
-    value: "80%",
-    label: "less manual product entry",
-    detail: "Automated product registration engine at Baystate Pet & Garden",
+    value: "Agentic copilot",
+    label: "evidence-traced AI edits",
+    detail: "Resumancer's copilot maps job requirements to verified career evidence — every edit staged and reviewable.",
   },
   {
-    value: "100%",
-    label: "extraction accuracy",
-    detail: "Validation-gated accuracy across the hybrid consolidation workflow",
+    value: "Automated ops",
+    label: "scrapers → registered products",
+    detail: "Playwright + Docker scraper fleet and an automated registration engine feeding Supabase and PostgreSQL.",
   },
 ];
 
@@ -39,10 +39,10 @@ export const WORK_EXPERIENCE: ExperienceItem[] = [
     type: "Full-time",
     summary: "Designing and running the company's AI data infrastructure: a multi-stage consolidation pipeline that turns vendor sources into registered, in-stock products.",
     achievements: [
-      "Engineered a hybrid AI pipeline routing extraction between Gemini Flash and GPT-4o-mini — 100% extraction accuracy at 70% lower LLM cost than single-provider.",
+      "Engineered a hybrid AI pipeline routing extraction between Gemini Flash and GPT-4o-mini, with validation gating on every result before it reaches inventory.",
       "Architected a distributed web-scraping fleet (Playwright + Docker) orchestrated by GitHub Actions for asynchronous vendor synchronization.",
       "Delivered a mission-critical inventory analytics dashboard (Next.js + Supabase) centralizing real-time sales data for daily decisions.",
-      "Built an automated product registration engine that cut manual entry by over 80%.",
+      "Built an automated product registration engine that replaced manual product entry in the daily workflow.",
     ],
     skills: ["Python", "TypeScript", "LLM Orchestration", "Next.js", "Docker", "Playwright", "Supabase", "PostgreSQL", "React"],
   },
@@ -72,7 +72,7 @@ export const WORK_EXPERIENCE: ExperienceItem[] = [
     type: "Internship",
     summary: "Automated test-driver deployment and standardized environments across the engineering team's CI/CD.",
     achievements: [
-      "Designed and deployed automated CI/CD pipelines for driver testing, cutting deployment validation time by 40%.",
+      "Designed and deployed automated CI/CD pipelines for driver testing, reducing deployment validation time.",
       "Introduced Infrastructure-as-Code patterns that standardized test environments across the team.",
     ],
     skills: ["Azure DevOps", "CI/CD", "PowerShell"],
@@ -128,9 +128,9 @@ export const PROJECTS: ProjectItem[] = [
       "Automated product registration engine writing into Supabase/PostgreSQL, feeding a Next.js analytics dashboard.",
     ],
     impact: [
-      "100% extraction accuracy across the consolidation workflow.",
-      "70% lower LLM processing cost than single-provider routing.",
-      "80% reduction in manual product entry; real-time sales data for daily decisions.",
+      "Validation-gated extraction: every extraction is checked before it touches inventory.",
+      "Cost-gated routing keeps cheap tasks on Flash and escalates hard cases.",
+      "Automated product registration replaced manual re-keying; real-time sales data feeds daily decisions.",
     ],
     role: "AI & Software Engineer — sole engineer on the platform.",
     tech: ["Python", "TypeScript", "Gemini", "OpenAI", "Playwright", "Docker", "GitHub Actions", "Next.js", "Supabase", "PostgreSQL"],
@@ -215,7 +215,7 @@ export const PROOF_EVIDENCE: Record<string, ProofEvidence> = {
   },
   "p-baystate": {
     context: "Baystate AI Data Pipeline",
-    detail: "Autonomous extraction pipeline: tasks routed between Gemini Flash and GPT-4o-mini with cost-gated escalation, validation gates with reject-and-retry, feeding an automated product registration engine — 100% accuracy at 70% lower cost.",
+    detail: "Autonomous extraction pipeline: tasks routed between Gemini Flash and GPT-4o-mini with cost-gated escalation, validation gates with reject-and-retry, feeding an automated product registration engine.",
   },
   "p-shopsite": {
     context: "ShopSite-MCP",

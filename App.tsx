@@ -26,7 +26,8 @@
  * with wordmark, anchor nav, and RESUME CTA; hero carries the
  * name in Rajdhani display, "AI Engineer", a positioning line,
  * one-sentence summary, four CTAs, a status line, and the
- * telemetry strip — 70% / 80% / 100% — the page's proof.
+ * telemetry strip — three qualitative proof points (no invented
+ * metrics) — the page's evidence at a glance.
  *
  * FORM: document portfolio (Experience mode with persuasive
  * clarity), brief-pinned IA from issue #2: Hero → Featured

@@ -1,6 +1,6 @@
 import React from 'react';
 import { ArrowDown, ArrowUpRight, Github, Mail } from 'lucide-react';
-import { USER_INFO, HERO_METRICS, RESUME_URL } from '../data';
+import { USER_INFO, HERO_PROOFS, RESUME_URL } from '../data';
 
 export const Hero: React.FC = () => {
   return (
@@ -36,18 +36,18 @@ export const Hero: React.FC = () => {
           style={{ animationDelay: '180ms' }}
         >
           <p className="mt-3 lg:mt-5 font-tech font-semibold tracking-[0.22em] text-[10px] sm:text-[11px] text-nier-dark uppercase">
-            Measured outcomes
+            Proof points
           </p>
           <div className="mt-3 lg:mt-5 grid grid-cols-3 gap-3 sm:gap-6">
-            {HERO_METRICS.map((metric, i) => (
+            {HERO_PROOFS.map((metric, i) => (
               <div
                 key={metric.label}
-                className={i > 0 ? 'border-l border-nier-dark/15 pl-3 sm:pl-6' : undefined}
+                className={i > 0 ? 'min-w-0 border-l border-nier-dark/15 pl-3 sm:pl-6' : 'min-w-0'}
               >
-                <p className="font-tech font-bold text-2xl sm:text-4xl lg:text-5xl tracking-[0.01em] text-nier-darker">
+                <p className="font-tech font-bold text-[clamp(0.9rem,4.4vw,1.5rem)] sm:text-4xl lg:text-5xl tracking-[0.01em] text-nier-darker">
                   {metric.value}
                 </p>
-                <p className="mt-0.5 sm:mt-1 font-tech font-semibold tracking-[0.12em] sm:tracking-[0.14em] text-[10px] sm:text-xs uppercase text-nier-dark">
+                <p className="mt-0.5 sm:mt-1 font-tech font-semibold tracking-[0.08em] sm:tracking-[0.14em] text-[9px] sm:text-xs uppercase text-nier-dark">
                   {metric.label}
                 </p>
                 <p className="hidden lg:block mt-1.5 text-[13px] leading-relaxed text-nier-dark/90">

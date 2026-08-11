@@ -16,7 +16,7 @@ Single-page portfolio (index.html). Mode: **Experience** — the work itself lea
 - Action: click View Work / open GitHub / email / view resume — the contact path must be reachable from the first viewport and repeated at the close.
 
 ## Proof & content
-- Three hero metrics, all traced to data.ts claims: 70% lower LLM processing cost, 80% reduction in manual product entry, 100% extraction accuracy (Baystate hybrid consolidation).
+- Three hero proof points (qualitative only — no fabricated metrics): hybrid multi-provider routing (Gemini Flash ⇄ GPT-4o-mini), agentic copilot with evidence-traced edits (Resumancer), automated data ops (scraper fleet → registered products).
 - Three visual case studies: Resumancer (live screenshots from resumancer.dev in public/work/), Baystate AI Data Pipeline (authored architecture diagram — pipeline is private), ShopSite-MCP (authored MCP architecture diagram — repo private).
 - Experience timeline (employment: Baystate, Atlas, Allegro; education: WPI MS separately).
 - Capabilities in three groups (Applied AI / Application Engineering / Data & Infrastructure), chips reveal 1–4 real usage examples; no tiers.
@@ -29,7 +29,7 @@ Single-page portfolio (index.html). Mode: **Experience** — the work itself lea
 - prefers-reduced-motion respected; no mandatory animation before content.
 
 ## Chosen direction & memorable moment
-"Field terminal" document (see DESIGN.md). Memorable moment: the telemetry strip — three measured outcomes (70% / 80% / 100%) presented as proof readouts directly under the hero, so the first viewport proves the claim before the visitor scrolls.
+"Field terminal" document (see DESIGN.md). Memorable moment: the telemetry strip — three qualitative proof points presented as readouts directly under the hero, so the first viewport shows the work's substance before the visitor scrolls.
 
 ## Unresolved decisions
 - `public/resume.pdf` ships a generated resume (facts from data.ts only) so all Resume CTAs resolve; owner should replace with their official resume PDF before job applications.

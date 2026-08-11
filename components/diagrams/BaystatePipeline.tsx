@@ -23,7 +23,7 @@ export const BaystatePipeline: React.FC = () => {
     <svg
       viewBox="0 0 760 300"
       role="img"
-      aria-label="Baystate AI data pipeline diagram: vendor sources flow through a Playwright scraper fleet into a hybrid Gemini Flash and GPT-4o-mini router, pass a 100 percent accuracy validation gate, and land in Supabase and PostgreSQL product systems"
+      aria-label="Baystate AI data pipeline diagram: vendor sources flow through a Playwright scraper fleet into a hybrid Gemini Flash and GPT-4o-mini router, pass a validation gate, and land in Supabase and PostgreSQL product systems"
       className="w-full h-auto block"
     >
       <defs>
@@ -52,7 +52,7 @@ export const BaystatePipeline: React.FC = () => {
       <g>
         <rect x="320" y="30" width="104" height="18" rx="2" fill={accent} />
         <text x="372" y="43" textAnchor="middle" fontFamily="Rajdhani, sans-serif" fontWeight="700" fontSize="10.5" letterSpacing="1.2" fill="#ded8c1">
-          −70% LLM COST
+          COST-GATED ROUTING
         </text>
       </g>
 
@@ -60,7 +60,7 @@ export const BaystatePipeline: React.FC = () => {
       <g>
         <rect x="474" y="30" width="104" height="18" rx="2" fill={accent} />
         <text x="526" y="43" textAnchor="middle" fontFamily="Rajdhani, sans-serif" fontWeight="700" fontSize="10.5" letterSpacing="1.2" fill="#ded8c1">
-          100% ACCURACY
+          VALIDATION GATE
         </text>
       </g>
 
@@ -134,7 +134,7 @@ export const BaystatePipeline: React.FC = () => {
 
       {/* Captions under flow */}
       <g fontFamily="Inter, sans-serif" fontSize="9.5" fill={ink} fillOpacity="0.6">
-        <text x="20" y="152" fontWeight="600">20+ suppliers</text>
+        <text x="20" y="152" fontWeight="600">vendor catalogs</text>
         <text x="20" y="164">synced without</text>
         <text x="20" y="176">human re-keying</text>
 
