@@ -1,127 +1,66 @@
-import React, { useState, useEffect } from 'react';
-import { MenuTab } from './types';
-import { DEFAULT_MENU_TAB, NAVIGATION_ORDER } from './navigation';
-import { Sidebar } from './components/Sidebar';
-import { StatusView } from './components/views/StatusView';
-import { InventoryView } from './components/views/InventoryView';
-import { MessagesView } from './components/views/MessagesView';
-import { EquipmentView } from './components/views/EquipmentView';
+/**
+ * ============================================================
+ * NICHOLAS BORRELLO — AI ENGINEER PORTFOLIO
+ * Direction contract (issue #2, Aug 2026)
+ * ============================================================
+ * THESIS: The engineering work is the main character; NieR
+ * styling is 20% seasoning, not the interface. Refuses both
+ * the tabbed app-shell portfolio and its own boot-gated
+ * predecessor: a scrollable field document where identity,
+ * proof, and action sit above the fold.
+ *
+ * OWN-WORLD: warm beige ground (#ded8c1), charcoal ink, hairline
+ * 1px borders, squared 2px corners, fine 3px grid mesh in the
+ * hero/header/divider strips only. Rajdhani for display and
+ * labels, Inter for body. One muted machine-red accent for
+ * links, focus, and status. No overlays, no scanlines, no
+ * nested bordered panels, no tiers, no fake system metadata.
+ *
+ * STORY: a visitor knows within one viewport who Nick is (AI
+ * engineer building production LLM systems), sees three proof
+ * metrics, reads three visual case studies with outcomes,
+ * walks a quiet timeline, clicks capability chips to see real
+ * usage evidence, and can email or open GitHub one scroll away.
+ *
+ * FIRST VIEWPORT: mesh-textured beige ground; hairline header
+ * with wordmark, anchor nav, and RESUME CTA; hero carries the
+ * name in Rajdhani display, "AI Engineer", a positioning line,
+ * one-sentence summary, four CTAs, a status line, and the
+ * telemetry strip — 70% / 80% / 100% — the page's proof.
+ *
+ * FORM: document portfolio (Experience mode with persuasive
+ * clarity), brief-pinned IA from issue #2: Hero → Featured
+ * Work → Experience → Capabilities → About. No concept
+ * tournament; the brief specifies the structure.
+ * ============================================================
+ */
+import React from 'react';
+import { Header } from './components/Header';
+import { Hero } from './components/Hero';
+import { FeaturedWork } from './components/FeaturedWork';
+import { Experience } from './components/Experience';
+import { Capabilities } from './components/Capabilities';
+import { About } from './components/About';
 import { Footer } from './components/Footer';
-import { BootScreen } from './components/BootScreen';
 
 function App() {
-  const [mounted, setMounted] = useState(false);
-  const [gameState, setGameState] = useState<'BOOT' | 'APP'>('BOOT');
-  // Default to Experience
-  const [activeTab, setActiveTab] = useState<MenuTab>(DEFAULT_MENU_TAB);
-
-  useEffect(() => {
-    setMounted(true);
-  }, []);
-
-  // Keyboard navigation
-  useEffect(() => {
-    if (gameState !== 'APP') return;
-
-    const handleKeyDown = (e: KeyboardEvent) => {
-      const tabs = NAVIGATION_ORDER;
-      const currentIndex = tabs.indexOf(activeTab);
-
-      if (e.key === 'ArrowRight' || e.key === 'd') {
-        const nextIndex = (currentIndex + 1) % tabs.length;
-        setActiveTab(tabs[nextIndex]);
-      } else if (e.key === 'ArrowLeft' || e.key === 'a') {
-        const prevIndex = (currentIndex - 1 + tabs.length) % tabs.length;
-        setActiveTab(tabs[prevIndex]);
-      }
-    };
-
-    window.addEventListener('keydown', handleKeyDown);
-    return () => window.removeEventListener('keydown', handleKeyDown);
-  }, [activeTab, gameState]);
-
-  // Boot Sequence Effect - Removed as TitleScreen now handles the boot sequence
-  // useEffect(() => {
-  //   if (gameState === 'BOOT') { ... }
-  // }, [gameState]);
-
-  const renderContent = () => {
-    switch (activeTab) {
-      case MenuTab.Profile: return <StatusView />;
-      case MenuTab.Projects: return <InventoryView />;
-      case MenuTab.Skills: return <EquipmentView />;
-      case MenuTab.About: return <MessagesView />;
-      case MenuTab.Credits:
-        return (
-          <div className="flex flex-col items-center justify-center h-full text-center p-8 animate-fadeIn">
-            <h2 className="text-4xl font-tech text-nier-dark mb-4 tracking-widest">CREDITS</h2>
-            <div className="space-y-4 text-nier-dark/70 font-tech text-xl">
-              <p>DEVELOPER: Nick Borrello</p>
-              <p className="text-sm opacity-60">INSPIRED BY: Nier: Automata © SQUARE ENIX</p>
-              <div className="w-16 h-px bg-nier-dark mx-auto my-4"></div>
-              <button
-                onClick={() => setGameState('BOOT')}
-                className="px-6 py-2 border border-nier-dark hover:bg-nier-dark hover:text-nier-beige transition-colors uppercase tracking-widest text-sm"
-              >
-                Restart
-              </button>
-            </div>
-          </div>
-        );
-      default: return <StatusView />;
-    }
-  };
-
-  if (!mounted) return <div className="bg-nier-darker h-screen w-screen" />;
-
-  if (gameState === 'BOOT') {
-    return <BootScreen onComplete={() => {
-      setActiveTab(DEFAULT_MENU_TAB);
-      setGameState('APP');
-    }} />;
-  }
-
   return (
-    <div className="flex flex-col h-screen h-[100dvh] w-screen bg-nier-beige text-nier-dark overflow-hidden font-sans select-none relative nier-grid-bg">
-      {/* Global Grid Overlay - fine mesh */}
-      <div className="scanline-overlay opacity-50"></div>
-
-      {/* Vignette */}
-      <div className="fixed inset-0 pointer-events-none z-0 bg-[radial-gradient(circle_at_center,_transparent_0%,_rgba(0,0,0,0.1)_100%)]"></div>
-
-      {/* Main Container - Full Screen */}
-      <div className="flex-1 relative z-10 flex flex-col w-full h-full bg-nier-beige/80 backdrop-blur-sm">
-
-        {/* Top Navigation (Header) */}
-        <div className="flex-shrink-0 z-50">
-          <Sidebar activeTab={activeTab} onSelect={setActiveTab} />
-        </div>
-
-        {/* Content Area */}
-        <main className="flex-1 relative overflow-hidden flex flex-col">
-          {/* Top decorative dots */}
-          <div className="h-2 flex items-center justify-between px-2 opacity-50 border-b border-nier-dark/10 overflow-hidden">
-            {Array.from({ length: 120 }).map((_, i) => (
-              <div key={i} className="w-0.5 h-0.5 bg-nier-dark rounded-full flex-shrink-0"></div>
-            ))}
-          </div>
-
-          {/* Inner Content Container */}
-          <div className="flex-1 overflow-y-auto custom-scrollbar px-3 py-3 sm:px-6 md:px-12 md:py-6 relative">
-            {renderContent()}
-          </div>
-
-          {/* Bottom decorative dots */}
-          <div className="h-2 flex items-center justify-between px-2 opacity-50 border-t border-nier-dark/10 overflow-hidden">
-            {Array.from({ length: 120 }).map((_, i) => (
-              <div key={i} className="w-0.5 h-0.5 bg-nier-dark rounded-full flex-shrink-0"></div>
-            ))}
-          </div>
-        </main>
-
-        <Footer />
-      </div>
-
+    <div id="top" className="min-h-screen bg-nier-beige text-nier-darker font-sans">
+      <a
+        href="#main"
+        className="sr-only focus:not-sr-only focus:fixed focus:top-2 focus:left-2 focus:z-50 focus:bg-nier-darker focus:text-nier-beige focus:px-4 focus:py-2 focus:text-sm focus:font-medium"
+      >
+        Skip to content
+      </a>
+      <Header />
+      <main id="main">
+        <Hero />
+        <FeaturedWork />
+        <Experience />
+        <Capabilities />
+        <About />
+      </main>
+      <Footer />
     </div>
   );
 }

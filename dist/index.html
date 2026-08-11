@@ -4,126 +4,31 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
-  <title>Nick's Portfolio</title>
-  <link rel="icon" href="/icon.png" />
-  <script src="https://cdn.tailwindcss.com"></script>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link
-    href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@300;400;500;600;700&family=Inter:wght@300;400;500&display=swap"
-    rel="stylesheet">
-  <script>
-    tailwind.config = {
-      theme: {
-        extend: {
-          colors: {
-            'nier-beige': '#ded8c1',
-            'nier-beige-dim': '#cfc9b0',
-            'nier-dark': '#4b4845',
-            'nier-darker': '#3a3836',
-            'nier-panel': '#575451',
-            'nier-grid': '#a19d8a',
-          },
-          fontFamily: {
-            tech: ['Rajdhani', 'sans-serif'],
-            sans: ['Inter', 'sans-serif'],
-          },
-          backgroundImage: {
-            'scanlines': "linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%), linear-gradient(90deg, rgba(255, 0, 0, 0.06), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.06))",
-          },
-          animation: {
-            'glitch': 'glitch 1s linear infinite',
-            'scan': 'scan 8s linear infinite',
-          },
-          keyframes: {
-            glitch: {
-              '2%, 64%': { transform: 'translate(2px,0) skew(0deg)' },
-              '4%, 60%': { transform: 'translate(-2px,0) skew(0deg)' },
-              '62%': { transform: 'translate(0,0) skew(5deg)' },
-            }
-          }
-        }
-      }
-    }
-  </script>
-  <style>
-    body {
-      background-color: #2b2b2b;
-      color: #dad4bb;
-      overflow: hidden;
-      padding-top: env(safe-area-inset-top, 0px);
-      padding-bottom: env(safe-area-inset-bottom, 0px);
-      padding-left: env(safe-area-inset-left, 0px);
-      padding-right: env(safe-area-inset-right, 0px);
-    }
+  <title>Nicholas Borrello — AI Engineer</title>
+  <meta name="description" content="AI engineer building production LLM systems, intelligent automation, semantic search, and AI-native applications. Case studies, experience, and contact." />
+  <link rel="canonical" href="https://nickborrello.github.io/" />
+  <meta name="theme-color" content="#ded8c1" />
+  <link rel="icon" type="image/png" href="/icon.png" />
 
-    /* Custom scrollbar for Nier feel */
-    ::-webkit-scrollbar {
-      width: 6px;
-    }
+  <!-- Open Graph -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Nicholas Borrello — AI Engineer" />
+  <meta property="og:description" content="AI engineer building production LLM systems, intelligent automation, semantic search, and AI-native applications." />
+  <meta property="og:url" content="https://nickborrello.github.io/" />
+  <meta property="og:image" content="https://nickborrello.github.io/og-card.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Nicholas Borrello — AI Engineer" />
+  <meta name="twitter:description" content="AI engineer building production LLM systems, intelligent automation, and AI-native applications." />
+  <meta name="twitter:image" content="https://nickborrello.github.io/og-card.png" />
 
-    ::-webkit-scrollbar-track {
-      background: #dad4bb;
-    }
+  <!-- Fonts: Rajdhani (HUD display) + Inter (body) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <!-- impeccable-disable-next-line overused-font: Inter is brief-pinned in issue #2 and continues the incumbent body face -->
+  <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
 
-    ::-webkit-scrollbar-thumb {
-      background: #3a3836;
-    }
-
-    ::-webkit-scrollbar-thumb:hover {
-      background: #2b2b2b;
-    }
-
-    .font-tech {
-      font-family: 'Rajdhani', sans-serif;
-    }
-
-    /* Reverted background to simple beige */
-    .nier-grid-bg {
-      background-color: #dad4bb;
-    }
-
-    /* Specific Header Grid Texture - Made much lighter to match app aesthetic */
-    .nier-header-grid {
-      background-color: #dad4bb;
-      background-image:
-        linear-gradient(rgba(58, 56, 54, 0.03) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(58, 56, 54, 0.03) 1px, transparent 1px);
-      background-size: 3px 3px;
-    }
-
-    /* Updated Overlay: Fine Grid Mesh instead of Scanlines */
-    .scanline-overlay {
-      background-image:
-        linear-gradient(rgba(0, 0, 0, 0.05) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(0, 0, 0, 0.05) 1px, transparent 1px);
-      background-size: 3px 3px;
-      position: fixed;
-      pointer-events: none;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      z-index: 9999;
-    }
-
-    .clip-path-slant {
-      clip-path: polygon(15px 0, 100% 0, 100% 100%, 0% 100%);
-    }
-  </style>
-
-  <link rel="stylesheet" href="/index.css">
-  <script type="importmap">
-{
-  "imports": {
-    "react-dom/": "https://aistudiocdn.com/react-dom@^19.2.1/",
-    "lucide-react": "https://aistudiocdn.com/lucide-react@^0.556.0",
-    "react/": "https://aistudiocdn.com/react@^19.2.1/",
-    "react": "https://aistudiocdn.com/react@^19.2.1"
-  }
-}
-</script>
-  <script type="module" crossorigin src="/assets/index-0dqK8Oq_.js"></script>
+  <script type="module" crossorigin src="/assets/index-TGgXFSEU.js"></script>
+  <link rel="stylesheet" crossorigin href="/assets/index-CMOnN4lC.css">
 </head>
 
 <body>

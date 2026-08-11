@@ -1,72 +1,80 @@
-import { LucideIcon } from "lucide-react";
-
-export interface StatAttribute {
-  label: string;
-  value: string | number;
-  description: string;
+export interface ProjectItem {
+  id: string;
+  title: string;
+  summary: string;
+  problem?: string;
+  built?: string[];
+  impact?: string[];
+  role?: string;
+  tech: string[];
+  link?: string;
+  repoUrl?: string;
+  image?: string;
+  imageAlt?: string;
+  featured?: boolean;
+  startDate?: string; // Format: MM-YYYY
+  endDate?: string; // Format: MM-YYYY or "Present"
 }
 
 export interface ExperienceItem {
   id: string;
   role: string;
   company: string;
-  period?: string;
-  description: string;
-  skills: string[];
+  period: string;
   location?: string;
   type?: string;
-  achievements?: string[];
+  summary: string;
+  achievements: string[];
+  skills: string[];
   proofUrl?: string;
   proofLabel?: string;
 }
 
-export interface ProjectItem {
+export interface EducationItem {
   id: string;
-  title: string;
-  description: string;
-  tech: string[];
-  features?: string[];
-  imageUrl?: string;
-  link?: string;
-  repoUrl?: string;
-  highlight?: string;
-  status?: string;
-  startDate?: string; // Format: MM-YYYY
-  endDate?: string; // Format: MM-YYYY or "Present"
-  featured?: boolean;
+  degree: string;
+  school: string;
+  period: string;
+  location?: string;
+  highlights: string[];
 }
 
-export interface ContactMethod {
+export interface CapabilitySkill {
+  name: string;
+  proofIds: string[]; // references PROOF_EVIDENCE keys
+}
+
+export interface CapabilityGroup {
+  id: string;
+  label: string;
+  description: string;
+  skills: CapabilitySkill[];
+}
+
+export interface ProofEvidence {
+  context: string; // where it was used (project / role)
+  detail: string; // what was actually done
+}
+
+export interface ContactLink {
   platform: string;
   handle: string;
   link: string;
-  icon: LucideIcon;
-  status: string;
-}
-
-export interface SkillItem {
-  id: string;
-  name: string;
-  category: 'AI/ML' | 'Language' | 'Framework' | 'Tool';
-  level: string;
-  icon: LucideIcon;
 }
 
 export interface UserInfo {
   name: string;
+  firstName: string;
   title: string;
-  yearsExp: string;
   location: string;
-  tagline: string;
+  status: string;
+  positioning: string;
+  summary: string;
   bio: string;
-  systemSpecs?: string[];
-  missionObjective?: string;
 }
 
-export enum MenuTab {
-  Profile = 'Profile', // Experience
-  Projects = 'Projects',
-  Skills = 'Skills',
-  About = 'About', // Intro/Bio
-  Credits = 'Credits'
+export interface HeroMetric {
+  value: string;
+  label: string;
+  detail: string;
 }
