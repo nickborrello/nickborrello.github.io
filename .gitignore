@@ -29,3 +29,6 @@ build_log.txt
 *.njsproj
 *.sln
 *.sw?
+
+# pi agent session artifacts
+.pi-subagents/
