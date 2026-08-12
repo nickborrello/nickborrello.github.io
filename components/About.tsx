@@ -25,7 +25,7 @@ export const About: React.FC = () => {
             <div className="mt-2.5 flex items-start gap-2.5 text-sm leading-relaxed text-nier-darker">
               <span aria-hidden="true" className="mt-[7px] w-2 h-2 bg-accent flex-shrink-0" />
               <span>
-                AI &amp; Software Engineer at Baystate Pet &amp; Garden — building production LLM systems.
+                AI &amp; Software Engineer at Bay State Pet &amp; Garden — building production LLM systems.
                 {USER_INFO.status}.
               </span>
             </div>

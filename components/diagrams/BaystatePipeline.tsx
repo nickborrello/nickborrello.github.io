@@ -1,7 +1,7 @@
 import React from 'react';
 
 /**
- * Baystate AI Data Pipeline — architecture diagram.
+ * Bay State AI Data Pipeline — architecture diagram.
  * Authored visual (pipeline is private work); follows DESIGN.md grammar:
  * hairlines, squared corners, Rajdhani labels, one accent for the gate.
  */
@@ -23,7 +23,7 @@ export const BaystatePipeline: React.FC = () => {
     <svg
       viewBox="0 0 760 300"
       role="img"
-      aria-label="Baystate AI data pipeline diagram: vendor sources flow through a Playwright scraper fleet into a hybrid Gemini Flash and GPT-4o-mini router, pass a validation gate, and land in Supabase and PostgreSQL product systems"
+      aria-label="Bay State AI data pipeline diagram: vendor sources flow through a Playwright scraper fleet into a hybrid Gemini Flash and GPT-4o-mini router, pass a validation gate, and land in Supabase and PostgreSQL product systems"
       className="w-full h-auto block"
     >
       <defs>
@@ -45,7 +45,7 @@ export const BaystatePipeline: React.FC = () => {
         CONSOLIDATION PIPELINE
       </text>
       <text x="736" y="26" textAnchor="end" fontFamily="Rajdhani, sans-serif" fontWeight="600" fontSize="10" letterSpacing="1.5" fill={ink} fillOpacity="0.6">
-        BAYSTATE PET &amp; GARDEN — PRODUCTION
+        BAY STATE PET &amp; GARDEN — PRODUCTION
       </text>
 
       {/* Cost tag above router */}

@@ -8,14 +8,14 @@ export const USER_INFO: UserInfo = {
   status: "Open to relocation",
   positioning: "I build production LLM systems, intelligent automation, and AI-native products.",
   summary: "Applied AI engineer specializing in multi-provider LLM pipelines, agentic workflows, and high-throughput automation — from scraper fleets to semantic search to AI product features that ship.",
-  bio: "I'm an AI engineer who bridges raw LLM capability and production-grade software. At Baystate Pet & Garden I designed a hybrid Gemini + OpenAI consolidation pipeline that automated product registration end-to-end; at Resumancer I'm building an agentic resume engine where every AI edit traces back to verified evidence. My work centers on one question: how do you make LLMs reliably do real work — at scale, under cost constraints, with results you can prove?",
+  bio: "I'm an AI engineer who bridges raw LLM capability and production-grade software. At Bay State Pet & Garden I designed a hybrid Gemini + OpenAI consolidation pipeline that automated product registration end-to-end; at Resumancer I'm building an agentic resume engine where every AI edit traces back to verified evidence. My work centers on one question: how do you make LLMs reliably do real work — at scale, under cost constraints, with results you can prove?",
 };
 
 export const HERO_PROOFS: HeroProof[] = [
   {
     value: "Hybrid routing",
     label: "Gemini Flash ⇄ GPT-4o-mini",
-    detail: "Cost-gated task routing with validation gates on the Baystate consolidation pipeline.",
+    detail: "Cost-gated task routing with validation gates on the Bay State consolidation pipeline.",
   },
   {
     value: "Agentic copilot",
@@ -33,7 +33,7 @@ export const WORK_EXPERIENCE: ExperienceItem[] = [
   {
     id: "exp-baystate",
     role: "AI & Software Engineer",
-    company: "Baystate Pet & Garden",
+    company: "Bay State Pet & Garden",
     period: "Jul 2024 — Present",
     location: "Taunton, MA",
     type: "Full-time",
@@ -119,7 +119,7 @@ export const PROJECTS: ProjectItem[] = [
   },
   {
     id: "p-baystate",
-    title: "Baystate AI Data Pipeline",
+    title: "Bay State AI Data Pipeline",
     summary: "Hybrid-provider AI consolidation pipeline that registers products and syncs inventory from dozens of vendor sources automatically.",
     problem: "Product registration and inventory sync were manual: staff re-keyed vendor data into the storefront, entry errors propagated, and sales decisions ran on stale numbers.",
     built: [
@@ -214,7 +214,7 @@ export const PROOF_EVIDENCE: Record<string, ProofEvidence> = {
     detail: "Agentic rewrite loop on the Vercel AI SDK — job requirements traced to verified Master CV evidence, edits staged as reviewable diffs.",
   },
   "p-baystate": {
-    context: "Baystate AI Data Pipeline",
+    context: "Bay State AI Data Pipeline",
     detail: "Autonomous extraction pipeline: tasks routed between Gemini Flash and GPT-4o-mini with cost-gated escalation, validation gates with reject-and-retry, feeding an automated product registration engine.",
   },
   "p-shopsite": {
@@ -238,7 +238,7 @@ export const PROOF_EVIDENCE: Record<string, ProofEvidence> = {
     detail: "RBAC (Auth0) and automated resource allocation in an enterprise staffing platform.",
   },
   "exp-baystate": {
-    context: "Baystate Pet & Garden",
+    context: "Bay State Pet & Garden",
     detail: "Production pipeline and dashboards in TypeScript/Python: scrapers, registration engine, analytics.",
   },
   "exp-atlas": {

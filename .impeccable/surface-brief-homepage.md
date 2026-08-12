@@ -10,8 +10,8 @@ Single-page portfolio (index.html). Mode: **Experience** — the work itself lea
 
 ## Proof & content
 - Three hero proof points (qualitative only — no fabricated metrics): hybrid multi-provider routing (Gemini Flash ⇄ GPT-4o-mini), agentic copilot with evidence-traced edits (Resumancer), automated data ops (scraper fleet → registered products).
-- Three visual case studies: Resumancer (live screenshots from resumancer.dev in public/work/), Baystate AI Data Pipeline (authored architecture diagram — pipeline is private), ShopSite-MCP (authored MCP architecture diagram — repo private).
-- Experience timeline (employment: Baystate, Atlas, Allegro; education: WPI MS separately).
+- Three visual case studies: Resumancer (live screenshots from resumancer.dev in public/work/), Bay State AI Data Pipeline (authored architecture diagram — pipeline is private), ShopSite-MCP (authored MCP architecture diagram — repo private).
+- Experience timeline (employment: Bay State, Atlas, Allegro; education: WPI MS separately).
 - Capabilities in three groups (Applied AI / Application Engineering / Data & Infrastructure), chips reveal 1–4 real usage examples; no tiers.
 - Dead URLs omitted (ShopSite-MCP repo, bay-state-app.vercel.app, ai-pdf-search, AxolotlAuctions, 7Factor). Resume CTA resolves to the generated /resume.pdf.
 - Contact: email, GitHub, LinkedIn. GitHub activity widget removed.

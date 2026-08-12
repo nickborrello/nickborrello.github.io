@@ -19,7 +19,7 @@ A scrollable engineering portfolio that carries a restrained NieR: Automata fiel
 Web browsers across desktop and mobile viewports. Designed to deliver an immediate "wow" factor for developers and gamers while providing clear, efficient navigation for recruiters skimming candidate details.
 
 ## Capabilities and Constraints
-- **Document Portfolio IA**: Hero (identity + proof metrics) → Featured case studies (Resumancer, Baystate AI pipeline, ShopSite-MCP) → Experience timeline (employment + education separated) → Capabilities (proof-backed, no tiers) → About/contact.
+- **Document Portfolio IA**: Hero (identity + proof metrics) → Featured case studies (Resumancer, Bay State AI pipeline, ShopSite-MCP) → Experience timeline (employment + education separated) → Capabilities (proof-backed, no tiers) → About/contact.
 - **Restrained NieR Styling**: warm beige ground, charcoal ink, hairline borders, fine grid mesh in hero/header/divider strips only, Rajdhani display type, one muted machine-red accent for links/focus/status.
 - **Proof-Backed Interaction**: capability chips reveal 1–4 real usage examples tied to named projects/roles (single-example chips trace to their one true shipping context); page remains fully understandable without interaction.
 - **Tech Stack**: React 19, TypeScript, Vite, Lucide icons, Tailwind CSS (build-pipeline, no CDN) with the NieR palette (`#ded8c1`, `#cfc9b0`, `#4b4845`, `#3a3836`, `#575451`, `#a19d8a`) plus accent `#8c3a2c`.
