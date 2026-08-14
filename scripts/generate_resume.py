@@ -8,16 +8,16 @@ from reportlab.lib.styles import getSampleStyleSheet, ParagraphStyle
 from reportlab.lib.enums import TA_LEFT, TA_RIGHT, TA_CENTER
 import pypdf
 
-def generate_pdf(output_path, include_medusa=True):
+def generate_pdf(output_path):
     # Standard Letter: 8.5 x 11 inches = 612 x 792 points
-    # Margins: 28pt left/right, 16pt top/bottom -> printable width: 556pt, height: 760pt
+    # Printable area: 556pt width, 744pt height with 28pt left/right, 24pt top/bottom
     doc = SimpleDocTemplate(
         output_path,
         pagesize=letter,
         leftMargin=28,
         rightMargin=28,
-        topMargin=16,
-        bottomMargin=16,
+        topMargin=24,
+        bottomMargin=24,
         title="Nicholas Borrello — Resume",
         author="Nicholas Borrello",
         subject="AI & Software Engineer Resume",
@@ -97,7 +97,7 @@ def generate_pdf(output_path, include_medusa=True):
         parent=styles['Normal'],
         fontName='Helvetica',
         fontSize=10,
-        leading=12.25,
+        leading=12.5,
         textColor=INK_DARKER,
         leftIndent=11,
         firstLineIndent=-11,
@@ -117,7 +117,7 @@ def generate_pdf(output_path, include_medusa=True):
         parent=styles['Normal'],
         fontName='Helvetica',
         fontSize=10,
-        leading=12.25,
+        leading=12.5,
         textColor=INK_DARK,
     )
 
@@ -145,18 +145,18 @@ def generate_pdf(output_path, include_medusa=True):
         ('RIGHTPADDING', (0,0), (-1,-1), 0),
         ('TOPPADDING', (0,0), (-1,-1), 0),
         ('BOTTOMPADDING', (0,0), (-1,0), 1),
-        ('BOTTOMPADDING', (0,1), (-1,1), 1.5),
-        ('BOTTOMPADDING', (0,2), (-1,2), 3),
+        ('BOTTOMPADDING', (0,1), (-1,1), 2),
+        ('BOTTOMPADDING', (0,2), (-1,2), 4),
         ('LINEBELOW', (0,2), (-1,2), 2, LINE_DARK),
     ]))
     story.append(header_table)
-    story.append(Spacer(1, 5))
+    story.append(Spacer(1, 6))
 
     def make_section_header(title):
         header_table = Table(
             [[Paragraph(title.upper(), section_label_style)]],
             colWidths=[556],
-            rowHeights=[13.5]
+            rowHeights=[14]
         )
         header_table.setStyle(TableStyle([
             ('BOTTOMPADDING', (0, 0), (-1, -1), 1.5),
@@ -170,26 +170,26 @@ def generate_pdf(output_path, include_medusa=True):
     # Diamond bullet marker (NieR 45-degree diamond)
     DIAMOND = '<font color="#8c3a2c" size="7">&#9670;</font>&nbsp;&nbsp;'
 
-    # --- 1. CAPABILITIES / SKILLS (Clean Symmetrical 3 Columns) ---
+    # --- 1. SKILLS & CAPABILITIES (Clean Symmetrical 3 Columns, ATS terms) ---
     story.append(make_section_header("Skills & Capabilities"))
-    story.append(Spacer(1, 3))
+    story.append(Spacer(1, 3.5))
 
     col1 = [
         Paragraph("<b>AI &amp; AGENTS</b>", col_title_style),
-        Spacer(1, 1.5),
-        Paragraph("LLM agents &bull; Model Context Protocol (MCP) &bull; Tool calling &bull; Structured generation &bull; Orchestration &bull; Routing &bull; RAG &bull; AI eval &bull; VLM/OCR", col_body_style),
+        Spacer(1, 2),
+        Paragraph("LLM agents &bull; Model Context Protocol (MCP) &bull; Tool calling &bull; Structured outputs &bull; Agent orchestration &bull; Model routing/fallback &bull; RAG &bull; LLM evaluation &bull; VLM/OCR", col_body_style),
     ]
 
     col2 = [
         Paragraph("<b>ML, NLP &amp; LANGUAGES</b>", col_title_style),
-        Spacer(1, 1.5),
+        Spacer(1, 2),
         Paragraph("TypeScript &bull; Python &bull; SQL &bull; Java &bull; PyTorch &bull; CNNs &bull; Transformers &bull; spaCy &bull; MediaPipe &bull; Computer vision &bull; Document intelligence", col_body_style),
     ]
 
     col3 = [
-        Paragraph("<b>FULLSTACK &amp; INFRA</b>", col_title_style),
-        Spacer(1, 1.5),
-        Paragraph("React &bull; Next.js &bull; Node.js/Bun &bull; PostgreSQL &bull; SQLite &bull; Supabase &bull; Docker &bull; Playwright &bull; GitHub Actions &bull; Azure DevOps", col_body_style),
+        Paragraph("<b>FULL STACK &amp; INFRASTRUCTURE</b>", col_title_style),
+        Spacer(1, 2),
+        Paragraph("React &bull; Next.js &bull; Node.js &bull; Bun &bull; PostgreSQL &bull; SQLite &bull; Supabase &bull; Docker &bull; Playwright &bull; GitHub Actions &bull; Azure DevOps", col_body_style),
     ]
 
     skills_table = Table([[col1, col2, col3]], colWidths=[185, 185, 186])
@@ -205,19 +205,19 @@ def generate_pdf(output_path, include_medusa=True):
         ('BOTTOMPADDING', (0,0), (-1,-1), 0),
     ]))
     story.append(skills_table)
-    story.append(Spacer(1, 5))
+    story.append(Spacer(1, 6))
 
     # --- 2. EXPERIENCE ---
     story.append(make_section_header("Experience"))
-    story.append(Spacer(1, 3))
+    story.append(Spacer(1, 3.5))
 
-    # Bay State Pet & Garden
+    # Bay State Pet & Garden (Remote specified)
     job1_header = Table([
         [
             Paragraph("<b>Bay State Pet &amp; Garden</b> &mdash; <i>AI &amp; Software Engineer</i>", item_title_style),
-            Paragraph("Taunton, MA &nbsp;|&nbsp; Jul 2024 &ndash; Present", item_subtitle_style)
+            Paragraph("Taunton, MA (Remote) &nbsp;|&nbsp; Jul 2024 &ndash; Present", item_subtitle_style)
         ]
-    ], colWidths=[310, 246])
+    ], colWidths=[300, 256])
     job1_header.setStyle(TableStyle([
         ('VALIGN', (0,0), (-1,-1), 'BOTTOM'),
         ('LEFTPADDING', (0,0), (-1,-1), 0),
@@ -226,13 +226,13 @@ def generate_pdf(output_path, include_medusa=True):
         ('BOTTOMPADDING', (0,0), (-1,-1), 0.5),
     ]))
     story.append(job1_header)
-    story.append(Spacer(1, 1))
-    story.append(Paragraph(f'{DIAMOND}Develop a Product Intelligence system researching external product data, verifying variant identity, and producing evidence-backed catalog changes for human review.', bullet_style))
-    story.append(Spacer(1, 1))
-    story.append(Paragraph(f'{DIAMOND}Engineer the agent execution layer behind the research workflow, giving models 25 bounded research tools while enforcing privacy, cost, deadline, and tool-use limits.', bullet_style))
-    story.append(Spacer(1, 1))
-    story.append(Paragraph(f'{DIAMOND}Maintain the retail CMS carrying product data through onboarding, review, and publishing, evaluating new AI behavior against verified datasets before live workflows.', bullet_style))
-    story.append(Spacer(1, 3.5))
+    story.append(Spacer(1, 1.25))
+    story.append(Paragraph(f'{DIAMOND}Develop an AI Product Intelligence system that researches external product data, resolves exact product/variant identity, and produces evidence-backed catalog changes for human review.', bullet_style))
+    story.append(Spacer(1, 1.25))
+    story.append(Paragraph(f'{DIAMOND}Engineer the agent execution layer with 25 bounded research tools, model routing and fallback, privacy controls, tool/model budgets, deadlines, and fail-closed validation.', bullet_style))
+    story.append(Spacer(1, 1.25))
+    story.append(Paragraph(f'{DIAMOND}Maintain the retail CMS and AI evaluation pipeline, testing new extraction and agent behavior against verified datasets before staged rollout into product onboarding and publishing workflows.', bullet_style))
+    story.append(Spacer(1, 4.5))
 
     # Allegro MicroSystems
     job2_header = Table([
@@ -249,15 +249,15 @@ def generate_pdf(output_path, include_medusa=True):
         ('BOTTOMPADDING', (0,0), (-1,-1), 0.5),
     ]))
     story.append(job2_header)
-    story.append(Spacer(1, 1))
-    story.append(Paragraph(f'{DIAMOND}Built an Azure DevOps CI/CD pipeline that automated driver deployment to engineering testing equipment, replacing a manual deployment process.', bullet_style))
-    story.append(Spacer(1, 1))
-    story.append(Paragraph(f'{DIAMOND}Developed the supporting deployment workflow used to deliver driver updates consistently to test systems and simplify repeated testing.', bullet_style))
-    story.append(Spacer(1, 5))
+    story.append(Spacer(1, 1.25))
+    story.append(Paragraph(f'{DIAMOND}Built an Azure DevOps CI/CD pipeline that automated driver deployment to engineering test equipment, replacing a manual deployment process.', bullet_style))
+    story.append(Spacer(1, 1.25))
+    story.append(Paragraph(f'{DIAMOND}Developed supporting automation workflows to standardize driver updates across test systems and simplify repeatable engineering test runs.', bullet_style))
+    story.append(Spacer(1, 6))
 
     # --- 3. EDUCATION ---
     story.append(make_section_header("Education"))
-    story.append(Spacer(1, 3))
+    story.append(Spacer(1, 3.5))
 
     edu_table = Table([
         [
@@ -265,10 +265,10 @@ def generate_pdf(output_path, include_medusa=True):
             Paragraph("Worcester, MA &nbsp;|&nbsp; Aug 2025", item_subtitle_style)
         ],
         [
-            Paragraph("<b>Worcester Polytechnic Institute</b> &mdash; B.S. Computer Science", item_title_style),
+            Paragraph("<b>Worcester Polytechnic Institute</b> &mdash; B.S. Computer Science, <i>With Distinction</i>", item_title_style),
             Paragraph("Worcester, MA &nbsp;|&nbsp; May 2024", item_subtitle_style)
         ]
-    ], colWidths=[360, 196])
+    ], colWidths=[380, 176])
     edu_table.setStyle(TableStyle([
         ('VALIGN', (0,0), (-1,-1), 'BOTTOM'),
         ('LEFTPADDING', (0,0), (-1,-1), 0),
@@ -277,13 +277,13 @@ def generate_pdf(output_path, include_medusa=True):
         ('BOTTOMPADDING', (0,0), (-1,-1), 0.5),
     ]))
     story.append(edu_table)
-    story.append(Spacer(1, 5))
+    story.append(Spacer(1, 6))
 
-    # --- 4. SELECTED PROJECTS (Bottom) ---
+    # --- 4. SELECTED PROJECTS (4 Curated AI/Agent Projects) ---
     story.append(make_section_header("Selected Projects"))
-    story.append(Spacer(1, 3))
+    story.append(Spacer(1, 3.5))
 
-    # Resumancer AI (Oct 2025)
+    # 1. Resumancer AI (Oct 2025)
     proj1_header = Table([
         [
             Paragraph("<b>Resumancer AI</b> &mdash; <i>Agentic Career Workspace</i>", item_title_style),
@@ -298,13 +298,13 @@ def generate_pdf(output_path, include_medusa=True):
         ('BOTTOMPADDING', (0,0), (-1,-1), 0.5),
     ]))
     story.append(proj1_header)
-    story.append(Spacer(1, 1))
+    story.append(Spacer(1, 1.25))
     story.append(Paragraph(f'{DIAMOND}Built a career workspace comparing job requirements with a Master CV, proposing evidence-backed changes with reviewable diffs instead of unconstrained rewrites.', bullet_style))
-    story.append(Spacer(1, 1))
+    story.append(Spacer(1, 1.25))
     story.append(Paragraph(f'{DIAMOND}Added ATS compatibility checks, model fallback, and PDF export so verified career data moves from job analysis to an application-ready resume.', bullet_style))
-    story.append(Spacer(1, 3))
+    story.append(Spacer(1, 4))
 
-    # ShopSite MCP Server (Jan 2026)
+    # 2. ShopSite MCP Server (Jan 2026)
     proj2_header = Table([
         [
             Paragraph("<b>ShopSite MCP Server</b>", item_title_style),
@@ -319,41 +319,19 @@ def generate_pdf(output_path, include_medusa=True):
         ('BOTTOMPADDING', (0,0), (-1,-1), 0.5),
     ]))
     story.append(proj2_header)
-    story.append(Spacer(1, 1))
+    story.append(Spacer(1, 1.25))
     story.append(Paragraph(f'{DIAMOND}Built an MCP server that lets AI agents retrieve orders, search products, and manage inventory in ShopSite without interacting directly with legacy APIs.', bullet_style))
-    story.append(Spacer(1, 1))
+    story.append(Spacer(1, 1.25))
     story.append(Paragraph(f'{DIAMOND}Wrapped XML/CGI requests, HMAC-SHA1 authentication, and legacy response formats behind typed, validated tools designed for safe LLM use.', bullet_style))
-    story.append(Spacer(1, 3))
+    story.append(Spacer(1, 4))
 
-    # Medusa Storefront Agent (Jul 2026)
-    if include_medusa:
-        medusa_header = Table([
-            [
-                Paragraph("<b>Medusa Storefront Agent</b> &mdash; <i>Commerce Operations</i>", item_title_style),
-                Paragraph("Jul 2026 &nbsp;|&nbsp; TypeScript, Medusa.js, PostgreSQL, MCP", item_subtitle_style)
-            ]
-        ], colWidths=[270, 286])
-        medusa_header.setStyle(TableStyle([
-            ('VALIGN', (0,0), (-1,-1), 'BOTTOM'),
-            ('LEFTPADDING', (0,0), (-1,-1), 0),
-            ('RIGHTPADDING', (0,0), (-1,-1), 0),
-            ('TOPPADDING', (0,0), (-1,-1), 0),
-            ('BOTTOMPADDING', (0,0), (-1,-1), 0.5),
-        ]))
-        story.append(medusa_header)
-        story.append(Spacer(1, 1))
-        story.append(Paragraph(f'{DIAMOND}Built an autonomous store operations agent on Medusa.js that monitors inventory levels, drafts automated reorders, and applies pricing rules via typed MCP tool calls.', bullet_style))
-        story.append(Spacer(1, 1))
-        story.append(Paragraph(f'{DIAMOND}Implemented schema validation with Zod and PostgreSQL event listeners to ensure reliable multi-step agent actions without human intervention.', bullet_style))
-        story.append(Spacer(1, 3))
-
-    # ASL Gesture Recognition (Jan 2025 - May 2025)
+    # 3. Medusa Storefront Agent (Jul 2026)
     proj3_header = Table([
         [
-            Paragraph("<b>American Sign Language Gesture Recognition</b>", item_title_style),
-            Paragraph("Jan 2025 &ndash; May 2025 &nbsp;|&nbsp; Python, PyTorch, ResNet34, MediaPipe", item_subtitle_style)
+            Paragraph("<b>Medusa Storefront Agent</b> &mdash; <i>Commerce Operations</i>", item_title_style),
+            Paragraph("Jul 2026 &nbsp;|&nbsp; TypeScript, Medusa.js, PostgreSQL, MCP", item_subtitle_style)
         ]
-    ], colWidths=[230, 326])
+    ], colWidths=[270, 286])
     proj3_header.setStyle(TableStyle([
         ('VALIGN', (0,0), (-1,-1), 'BOTTOM'),
         ('LEFTPADDING', (0,0), (-1,-1), 0),
@@ -362,19 +340,19 @@ def generate_pdf(output_path, include_medusa=True):
         ('BOTTOMPADDING', (0,0), (-1,-1), 0.5),
     ]))
     story.append(proj3_header)
-    story.append(Spacer(1, 1))
-    story.append(Paragraph(f'{DIAMOND}Trained CNN/Transformer models to recognize 100+ ASL gestures using ResNet34 and MediaPipe-derived features, and parallelized preprocessing for faster experimentation.', bullet_style))
-    story.append(Spacer(1, 1))
-    story.append(Paragraph(f'{DIAMOND}Engineered real-time landmark extraction and temporal sequence processing pipelines, achieving robust classification across varying angles and lighting.', bullet_style))
-    story.append(Spacer(1, 3))
+    story.append(Spacer(1, 1.25))
+    story.append(Paragraph(f'{DIAMOND}Built an autonomous store operations agent on Medusa.js that monitors inventory levels, drafts automated reorders, and applies pricing rules via typed MCP tool calls.', bullet_style))
+    story.append(Spacer(1, 1.25))
+    story.append(Paragraph(f'{DIAMOND}Implemented Zod schema validation and PostgreSQL event listeners to coordinate reliable multi-step agent actions across inventory and pricing workflows.', bullet_style))
+    story.append(Spacer(1, 4))
 
-    # NEVI Search Tool (Aug 2022)
+    # 4. ASL Gesture Recognition (Jan 2025 - May 2025)
     proj4_header = Table([
         [
-            Paragraph("<b>NEVI Search Tool</b> &mdash; <i>WPI IQP / Atlas Public Policy</i>", item_title_style),
-            Paragraph("Aug 2022 &nbsp;|&nbsp; Python, spaCy, PyMuPDF", item_subtitle_style)
+            Paragraph("<b>American Sign Language Gesture Recognition</b>", item_title_style),
+            Paragraph("Jan 2025 &ndash; May 2025 &nbsp;|&nbsp; Python, PyTorch, ResNet34, MediaPipe", item_subtitle_style)
         ]
-    ], colWidths=[280, 276])
+    ], colWidths=[230, 326])
     proj4_header.setStyle(TableStyle([
         ('VALIGN', (0,0), (-1,-1), 'BOTTOM'),
         ('LEFTPADDING', (0,0), (-1,-1), 0),
@@ -383,10 +361,10 @@ def generate_pdf(output_path, include_medusa=True):
         ('BOTTOMPADDING', (0,0), (-1,-1), 0.5),
     ]))
     story.append(proj4_header)
-    story.append(Spacer(1, 1))
-    story.append(Paragraph(f'{DIAMOND}Built a document-search tool helping analysts find policy evidence in state EV infrastructure plans using keyword search, fuzzy matching, and NLP preprocessing.', bullet_style))
-    story.append(Spacer(1, 1))
-    story.append(Paragraph(f'{DIAMOND}Extracted structured tabular data and funding metrics from multi-hundred-page policy PDFs with PyMuPDF, reducing manual analyst review time.', bullet_style))
+    story.append(Spacer(1, 1.25))
+    story.append(Paragraph(f'{DIAMOND}Trained CNN/Transformer models to recognize 100+ ASL gestures using ResNet34 and MediaPipe-derived features, and parallelized preprocessing for faster experimentation.', bullet_style))
+    story.append(Spacer(1, 1.25))
+    story.append(Paragraph(f'{DIAMOND}Engineered real-time landmark extraction and temporal sequence processing pipelines, achieving robust classification across varying angles and lighting.', bullet_style))
 
     # Build document
     doc.build(story)
@@ -394,7 +372,7 @@ def generate_pdf(output_path, include_medusa=True):
 if __name__ == '__main__':
     os.makedirs("public", exist_ok=True)
     out_pdf = "public/resume.pdf"
-    generate_pdf(out_pdf, include_medusa=True)
+    generate_pdf(out_pdf)
     
     # Verify page count
     reader = pypdf.PdfReader(out_pdf)
