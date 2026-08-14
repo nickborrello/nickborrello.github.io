@@ -19,7 +19,7 @@ export const Capabilities: React.FC = () => {
       heading="Capabilities, with receipts"
       intro="No tier scores — every capability below traces to something real I shipped. Select one to see where it was used."
     >
-      <div className="grid gap-10 md:grid-cols-3 md:gap-8">
+      <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-3 md:gap-8">
         {CAPABILITY_GROUPS.map((group) => (
           <div key={group.id}>
             <h3 className="font-tech font-bold text-lg tracking-[0.12em] text-nier-darker uppercase">

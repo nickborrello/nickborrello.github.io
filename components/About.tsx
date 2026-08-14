@@ -1,11 +1,12 @@
 import React from 'react';
-import { ArrowUpRight, Github, Linkedin, Mail } from 'lucide-react';
+import { ArrowUpRight, Github, Linkedin, Mail, Phone } from 'lucide-react';
 import { CONTACTS, RESUME_URL, USER_INFO } from '../data';
 import { Section } from './Section';
 import { CornerTicks } from './CornerTicks';
 
 const ICONS = {
   Email: Mail,
+  Phone: Phone,
   GitHub: Github,
   LinkedIn: Linkedin,
 } as const;
