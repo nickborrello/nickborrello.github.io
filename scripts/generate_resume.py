@@ -265,7 +265,7 @@ def generate_pdf(output_path):
             Paragraph("Worcester, MA &nbsp;|&nbsp; Aug 2025", item_subtitle_style)
         ],
         [
-            Paragraph("<b>Worcester Polytechnic Institute</b> &mdash; B.S. Computer Science, <i>With Distinction</i> (Dean's List)", item_title_style),
+            Paragraph("<b>Worcester Polytechnic Institute</b> &mdash; B.S. Computer Science, <i>With Distinction</i>; Dean's List (Fall 2022)", item_title_style),
             Paragraph("Worcester, MA &nbsp;|&nbsp; May 2024", item_subtitle_style)
         ]
     ], colWidths=[380, 176])
@@ -364,7 +364,7 @@ def generate_pdf(output_path):
     story.append(Spacer(1, 1))
     story.append(Paragraph(f'{DIAMOND}Built an NLP-assisted document search tool for locating policy evidence across lengthy state NEVI plans using spaCy and keyword/fuzzy matching.', bullet_style))
     story.append(Spacer(1, 1))
-    story.append(Paragraph(f'{DIAMOND}Extracted structured text and policy metrics from multi-hundred-page policy PDFs with PyMuPDF to simplify analyst review workflows.', bullet_style))
+    story.append(Paragraph(f'{DIAMOND}Implemented exact keyword search, fuzzy matching, configurable term groups, and spaCy preprocessing to speed review of lengthy state NEVI plans.', bullet_style))
 
     # Build document
     doc.build(story)

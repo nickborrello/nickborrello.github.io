@@ -44,7 +44,7 @@ export const ShopSiteMcpDiagram: React.FC = () => {
       {/* Connector: client → server */}
       <line x1="380" y1="92" x2="380" y2="124" stroke={ink} strokeOpacity="0.55" strokeWidth="1.2" markerEnd="url(#mcp-arrow)" />
       <text x="396" y="112" fontFamily="Rajdhani, sans-serif" fontWeight="600" fontSize="10.5" letterSpacing="1" fill={ink} fillOpacity="0.75">
-        MODEL CONTEXT PROTOCOL (STDIO / SSE)
+        MODEL CONTEXT PROTOCOL — STDIO
       </text>
 
       {/* MCP server */}
