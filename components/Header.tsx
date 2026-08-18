@@ -33,15 +33,15 @@ export const Header: React.FC = () => {
   }, []);
 
   return (
-    <header className="sticky top-0 z-40 bg-nier-beige border-b border-nier-dark/15 mesh">
-      <div className="max-w-6xl mx-auto px-5 sm:px-8">
+    <header className="sticky top-0 z-40 bg-nier-beige border-b border-nier-dark/15">
+      <div className="max-w-5xl mx-auto px-5 sm:px-8">
         {/* Primary row */}
         <div className="h-16 flex items-center justify-between gap-4">
           <a href="#top" className="flex items-baseline gap-2 min-w-0" aria-label="Nicholas Borrello — home">
-            <span className="font-tech font-bold tracking-[0.18em] text-[15px] text-nier-darker whitespace-nowrap">
+            <span className="font-tech font-bold tracking-[0.16em] text-[15px] text-nier-darker whitespace-nowrap">
               {USER_INFO.name.toUpperCase()}
             </span>
-            <span className="hidden md:inline font-tech font-medium tracking-[0.22em] text-[11px] text-nier-dark whitespace-nowrap">
+            <span className="hidden md:inline font-tech font-medium tracking-[0.18em] text-[11px] text-nier-dark whitespace-nowrap">
               {USER_INFO.title.toUpperCase()}
             </span>
           </a>
@@ -54,7 +54,7 @@ export const Header: React.FC = () => {
                   key={link.href}
                   href={link.href}
                   aria-current={isActive ? 'true' : undefined}
-                  className={`relative px-3 py-2 font-tech font-semibold tracking-[0.16em] text-[13px] uppercase transition-colors duration-150 ${
+                  className={`relative px-3 py-2 font-tech font-semibold tracking-[0.14em] text-[13px] uppercase transition-colors duration-150 ${
                     isActive ? 'text-nier-darker' : 'text-nier-dark hover:text-nier-darker'
                   }`}
                 >
@@ -72,7 +72,7 @@ export const Header: React.FC = () => {
 
           <a
             href={RESUME_URL}
-            className="inline-flex items-center gap-1.5 bg-nier-darker text-nier-beige px-4 py-2 font-tech font-bold tracking-[0.16em] text-xs uppercase hover:bg-nier-panel transition-colors duration-150"
+            className="inline-flex items-center gap-1.5 bg-nier-darker text-nier-beige px-4 py-2 font-tech font-bold tracking-[0.14em] text-xs uppercase hover:bg-nier-panel transition-colors duration-150"
             aria-label="Download resume (PDF)"
           >
             Resume
@@ -89,7 +89,7 @@ export const Header: React.FC = () => {
                 key={link.href}
                 href={link.href}
                 aria-current={isActive ? 'true' : undefined}
-                className={`px-2.5 py-1.5 font-tech font-semibold tracking-[0.14em] text-xs uppercase ${
+                className={`px-2.5 py-1.5 font-tech font-semibold tracking-[0.12em] text-xs uppercase ${
                   isActive ? 'text-nier-darker underline underline-offset-4 decoration-accent decoration-2' : 'text-nier-dark/90'
                 }`}
               >
