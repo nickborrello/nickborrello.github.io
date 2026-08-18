@@ -94,7 +94,7 @@ export const PROJECTS: ProjectItem[] = [
     tech: ["Next.js", "TypeScript", "Vercel AI SDK", "Supabase", "PostgreSQL", "React"],
     link: "https://resumancer.dev",
     image: "/work/resumancer-landing.png",
-    imageAlt: "Resumancer product UI: job requirement matching against verified career evidence with reviewable diffs",
+    imageAlt: "Resumancer landing page: pixel-art graveyard hero scene with the Archivist character summoning floating resumes beneath the headline 'Career evidence, compiled with precision.'",
     featured: true,
     startDate: "10-2025",
     endDate: "Present",
