@@ -18,18 +18,38 @@ export const Header: React.FC = () => {
     );
     if (sections.length === 0) return;
 
+    const lastLinkId = NAV_LINKS[NAV_LINKS.length - 1].href.slice(1);
+    let bandId = '';
+
+    // At absolute page bottom the thin active band can sit entirely inside the
+    // previous section on tall viewports (About's top never crosses it), so the
+    // last nav item wins explicitly there; everywhere else the observer drives.
+    const sync = () => {
+      const atBottom =
+        window.scrollY + window.innerHeight >= document.documentElement.scrollHeight - 2;
+      setActiveId(atBottom ? lastLinkId : bandId);
+    };
+
     const observer = new IntersectionObserver(
       (entries) => {
         const visible = entries
           .filter((e) => e.isIntersecting)
           .sort((a, b) => a.boundingClientRect.top - b.boundingClientRect.top);
-        if (visible[0]) setActiveId(visible[0].target.id);
+        if (visible[0]) bandId = visible[0].target.id;
+        sync();
       },
       { rootMargin: '-40% 0px -55% 0px' }
     );
 
     sections.forEach((s) => observer.observe(s));
-    return () => observer.disconnect();
+    window.addEventListener('scroll', sync, { passive: true });
+    window.addEventListener('resize', sync);
+    sync();
+    return () => {
+      observer.disconnect();
+      window.removeEventListener('scroll', sync);
+      window.removeEventListener('resize', sync);
+    };
   }, []);
 
   return (
