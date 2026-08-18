@@ -1,9 +1,9 @@
 import React from 'react';
 
 /**
- * Bay State AI Data Pipeline — architecture diagram.
- * Authored visual (pipeline is private work); follows DESIGN.md grammar:
- * hairlines, squared corners, Rajdhani labels, one accent for the gate.
+ * Bay State AI Product Intelligence & CMS Pipeline — architecture diagram.
+ * Authored visual reflecting production architecture:
+ * Distributor data → Playwright/Crawlee extraction → 25-tool bounded agent layer → Fail-closed validation → Bun/Hono + SQLite CMS → ShopSite CGI.
  */
 export const BaystatePipeline: React.FC = () => {
   const ink = '#4b4845';
@@ -12,18 +12,18 @@ export const BaystatePipeline: React.FC = () => {
   const accent = '#8c3a2c';
 
   const boxes = [
-    { x: 20, title: 'VENDOR SOURCES', sub1: 'catalogs · price lists', sub2: '' },
-    { x: 166, title: 'SCRAPER FLEET', sub1: 'Playwright · Docker', sub2: 'GitHub Actions — async' },
-    { x: 312, title: 'HYBRID ROUTER', sub1: 'Gemini Flash', sub2: 'GPT-4o-mini' },
-    { x: 458, title: 'VALIDATION', sub1: 'extraction gates', sub2: 'reject → retry' },
-    { x: 604, title: 'PRODUCT SYSTEMS', sub1: 'Supabase · Postgres', sub2: 'storefront + dashboards' },
+    { x: 18, title: 'VENDOR SOURCES', sub1: 'catalogs · price sheets', sub2: 'external feeds' },
+    { x: 164, title: 'EXTRACTION FLEET', sub1: 'Playwright · Crawlee', sub2: 'VLM & document parsers' },
+    { x: 310, title: 'BOUNDED AGENTS', sub1: '25 research tools', sub2: 'runtime & budget caps' },
+    { x: 456, title: 'VALIDATION GATE', sub1: 'fail-closed schema', sub2: 'provenance review' },
+    { x: 602, title: 'RETAIL CMS', sub1: 'Bun / Hono · SQLite', sub2: 'ShopSite CGI sync' },
   ];
 
   return (
     <svg
       viewBox="0 0 760 300"
       role="img"
-      aria-label="Bay State AI data pipeline diagram: vendor sources flow through a Playwright scraper fleet into a hybrid Gemini Flash and GPT-4o-mini router, pass a validation gate, and land in Supabase and PostgreSQL product systems"
+      aria-label="Bay State AI product intelligence pipeline: vendor sources flow through Playwright/Crawlee extraction, 25 bounded research tools, fail-closed validation, and synchronize into a Bun/Hono SQLite CMS and ShopSite CGI"
       className="w-full h-auto block"
     >
       <defs>
@@ -32,35 +32,27 @@ export const BaystatePipeline: React.FC = () => {
         </marker>
       </defs>
 
-      {/* Frame corner ticks */}
-      <g stroke={ink} strokeOpacity="0.35" strokeWidth="1">
-        <path d="M14,8 h10 M14,8 v10" />
-        <path d="M746,8 h-10 M746,8 v10" />
-        <path d="M14,292 h10 M14,292 v-10" />
-        <path d="M746,292 h-10 M746,292 v-10" />
-      </g>
-
       {/* Header labels */}
-      <text x="24" y="26" fontFamily="Rajdhani, sans-serif" fontWeight="700" fontSize="12" letterSpacing="2" fill={inkStrong}>
-        CONSOLIDATION PIPELINE
+      <text x="18" y="24" fontFamily="Rajdhani, sans-serif" fontWeight="700" fontSize="12" letterSpacing="1.5" fill={inkStrong}>
+        PRODUCT INTELLIGENCE PIPELINE
       </text>
-      <text x="736" y="26" textAnchor="end" fontFamily="Rajdhani, sans-serif" fontWeight="600" fontSize="10" letterSpacing="1.5" fill={ink} fillOpacity="0.6">
+      <text x="742" y="24" textAnchor="end" fontFamily="Rajdhani, sans-serif" fontWeight="600" fontSize="10" letterSpacing="1.2" fill={ink} fillOpacity="0.6">
         BAY STATE PET &amp; GARDEN — PRODUCTION
       </text>
 
-      {/* Cost tag above router */}
+      {/* Policy tag above agent runtime */}
       <g>
-        <rect x="320" y="30" width="104" height="18" rx="2" fill={accent} />
-        <text x="372" y="43" textAnchor="middle" fontFamily="Rajdhani, sans-serif" fontWeight="700" fontSize="10.5" letterSpacing="1.2" fill="#ded8c1">
-          COST-GATED ROUTING
+        <rect x="318" y="28" width="102" height="18" rx="2" fill={accent} />
+        <text x="369" y="41" textAnchor="middle" fontFamily="Rajdhani, sans-serif" fontWeight="700" fontSize="10" letterSpacing="1" fill="#ded8c1">
+          POLICY BOUNDS
         </text>
       </g>
 
-      {/* Accuracy tag above validation */}
+      {/* Provenance tag above validation */}
       <g>
-        <rect x="474" y="30" width="104" height="18" rx="2" fill={accent} />
-        <text x="526" y="43" textAnchor="middle" fontFamily="Rajdhani, sans-serif" fontWeight="700" fontSize="10.5" letterSpacing="1.2" fill="#ded8c1">
-          VALIDATION GATE
+        <rect x="464" y="28" width="102" height="18" rx="2" fill={accent} />
+        <text x="515" y="41" textAnchor="middle" fontFamily="Rajdhani, sans-serif" fontWeight="700" fontSize="10" letterSpacing="1" fill="#ded8c1">
+          FAIL-CLOSED GATE
         </text>
       </g>
 
@@ -71,8 +63,8 @@ export const BaystatePipeline: React.FC = () => {
           <g key={b.title}>
             <rect
               x={b.x}
-              y="58"
-              width="118"
+              y="56"
+              width="120"
               height="72"
               rx="2"
               fill={isGate ? accent : dim}
@@ -82,25 +74,25 @@ export const BaystatePipeline: React.FC = () => {
               strokeWidth="1"
             />
             <text
-              x={b.x + 59}
-              y="82"
+              x={b.x + 60}
+              y="80"
               textAnchor="middle"
               fontFamily="Rajdhani, sans-serif"
               fontWeight="700"
-              fontSize="12.5"
-              letterSpacing="1"
+              fontSize="12"
+              letterSpacing="0.8"
               fill={inkStrong}
             >
               {b.title}
             </text>
             <text
-              x={b.x + 59}
-              y="100"
+              x={b.x + 60}
+              y="98"
               textAnchor="middle"
               fontFamily="Rajdhani, sans-serif"
               fontWeight="600"
               fontSize="10.5"
-              letterSpacing="0.5"
+              letterSpacing="0.4"
               fill={ink}
               fillOpacity="0.75"
             >
@@ -108,12 +100,12 @@ export const BaystatePipeline: React.FC = () => {
             </text>
             {b.sub2 && (
               <text
-                x={b.x + 59}
-                y="114"
+                x={b.x + 60}
+                y="112"
                 textAnchor="middle"
                 fontFamily="Inter, sans-serif"
                 fontWeight="400"
-                fontSize="9.5"
+                fontSize="9"
                 fill={ink}
                 fillOpacity="0.7"
               >
@@ -126,33 +118,33 @@ export const BaystatePipeline: React.FC = () => {
 
       {/* Connectors */}
       <g stroke={ink} strokeOpacity="0.55" strokeWidth="1.2" markerEnd="url(#bay-arrow)">
-        <line x1="138" y1="94" x2="160" y2="94" />
-        <line x1="284" y1="94" x2="306" y2="94" />
-        <line x1="430" y1="94" x2="452" y2="94" />
-        <line x1="576" y1="94" x2="598" y2="94" />
+        <line x1="138" y1="92" x2="158" y2="92" />
+        <line x1="284" y1="92" x2="304" y2="92" />
+        <line x1="430" y1="92" x2="450" y2="92" />
+        <line x1="576" y1="92" x2="596" y2="92" />
       </g>
 
       {/* Captions under flow */}
-      <g fontFamily="Inter, sans-serif" fontSize="9.5" fill={ink} fillOpacity="0.6">
-        <text x="20" y="152" fontWeight="600">vendor catalogs</text>
-        <text x="20" y="164">synced without</text>
-        <text x="20" y="176">human re-keying</text>
+      <g fontFamily="Inter, sans-serif" fontSize="9.5" fill={ink} fillOpacity="0.65">
+        <text x="18" y="152" fontWeight="600">multi-source feeds</text>
+        <text x="18" y="164">distributor catalogs,</text>
+        <text x="18" y="176">barcodes &amp; sheets</text>
 
-        <text x="166" y="152" fontWeight="600">distributed scraping</text>
-        <text x="166" y="164">Docker containers,</text>
-        <text x="166" y="176">scheduled syncs</text>
+        <text x="164" y="152" fontWeight="600">targeted extraction</text>
+        <text x="164" y="164">Playwright &amp; Crawlee</text>
+        <text x="164" y="176">structured scrapers</text>
 
-        <text x="312" y="152" fontWeight="600">cost-gated routing:</text>
-        <text x="312" y="164">cheap tasks stay on</text>
-        <text x="312" y="176">Flash, hard cases escalate</text>
+        <text x="310" y="152" fontWeight="600">execution bounds</text>
+        <text x="310" y="164">25 bounded tools with</text>
+        <text x="310" y="176">strict cost/call caps</text>
 
-        <text x="458" y="152" fontWeight="600">every extraction</text>
-        <text x="458" y="164">checked before it</text>
-        <text x="458" y="176">touches inventory</text>
+        <text x="456" y="152" fontWeight="600">provenance check</text>
+        <text x="456" y="164">every edit verified</text>
+        <text x="456" y="176">before catalog ingest</text>
 
-        <text x="604" y="152" fontWeight="600">registered products</text>
-        <text x="604" y="164">flow to storefront</text>
-        <text x="604" y="176">and analytics</text>
+        <text x="602" y="152" fontWeight="600">retail publishing</text>
+        <text x="602" y="164">SQLite CMS syncs to</text>
+        <text x="602" y="176">ShopSite back office</text>
       </g>
     </svg>
   );

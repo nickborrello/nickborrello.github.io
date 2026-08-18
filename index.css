@@ -1,7 +1,7 @@
 @import "tailwindcss";
 
 /* ============================================================
-   Field terminal — NieR palette as tokens (20% seasoning)
+   Field terminal — NieR palette as tokens
    See DESIGN.md for the durable rules.
    ============================================================ */
 
@@ -49,7 +49,7 @@ body {
   border-radius: 2px;
 }
 
-/* ------- Scrollbar (quiet, world-toned) ------- */
+/* ------- Scrollbar ------- */
 
 ::-webkit-scrollbar {
   width: 10px;
@@ -66,19 +66,11 @@ body {
   background: var(--color-nier-dark);
 }
 
-/* ------- Texture: fine field mesh, zones only ------- */
-/* impeccable-disable-next-line codex-grid-background: brief-pinned NieR field texture (issue #2 "Keep: subtle grid / technical texture"); zone-limited per DESIGN.md, never a viewport overlay */
+/* ------- Texture: fine field mesh, hero zone only ------- */
 @utility mesh {
   background-image:
     linear-gradient(rgba(58, 56, 54, 0.04) 1px, transparent 1px),
     linear-gradient(90deg, rgba(58, 56, 54, 0.04) 1px, transparent 1px);
-  background-size: 3px 3px;
-}
-
-@utility mesh-strong {
-  background-image:
-    linear-gradient(rgba(58, 56, 54, 0.06) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(58, 56, 54, 0.06) 1px, transparent 1px);
   background-size: 3px 3px;
 }
 

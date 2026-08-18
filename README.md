@@ -1,27 +1,25 @@
-# Nicholas Borrello — AI Engineer Portfolio
+# Nicholas Borrello — AI & Software Engineer Portfolio
 
-A scrollable engineering portfolio with a restrained NieR: Automata field-UI identity — beige/charcoal palette, Rajdhani HUD lettering, fine grid texture, hairline frames. The engineering work is the main character; the game-menu interaction model was retired in the 2026 redesign (issue #2).
+A personal engineering portfolio with a clean, restrained visual identity — warm beige/charcoal palette, Rajdhani display headings, and clear engineering storytelling.
 
 ## Stack
 
-- React 19 + TypeScript + Vite (bundled — no CDN runtime dependencies)
-- Tailwind CSS v4 (build pipeline via `@tailwindcss/vite`, tokens in `index.css`)
+- React 19 + TypeScript + Vite
+- Tailwind CSS v4 (`@tailwindcss/vite`)
 - Lucide icons
 
-## Run locally
+## Development & Verification
 
 ```bash
 npm install
-npm run dev      # http://localhost:3000
-npm run build    # production build → dist/
-npm run preview  # serve the production build
+npm run dev        # start local development server
+npm run typecheck  # TypeScript verification (tsc --noEmit)
+npm run build      # production bundle build -> dist/
+npm run preview    # preview production build
 ```
 
-## Content
+## Structure
 
-All portfolio content lives in `data.ts` (projects, experience, education, capabilities with proof traces, contacts). Every metric and capability chip traces to a real claim there. Visuals: live Resumancer captures in `public/work/`, authored architecture diagrams in `components/diagrams/`.
-
-## Before deploying
-
-- A generated `public/resume.pdf` (built strictly from `data.ts` facts) ships so every Resume CTA resolves — replace it with your official resume before applying to jobs.
-- The social preview card is `public/og-card.png` (1200×630); regenerate from `/tmp/og-card.html` if the hero copy changes.
+- `data.ts` & `types.ts`: Source data for experience, projects, education, and technical skills.
+- `components/`: Clean React components for Hero, Featured Work, Experience, Skills, About, Header, Footer, and authored architecture diagrams (`components/diagrams/`).
+- `scripts/generate_resume.py`: Standalone ReportLab generator for `public/resume.pdf`.
