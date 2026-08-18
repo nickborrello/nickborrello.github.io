@@ -362,9 +362,9 @@ def generate_pdf(output_path):
     ]))
     story.append(proj4_header)
     story.append(Spacer(1, 1))
-    story.append(Paragraph(f'{DIAMOND}Built an NLP-assisted document search tool for locating policy evidence across lengthy state NEVI plans using spaCy and keyword/fuzzy matching.', bullet_style))
+    story.append(Paragraph(f'{DIAMOND}Built an NLP-assisted document search tool to help analysts locate policy evidence across lengthy state NEVI plans.', bullet_style))
     story.append(Spacer(1, 1))
-    story.append(Paragraph(f'{DIAMOND}Implemented exact keyword search, fuzzy matching, configurable term groups, and spaCy preprocessing to speed review of lengthy state NEVI plans.', bullet_style))
+    story.append(Paragraph(f'{DIAMOND}Implemented exact keyword search, fuzzy matching, configurable term groups, and spaCy preprocessing to speed policy-document review.', bullet_style))
 
     # Build document
     doc.build(story)

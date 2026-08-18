@@ -21,7 +21,7 @@ export const BaystatePipeline: React.FC = () => {
 
   return (
     <svg
-      viewBox="0 0 760 300"
+      viewBox="0 0 760 185"
       role="img"
       aria-label="Bay State AI product intelligence pipeline: vendor sources flow through Playwright/Crawlee extraction, 25 bounded research tools, fail-closed validation, and synchronize into a Bun/Hono SQLite CMS and ShopSite CGI"
       className="w-full h-auto block"

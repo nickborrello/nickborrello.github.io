@@ -70,7 +70,7 @@ export const PROJECTS: ProjectItem[] = [
   {
     id: "p-baystate",
     title: "Bay State Product Intelligence",
-    summary: "Production AI pipeline that resolves product identities from external vendor data and generates verified catalog updates under strict runtime constraints.",
+    summary: "Production AI pipeline that resolves product identities from external vendor data and produces reviewable catalog proposals under strict runtime constraints.",
     highlights: [
       "Multi-source product research pipeline resolving variant identity and barcode mismatches across distributor catalogs.",
       "Agent execution layer equipped with 25 bounded research tools enforcing privacy controls, deadlines, and token budgets.",
@@ -105,7 +105,7 @@ export const PROJECTS: ProjectItem[] = [
     summary: "Model Context Protocol server allowing AI agents to securely query orders, search products, and manage inventory over legacy e-commerce backends.",
     highlights: [
       "Typed tool layer wrapping XML/CGI requests and HMAC-SHA1 authentication into structured LLM tool interfaces.",
-      "Type-safe schema validation via Zod ensuring strict input/output bounds on all agent operations.",
+      "Typed tools with Zod-validated inputs constrain agent operations before requests reach ShopSite.",
       "Enables natural language querying and automated workflows without exposing direct API credentials.",
     ],
     tech: ["TypeScript", "Model Context Protocol", "Zod", "Node.js", "ShopSite XML/CGI"],

@@ -9,6 +9,14 @@ import { ShopSiteMcpDiagram } from './diagrams/ShopSiteMcpDiagram';
 const FEATURED = PROJECTS.filter((p) => p.featured);
 const ALSO_BUILT = PROJECTS.filter((p) => !p.featured);
 
+// Authored SVG diagrams are framed at their own viewBox ratio so they fill
+// the container with no letterboxing; screenshots keep the shared 16:10 frame.
+// Keep in sync if diagram viewBoxes change (see components/diagrams/*).
+const DIAGRAM_ASPECTS: Record<string, string> = {
+  'p-baystate': 'aspect-[76/18.5]', // viewBox 760×185
+  'p-shopsite': 'aspect-[76/30]', // viewBox 760×300
+};
+
 const CaseVisual: React.FC<{ project: ProjectItem }> = ({ project }) => {
   if (project.id === 'p-baystate') {
     return <BaystatePipeline />;
@@ -40,7 +48,9 @@ const ProjectCaseStudy: React.FC<{ project: ProjectItem; index: number }> = ({ p
       {/* Visual */}
       <div className={`lg:col-span-7 ${flip ? 'lg:order-2' : ''}`}>
         <div className="border border-nier-dark/20 bg-nier-beige-dim/30 p-1 sm:p-1.5">
-          <div className="aspect-[16/10] bg-nier-beige overflow-hidden border border-nier-dark/10">
+          <div
+            className={`${DIAGRAM_ASPECTS[project.id] ?? 'aspect-[16/10]'} bg-nier-beige overflow-hidden border border-nier-dark/10`}
+          >
             <CaseVisual project={project} />
           </div>
         </div>
