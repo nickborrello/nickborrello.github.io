@@ -1,5 +1,4 @@
 import React from 'react';
-import { ArrowUpRight } from 'lucide-react';
 import { WORK_EXPERIENCE, EDUCATION } from '../data';
 import { Section } from './Section';
 
@@ -34,7 +33,7 @@ const ExperienceItem: React.FC<{ item: (typeof WORK_EXPERIENCE)[number]; isCurre
         {item.achievements.map((a) => (
           <li key={a} className="flex gap-2.5 text-sm leading-relaxed text-nier-dark/90 items-start">
             <span aria-hidden="true" className="mt-[7px] w-1.5 h-1.5 bg-nier-grid rotate-45 flex-shrink-0" />
-            {a}
+            <span>{a}</span>
           </li>
         ))}
       </ul>
@@ -48,17 +47,6 @@ const ExperienceItem: React.FC<{ item: (typeof WORK_EXPERIENCE)[number]; isCurre
             {s}
           </span>
         ))}
-        {item.proofUrl && (
-          <a
-            href={item.proofUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="ml-1 inline-flex items-center gap-1 font-tech font-bold tracking-[0.14em] text-xs uppercase text-accent hover:text-nier-darker transition-colors duration-150"
-          >
-            {item.proofLabel ?? 'View proof'}
-            <ArrowUpRight size={13} strokeWidth={2.5} aria-hidden="true" />
-          </a>
-        )}
       </div>
     </li>
   );
@@ -70,8 +58,8 @@ export const Experience: React.FC = () => {
       id="experience"
       index="02"
       label="Experience"
-      heading="Where I've built"
-      intro="Employment first — then education, kept separate."
+      heading="Engineering history"
+      intro="Professional engineering experience and computer science education."
     >
       <ol className="relative space-y-12 border-l border-nier-dark/20 pl-0">
         {WORK_EXPERIENCE.map((item, i) => (
@@ -79,7 +67,7 @@ export const Experience: React.FC = () => {
         ))}
       </ol>
 
-      {/* Education — separate block */}
+      {/* Education block */}
       <div className="mt-16 pt-10 border-t border-nier-dark/15">
         <div className="flex items-center gap-4">
           <span className="font-tech font-semibold tracking-[0.22em] text-[11px] text-nier-dark uppercase whitespace-nowrap">
@@ -105,7 +93,7 @@ export const Experience: React.FC = () => {
                 {edu.highlights.map((h) => (
                   <li key={h} className="flex gap-2.5 text-sm leading-relaxed text-nier-dark/90 items-start">
                     <span aria-hidden="true" className="mt-[7px] w-1.5 h-1.5 bg-nier-grid rotate-45 flex-shrink-0" />
-                    {h}
+                    <span>{h}</span>
                   </li>
                 ))}
               </ul>

@@ -1,38 +1,14 @@
 /**
  * ============================================================
- * NICHOLAS BORRELLO — AI ENGINEER PORTFOLIO
- * Direction contract (issue #2, Aug 2026)
+ * NICHOLAS BORRELLO — AI & SOFTWARE ENGINEER PORTFOLIO
+ * Recruiter-first simplified engineering portfolio (Issue #3)
  * ============================================================
- * THESIS: The engineering work is the main character; NieR
- * styling is 20% seasoning, not the interface. Refuses both
- * the tabbed app-shell portfolio and its own boot-gated
- * predecessor: a scrollable field document where identity,
- * proof, and action sit above the fold.
+ * THESIS: The engineering work speaks for itself without
+ * defensive meta-language, "receipts", or telemetry strips.
+ * Clean, fast, accessible, and confident.
  *
- * OWN-WORLD: warm beige ground (#ded8c1), charcoal ink, hairline
- * 1px borders, squared 2px corners, fine 3px grid mesh in the
- * hero/header/divider strips only. Rajdhani for display and
- * labels, Inter for body. One muted machine-red accent for
- * links, focus, and status. No overlays, no scanlines, no
- * nested bordered panels, no tiers, no fake system metadata.
- *
- * STORY: a visitor knows within one viewport who Nick is (AI
- * engineer building production LLM systems), sees three proof
- * metrics, reads three visual case studies with outcomes,
- * walks a quiet timeline, clicks capability chips to see real
- * usage evidence, and can email or open GitHub one scroll away.
- *
- * FIRST VIEWPORT: mesh-textured beige ground; hairline header
- * with wordmark, anchor nav, and RESUME CTA; hero carries the
- * name in Rajdhani display, "AI Engineer", a positioning line,
- * one-sentence summary, four CTAs, a status line, and the
- * telemetry strip — three qualitative proof points (no invented
- * metrics) — the page's evidence at a glance.
- *
- * FORM: document portfolio (Experience mode with persuasive
- * clarity), brief-pinned IA from issue #2: Hero → Featured
- * Work → Experience → Capabilities → About. No concept
- * tournament; the brief specifies the structure.
+ * PALETTE: Warm beige (#ded8c1), charcoal ink (#3a3836),
+ * fine hairline accents, and muted machine-red (#8c3a2c).
  * ============================================================
  */
 import React from 'react';

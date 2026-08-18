@@ -2,18 +2,15 @@ export interface ProjectItem {
   id: string;
   title: string;
   summary: string;
-  problem?: string;
-  built?: string[];
-  impact?: string[];
-  role?: string;
+  highlights?: string[];
   tech: string[];
   link?: string;
   repoUrl?: string;
   image?: string;
   imageAlt?: string;
   featured?: boolean;
-  startDate?: string; // Format: MM-YYYY
-  endDate?: string; // Format: MM-YYYY or "Present"
+  startDate?: string;
+  endDate?: string;
 }
 
 export interface ExperienceItem {
@@ -26,8 +23,6 @@ export interface ExperienceItem {
   summary: string;
   achievements: string[];
   skills: string[];
-  proofUrl?: string;
-  proofLabel?: string;
 }
 
 export interface EducationItem {
@@ -39,21 +34,11 @@ export interface EducationItem {
   highlights: string[];
 }
 
-export interface CapabilitySkill {
-  name: string;
-  proofIds: string[]; // references PROOF_EVIDENCE keys
-}
-
 export interface CapabilityGroup {
   id: string;
   label: string;
-  description: string;
-  skills: CapabilitySkill[];
-}
-
-export interface ProofEvidence {
-  context: string; // where it was used (project / role)
-  detail: string; // what was actually done
+  description?: string;
+  skills: string[];
 }
 
 export interface ContactLink {
@@ -71,10 +56,4 @@ export interface UserInfo {
   positioning: string;
   summary: string;
   bio: string;
-}
-
-export interface HeroProof {
-  value: string;
-  label: string;
-  detail: string;
 }

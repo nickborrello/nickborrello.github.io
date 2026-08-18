@@ -1,4 +1,4 @@
-import { CapabilityGroup, ContactLink, EducationItem, ExperienceItem, HeroProof, ProjectItem, ProofEvidence, UserInfo } from './types';
+import { CapabilityGroup, ContactLink, EducationItem, ExperienceItem, ProjectItem, UserInfo } from './types';
 
 export const USER_INFO: UserInfo = {
   name: "Nicholas Borrello",
@@ -7,27 +7,9 @@ export const USER_INFO: UserInfo = {
   location: "Durham, NC",
   status: "Open to opportunities",
   positioning: "Agentic Systems & LLM Applications",
-  summary: "AI & software engineer specializing in agentic workflows, bounded research tools, and high-throughput automation — from product intelligence systems to autonomous MCP tools.",
-  bio: "I'm an AI & software engineer who bridges raw LLM capability and production-grade software. At Bay State Pet & Garden I engineered a Product Intelligence system with 25 bounded research tools and strict execution limits; at Resumancer I built an agentic resume workspace where every AI edit traces back to verified evidence. My work centers on one question: how do you make LLMs reliably do real work — at scale, under cost constraints, with results you can prove?",
+  summary: "I build production-grade AI systems, agentic workflows, and developer tools — with bounded execution, real-time evaluation, and verifiable outputs.",
+  bio: "I'm an AI & software engineer focused on building reliable, production-ready LLM systems. My work spans agentic architectures with strict execution bounds, developer tooling, and automated evaluation pipelines — turning model capabilities into dependable, scalable software.",
 };
-
-export const HERO_PROOFS: HeroProof[] = [
-  {
-    value: "25 Bounded Tools",
-    label: "Agent execution layer",
-    detail: "Enforces privacy, cost, deadline, and tool-use limits so research runs remain controlled and auditable.",
-  },
-  {
-    value: "Agentic Copilot",
-    label: "evidence-backed diffs",
-    detail: "Resumancer compares job requirements with a Master CV and proposes staged, reviewable changes.",
-  },
-  {
-    value: "Product Intel",
-    label: "verified catalog identity",
-    detail: "Researches external product data, verifies variant identity, and produces evidence-backed changes.",
-  },
-];
 
 export const WORK_EXPERIENCE: ExperienceItem[] = [
   {
@@ -37,13 +19,13 @@ export const WORK_EXPERIENCE: ExperienceItem[] = [
     period: "Jul 2024 — Present",
     location: "Taunton, MA (Remote)",
     type: "Full-time",
-    summary: "Developing an AI Product Intelligence system that researches external product data, resolves exact product/variant identity, and produces evidence-backed catalog changes for human review.",
+    summary: "Engineering AI extraction pipelines, retail CMS data workflows, and automated evaluation harnesses.",
     achievements: [
-      "Develop an AI Product Intelligence system that researches external product data, resolves exact product/variant identity, and produces evidence-backed catalog changes for human review.",
-      "Engineer the agent execution layer with 25 bounded research tools, model routing and fallback, privacy controls, tool/model budgets, deadlines, and fail-closed validation.",
-      "Maintain the retail CMS and AI evaluation pipeline, testing new extraction and agent behavior against verified datasets before staged rollout into product onboarding and publishing workflows.",
+      "Built automated evaluation test harnesses to benchmark model latency and extraction accuracy against golden datasets before catalog deployment.",
+      "Engineered retail CMS integrations to synchronize external supplier data directly into inventory and publishing workflows.",
+      "Maintained high-throughput data collection infrastructure using Docker, Playwright, and PostgreSQL.",
     ],
-    skills: ["TypeScript", "Python", "LLM Orchestration", "Agentic Systems", "Docker", "Playwright", "PostgreSQL", "AI Evaluation"],
+    skills: ["TypeScript", "Python", "Docker", "Playwright", "PostgreSQL", "AI Evaluation", "CI/CD"],
   },
   {
     id: "exp-allegro",
@@ -52,10 +34,10 @@ export const WORK_EXPERIENCE: ExperienceItem[] = [
     period: "Jun 2023 — Aug 2023",
     location: "Manchester, NH",
     type: "Internship",
-    summary: "Built an Azure DevOps CI/CD pipeline that automated driver deployment to engineering test equipment, replacing a manual deployment process.",
+    summary: "Engineered CI/CD automation pipelines for semiconductor testing infrastructure.",
     achievements: [
-      "Built an Azure DevOps CI/CD pipeline that automated driver deployment to engineering test equipment, replacing a manual deployment process.",
-      "Developed supporting automation workflows to standardize driver updates across test systems and simplify repeatable engineering test runs.",
+      "Built an Azure DevOps CI/CD pipeline that automated driver deployment to engineering test equipment, replacing a manual multi-step deployment process.",
+      "Developed automated testing workflows to standardize driver updates and ensure repeatable verification runs across lab systems.",
     ],
     skills: ["Azure DevOps", "CI/CD", "PowerShell", "Automation"],
   },
@@ -88,22 +70,16 @@ export const PROJECTS: ProjectItem[] = [
   {
     id: "p-resumancer",
     title: "Resumancer AI",
-    summary: "Agentic Resume & Career Workspace that compares job requirements with a reusable Master CV and proposes evidence-backed changes.",
-    problem: "Resumes get rewritten from scratch for every application, and AI rewrites routinely invent experience. Nothing traces a claim back to verified history.",
-    built: [
-      "Built a career workspace comparing job requirements with a Master CV, proposing evidence-backed changes with reviewable diffs instead of unconstrained rewrites.",
-      "Added ATS compatibility checks, model fallback, and PDF export so verified career data moves from job analysis to an application-ready resume.",
-      "Semantic search over career history with pgvector, plus a real-time PDF engine with layout version control.",
+    summary: "Agentic career workspace that matches job requirements against a master CV, proposing reviewable diffs with real-time verification and ATS validation.",
+    highlights: [
+      "Requirement-to-evidence matching engine built with Vercel AI SDK and pgvector semantic retrieval.",
+      "Reviewable diff generator proposing verified, auditable career updates instead of unconstrained hallucinations.",
+      "Real-time PDF rendering engine with automated single-page layout budget guarantees.",
     ],
-    impact: [
-      "Live product in beta at resumancer.dev — requirement-to-evidence matching with receipts on every edit.",
-      "One-page budget guarantee: layout metrics computed live so the finished resume fits a single clean page.",
-    ],
-    role: "Creator — product, architecture, and engineering, end to end.",
     tech: ["Next.js", "TypeScript", "Vercel AI SDK", "Supabase", "PostgreSQL", "pgvector", "React"],
     link: "https://resumancer.dev",
     image: "/work/resumancer-landing.png",
-    imageAlt: "Resumancer product UI: a target job requirement matched against verified career evidence with reviewable diffs",
+    imageAlt: "Resumancer product UI: job requirement matching against verified career evidence with reviewable diffs",
     featured: true,
     startDate: "10-2025",
     endDate: "Present",
@@ -111,19 +87,13 @@ export const PROJECTS: ProjectItem[] = [
   {
     id: "p-baystate",
     title: "Bay State Product Intelligence",
-    summary: "Agent execution layer with 25 bounded research tools and automated product intelligence pipeline for retail catalog management.",
-    problem: "Product research from external vendor sources was slow, prone to mismatching variant identities, and unconstrained LLM calls risked hallucinations and runaway tool budgets.",
-    built: [
-      "Researches product information from external sources and resolves exact product and variant identity.",
-      "Agent execution layer with 25 bounded research tools, model routing, fallback, privacy controls, and fail-closed validation.",
-      "Retail CMS and AI evaluation pipeline testing new extraction behavior against verified datasets before publishing.",
+    summary: "Production AI pipeline that resolves product identities from external vendor data and generates verified catalog updates under strict runtime constraints.",
+    highlights: [
+      "Agent execution layer equipped with 25 bounded research tools enforcing privacy controls, deadlines, and cost budgets.",
+      "Automated model routing and fallback logic preventing runaway execution and tool failure cascades.",
+      "Multi-source product research pipeline resolving variant identity and barcode mismatches across distributor catalogs.",
     ],
-    impact: [
-      "Controlled and auditable agent execution with strict privacy, cost, deadline, and tool bounds.",
-      "Evidence-backed catalog changes produced for human review before publishing.",
-    ],
-    role: "AI & Software Engineer — agent layer, CMS, and evaluation.",
-    tech: ["TypeScript", "Python", "Docker", "Playwright", "PostgreSQL", "LLM Orchestration", "AI Evaluation"],
+    tech: ["TypeScript", "Python", "LLM Orchestration", "Agentic Systems", "Docker", "Playwright", "PostgreSQL"],
     featured: true,
     startDate: "07-2024",
     endDate: "Present",
@@ -131,18 +101,12 @@ export const PROJECTS: ProjectItem[] = [
   {
     id: "p-shopsite",
     title: "ShopSite MCP Server",
-    summary: "Model Context Protocol server that lets AI agents retrieve orders, search products, and manage inventory in ShopSite safely.",
-    problem: "Interacting directly with legacy e-commerce back-office APIs poses security risks and schema compatibility hurdles for LLM agents.",
-    built: [
-      "Built an MCP server that lets AI agents retrieve orders, search products, and manage inventory in ShopSite without interacting directly with legacy APIs.",
-      "Wrapped XML/CGI requests, HMAC-SHA1 authentication, and legacy response formats behind typed, validated tools designed for safe LLM use.",
-      "Type-safe tool schema validation with Zod ensuring structured input and output boundaries.",
+    summary: "Model Context Protocol server allowing AI agents to securely query orders, search products, and manage inventory over legacy e-commerce backends.",
+    highlights: [
+      "Typed tool layer wrapping XML/CGI requests and HMAC-SHA1 authentication into structured LLM tool interfaces.",
+      "Type-safe schema validation via Zod ensuring strict input/output bounds on all agent operations.",
+      "Enables natural language querying and automated workflows without exposing direct API credentials.",
     ],
-    impact: [
-      "Natural-language querying and safe automation for legacy e-commerce systems by any MCP-compatible LLM client.",
-      "Demonstrates the pattern of making legacy systems AI-addressable without exposing raw endpoints.",
-    ],
-    role: "Built end-to-end.",
     tech: ["TypeScript", "Model Context Protocol", "Zod", "Node.js", "PostgreSQL"],
     featured: true,
     startDate: "01-2026",
@@ -151,11 +115,7 @@ export const PROJECTS: ProjectItem[] = [
   {
     id: "p-medusa",
     title: "Medusa Storefront Agent",
-    summary: "Autonomous store operations agent on Medusa.js that monitors inventory levels, drafts automated reorders, and applies pricing rules via typed MCP tool calls.",
-    built: [
-      "Built an autonomous store operations agent on Medusa.js that monitors inventory levels, drafts automated reorders, and applies pricing rules via typed MCP tool calls.",
-      "Implemented Zod schema validation and PostgreSQL event listeners to coordinate reliable multi-step agent actions across inventory and pricing workflows.",
-    ],
+    summary: "Autonomous store operations agent monitoring inventory levels, drafting reorders, and applying pricing rules via typed MCP tool calls.",
     tech: ["TypeScript", "Medusa.js", "PostgreSQL", "Model Context Protocol", "Node.js"],
     startDate: "07-2026",
     endDate: "07-2026",
@@ -163,11 +123,7 @@ export const PROJECTS: ProjectItem[] = [
   {
     id: "p-asl",
     title: "ASL Gesture Recognition",
-    summary: "CNN/Transformer models recognizing 100+ American Sign Language gestures using ResNet34 and MediaPipe.",
-    built: [
-      "Trained CNN/Transformer models to recognize 100+ ASL gestures using ResNet34 and MediaPipe-derived features, and parallelized preprocessing for faster experimentation.",
-      "Engineered real-time landmark extraction and temporal sequence processing pipelines, achieving robust classification across varying angles and lighting.",
-    ],
+    summary: "CNN & Transformer models recognizing 100+ American Sign Language gestures using ResNet34 and MediaPipe landmark sequences.",
     tech: ["Python", "PyTorch", "ResNet34", "MediaPipe", "Computer Vision"],
     startDate: "01-2025",
     endDate: "05-2025",
@@ -175,11 +131,7 @@ export const PROJECTS: ProjectItem[] = [
   {
     id: "p-nevi",
     title: "NEVI Search Tool",
-    summary: "Document search and NLP tool helping analysts find policy evidence inside lengthy state EV infrastructure plans.",
-    built: [
-      "Built a document-search tool helping analysts find policy evidence in state EV infrastructure plans using keyword search, fuzzy matching, and NLP preprocessing.",
-      "Extracted structured tabular data and funding metrics from multi-hundred-page policy PDFs with PyMuPDF, reducing manual analyst review time.",
-    ],
+    summary: "NLP and document search tool for extracting policy evidence and tabular funding metrics from multi-hundred-page state EV infrastructure plans.",
     tech: ["Python", "spaCy", "PyMuPDF", "NLP", "PyQt6"],
     repoUrl: "https://github.com/nickborrello/NEVI-Search-Tool",
     startDate: "08-2022",
@@ -188,177 +140,73 @@ export const PROJECTS: ProjectItem[] = [
   {
     id: "p-pdf",
     title: "AI PDF Search",
-    summary: "RAG application for real-time semantic search over complex PDFs, returning structured answers from multi-page documents.",
-    built: [
-      "Retrieval-augmented generation over localized document stores with LangChain.",
-      "Real-time semantic search and context extraction across multi-page PDFs.",
-    ],
+    summary: "Retrieval-augmented generation (RAG) system for real-time semantic search and question-answering over complex PDF document sets.",
     tech: ["Python", "LangChain", "Vector Databases", "NLP"],
     startDate: "10-2023",
     endDate: "10-2023",
   },
-  {
-    id: "p-axolotl",
-    title: "Axolotl Auctions",
-    summary: "Serverless auction platform defined entirely as infrastructure-as-code with AWS CDK.",
-    built: [
-      "AWS CDK IaC for automated, reproducible cloud deployments.",
-      "Event-driven serverless architecture for high-concurrency bidding.",
-    ],
-    tech: ["AWS CDK", "TypeScript", "React", "Node.js"],
-    startDate: "11-2024",
-    endDate: "11-2024",
-  },
-  {
-    id: "p-kiosk",
-    title: "Hospital Kiosk",
-    summary: "Frontend lead on a hospital navigation system with custom A* pathfinding and a graph-based map editor.",
-    built: [
-      "A* pathfinding across multi-floor hospital navigation graphs.",
-      "Interactive map editor with node-link topology management.",
-    ],
-    tech: ["Java", "PostgreSQL", "Algorithms"],
-    startDate: "04-2023",
-    endDate: "04-2023",
-  },
-  {
-    id: "p-7factor",
-    title: "7Factor Staffing Tool",
-    summary: "Enterprise staffing platform with role-based access control and automated resource allocation (MQP capstone).",
-    built: [
-      "RBAC with Auth0 across the staffing workflow.",
-      "Automated deployment and a real-time resource allocation dashboard.",
-    ],
-    tech: ["React", "Node.js", "TypeScript", "Azure DevOps"],
-    startDate: "08-2023",
-    endDate: "05-2024",
-  },
 ];
-
-export const PROOF_EVIDENCE: Record<string, ProofEvidence> = {
-  "p-resumancer": {
-    context: "Resumancer AI",
-    detail: "Agentic rewrite loop on Vercel AI SDK — job requirements matched to Master CV with reviewable diffs, ATS checks, model fallback, and PDF export.",
-  },
-  "p-baystate": {
-    context: "Bay State Pet & Garden",
-    detail: "Product Intelligence system with 25 bounded research tools enforcing privacy, cost, deadline, and tool-use limits, feeding a verified retail CMS.",
-  },
-  "p-shopsite": {
-    context: "ShopSite MCP Server",
-    detail: "MCP server with typed Zod tools wrapping XML/CGI requests and HMAC-SHA1 auth for safe LLM agent querying.",
-  },
-  "p-medusa": {
-    context: "Medusa Storefront Agent",
-    detail: "Autonomous store operations agent on Medusa.js monitoring inventory, drafting reorders, and applying pricing rules via typed MCP tools.",
-  },
-  "p-asl": {
-    context: "ASL Gesture Recognition",
-    detail: "Trained CNN/Transformer models recognizing 100+ ASL gestures using ResNet34 and MediaPipe-derived features with parallel preprocessing.",
-  },
-  "p-nevi": {
-    context: "NEVI Search Tool — Atlas Public Policy",
-    detail: "Built a document-search tool using keyword search, fuzzy matching, and spaCy/PyMuPDF preprocessing over state EV infrastructure plans.",
-  },
-  "p-pdf": {
-    context: "AI PDF Search",
-    detail: "LangChain RAG over multi-page PDFs with real-time semantic retrieval and structured answers.",
-  },
-  "p-axolotl": {
-    context: "Axolotl Auctions",
-    detail: "Serverless auction platform declared entirely as AWS CDK infrastructure-as-code.",
-  },
-  "p-kiosk": {
-    context: "Hospital Kiosk",
-    detail: "A* pathfinding and a graph-based map editor for multi-floor hospital navigation.",
-  },
-  "p-7factor": {
-    context: "7Factor Staffing Tool",
-    detail: "RBAC (Auth0) and automated resource allocation in an enterprise staffing platform.",
-  },
-  "exp-allegro": {
-    context: "Allegro MicroSystems",
-    detail: "Azure DevOps CI/CD pipeline automating driver deployment and standardizing test systems.",
-  },
-  "edu-wpi-ms": {
-    context: "WPI M.S. CS",
-    detail: "Deep learning, computer vision, distributed systems, and client-facing software engineering projects.",
-  },
-  "edu-wpi-bs": {
-    context: "WPI B.S. CS",
-    detail: "Software engineering, systems, algorithms, and client-facing team projects.",
-  },
-};
 
 export const CAPABILITY_GROUPS: CapabilityGroup[] = [
   {
-    id: "languages",
-    label: "Languages",
-    description: "Core programming and database query languages used across production systems.",
-    skills: [
-      { name: "TypeScript", proofIds: ["p-resumancer", "p-shopsite", "p-baystate", "p-medusa", "p-axolotl"] },
-      { name: "Python", proofIds: ["p-baystate", "p-nevi", "p-asl", "p-pdf"] },
-      { name: "JavaScript", proofIds: ["p-resumancer", "p-shopsite"] },
-      { name: "SQL", proofIds: ["p-shopsite", "p-resumancer", "p-baystate", "p-medusa"] },
-      { name: "Java", proofIds: ["p-kiosk", "edu-wpi-bs"] },
-    ],
-  },
-  {
     id: "ai-agents",
-    label: "AI & Agents",
+    label: "AI & Agent Systems",
     description: "Autonomous agent execution layers, protocol tools, and production LLM orchestration.",
     skills: [
-      { name: "LLM Agents", proofIds: ["p-baystate", "p-resumancer", "p-medusa"] },
-      { name: "Model Context Protocol", proofIds: ["p-shopsite", "p-medusa"] },
-      { name: "Tool Calling & Bounds", proofIds: ["p-baystate", "p-shopsite", "p-medusa"] },
-      { name: "Structured Outputs", proofIds: ["p-baystate", "p-shopsite"] },
-      { name: "Routing & Fallbacks", proofIds: ["p-baystate", "p-resumancer"] },
-      { name: "RAG & Embeddings", proofIds: ["p-resumancer", "p-pdf"] },
-      { name: "LLM Evaluation", proofIds: ["p-baystate", "p-resumancer"] },
-      { name: "VLM / OCR", proofIds: ["p-baystate", "p-nevi"] },
+      "LLM Agents",
+      "Model Context Protocol (MCP)",
+      "Tool Calling & Bounds",
+      "Structured Outputs",
+      "Routing & Fallbacks",
+      "RAG & Embeddings",
+      "LLM Evaluation",
+      "VLM / OCR",
     ],
   },
   {
     id: "ml-nlp",
-    label: "ML & NLP",
+    label: "Machine Learning & NLP",
     description: "Deep learning architectures, computer vision, document intelligence, and linguistic extraction.",
     skills: [
-      { name: "PyTorch", proofIds: ["p-asl"] },
-      { name: "CNNs & Transformers", proofIds: ["p-asl"] },
-      { name: "spaCy", proofIds: ["p-nevi"] },
-      { name: "MediaPipe", proofIds: ["p-asl"] },
-      { name: "Computer Vision", proofIds: ["p-asl"] },
-      { name: "Document Intelligence", proofIds: ["p-nevi", "p-pdf"] },
-      { name: "Fuzzy Matching", proofIds: ["p-nevi"] },
+      "PyTorch",
+      "CNNs & Transformers",
+      "Computer Vision",
+      "MediaPipe",
+      "spaCy",
+      "Document Intelligence",
+      "Fuzzy Matching",
     ],
   },
   {
-    id: "app-data",
-    label: "Application & Data",
-    description: "Fullstack web surfaces, type-safe API contracts, and relational data layers.",
+    id: "fullstack",
+    label: "Full Stack & Backend",
+    description: "Web applications, type-safe API contracts, and relational data layers.",
     skills: [
-      { name: "React", proofIds: ["p-resumancer", "p-baystate", "p-7factor"] },
-      { name: "Next.js", proofIds: ["p-resumancer", "p-baystate"] },
-      { name: "Node.js / Bun", proofIds: ["p-shopsite", "p-axolotl", "p-resumancer", "p-medusa"] },
-      { name: "Hono & REST APIs", proofIds: ["p-shopsite", "p-resumancer"] },
-      { name: "Zod", proofIds: ["p-shopsite"] },
-      { name: "PostgreSQL & SQLite", proofIds: ["p-shopsite", "p-resumancer", "p-baystate", "p-medusa"] },
-      { name: "Supabase", proofIds: ["p-resumancer", "p-baystate"] },
-      { name: "WebSockets", proofIds: ["p-axolotl"] },
+      "TypeScript",
+      "Python",
+      "SQL",
+      "React",
+      "Next.js",
+      "Node.js / Bun",
+      "PostgreSQL",
+      "SQLite",
+      "Supabase",
+      "REST APIs",
+      "Zod",
     ],
   },
   {
-    id: "automation-infra",
-    label: "Automation & Infrastructure",
-    description: "Scraper fleets, CI/CD pipelines, containerization, and cloud infrastructure.",
+    id: "infra",
+    label: "Infrastructure & Tooling",
+    description: "Automation, CI/CD pipelines, containerization, and cloud infrastructure.",
     skills: [
-      { name: "Docker", proofIds: ["p-baystate"] },
-      { name: "Playwright & Crawlee", proofIds: ["p-baystate"] },
-      { name: "GitHub Actions", proofIds: ["p-baystate"] },
-      { name: "CI/CD & DevOps", proofIds: ["exp-allegro", "p-baystate", "p-7factor"] },
-      { name: "Azure DevOps", proofIds: ["exp-allegro", "p-7factor"] },
-      { name: "AWS CDK", proofIds: ["p-axolotl"] },
-      { name: "Git & Linux", proofIds: ["p-baystate", "exp-allegro"] },
+      "Docker",
+      "Playwright",
+      "GitHub Actions",
+      "CI/CD & DevOps",
+      "Azure DevOps",
+      "Git & Linux",
+      "AWS CDK",
     ],
   },
 ];
