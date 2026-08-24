@@ -18,7 +18,7 @@
 | `nier-grid` | `#a19d8a` | Faint hairlines |
 | `accent` | `#8c3a2c` | Links, focus rings, status dot, bullet markers |
 
-Contrast rules: ink `#3a3836` on beige `#ded8c1` ≈ 12:1. Accent is used at ≥ 4.5:1 against beige.
+Contrast rules: ink `#3a3836` on beige `#ded8c1` ≈ 8.2:1 (passes AA/AAA for normal text). Accent is used at ≥ 4.5:1 against beige.
 
 ## Typography
 
@@ -28,7 +28,7 @@ Contrast rules: ink `#3a3836` on beige `#ded8c1` ≈ 12:1. Accent is used at ≥
 
 ## Texture & borders
 
-- Fine 3px grid mesh applied only to hero background zone. Sticky header and section panels use clean solid ground.
+- Fine 4px grid mesh applied as a fixed full-page background texture layer (behind all content, at low opacity). The sticky header and section panels sit on solid ground above it.
 - Hairline borders: 1px `nier-dark` at 10–20% opacity.
 - Corners: 2px radius (squared aesthetic).
 

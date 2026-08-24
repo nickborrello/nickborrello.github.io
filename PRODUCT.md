@@ -20,7 +20,7 @@ Web browsers across desktop and mobile viewports. Designed for 30-second recruit
 
 ## Capabilities and Constraints
 - **Document Portfolio IA**: Hero (identity + 3 CTAs) → Featured Case Studies (Bay State Product Intelligence, Resumancer AI, ShopSite MCP Server) → Experience (employment + education) → Technical Skills (static categorized matrix) → About & Contact.
-- **Restrained Styling**: Warm beige ground (`#ded8c1`), charcoal ink (`#3a3836`), hairline borders, fine grid mesh in hero background only, Rajdhani display type, one muted machine-red accent (`#8c3a2c`) for focus and status.
+- **Restrained Styling**: Warm beige ground (`#ded8c1`), charcoal ink (`#3a3836`), hairline borders, a fine 4px grid mesh as a fixed page-wide background texture, Rajdhani display type, one muted machine-red accent (`#8c3a2c`) for focus and status.
 - **Tech Stack**: React 19, TypeScript, Vite, Lucide icons, Tailwind CSS with the NieR palette (`#ded8c1`, `#cfc9b0`, `#4b4845`, `#3a3836`, `#575451`, `#a19d8a`) plus accent `#8c3a2c`.
 - **Data Architecture**: Clean static data in `data.ts` / `types.ts` with separate work experience, education, skills, and project models; live screenshot of Resumancer in `public/work/`.
 
