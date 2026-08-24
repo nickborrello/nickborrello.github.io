@@ -77,6 +77,24 @@ export const PROJECTS: ProjectItem[] = [
       "Model routing and fallback with fail-closed schema validation on every structured output before human review publishes edits to the retail CMS.",
     ],
     tech: ["TypeScript", "Python", "Bun / Hono", "SQLite", "Docker", "Playwright / Crawlee", "OCR & Document Parsing", "Entity Resolution"],
+    gallery: [
+      {
+        src: "/work/baystate-onboarding.png",
+        alt: "Bay State onboarding pipeline view: vendor product records moving through automated classification and review stages.",
+      },
+      {
+        src: "/work/baystate-assistant-chat.png",
+        alt: "Store Manager AI assistant answering a catalog health question with a live tool execution trace.",
+      },
+      {
+        src: "/work/baystate-agent-lab.png",
+        alt: "Agent Lab console for testing bounded research-agent behavior against recorded runs.",
+      },
+      {
+        src: "/work/baystate-catalog.png",
+        alt: "Catalog management view listing resolved product records ready for publishing to the retail store.",
+      },
+    ],
     repoUrl: "https://github.com/Bay-State-Pet-and-Garden-Supply/baystate-cms",
     featured: true,
     startDate: "07-2024",
