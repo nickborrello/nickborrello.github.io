@@ -3,7 +3,6 @@ import { ArrowUpRight, Github } from 'lucide-react';
 import { PROJECTS } from '../data';
 import { ProjectItem } from '../types';
 import { Section } from './Section';
-import { BaystateConsole } from './diagrams/BaystateConsole';
 import { ShopSiteMcpDiagram } from './diagrams/ShopSiteMcpDiagram';
 import { NierCornerFrame } from './NierDecorations';
 
@@ -11,14 +10,10 @@ const FEATURED = PROJECTS.filter((p) => p.featured);
 const ALSO_BUILT = PROJECTS.filter((p) => !p.featured);
 
 const DIAGRAM_ASPECTS: Record<string, string> = {
-  'p-baystate': '', // authored console manages its own height
   'p-shopsite': 'aspect-[76/30]', // viewBox 760×300
 };
 
 const CaseVisual: React.FC<{ project: ProjectItem }> = ({ project }) => {
-  if (project.id === 'p-baystate') {
-    return <BaystateConsole />;
-  }
   if (project.id === 'p-shopsite') {
     return <ShopSiteMcpDiagram />;
   }

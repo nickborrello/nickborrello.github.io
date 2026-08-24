@@ -77,6 +77,8 @@ export const PROJECTS: ProjectItem[] = [
       "Model routing and fallback with fail-closed schema validation on every structured output before human review publishes edits to the retail CMS.",
     ],
     tech: ["TypeScript", "Python", "Bun / Hono", "SQLite", "Docker", "Playwright / Crawlee", "OCR & Document Parsing", "Entity Resolution"],
+    image: "/work/baystate-onboarding-review.png",
+    imageAlt: "Bay State onboarding review board: vendor product cards moving through discovery, extraction, and human review stages with evidence states and batch progress.",
     repoUrl: "https://github.com/Bay-State-Pet-and-Garden-Supply/baystate-cms",
     featured: true,
     startDate: "07-2024",
