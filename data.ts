@@ -5,7 +5,7 @@ export const USER_INFO: UserInfo = {
   firstName: "Nick",
   title: "AI & Software Engineer",
   location: "Durham, NC",
-  status: "Open to opportunities",
+  status: "Open to local opportunities",
   positioning: "Agentic Systems & LLM Applications",
   summary: "I build software that connects AI models to real systems — agent workflows, product intelligence, developer tools, and the infrastructure that keeps them reliable.",
   bio: "I'm an AI & software engineer focused on building reliable systems with modern LLMs. My work spans bounded agent runtimes, data extraction pipelines, and developer tooling — bridging model capabilities with production software engineering.",
