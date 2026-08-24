@@ -10,7 +10,7 @@ web
 Technical recruiters, hiring managers, and engineering peers looking for a clear, confident showcase of Nick Borrello's engineering skills, systems, and background.
 
 ## Product Purpose
-A personal engineering portfolio for Nicholas Borrello — AI & Software Engineer — where visitors immediately understand who he is, what systems he builds, 3 featured visual case studies (Bay State Product Intelligence, Resumancer AI, ShopSite MCP Server), clean engineering history, a static technical capabilities matrix, and direct contact.
+A personal engineering portfolio for Nicholas Borrello — AI & Software Engineer — where visitors immediately understand who he is, what systems he builds, 3 featured visual case studies (Bay State AI Data Pipeline, Resumancer AI, ShopSite MCP Server), clean engineering history, a static technical capabilities matrix, and direct contact.
 
 ## Positioning
 A scrollable, recruiter-first engineering portfolio carrying a restrained NieR: Automata field-UI aesthetic (warm beige/charcoal palette, Rajdhani display headings, subtle machine-red accent) while keeping the engineering work straightforward and confident. No defensive meta-language, no pseudo-metric proof strips, and no unnecessary interaction layers.
@@ -19,7 +19,7 @@ A scrollable, recruiter-first engineering portfolio carrying a restrained NieR: 
 Web browsers across desktop and mobile viewports. Designed for 30-second recruiter skims as well as in-depth technical inspection by engineering leads.
 
 ## Capabilities and Constraints
-- **Document Portfolio IA**: Hero (identity + 3 CTAs) → Featured Case Studies (Bay State Product Intelligence, Resumancer AI, ShopSite MCP Server) → Experience (employment + education) → Technical Skills (static categorized matrix) → About & Contact.
+- **Document Portfolio IA**: Hero (identity + 3 CTAs) → Featured Case Studies (Bay State AI Data Pipeline, Resumancer AI, ShopSite MCP Server) → Experience (employment + education) → Technical Skills (static categorized matrix) → About & Contact.
 - **Restrained Styling**: Warm beige ground (`#ded8c1`), charcoal ink (`#3a3836`), hairline borders, a fine 4px grid mesh as a fixed page-wide background texture, Rajdhani display type, one muted machine-red accent (`#8c3a2c`) for focus and status.
 - **Tech Stack**: React 19, TypeScript, Vite, Lucide icons, Tailwind CSS with the NieR palette (`#ded8c1`, `#cfc9b0`, `#4b4845`, `#3a3836`, `#575451`, `#a19d8a`) plus accent `#8c3a2c`.
 - **Data Architecture**: Clean static data in `data.ts` / `types.ts` with separate work experience, education, skills, and project models; live screenshot of Resumancer in `public/work/`.

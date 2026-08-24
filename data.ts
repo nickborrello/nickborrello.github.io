@@ -7,7 +7,7 @@ export const USER_INFO: UserInfo = {
   location: "Durham, NC",
   status: "Open to local opportunities",
   positioning: "Agentic Systems & LLM Applications",
-  summary: "I build software that connects AI models to real systems — agent workflows, product intelligence, developer tools, and the infrastructure that keeps them reliable.",
+  summary: "I build software that connects AI models to real systems — agent workflows, document intelligence pipelines, developer tools, and the infrastructure that keeps them reliable.",
   bio: "I'm an AI & software engineer focused on building reliable systems with modern LLMs. My work spans bounded agent runtimes, data extraction pipelines, and developer tooling — bridging model capabilities with production software engineering.",
 };
 
@@ -69,14 +69,14 @@ export const EDUCATION: EducationItem[] = [
 export const PROJECTS: ProjectItem[] = [
   {
     id: "p-baystate",
-    title: "Bay State Product Intelligence",
-    summary: "Production AI pipeline that resolves product identities from external vendor data and produces reviewable catalog proposals under strict runtime constraints.",
+    title: "AI Product Data Onboarding Pipeline",
+    summary: "Production AI pipeline turning messy vendor documents into review-ready catalog records via OCR, entity resolution, bounded agent tool-calling, model routing/fallback, and human-in-the-loop review.",
     highlights: [
-      "Multi-source product research pipeline resolving variant identity and barcode mismatches across distributor catalogs.",
-      "Agent execution layer equipped with 25 bounded research tools enforcing privacy controls, deadlines, and token budgets.",
-      "Model routing and fallback logic with fail-closed schema validation to prevent runaway execution and unverified catalog edits.",
+      "Ingestion pipeline classifying and extracting data from vendor PDFs, images, and spreadsheets using OCR and vision-language document parsing.",
+      "Agentic execution layer with 25 bounded tools resolving product and variant identity across distributor catalogs under privacy, deadline, and token budgets.",
+      "Model routing and fallback with fail-closed schema validation on every structured output before human review publishes edits to the retail CMS.",
     ],
-    tech: ["TypeScript", "Python", "Bun / Hono", "SQLite", "Docker", "Playwright", "LLM Tooling"],
+    tech: ["TypeScript", "Python", "Bun / Hono", "SQLite", "Docker", "Playwright / Crawlee", "OCR & Document Parsing", "Entity Resolution"],
     repoUrl: "https://github.com/Bay-State-Pet-and-Garden-Supply/baystate-cms",
     featured: true,
     startDate: "07-2024",

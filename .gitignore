@@ -32,3 +32,4 @@ build_log.txt
 
 # pi agent session artifacts
 .pi-subagents/
+.screenshots/

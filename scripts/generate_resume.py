@@ -227,7 +227,7 @@ def generate_pdf(output_path):
     ]))
     story.append(job1_header)
     story.append(Spacer(1, 1))
-    story.append(Paragraph(f'{DIAMOND}Develop an AI Product Intelligence system that researches external product data, resolves exact product/variant identity, and produces evidence-backed catalog changes for human review.', bullet_style))
+    story.append(Paragraph(f'{DIAMOND}Develop an AI-powered product data onboarding pipeline that ingests vendor PDFs, images, and spreadsheets, applies OCR and entity resolution, and produces evidence-backed catalog changes for human review.', bullet_style))
     story.append(Spacer(1, 1))
     story.append(Paragraph(f'{DIAMOND}Engineer the agent execution layer with 25 bounded research tools, model routing and fallback, privacy controls, tool/model budgets, deadlines, and fail-closed validation.', bullet_style))
     story.append(Spacer(1, 1))

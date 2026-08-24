@@ -1,7 +1,7 @@
 import React from 'react';
 
 /**
- * Bay State AI Product Intelligence & CMS Pipeline — architecture diagram.
+ * Bay State AI Product Data Onboarding & CMS Pipeline — architecture diagram.
  * Authored visual reflecting production architecture:
  * Distributor data → Playwright/Crawlee extraction → 25-tool bounded agent layer → Fail-closed validation → Bun/Hono + SQLite CMS → ShopSite CGI.
  */
@@ -13,7 +13,7 @@ export const BaystatePipeline: React.FC = () => {
 
   const boxes = [
     { x: 18, title: 'VENDOR SOURCES', sub1: 'catalogs · price sheets', sub2: 'external feeds' },
-    { x: 164, title: 'EXTRACTION FLEET', sub1: 'Playwright · Crawlee', sub2: 'VLM & document parsers' },
+    { x: 164, title: 'EXTRACTION FLEET', sub1: 'Playwright · Crawlee', sub2: 'OCR & VLM document parsers' },
     { x: 310, title: 'BOUNDED AGENTS', sub1: '25 research tools', sub2: 'runtime & budget caps' },
     { x: 456, title: 'VALIDATION GATE', sub1: 'fail-closed schema', sub2: 'provenance review' },
     { x: 602, title: 'RETAIL CMS', sub1: 'Bun / Hono · SQLite', sub2: 'ShopSite CGI sync' },
@@ -23,7 +23,7 @@ export const BaystatePipeline: React.FC = () => {
     <svg
       viewBox="0 0 760 185"
       role="img"
-      aria-label="Bay State AI product intelligence pipeline: vendor sources flow through Playwright/Crawlee extraction, 25 bounded research tools, fail-closed validation, and synchronize into a Bun/Hono SQLite CMS and ShopSite CGI"
+      aria-label="Bay State AI product data onboarding pipeline: vendor sources flow through Playwright/Crawlee extraction, 25 bounded research tools, fail-closed validation, and synchronize into a Bun/Hono SQLite CMS and ShopSite CGI"
       className="w-full h-auto block"
     >
       <defs>
@@ -34,7 +34,7 @@ export const BaystatePipeline: React.FC = () => {
 
       {/* Header labels */}
       <text x="18" y="24" fontFamily="Rajdhani, sans-serif" fontWeight="700" fontSize="12" letterSpacing="1.5" fill={inkStrong}>
-        PRODUCT INTELLIGENCE PIPELINE
+        PRODUCT DATA ONBOARDING PIPELINE
       </text>
       <text x="742" y="24" textAnchor="end" fontFamily="Rajdhani, sans-serif" fontWeight="600" fontSize="10" letterSpacing="1.2" fill={ink} fillOpacity="0.6">
         BAY STATE PET &amp; GARDEN — PRODUCTION
@@ -128,7 +128,7 @@ export const BaystatePipeline: React.FC = () => {
       <g fontFamily="Inter, sans-serif" fontSize="9.5" fill={ink} fillOpacity="0.65">
         <text x="18" y="152" fontWeight="600">multi-source feeds</text>
         <text x="18" y="164">distributor catalogs,</text>
-        <text x="18" y="176">barcodes &amp; sheets</text>
+        <text x="18" y="176">PDFs, images &amp; sheets</text>
 
         <text x="164" y="152" fontWeight="600">targeted extraction</text>
         <text x="164" y="164">Playwright &amp; Crawlee</text>
