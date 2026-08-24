@@ -7,32 +7,40 @@ const ExperienceItem: React.FC<{ item: (typeof WORK_EXPERIENCE)[number]; isCurre
   isCurrent,
 }) => {
   return (
-    <li className="relative pl-8 sm:pl-10">
-      {/* Rail dot */}
-      <span
+    <li className="relative pl-8 sm:pl-10 group">
+      {/* NieR Milestone Diamond Marker */}
+      <div
         aria-hidden="true"
-        className={`absolute left-0 top-2 w-2.5 h-2.5 border ${
-          isCurrent ? 'bg-nier-darker border-nier-darker' : 'bg-nier-beige border-nier-dark/50'
+        className={`absolute left-[-5px] top-1.5 w-3 h-3 flex items-center justify-center transition-transform group-hover:scale-125 ${
+          isCurrent ? 'text-accent' : 'text-nier-darker'
         }`}
-      />
+      >
+        <span className="text-xs font-bold">{isCurrent ? '◆' : '◇'}</span>
+      </div>
+
       <div className="flex flex-wrap items-baseline gap-x-3 gap-y-0.5">
-        <h3 className="font-tech font-bold text-xl sm:text-2xl tracking-[0.01em] text-nier-darker">{item.role}</h3>
-        <span className="font-tech font-semibold text-sm sm:text-base tracking-[0.04em] text-nier-dark uppercase">
-          {item.company}
+        <h3 className="font-tech font-bold text-xl sm:text-2xl tracking-[0.01em] text-nier-darker nier-shadow-sm">
+          {item.role}
+        </h3>
+        <span className="font-tech font-bold text-sm sm:text-base tracking-[0.08em] text-accent uppercase">
+          // {item.company}
         </span>
       </div>
-      <p className="mt-0.5 text-xs text-nier-dark/80">
-        {item.period}
-        {item.location ? ` · ${item.location}` : ''}
-        {item.type ? ` · ${item.type}` : ''}
-      </p>
+
+      <div className="mt-0.5 inline-flex items-center gap-2 text-xs font-tech font-semibold tracking-[0.08em] text-nier-dark/90 uppercase">
+        <span>{item.period}</span>
+        {item.location && <span>· {item.location}</span>}
+        {item.type && <span>· [ {item.type} ]</span>}
+      </div>
 
       <p className="mt-2.5 max-w-2xl text-sm leading-relaxed text-nier-dark/90">{item.summary}</p>
 
       <ul className="mt-3 max-w-2xl space-y-1.5">
         {item.achievements.map((a) => (
           <li key={a} className="flex gap-2.5 text-sm leading-relaxed text-nier-dark/90 items-start">
-            <span aria-hidden="true" className="mt-[7px] w-1.5 h-1.5 bg-accent flex-shrink-0" />
+            <span aria-hidden="true" className="mt-[5px] text-accent font-bold text-xs flex-shrink-0">
+              ◆
+            </span>
             <span>{a}</span>
           </li>
         ))}
@@ -42,9 +50,10 @@ const ExperienceItem: React.FC<{ item: (typeof WORK_EXPERIENCE)[number]; isCurre
         {item.skills.map((s) => (
           <span
             key={s}
-            className="px-2 py-0.5 border border-nier-dark/20 text-[11px] font-tech font-semibold tracking-[0.06em] uppercase text-nier-dark"
+            className="inline-flex items-center gap-1 px-2 py-0.5 border border-nier-dark/25 bg-nier-beige-dim/30 text-[11px] font-tech font-semibold tracking-[0.06em] uppercase text-nier-dark"
           >
-            {s}
+            <span className="text-[8px] text-nier-dark/50">■</span>
+            <span>{s}</span>
           </span>
         ))}
       </div>
@@ -60,35 +69,54 @@ export const Experience: React.FC = () => {
       heading="Engineering history"
       intro="Professional engineering experience and computer science education."
     >
-      <ol className="relative space-y-10 border-l border-nier-dark/20 pl-0">
-        {WORK_EXPERIENCE.map((item, i) => (
-          <ExperienceItem key={item.id} item={item} isCurrent={i === 0} />
-        ))}
-      </ol>
+      {/* Dual Track Timeline Line */}
+      <div className="relative">
+        <div className="absolute left-0 top-2 bottom-2 w-px bg-nier-dark/30" aria-hidden="true" />
+        <div className="absolute left-[3px] top-2 bottom-2 w-px bg-nier-dark/15 border-r border-dashed border-nier-dark/30" aria-hidden="true" />
 
-      {/* Education block */}
-      <div className="mt-14 pt-10 border-t border-nier-dark/15">
-        <p className="font-tech font-semibold tracking-[0.18em] text-xs text-nier-dark uppercase">
-          Education
-        </p>
+        <ol className="relative space-y-10 pl-0">
+          {WORK_EXPERIENCE.map((item, i) => (
+            <ExperienceItem key={item.id} item={item} isCurrent={i === 0} />
+          ))}
+        </ol>
+      </div>
+
+      {/* Education block with NieR styling */}
+      <div className="mt-14 pt-10 border-t border-nier-dark/20">
+        <div className="flex items-center gap-2">
+          <span className="w-1.5 h-1.5 bg-accent" aria-hidden="true" />
+          <p className="font-tech font-bold tracking-[0.2em] text-xs text-nier-darker uppercase">
+            [ ACADEMIC_RECORD // EDUCATION ]
+          </p>
+        </div>
+
         <ol className="mt-6 space-y-6">
           {EDUCATION.map((edu) => (
-            <li key={edu.id} className="relative pl-8 sm:pl-10">
-              <span aria-hidden="true" className="absolute left-0 top-2 w-2.5 h-2.5 border border-nier-dark/50 bg-nier-beige" />
+            <li key={edu.id} className="relative pl-8 sm:pl-10 group">
+              <span
+                aria-hidden="true"
+                className="absolute left-0 top-1.5 text-xs text-nier-darker group-hover:text-accent font-bold transition-colors"
+              >
+                ◆
+              </span>
               <div className="flex flex-wrap items-baseline gap-x-3 gap-y-0.5">
-                <h3 className="font-tech font-bold text-xl sm:text-2xl tracking-[0.01em] text-nier-darker">{edu.degree}</h3>
-                <span className="font-tech font-semibold text-sm sm:text-base tracking-[0.04em] text-nier-dark uppercase">
-                  {edu.school}
+                <h3 className="font-tech font-bold text-xl sm:text-2xl tracking-[0.01em] text-nier-darker nier-shadow-sm">
+                  {edu.degree}
+                </h3>
+                <span className="font-tech font-bold text-sm sm:text-base tracking-[0.06em] text-nier-dark uppercase">
+                  // {edu.school}
                 </span>
               </div>
-              <p className="mt-0.5 text-xs text-nier-dark/80">
+              <p className="mt-0.5 text-xs font-tech font-semibold tracking-[0.08em] text-nier-dark/90 uppercase">
                 {edu.period}
                 {edu.location ? ` · ${edu.location}` : ''}
               </p>
               <ul className="mt-2 max-w-2xl space-y-1">
                 {edu.highlights.map((h) => (
                   <li key={h} className="flex gap-2.5 text-sm leading-relaxed text-nier-dark/90 items-start">
-                    <span aria-hidden="true" className="mt-[7px] w-1.5 h-1.5 bg-accent flex-shrink-0" />
+                    <span aria-hidden="true" className="mt-[5px] text-accent font-bold text-xs flex-shrink-0">
+                      ◆
+                    </span>
                     <span>{h}</span>
                   </li>
                 ))}
