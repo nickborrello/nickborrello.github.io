@@ -8,7 +8,6 @@ export interface ProjectItem {
   repoUrl?: string;
   image?: string;
   imageAlt?: string;
-  gallery?: { src: string; alt: string }[];
   featured?: boolean;
   startDate?: string;
   endDate?: string;

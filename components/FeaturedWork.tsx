@@ -3,7 +3,6 @@ import { ArrowUpRight, Github } from 'lucide-react';
 import { PROJECTS } from '../data';
 import { ProjectItem } from '../types';
 import { Section } from './Section';
-import { BaystatePipeline } from './diagrams/BaystatePipeline';
 import { ShopSiteMcpDiagram } from './diagrams/ShopSiteMcpDiagram';
 import { NierCornerFrame } from './NierDecorations';
 
@@ -11,14 +10,10 @@ const FEATURED = PROJECTS.filter((p) => p.featured);
 const ALSO_BUILT = PROJECTS.filter((p) => !p.featured);
 
 const DIAGRAM_ASPECTS: Record<string, string> = {
-  'p-baystate': 'aspect-[76/18.5]', // viewBox 760×185
   'p-shopsite': 'aspect-[76/30]', // viewBox 760×300
 };
 
 const CaseVisual: React.FC<{ project: ProjectItem }> = ({ project }) => {
-  if (project.id === 'p-baystate') {
-    return <BaystatePipeline />;
-  }
   if (project.id === 'p-shopsite') {
     return <ShopSiteMcpDiagram />;
   }
@@ -57,36 +52,6 @@ const ProjectCaseStudy: React.FC<{ project: ProjectItem; index: number }> = ({ p
           >
             <CaseVisual project={project} />
           </div>
-
-          {project.gallery && project.gallery.length > 0 && (
-            <div
-              className="grid grid-cols-4 gap-1 mt-1 border border-nier-dark/15 bg-nier-beige p-1"
-              aria-label={`${project.title} application screenshots`}
-            >
-              {project.gallery.map((shot) => (
-                <a
-                  key={shot.src}
-                  href={shot.src}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="group block relative overflow-hidden border border-nier-dark/15 focus-visible:outline-2 focus-visible:outline-accent"
-                >
-                  <img
-                    src={shot.src}
-                    alt={shot.alt}
-                    width={1440}
-                    height={900}
-                    loading="lazy"
-                    decoding="async"
-                    className="w-full aspect-[16/10] object-cover object-top transition-transform duration-200 group-hover:scale-[1.03]"
-                  />
-                  <span className="absolute inset-x-0 bottom-0 py-0.5 text-center text-[9px] font-tech font-bold tracking-[0.14em] uppercase text-nier-beige bg-nier-darker/80 opacity-0 group-hover:opacity-100 group-focus-visible:opacity-100 transition-opacity">
-                    VIEW FULL // ↗
-                  </span>
-                </a>
-              ))}
-            </div>
-          )}
         </NierCornerFrame>
       </div>
 
